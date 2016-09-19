@@ -72,3 +72,6 @@ class Element():
 
     def swith_app(self):
         self.driver.execute(MobileCommand.SWITCH_TO_CONTEXT, {'name': 'NATIVE_APP'})
+
+    def implicitly_wait(self,time_to_wait):
+        return self.driver.implicitly_wait(time_to_wait)
