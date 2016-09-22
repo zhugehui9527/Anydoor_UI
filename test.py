@@ -1,12 +1,15 @@
 # -*- coding:utf-8 -*-
-import unittest,logging
-import os
-from Public import *
+from src.Public.Public import *
+from src.Public.logger import Log
 
 project_path = os.getcwd()
-config_path = os.path.join((project_path + '/conf/'),'monitor.cfg')
-for i in read_config(config_path,'appium',):
-	print i
+config_path = os.path.join((project_path + '/conf/'),'monitor.ini')
+
+print "INFO: ", logging.INFO
+print "DEBUG: ", logging.DEBUG
+print "WARN: ", logging.WARN
+print "Error: ", logging.ERROR
+print "CRITICAL: ", logging.CRITICAL
 
 
 

@@ -1,15 +1,18 @@
 # -*- coding:utf-8 -*-
+#######################################################
+#filename:Public.py
+#author:Jeff
+#date:2016-09-21
+#function:对配置文件进行操作处理
+#######################################################
 import logging
 import os
 import ConfigParser
 
 file = os.getcwd()
+global logger
+logger = logging.getLogger('main')
 
-'''''
-Use ConfigParser to parse below configuration file:
-[selection]:
-option:value
-'''
 #加载配置文件
 def load_config(file_name):
 	config = ConfigParser.ConfigParser()

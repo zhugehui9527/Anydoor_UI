@@ -1,16 +1,22 @@
 # -*- coding:utf-8 -*-
+#######################################################
+#filename:driver.py
+#author:Jeff
+#date:2016-09-21
+#function:对日志进行操作处理
+#######################################################
 import unittest
-from driver import driver
 from Element import *
 
-class NiiWoo(unittest.TestCase):
+class UI(unittest.TestCase):
     def setUp(self):
         self.driver = Element()
+
     def tearDown(self):
         self.driver.quit()
 
     def testLogin(self):
-        print "开始宿主一账通登录。。。"
+        "开始宿主一账通登录。。。"
         self.driver.implicitly_wait(3)
         self.driver.by_id("一账通").click()
         self.driver.implicitly_wait(3)

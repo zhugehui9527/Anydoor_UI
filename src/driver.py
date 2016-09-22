@@ -1,12 +1,22 @@
 # -*- coding:utf-8 -*-
-from appium import webdriver
-from Public import *
+#######################################################
+#filename:driver.py
+#author:Jeff
+#date:2016-09-21
+#function:对日志进行操作处理
+#######################################################
+import logging
 import os
+
+from appium import webdriver
+from src.Public.Public import *
+from conf import Run_conf
+import sys
 
 class driver():
     def __init__(self):
-        project_path = os.getcwd()
-        config_path = os.path.join((project_path + '/conf/'),'monitor.cfg')
+        config_path = Run_conf.conf_file
+        print config_path
         ip = read_config(config_path,'appium','ip')
         port = read_config(config_path,'appium','port')
         bundleId = read_config(config_path,'appium','bundleId')
@@ -14,16 +24,18 @@ class driver():
         platformVersion = read_config(config_path,'appium','platformVersion')
         deviceName = read_config(config_path,'appium','deviceName')
         app = read_config(config_path,'appium','app')
-
-        desired_caps = {}
-        desired_caps['bundleId'] = bundleId
-        desired_caps['platformName'] = platformName
-        desired_caps['platformVersion'] = platformVersion
-        desired_caps['deviceName'] = deviceName
-        # desired_caps['app'] = os.path.abspath(app')
-        serverIp= 'http://' + ip + ':' + port + '/wd/hub'
-        self.driver = webdriver.Remote(serverIp, desired_caps)
-
+        try :
+            desired_caps = {}
+            desired_caps['bundleId'] = bundleId
+            desired_caps['platformName'] = platformName
+            desired_caps['platformVersion'] = platformVersion
+            desired_caps['deviceName'] = deviceName
+            # desired_caps['app'] = os.path.abspath(app')
+            serverIp= 'http://' + ip + ':' + port + '/wd/hub'
+            self.driver = webdriver.Remote(serverIp, desired_caps)
+        except Exception as e:
+            logging.exception(e)
+            raise
         # desired_caps = {}
         # desired_caps['bundleId'] = 'com.pingan.rympush'
         # desired_caps['platformName'] = 'iOS'

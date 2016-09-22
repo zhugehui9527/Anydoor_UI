@@ -1,6 +1,13 @@
 # -*- coding:utf-8 -*-
-from driver import driver
+#######################################################
+#filename:Element.py
+#author:Jeff
+#date:2016-09-21
+#function:封装操作驱动元素
+#######################################################
 from appium.webdriver.mobilecommand import MobileCommand
+from driver import driver
+
 class Element():
     def __init__(self):
         at = driver()
