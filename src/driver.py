@@ -13,10 +13,11 @@ from src.Public.Public import *
 from conf import Run_conf
 import sys
 
+
 class driver():
     def __init__(self):
-        config_path = Run_conf.conf_file
-        print config_path
+        config_path = '/Users/zengyuanchen/Documents/Project/Anydoor_UI/conf/monitor.ini'
+        print os.path.abspath(config_path)
         ip = read_config(config_path,'appium','ip')
         port = read_config(config_path,'appium','port')
         bundleId = read_config(config_path,'appium','bundleId')

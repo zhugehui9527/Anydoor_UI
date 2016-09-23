@@ -8,6 +8,8 @@
 import unittest,time
 from HTMLTestRunner import HTMLTestRunner
 from Element import *
+from appOperate import *
+from Public.Public import *
 import sys,os
 reload(sys)
 sys.setdefaultencoding('utf-8')
@@ -24,7 +26,11 @@ class Anydoor_UI(unittest.TestCase):
     def tearDown(self):
         self.driver.quit()
 
-    def test_Login(self):
+    def checkPlugin(self,plugname,result):
+        self.driver.implicitly_wait(3)
+        self.driver.by_id(plugname).click()
+
+    def test_1(self):
         "开始宿主一账通登录。。。"
         self.driver.implicitly_wait(3)
         self.driver.by_id("一账通").click()
@@ -36,14 +42,17 @@ class Anydoor_UI(unittest.TestCase):
         self.driver.by_id("确认").click()
         self.driver.implicitly_wait(3)
         self.driver.by_id("登陆").click()
-        self.driver.implicitly_wait(30)
-        self.assertTrue(self.driver.by_id("登陆").is_displayed())
-    def test_1(self):
-        '测试场景1'
-        print '1'
+        self.driver.implicitly_wait(8)
+
+
+
     def test_2(self):
+        '测试场景1'
+        print self.driver.device_time()
+
+    def test_3(self):
         '测试场景2'
-        print '2'
+        print self.driver
 
 if __name__=='__main__':
     if len(sys.argv) > 1:
@@ -53,13 +62,14 @@ if __name__=='__main__':
         unit_dir = '.'
     test_modules = [filename.replace('.py', '') for filename in os.listdir(unit_dir)
                     if filename.endswith('.py') and filename.startswith('Anydoor')]
-    print test_modules
+    # print test_modules
     map(__import__, test_modules)
 
     suite = unittest.TestSuite()
     for mod in [sys.modules[modname] for modname in test_modules]:
         suite.addTest(unittest.TestLoader().loadTestsFromModule(mod))
         print unittest.TestLoader().loadTestsFromModule(mod)
+
     # suit = unittest.TestSuite()
     # suit.addTest(Anydoor_UI("testLogin"))
     # suit.addTests(Anydoor_UI)
