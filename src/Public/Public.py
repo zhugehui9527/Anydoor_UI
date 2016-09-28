@@ -9,10 +9,6 @@ import logging
 import os
 import ConfigParser
 
-file = os.getcwd()
-global logger
-logger = logging.getLogger('main')
-
 #加载配置文件
 def load_config(file_name):
 	config = ConfigParser.ConfigParser()
@@ -30,15 +26,6 @@ def read_config(file_name,section_name,option):
 		if section == section_name:
 			value = monitor_cfg.get(section,option)
 			return value
-
-
-
-
-
-
-
-
-
 
 #
 # logging.debug('debug_log')

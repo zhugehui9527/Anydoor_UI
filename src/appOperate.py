@@ -5,15 +5,17 @@
 #date:2016-09-21
 #function:对日志进行操作处理
 #######################################################
-from Element import *
-from Public.Public import *
-import time,datetime
+from Public.logger import *
+from Global import *
+import time
+import sys
+reload(sys)
+sys.setdefaultencoding('utf-8')
 
-class appOperate():
+
+class appOperate ():
 	def __init__(self):
-		# at = driver()
-		# self.driver = at.get_driver()
-		self.driver = Element()
+		global driver
 		iOS_UserName = "//*[@value='一账通号/手机号/身份证号/邮箱']"
 		iOS_PassWord = "//*[@value='密码']"
 		Andr_UserName = "com.paic.example.simpleapp:id/user-id-input"
@@ -25,18 +27,35 @@ class appOperate():
 		self.iOS_PassWord = iOS_PassWord
 		self.Andr_UserName = Andr_UserName
 		self.Andr_PassWord = Andr_PassWord
-
-
+		#driver 由外部传入
+		self.driver = driver
+		#driver主动调入
+		# self.driver = Element()
 
 	def wait_for_text(self,time_second,text):
+		'''
+		遍历页面资源查找需要的文本信息
+		:param time_second:
+		:param text:
+		:return:
+		'''
 		self.driver.load_page_timeout(time_second)
-		pageSource = self.driver.page_source
-		if text in pageSource:
+		pageSource = self.driver.page_source()
+		logger.debug("打印出来pageSource : %s" % pageSource)
+		if text in str(pageSource):
+			logger.debug('遍历结果: %s' % text)
 			assert True
 		else:
+			logger.debug(text)
 			assert False
 
+
+
 	def loginByHost(self):
+		'''
+		一账通登陆
+		:return:True
+		'''
 		try:
 			self.driver.implicitly_wait(3)
 			self.driver.by_id("一账通").click()
@@ -52,41 +71,66 @@ class appOperate():
 			self.driver.implicitly_wait(3)
 			self.driver.by_id("登陆").click()
 			self.driver.implicitly_wait(8)
-		except Exception,e:
-			raise e
+			return True
+		except Exception as e:
+			logger.warning(e)
+			return False
 
 	def loginOut(self):
+		'''
+		注销登陆
+		:return: True
+		'''
 		try:
 			self.driver.implicitly_wait(3)
 			self.driver.by_id("无用户").click()
-		except:
-			raise
+			return True
+		except Exception as e:
+			logger.warning(e)
+			return False
 
 	#支持iOS和Android
 	def loginByH5(self,userName,passWord):
 		self.driver.implicitly_wait(3)
+		logger.debug('进入个人中心')
 		self.driver.by_id("个人中心").click()
 		if self.platformName.lower() =='ios':
 			try:
 				self.driver.implicitly_wait(3)
 				#填写账号
 				self.driver.by_xpath(self.iOS_UserName).click()
+				logger.debug('点击账号输入框')
 				self.driver.implicitly_wait(3)
 				self.driver.by_xpath(self.iOS_UserName).clear()
+				logger.debug('清除输入框文本内容')
 				self.driver.implicitly_wait(3)
 				self.driver.by_xpath(self.iOS_UserName).send_keys(userName)
+				logger.debug('输入账号: %s' % userName)
 				#填写密码
 				self.driver.implicitly_wait(3)
 				self.driver.by_xpath(self.iOS_PassWord).click()
 				self.driver.implicitly_wait(3)
 				self.driver.by_xpath(self.iOS_PassWord).clear()
+				logger.debug('清除输入框文本内容')
 				self.driver.implicitly_wait(3)
-				self.driver.by_xpath(self.iOS_PassWord).send_keys(userName)
-				self.driver.implicitly_wait(3)
-				self.driver.by_id('登 录').click()
+				self.driver.by_xpath(self.iOS_PassWord).send_keys(passWord)
+				logger.debug('输入密码: %s' % passWord)
+				time.sleep(5)
+				self.driver.implicitly_wait(10)
+				#收起键盘
+				self.driver.by_id('完成').click()
+				self.driver.by_xpath("//UIALink[@name='登 录']").click()
+				self.driver.load_page_timeout(30)
+				if self.driver.by_id('我的资产'):
+					print '登陆成功'
+				else:
+					print "登陆失败"
+				# self.driver.implicitly_wait(10)
 
-			except Exception,e:
-				raise e
+
+			except IOError,e:
+				raise logger.error(e)
+
 		elif self.platformName.lower() =='android':
 			try:
 				self.driver.implicitly_wait(3)
@@ -104,26 +148,59 @@ class appOperate():
 				self.driver.implicitly_wait(3)
 				self.driver.by_xpath(self.Andr_PassWord).send_keys(userName)
 				self.driver.implicitly_wait(3)
-				self.driver.by_id('登 录').click()
+				self.driver.keyevent(4)
+				self.driver.by_name("登 录 Link").click()
+				self.driver.implicitly_wait(10)
 			except Exception, e:
 				raise e
 		else:
 			print '请在配置文件中添加正确的platformName!!'
 
-	def check_plugin(self, pluginName, expectResult):
-		a = 0
-		if appOperate.wait_for_text(3,pluginName):
-			print "找到插件,准备点击!"
+	def check_plugin(self, pluginId, expectResult):
+		'''
+		对插件进行校验
+		:param pluginId:
+		:param expectResult:
+		:return:
+		'''
+		if self.driver.by_id(pluginId).is_enabled():
+			logger.debug('找到插件:%s ' % pluginId)
 		else:
 			try:
-				print "没找到插件,准备滑动查找!"
-				if a >=1:
-					self.driver.swipe_right()
-					a = 0
-				else:
-					self.driver.swipe_left()
-					a = a+1
+				logger.debug('没找到插件:%s ,准备滑动' % pluginId)
+				for x in range(2):
+					if x == 0:
+						self.driver.swipe_right()
+					else:
+						self.driver.swipe_left()
 			except:
 				raise
 
+
+	def closeH5(self):
+		'''
+		关闭H5界面
+		:return: True
+		'''
+		try:
+			self.driver.implicitly_wait(3)
+			if self.driver.by_id('closeButton'):
+				self.driver.by_id('closeButton').click()
+			elif self.driver.by_id('关闭'):
+				self.driver.by_id('关闭').click()
+			elif self.driver.by_id('返回'):
+				self.driver.by_id('返回').click()
+			elif self.driver.by_id('htmlbackhome'):
+				self.driver.by_id('htmlbackhome').click()
+			else:
+				logger.warning('关闭H5页面失败!')
+				return False
+			return True
+		except Exception as e:
+			logger.warning(e)
+			return False
+
+
+if __name__ == '__main__':
+	appOperate.closeH5()
 

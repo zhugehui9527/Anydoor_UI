@@ -17,6 +17,7 @@ sys.setdefaultencoding('utf-8')
 logtest = Log()
 logtest.GenerateLog()
 
+
 #遍历unittest中所有模块
 if len(sys.argv) > 1:
 	unit_dir = sys.argv[1]
