@@ -8,7 +8,7 @@
 import unittest
 from HTMLTestRunner import HTMLTestRunner
 from Global import *
-from Public.logger import *
+from Public.Log import *
 import sys,os
 reload(sys)
 sys.setdefaultencoding('utf-8')
@@ -26,7 +26,7 @@ else:
 	unit_dir = '.'
 test_modules = [filename.replace('.py', '') for filename in os.listdir(unit_dir)
                 if filename.endswith('.py') and filename.startswith('Anydoor')]
-logger.debug('遍历unittest中所有模块,模块内容: %s' % test_modules)
+Log.debug('遍历unittest中所有模块,模块内容: %s' % test_modules)
 map(__import__, test_modules)
 
 suite = unittest.TestSuite()

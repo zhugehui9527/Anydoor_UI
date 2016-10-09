@@ -1,12 +1,11 @@
-#coding=utf8
+# -*- coding:utf-8 -*-
 #######################################################
 #filename:Run_conf.py
 #author:Jeff
 #date:2016-09
 #function:运行加载配置数据
 #######################################################
-
-from src.Public import logger
+from src.Public.Log import *
 import os
 
 
@@ -24,7 +23,9 @@ def get_path():
 
 if __name__ == '__main__':
 	print 'TestCase Running...'
-	logger.GenerateLog(log_file)
+	logsignleton = LogSignleton(conf_path)
+	logger = logsignleton.get_logger()
+	logger.debug('test')
 	print os.path.abspath(conf_file)
 	print os.path.abspath(Case_file)
 	# Run_TestCase.run_testcase(data_file, conf_file, report_file)

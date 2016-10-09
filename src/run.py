@@ -8,7 +8,7 @@
 import unittest
 from HTMLTestRunner import HTMLTestRunner
 from Global import *
-from Public.logger import *
+from Public.Log import *
 import sys,os
 reload(sys)
 sys.setdefaultencoding('utf-8')

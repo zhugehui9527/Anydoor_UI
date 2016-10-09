@@ -9,7 +9,7 @@ import unittest,time
 from HTMLTestRunner import HTMLTestRunner
 from appOperate import *
 from Element import *
-from Public.logger import *
+from Public.Log import *
 from Global import *
 import sys,os
 reload(sys)
@@ -22,13 +22,14 @@ class Anydoor_UI(unittest.TestCase):
     %prog DIR
     '''
     def setUp(self):
-        global driver
-        self.driver = driver
-        # self.driver = Element()
-        self.appOperate = appOperate(self.driver)
+        # global driver
+        # self.driver = driver
+        self.driver = Element()
+        if isinstance(Element()):
+            print 'Element is a instance'
+        self.appOperate = appOperate()
         # 实例化调用Log
-        logtest = Log()
-        logtest.GenerateLog()
+        self.logger = get_Logger()
 
 
     def tearDown(self):
@@ -37,9 +38,9 @@ class Anydoor_UI(unittest.TestCase):
 
     def test_1(self):
         "开始宿主一账通登录。。。"
-        logger.debug('向右滑动')
+        self.logger.debug('向右滑动')
         self.driver.swipe_right()
-        logger.debug('H5页面进行账密登录')
+        self.logger.debug('H5页面进行账密登录')
         self.appOperate.loginByH5('18589091413', 'Solution123')
         loginResult = self.appOperate.wait_for_text(15,'我的资产')
         if loginResult:
@@ -53,7 +54,7 @@ class Anydoor_UI(unittest.TestCase):
     def test_2(self):
         '遍历插件'
         plugId = 'PA01100000000_02_PAZB'
-        logger.debug('遍历插件,插件ID: %s' % plugId)
+        self.logger.debug('遍历插件,插件ID: %s' % plugId)
         if self.appOperate.check_plugin(plugId,'mapSelected'):
             self.assertTrue('插件校验成功!')
         else:
@@ -63,7 +64,7 @@ class Anydoor_UI(unittest.TestCase):
     def test_3(self):
         '遍历插件'
         plugId = 'PA01100000000_02_PAZB'
-        logger.debug('遍历插件,插件ID: %s' % plugId)
+        self.logger.debug('遍历插件,插件ID: %s' % plugId)
         if self.appOperate.check_plugin(plugId,'mapSelected'):
             self.assertTrue('插件校验成功!')
         else:
