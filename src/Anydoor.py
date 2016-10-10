@@ -21,15 +21,13 @@ class Anydoor_UI(unittest.TestCase):
     %prog      # Searches CWD
     %prog DIR
     '''
+
     def setUp(self):
-        # global driver
-        # self.driver = driver
         self.driver = Element()
-        if isinstance(Element()):
+        if isinstance(self.driver):
             print 'Element is a instance'
-        self.appOperate = appOperate()
-        # 实例化调用Log
-        self.logger = get_Logger()
+        self.appOperate = AppOperate()
+
 
 
     def tearDown(self):
@@ -38,11 +36,11 @@ class Anydoor_UI(unittest.TestCase):
 
     def test_1(self):
         "开始宿主一账通登录。。。"
-        self.logger.debug('向右滑动')
+        logger.debug('向右滑动')
         self.driver.swipe_right()
-        self.logger.debug('H5页面进行账密登录')
+        logger.debug('H5页面进行账密登录')
         self.appOperate.loginByH5('18589091413', 'Solution123')
-        loginResult = self.appOperate.wait_for_text(15,'我的资产')
+        loginResult = self.appOperate.wait_for_text(30,'我的资产')
         if loginResult:
             self.assertTrue(loginResult,'登陆成功')
         else:
@@ -54,7 +52,7 @@ class Anydoor_UI(unittest.TestCase):
     def test_2(self):
         '遍历插件'
         plugId = 'PA01100000000_02_PAZB'
-        self.logger.debug('遍历插件,插件ID: %s' % plugId)
+        logger.debug('遍历插件,插件ID: %s' % plugId)
         if self.appOperate.check_plugin(plugId,'mapSelected'):
             self.assertTrue('插件校验成功!')
         else:
@@ -64,7 +62,7 @@ class Anydoor_UI(unittest.TestCase):
     def test_3(self):
         '遍历插件'
         plugId = 'PA01100000000_02_PAZB'
-        self.logger.debug('遍历插件,插件ID: %s' % plugId)
+        logger.debug('遍历插件,插件ID: %s' % plugId)
         if self.appOperate.check_plugin(plugId,'mapSelected'):
             self.assertTrue('插件校验成功!')
         else:

@@ -1,19 +1,19 @@
 # -*- coding:utf-8 -*-
 #######################################################
-#filename:driver.py
+#filename:self.driver.py
 #author:Jeff
 #date:2016-09-21
 #function:对日志进行操作处理
 #######################################################
 from Element import *
-from Global import *
+# from Global import *
 import time
 import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
 
-class appOperate (Element):
+class AppOperate (object):
 	def __init__(self):
 		# super(appOperate,self).__init__()
 		# global driver
@@ -28,10 +28,8 @@ class appOperate (Element):
 		self.iOS_PassWord = iOS_PassWord
 		self.Andr_UserName = Andr_UserName
 		self.Andr_PassWord = Andr_PassWord
-		#driver 由外部传入
-		#driver主动调入
-		self.driver = get_Driver()
-		self.logger = get_Logger()
+		self.driver = Element()
+
 
 	def wait_for_text(self,time_second,text):
 		'''
@@ -40,15 +38,16 @@ class appOperate (Element):
 		:param text:
 		:return:
 		'''
-		self.driver.load_page_timeout(time_second)
+		self.driver.load_page_timeout(int(time_second))
 		pageSource = self.driver.page_source()
-		self.logger.debug("打印出来pageSource : %s" % pageSource)
+		logger.debug("打印出来pageSource : %s" % pageSource)
 		if text in str(pageSource):
-			self.logger.debug('遍历结果: %s' % text)
-			assert True
+			logger.debug('遍历结果: %s' % text)
+			time.sleep(1)
+			return True
 		else:
-			self.logger.debug(text)
-			assert False
+			logger.debug(text)
+			return False
 
 
 
@@ -74,7 +73,7 @@ class appOperate (Element):
 			self.driver.implicitly_wait(8)
 			return True
 		except Exception as e:
-			self.logger.warning(e)
+			logger.warning(e)
 			return False
 
 	def loginOut(self):
@@ -87,53 +86,47 @@ class appOperate (Element):
 			self.driver.by_id("无用户").click()
 			return True
 		except Exception as e:
-			self.logger.warning(e)
+			logger.warning(e)
 			return False
 
 	#支持iOS和Android
 	def loginByH5(self,userName,passWord):
 		self.driver.implicitly_wait(3)
-		self.logger.debug('进入个人中心')
+		logger.debug('进入个人中心')
 		self.driver.swipe_right()
 		self.driver.implicitly_wait(3)
 		self.driver.by_id("个人中心").click()
 		self.driver.implicitly_wait(10)
 		if self.platformName.lower() =='ios':
 			try:
-				self.driver.implicitly_wait(3)
+				self.driver.implicitly_wait(10)
 				#填写账号
 				self.driver.by_xpath(self.iOS_UserName).click()
-				self.logger.debug('点击账号输入框')
+				logger.debug('点击账号输入框')
 				self.driver.implicitly_wait(3)
 				self.driver.by_xpath(self.iOS_UserName).clear()
-				self.logger.debug('清除输入框文本内容')
+				logger.debug('清除输入框文本内容')
 				self.driver.implicitly_wait(3)
 				self.driver.by_xpath(self.iOS_UserName).send_keys(userName)
-				self.logger.debug('输入账号: %s' % userName)
+				logger.debug('输入账号: %s' % userName)
 				#填写密码
 				self.driver.implicitly_wait(3)
 				self.driver.by_xpath(self.iOS_PassWord).click()
 				self.driver.implicitly_wait(3)
 				self.driver.by_xpath(self.iOS_PassWord).clear()
-				self.logger.debug('清除输入框文本内容')
+				logger.debug('清除输入框文本内容')
 				self.driver.implicitly_wait(3)
 				self.driver.by_xpath(self.iOS_PassWord).send_keys(passWord)
-				self.logger.debug('输入密码: %s' % passWord)
+				logger.debug('输入密码: %s' % passWord)
 				time.sleep(5)
 				self.driver.implicitly_wait(10)
 				#收起键盘
 				self.driver.by_id('完成').click()
 				self.driver.by_xpath("//UIALink[@name='登 录']").click()
 				self.driver.load_page_timeout(30)
-				if self.driver.by_id('我的资产'):
-					print '登陆成功'
-				else:
-					print "登陆失败"
-				# self.driver.implicitly_wait(10)
-
 
 			except IOError,e:
-				raise self.logger.error(e)
+				raise logger.error(e)
 
 		elif self.platformName.lower() =='android':
 			try:
@@ -168,10 +161,10 @@ class appOperate (Element):
 		:return:
 		'''
 		if self.driver.by_id(pluginId).is_enabled():
-			self.logger.debug('找到插件:%s ' % pluginId)
+			logger.debug('找到插件:%s ' % pluginId)
 		else:
 			try:
-				self.logger.debug('没找到插件:%s ,准备滑动' % pluginId)
+				logger.debug('没找到插件:%s ,准备滑动' % pluginId)
 				for x in range(2):
 					if x == 0:
 						self.driver.swipe_right()
@@ -197,15 +190,17 @@ class appOperate (Element):
 			elif self.driver.by_id('htmlbackhome'):
 				self.driver.by_id('htmlbackhome').click()
 			else:
-				self.logger.warning('关闭H5页面失败!')
+				logger.warning('关闭H5页面失败!')
 				return False
 			return True
 		except Exception as e:
-			self.logger.warning(e)
+			logger.warning(e)
 			return False
 
 
 if __name__ == '__main__':
-	appOperates = appOperate()
+	appOperates = AppOperate()
 	appOperates.loginByH5('18589091413','Solution123')
-
+	ss = appOperates.wait_for_text(30,'我的资产')
+	print ss
+	assert ss

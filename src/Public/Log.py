@@ -13,8 +13,8 @@ import threading
 
 
 class LogSignleton(object):
-	'''单例模式'''
 	def __init__(self,log_config):
+		'''单例模式'''
 		pass
 
 	def __new__(cls,log_config):

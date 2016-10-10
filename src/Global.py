@@ -8,13 +8,17 @@
 from driver import *
 from Public.Log import *
 import time, datetime
+conf_path = '/Users/zengyuanchen/Documents/Project/Anydoor_UI/conf/monitor.ini'
 global driver ,logger
+driver = MyDriver.get_driver()
+logsignleton = LogSignleton(conf_path)
+logger = logsignleton.get_logger()
 
-driversignleton = DriverSignleton('/Users/zengyuanchen/Documents/Project/Anydoor_UI/conf/monitor.ini')
-driver = driversignleton.get_driver()
+# driversignleton = DriverSignleton(conf_path)
+# driver = driversignleton.get_driver()
 
-log = LogSignleton('/Users/zengyuanchen/Documents/Project/Anydoor_UI/conf/monitor.ini')
-logger = log.get_logger()
+# log = LogSignleton(conf_path)
+# logger = log.get_logger()
 
 # def get_Driver():
 # 	driversignleton = DriverSignleton('/Users/zengyuanchen/Documents/Project/Anydoor_UI/conf/monitor.ini')
@@ -50,8 +54,10 @@ logger = log.get_logger()
 #     return nows
 
 if __name__ == '__main__':
-	print '打印'
-	logger = get_Logger()
-	logger.debug('获取logger')
-	driver = get_Driver()
-	logger.debug('获取driver')
+	# print '打印'
+	# logger = log.get_Logger()
+	# logger.debug('获取logger')
+	# driver = log.get_Driver()
+	# logger.debug('获取driver')
+	pass
+

@@ -6,9 +6,9 @@
 #function:封装操作驱动元素
 #######################################################
 from appium.webdriver.mobilecommand import MobileCommand
+# from Global import *
+# from driver import MyDriver
 from Public.Log import *
-from Global import *
-from driver import DriverSignleton
 import time
 import sys
 reload(sys)
@@ -21,9 +21,11 @@ class Element(object):
         # driver = get_Driver()
         # logger = get_Logger()
         # driversignleton = DriverSignleton('/Users/zengyuanchen/Documents/Project/Anydoor_UI/conf/monitor.ini')
-        # pass
-        global driver
-        driver = MyDriver.get_driver()
+        pass
+        # global driver,logger
+        # driver = MyDriver.get_driver()
+        # logsignleton = LogSignleton('/Users/zengyuanchen/Documents/Project/Anydoor_UI/conf/monitor.ini')
+        # logger = logsignleton.get_logger()
 
 
 
@@ -86,7 +88,7 @@ class Element(object):
             size = self.get_size()
             width = size.get('width')
             height = size.get('height')
-            logger.debug('向上滑动,滑动坐标: (%s,%s),(%s,%s)' % (width / 2, height * 3/4, 0, height * (-2)/4))
+            logger.debug('向上滑动,起始滑动坐标: (%s,%s),坐标偏移量(%s,%s)' % (width / 2, height * 3/4, 0, height * (-2)/4))
             driver.swipe(width / 2, height * 3/4, 0, height * (-2)/4, 1000)
         except:
             raise
@@ -100,7 +102,7 @@ class Element(object):
             size = self.get_size()
             width = size.get('width')
             height = size.get('height')
-            logger.debug('向下滑动,滑动坐标: (%s,%s),(%s,%s)' % (width / 2, height * 1/4, 0, height * 2/4))
+            logger.debug('向下滑动,起始滑动坐标: (%s,%s),坐标偏移量(%s,%s)' % (width / 2, height * 1/4, 0, height * 2/4))
             driver.swipe(width / 2, height * 1/4, 0, height * 2/4, 1000)
         except:
             raise
@@ -114,7 +116,7 @@ class Element(object):
             size = self.get_size()
             width = size.get('width')
             height = size.get('height')
-            logger.debug('向右滑动,滑动坐标: (%s,%s),(%s,%s)' % (width * 2 / 10, height * 8 / 10, width * 3 / 5,0))
+            logger.debug('向右滑动,起始滑动坐标: (%s,%s),坐标偏移量(%s,%s)' % (width * 2 / 10, height * 8 / 10, width * 3 / 5,0))
             driver.swipe(width * 2 / 10, height * 8 / 10, width * 3 / 5, 0,1000)
         except:
             raise
@@ -128,7 +130,7 @@ class Element(object):
             size = self.get_size()
             width = size.get('width')
             height = size.get('height')
-            logger.debug('向左滑动,滑动坐标: (%s,%s),(%s,%s)' % (width * 8 / 10, height * 8 / 10, width * (-4) / 10,0))
+            logger.debug('向左滑动,滑动起始坐标: (%s,%s),偏移量(%s,%s)' % (width * 8 / 10, height * 8 / 10, width * (-4) / 10,0))
             driver.swipe(width * 8 / 10, height * 8 / 10, width * (-4) / 10, 0, 1000)
         except:
             raise
@@ -303,18 +305,19 @@ class AppBaseElement(object):
         self.element_value = element_value
 
     def find_element(self,element_type,element_value):
-        if element_type == 'id':
+        if str(element_type).lower() == 'id' :
             element = driver.by_id(element_value)
             return element
-        elif element_type == 'xpath':
+        elif str(element_type).lower() == 'xpath':
             element = driver.by_xpath(element_value)
             return element
-        elif element_type == 'name':
+        elif str(element_type).lower() == 'name':
             element = driver.by_name(element_value)
             return element
-        elif element_type == 'classname':
+        elif str(element_type).lower() == 'classname':
             element = driver.by_name(element_value)
             return element
+
 
     def wait_element_present(self,timeout =30,interval =2):
         '''每隔一段时间,去轮询是否元素存在,超出规定时间,就报错'''
@@ -329,6 +332,7 @@ class AppBaseElement(object):
 		:param text:
 		:return:
 		'''
+
         driver.load_page_timeout(time_second)
         pageSource = driver.page_source()
         logger.debug("打印出来pageSource : %s" % pageSource)
@@ -338,6 +342,7 @@ class AppBaseElement(object):
         else:
             logger.debug(text)
             assert False
+
 
 
 class WorkFlow(object):
@@ -509,6 +514,8 @@ class WorkFlow(object):
 
 
 if __name__ == '__main__':
+    appOperate = WorkFlow()
+    appOperate.loginByH5('18589091413','Solution123')
     try:
         wd = Element()
         wd.swipe_right()

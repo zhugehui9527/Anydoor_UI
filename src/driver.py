@@ -6,16 +6,62 @@
 #function:对日志进行操作处理
 #######################################################
 import os
-from appium import webdriver
 from src.Public.Public import *
 from selenium.common.exceptions import WebDriverException
 from conf.Run_conf import *
 import threading
 import requests,json
 from urllib2 import URLError
+from appium import webdriver
 import urllib,urllib2
 from Global import *
 import sys
+
+
+class MyDriver:
+    global desired_caps,serverurl
+    driver = None
+    config_path = '/Users/zengyuanchen/Documents/Project/Anydoor_UI/conf/monitor.ini'
+    mutex = threading.Lock()
+    ip = read_config(config_path, 'appium', 'ip')
+    port = read_config(config_path, 'appium', 'port')
+    bundleId = read_config(config_path, 'appium', 'bundleId')
+    platformName = read_config(config_path, 'appium', 'platformName')
+    platformVersion = read_config(config_path, 'appium', 'platformVersion')
+    deviceName = read_config(config_path, 'appium', 'deviceName')
+    app = read_config(config_path, 'appium', 'app')
+    desired_caps = {}
+    desired_caps['bundleId'] = bundleId
+    desired_caps['platformName'] = platformName
+    desired_caps['platformVersion'] = platformVersion
+    desired_caps['deviceName'] = deviceName
+    serverurl = 'http://' + ip + ':' + port + '/wd/hub'
+
+    def _init__(self):
+        pass
+
+    @staticmethod
+    def get_driver():
+
+        try:
+            if MyDriver.driver is None:
+                MyDriver.mutex.acquire()
+
+                if MyDriver.driver is None:
+
+                    try:
+                        MyDriver.driver = webdriver.Remote(serverurl,desired_caps)
+
+                    except URLError:
+                        MyDriver.driver = None
+
+                MyDriver.mutex.release()
+
+            return MyDriver.driver
+        except WebDriverException:
+            raise
+
+
 
 
 class Singleton(object):
@@ -71,7 +117,7 @@ class DriverSignleton(object):
             desired_caps['platformVersion'] = cls.instance.platformVersion
             desired_caps['deviceName'] = cls.instance.deviceName
             # desired_caps['app'] = os.path.abspath(app')
-            cls.instance.serverIp = 'http://' + cls.instance.ip + ':' + cls.instance.port + '/wd/hub'
+            cls.instance.serverurl = 'http://' + cls.instance.ip + ':' + cls.instance.port + '/wd/hub'
             cls.instance.desired_caps = desired_caps
             # cls.instance.__start_driver()
             cls.instance.driver = cls.instance.__start_driver()
@@ -106,9 +152,9 @@ class DriverSignleton(object):
 
              # if appdriver.driver is None:
             try:
-                print self.serverIp
+                print self.serverurl
                 print self.desired_caps
-                self.driver = webdriver.Remote(self.serverIp,self.desired_caps)
+                self.driver = webdriver.Remote(self.serverurl,self.desired_caps)
 
                 print self.driver
             except URLError:
@@ -127,7 +173,7 @@ class DriverSignleton(object):
             :return:True or False
             """
         response = None
-        url = self.serverIp + "/status"
+        url = self.serverurl + "/status"
         try:
             # response = urllib2.request_host(url)
             # response = urllib.request.urlopen(url, timeout=5)
@@ -144,55 +190,14 @@ class DriverSignleton(object):
                 response.close()
 
 
-class MyDriver:
-    global serverIp,desired_caps,ip,port
-    driver = None
-    config_path = '/Users/zengyuanchen/Documents/Project/Anydoor_UI/conf/monitor.ini'
-    mutex = threading.Lock()
-    ip = read_config(config_path, 'appium', 'ip')
-    port = read_config(config_path, 'appium', 'port')
-    bundleId = read_config(config_path, 'appium', 'bundleId')
-    platformName = read_config(config_path, 'appium', 'platformName')
-    platformVersion = read_config(config_path, 'appium', 'platformVersion')
-    deviceName = read_config(config_path, 'appium', 'deviceName')
-    app = read_config(config_path, 'appium', 'app')
-    desired_caps = {}
-    desired_caps['bundleId'] = bundleId
-    desired_caps['platformName'] = platformName
-    desired_caps['platformVersion'] = platformVersion
-    desired_caps['deviceName'] = deviceName
-    serverIp = 'http://' + ip + ':' + port + '/wd/hub'
-
-    def _init__(self):
-        pass
-
-    @staticmethod
-    def get_driver():
-
-        try:
-            if MyDriver.driver is None:
-                MyDriver.mutex.acquire()
-
-                if MyDriver.driver is None:
-
-                    try:
-                        MyDriver.driver = webdriver.Remote(serverIp,desired_caps)
-
-                    except URLError:
-                        MyDriver.driver = None
-
-                MyDriver.mutex.release()
-
-            return MyDriver.driver
-        except WebDriverException:
-            raise
-
 
 
 if __name__ == '__main__':
-    ddriver = DriverSignleton('/Users/zengyuanchen/Documents/Project/Anydoor_UI/conf/monitor.ini')
-    cc = ddriver.is_runnnig()
-    print cc
+    # ddriver = DriverSignleton('/Users/zengyuanchen/Documents/Project/Anydoor_UI/conf/monitor.ini')
+    # cc = ddriver.is_runnnig()
+    # print cc
+    mydriver = MyDriver()
+    driver = mydriver.get_driver()
 #     getDriver = AppDriver()
 #     getDriver.start_driver()
 #     driver = getDriver.get_driver()
