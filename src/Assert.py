@@ -5,7 +5,6 @@
 #date:2016-09-21
 #function:对运行用例进行操作处理
 #######################################################
-import unittest
 
 def Assert_Equal(ExpectResult, ActualResult):
     if ExpectResult == ActualResult:

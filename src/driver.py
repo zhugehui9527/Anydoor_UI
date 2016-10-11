@@ -61,6 +61,27 @@ class MyDriver:
         except WebDriverException:
             raise
 
+    def is_runnnig(self):
+        """Determine whether server is running
+            :return:True or False
+            """
+        response = None
+        url = self.serverurl + "/status"
+        try:
+            # response = urllib2.request_host(url)
+            # response = urllib.request.urlopen(url, timeout=5)
+            response = requests.get(url)
+            response_dict = json.loads(response.text)
+            if response_dict['status']== 0:
+                return True
+            else:
+                return False
+        except URLError:
+            return False
+        finally:
+            if response:
+                response.close()
+
 
 
 

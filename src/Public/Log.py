@@ -38,7 +38,7 @@ class LogSignleton(object):
 					# 重新组装日志文件名
 					filename = parent_path + '_' + tm + ext
 					cls.instance.log_filename = filepath + '/' + filename
-				except Exception as e:
+				except Exception:
 					raise
 			cls.instance.max_bytes_each = int(read_config(log_config,'logger','max_bytes_each'))
 			cls.instance.backup_count = int(read_config(log_config,'logger','backup_count'))
@@ -123,7 +123,7 @@ class LogSignleton(object):
 	# 	return self.log_file
 
 #
-# class MyLog:
+# class MyLog(object):
 # 	"""
 #     This class is used to get log
 #     lock log
@@ -140,18 +140,19 @@ class LogSignleton(object):
 # 		if MyLog.log is None:
 # 			MyLog.mutex.acquire()
 # 			# logpath = Log().get_log_path()
-# 			MyLog.log = Log().GenerateLog()
+# 			MyLog.log = None
 # 			MyLog.mutex.release()
 #
 # 		return MyLog.log
 
 
 if __name__ == '__main__':
-	logsignleton = LogSignleton('/Users/zengyuanchen/Documents/Project/Anydoor_UI/conf/monitor.ini')
-	loggers = logsignleton.get_logger()
-
-	loggers.info('测试')
-	loggers.debug('测试')
-	loggers.error('测试')
-	loggers.warning('测试')
-	loggers.critical('测试')
+	pass
+	# logsignleton = LogSignleton('/Users/zengyuanchen/Documents/Project/Anydoor_UI/conf/monitor.ini')
+	# loggers = logsignleton.get_logger()
+	#
+	# loggers.info('测试')
+	# loggers.debug('测试')
+	# loggers.error('测试')
+	# loggers.warning('测试')
+	# loggers.critical('测试')

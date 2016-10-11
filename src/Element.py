@@ -6,6 +6,7 @@
 #function:封装操作驱动元素
 #######################################################
 from appium.webdriver.mobilecommand import MobileCommand
+from appOperate import *
 # from Global import *
 # from driver import MyDriver
 from Public.Log import *
@@ -20,12 +21,16 @@ class Element(object):
         # driver = getdriver.get_driver()
         # driver = get_Driver()
         # logger = get_Logger()
+        # global driver
         # driversignleton = DriverSignleton('/Users/zengyuanchen/Documents/Project/Anydoor_UI/conf/monitor.ini')
         pass
         # global driver,logger
         # driver = MyDriver.get_driver()
         # logsignleton = LogSignleton('/Users/zengyuanchen/Documents/Project/Anydoor_UI/conf/monitor.ini')
         # logger = logsignleton.get_logger()
+        # driversignleton = DriverSignleton(conf_path)
+        # global driver
+        # driver = driversignleton.get_driver()
 
 
 
@@ -70,6 +75,11 @@ class Element(object):
         element = driver.find_element_by_name(classname)
         logger.debug('查找 classname: %s' % classname)
         return element
+
+    def click(self):
+
+        element = driver.find_element_by_id(id)
+        element.click()
 
     def quit(self):
         logger.debug('driver quit!')
@@ -299,222 +309,9 @@ class Element(object):
         logger.debug('隐藏键盘')
         return driver.hide_keyboard(key,key_name,strategy)
 
-class AppBaseElement(object):
-    def __init__(self,element_type,element_value):
-        self.element_type = element_type
-        self.element_value = element_value
-
-    def find_element(self,element_type,element_value):
-        if str(element_type).lower() == 'id' :
-            element = driver.by_id(element_value)
-            return element
-        elif str(element_type).lower() == 'xpath':
-            element = driver.by_xpath(element_value)
-            return element
-        elif str(element_type).lower() == 'name':
-            element = driver.by_name(element_value)
-            return element
-        elif str(element_type).lower() == 'classname':
-            element = driver.by_name(element_value)
-            return element
-
-
-    def wait_element_present(self,timeout =30,interval =2):
-        '''每隔一段时间,去轮询是否元素存在,超出规定时间,就报错'''
-        frequence = int(timeout / interval)
-        for i in range(frequence):
-            time.sleep(interval)
-
-    def wait_for_text(self, time_second, text):
-        '''
-		遍历页面资源查找需要的文本信息
-		:param time_second:
-		:param text:
-		:return:
-		'''
-
-        driver.load_page_timeout(time_second)
-        pageSource = driver.page_source()
-        logger.debug("打印出来pageSource : %s" % pageSource)
-        if text in str(pageSource):
-            logger.debug('遍历结果: %s' % text)
-            assert True
-        else:
-            logger.debug(text)
-            assert False
-
-
-
-class WorkFlow(object):
-    def __init__(self):
-        iOS_UserName = "//*[@value='一账通号/手机号/身份证号/邮箱']"
-        iOS_PassWord = "//*[@value='密码']"
-        Andr_UserName = "com.paic.example.simpleapp:id/user-id-input"
-        Andr_PassWord = "com.paic.example.simpleapp:id/user-psd-input"
-        config_path = '/Users/zengyuanchen/Documents/Project/Anydoor_UI/conf/monitor.ini'
-        platformName = read_config(config_path, 'appium', 'platformName')
-        self.platformName = platformName
-        self.iOS_UserName = iOS_UserName
-        self.iOS_PassWord = iOS_PassWord
-        self.Andr_UserName = Andr_UserName
-        self.Andr_PassWord = Andr_PassWord
-
-
-    def loginByHost(self):
-        '''
-		一账通登陆
-		:return:True
-		'''
-        try:
-            driver.implicitly_wait(3)
-            driver.by_id("一账通").click()
-            driver.implicitly_wait(3)
-            driver.by_id("宿主登陆").click()
-            # "//UIAPickerWheel"
-            # driver.send_keys(driver.by_name(''),'rymtest001')
-            # driver.by_xpath("//UIAPickerWheel")
-            driver.implicitly_wait(3)
-            driver.by_id("选择登陆用户").click()
-            driver.implicitly_wait(3)
-            driver.by_id("确认").click()
-            driver.implicitly_wait(3)
-            driver.by_id("登陆").click()
-            driver.implicitly_wait(8)
-            return True
-        except Exception as e:
-            logger.warning(e)
-            return False
-
-    def loginOut(self):
-        '''
-		注销登陆
-		:return: True
-		'''
-        try:
-            driver.implicitly_wait(3)
-            driver.by_id("无用户").click()
-            return True
-        except Exception as e:
-            logger.warning(e)
-            return False
-
-            # 支持iOS和Android
-
-    def loginByH5(self, userName, passWord):
-        driver.implicitly_wait(3)
-        logger.debug('进入个人中心')
-        driver.swipe_right()
-        driver.implicitly_wait(3)
-        driver.by_id("个人中心").click()
-        driver.implicitly_wait(10)
-        if self.platformName.lower() == 'ios':
-            try:
-                driver.implicitly_wait(3)
-                # 填写账号
-                driver.by_xpath(self.iOS_UserName).click()
-                logger.debug('点击账号输入框')
-                driver.implicitly_wait(3)
-                driver.by_xpath(self.iOS_UserName).clear()
-                logger.debug('清除输入框文本内容')
-                driver.implicitly_wait(3)
-                driver.by_xpath(self.iOS_UserName).send_keys(userName)
-                logger.debug('输入账号: %s' % userName)
-                # 填写密码
-                driver.implicitly_wait(3)
-                driver.by_xpath(self.iOS_PassWord).click()
-                driver.implicitly_wait(3)
-                driver.by_xpath(self.iOS_PassWord).clear()
-                logger.debug('清除输入框文本内容')
-                driver.implicitly_wait(3)
-                driver.by_xpath(self.iOS_PassWord).send_keys(passWord)
-                logger.debug('输入密码: %s' % passWord)
-                time.sleep(5)
-                driver.implicitly_wait(10)
-                # 收起键盘
-                driver.by_id('完成').click()
-                driver.by_xpath("//UIALink[@name='登 录']").click()
-                driver.load_page_timeout(30)
-                if driver.by_id('我的资产'):
-                    print '登陆成功'
-                else:
-                    print "登陆失败"
-                    # driver.implicitly_wait(10)
-
-
-            except IOError, e:
-                raise logger.error(e)
-
-        elif self.platformName.lower() == 'android':
-            try:
-                driver.implicitly_wait(3)
-                # 填写账号
-                driver.by_xpath(self.Andr_UserName).click()
-                driver.implicitly_wait(3)
-                driver.by_xpath(self.Andr_UserName).clear()
-                driver.implicitly_wait(3)
-                driver.by_xpath(self.Andr_UserName).send_keys(userName)
-                # 填写密码
-                driver.implicitly_wait(3)
-                driver.by_xpath(self.Andr_PassWord).click()
-                driver.implicitly_wait(3)
-                driver.by_xpath(self.Andr_PassWord).clear()
-                driver.implicitly_wait(3)
-                driver.by_xpath(self.Andr_PassWord).send_keys(userName)
-                driver.implicitly_wait(3)
-                driver.keyevent(4)
-                driver.by_name("登 录 Link").click()
-                driver.implicitly_wait(10)
-            except Exception, e:
-                raise e
-        else:
-            print '请在配置文件中添加正确的platformName!!'
-
-    def check_plugin(self, pluginId, expectResult):
-        '''
-		对插件进行校验
-		:param pluginId:
-		:param expectResult:
-		:return:
-		'''
-        if driver.by_id(pluginId).is_enabled():
-            logger.debug('找到插件:%s ' % pluginId)
-        else:
-            try:
-                logger.debug('没找到插件:%s ,准备滑动' % pluginId)
-                for x in range(2):
-                    if x == 0:
-                        driver.swipe_right()
-                    else:
-                        driver.swipe_left()
-            except:
-                raise
-
-    def closeH5(self):
-        '''
-		关闭H5界面
-		:return: True
-		'''
-        try:
-            driver.implicitly_wait(3)
-            if driver.by_id('closeButton'):
-                driver.by_id('closeButton').click()
-            elif driver.by_id('关闭'):
-                driver.by_id('关闭').click()
-            elif driver.by_id('返回'):
-                driver.by_id('返回').click()
-            elif driver.by_id('htmlbackhome'):
-                driver.by_id('htmlbackhome').click()
-            else:
-                logger.warning('关闭H5页面失败!')
-                return False
-            return True
-        except Exception as e:
-            logger.warning(e)
-            return False
-
 
 if __name__ == '__main__':
-    appOperate = WorkFlow()
+    appOperate = AppOperate()
     appOperate.loginByH5('18589091413','Solution123')
     try:
         wd = Element()
@@ -539,20 +336,4 @@ if __name__ == '__main__':
         raise
     else:
         wd.quit()
-    # wd.swipe_left()
-    # wd.swipe_up()
-    # wd.swipe_down()
 
-    # print '当前上下文: ', wd.current_content()
-    # wd.by_id('PA01100000000_02_PAZB').click()
-    # wd.implicitly_wait(5)
-    # wd.by_id('Home ZoomLevel cut').click()
-    # wd.implicitly_wait(5)
-    # page = wd.page_source()
-    # print 'page = ',page
-    # if 'mapSelected' in page:
-    #     print 'success'
-    #     assert True
-    # print '当前上下文: ', wd.contents()
-    # wd.implicitly_wait(5)
-    # wd.by_id('关闭').click()
