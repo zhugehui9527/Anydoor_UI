@@ -11,6 +11,24 @@ from logging.handlers import RotatingFileHandler
 import logging, time
 import threading
 
+conf_path = '/Users/zengyuanchen/Documents/Project/Anydoor_UI/conf/monitor.ini'
+class MyLog(object):
+	'''This class is used to get log'''
+	log = None
+	mutex = threading.Lock()
+
+	def __init__(self):
+		pass
+
+	@staticmethod
+	def get_logger():
+		if MyLog.log is None:
+			MyLog.mutex.acquire()
+			MyLog.log = LogSignleton(conf_path)
+			MyLog.mutex.release()
+
+		return MyLog.log
+
 
 class LogSignleton(object):
 	def __init__(self,log_config):

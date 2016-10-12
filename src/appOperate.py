@@ -74,13 +74,14 @@ class AppOperate (object):
 
 	#支持iOS和Android
 	def loginByH5(self,userName,passWord):
+		appOperate = AppOperate()
 		self.driver.implicitly_wait(3)
 		logger.debug('进入个人中心')
 		self.driver.swipe_right()
 		self.driver.implicitly_wait(3)
 		self.driver.by_id("个人中心").click()
 		self.driver.implicitly_wait(10)
-		if self.platformName.lower() =='ios':
+		if self.platformName.lower() =='ios' and appOperate.wait_for_text(40,'一账通登录'):
 			try:
 				self.driver.implicitly_wait(10)
 				#填写账号
@@ -143,27 +144,34 @@ class AppOperate (object):
 		:param expectResult:
 		:return:True
 		'''
-		appoperate = AppOperate()
-		if self.driver.by_id(pluginId).is_enabled():
+		global appOperate
+		appOperate = AppOperate()
+		# if self.driver.by_id(pluginId).is_enabled():
+		if appOperate.wait_for_text(3,pluginId):
 			logger.debug('找到插件:%s ,准备点击' % pluginId)
-		else:
+		elif not appOperate.wait_for_text(3,pluginId):
 			try:
 				logger.debug('没找到插件:%s ,准备滑动' % pluginId)
-				for x in range(2):
-					if x == 0:
-						self.driver.swipe_right()
-						self.driver.implicitly_wait(3)
-					else:
-						self.driver.swipe_left()
-						self.driver.implicitly_wait(3)
+				self.driver.swipe_left()
+				self.driver.implicitly_wait(3)
 			except:
 				logger.error('滑动后,仍找不到插件!')
-				# assert False
+		elif not appOperate.wait_for_text(3,pluginId):
+			try:
+				logger.debug('没找到插件:%s ,准备滑动' % pluginId)
+				self.driver.swipe_right()
+				self.driver.implicitly_wait(3)
+			except:
+				logger.error('滑动后,仍找不到插件!')
+
 		try:
 			self.driver.by_id(pluginId).click()
-			self.driver.implicitly_wait(30)
+			time.sleep(3)
+			self.driver.implicitly_wait(20)
+			#判断是否有弹窗,有弹窗就点击确定关闭弹窗
+			# appOperate.isAlert()
 			logger.debug('判断插件页面,是否包含: %s' % expectResult)
-			if appoperate.wait_for_text(30,expectResult):
+			if appOperate.wait_for_text(40,expectResult):
 				logger.debug('插件页面中包含 %s,返回True' % expectResult)
 				return True
 			else:
@@ -180,7 +188,7 @@ class AppOperate (object):
 			elif pluginId == 'PA02100000000_02_WXYJ':
 				self.driver.by_xpath('//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIAImage[1]').click()
 			else:
-				appoperate.closeH5()
+				appOperate.closeH5()
 
 	def closeH5(self):
 		'''
@@ -210,30 +218,76 @@ class AppOperate (object):
 			logger.debug('开始获取插件列表。。。')
 			response = requests.get(self.pluginURL)
 			response_dict = json.loads(response.text)
-			for pluginID in response_dict['body']['data']:
-				self.pluginList = pluginID
-				logger.debug('当前插件: %s' % pluginID)
+			logger.debug('当前插件总数: %d', len(response_dict['body']['data']))
+			logger.debug('当前插件列表: ')
+			for pluginInfo in response_dict['body']['data']:
+				self.pluginList = pluginInfo
+				logger.debug('%s---%s---%s' % (
+				pluginInfo['title'], pluginInfo['pluginUid'], pluginInfo['needLogin']))
 
-		except Exception:
-			raise
+		except Exception as e:
+			logger.warning(e)
+
+	def isAlert(self):
+		'''
+		判断是否有弹窗,如果有弹窗在点击确定关闭
+		:return: True
+		'''
+		try:
+			if self.driver.by_id('“https://mobilesdk.pingan.com.cn”想使用您当前的位置').is_enabled():
+			# if appOperate.wait_for_text(10,'“https://mobilesdk.pingan.com.cn”想使用您当前的位置'):
+				self.driver.by_id('好').click()
+			else:
+				logger.debug('没找到Alert弹窗')
+		except Exception as e:
+			logger.error(e)
+
+
+	def is_exist(self, by_type , by_value):
+		'''
+		To determine whether an element is exits
+        :return: TRUE or FALSE
+        '''
+		bytype_lower =str(by_type).lower()
+		try:
+			if bytype_lower == 'id':
+				self.driver.by_id(by_value)
+				return True
+			if bytype_lower == 'xpath':
+				self.driver.by_xpath(by_value)
+				return True
+			if bytype_lower == 'name':
+				self.driver.by_name(by_value)
+				return True
+			if bytype_lower == 'classname':
+				self.driver.by_classname(by_value)
+				return True
+		except Exception as e:
+			logger.error(e)
+
 
 	def wait_for_text(self,time_second,text):
 		'''
-		遍历页面资源查找需要的文本信息
+		轮询页面资源查找需要的文本信息
 		:param time_second:
 		:param text:
-		:return:
+		:return:True
 		'''
-		self.driver.load_page_timeout(int(time_second))
-		pageSource = self.driver.page_source()
-		logger.debug("打印出来pageSource : %s" % pageSource)
-		if text in str(pageSource):
-			logger.debug('遍历结果: %s' % text)
+		i = 1
+		# self.driver.load_page_timeout(int(time_second))
+		# pageSource = self.driver.page_source()
+		# logger.debug("打印出来pageSource : %s" % pageSource)
+		logger.debug("开始轮询元素: %s" % text)
+		while text not in str(self.driver.page_source()):
 			time.sleep(1)
-			return True
+			i +=1
+			if i>=time_second:
+				logger.warning('轮询超时,未找到元素: %s' % text)
+				return False
 		else:
-			logger.debug(text)
-			return False
+			logger.debug('界面存在此元素: %s' % text)
+			return True
+
 
 
 if __name__ == '__main__':

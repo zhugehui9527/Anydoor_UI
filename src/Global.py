@@ -7,14 +7,15 @@
 #######################################################
 from driver import *
 from Public.Log import *
-import time, datetime
 conf_path = '/Users/zengyuanchen/Documents/Project/Anydoor_UI/conf/monitor.ini'
 # global logger,driver
 driver = MyDriver.get_driver()
-
 logsignleton = LogSignleton(conf_path)
-# global logger
 logger = logsignleton.get_logger()
+
+
+# global logger
+# logger = MyLog.get_logger()
 # logger = logsignleton.logger
 
 # driversignleton = DriverSignleton(conf_path)
