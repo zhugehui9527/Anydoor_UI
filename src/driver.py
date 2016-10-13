@@ -6,35 +6,37 @@
 #function:对日志进行操作处理
 #######################################################
 import os
-from src.Public.Public import *
+# from src.Public.Public import *
 from selenium.common.exceptions import WebDriverException
-from conf.Run_conf import *
 import threading
 import requests,json
 from urllib2 import URLError
 from appium import webdriver
+from conf.Run_conf import *
+# from Global import conf_path
 import urllib,urllib2
-from Global import *
 import sys
 
 
 class MyDriver:
     global desired_caps,serverurl
     driver = None
-    config_path = '/Users/zengyuanchen/Documents/Project/Anydoor_UI/conf/monitor.ini'
+    # conf_path = get_conf_path()
     mutex = threading.Lock()
-    ip = read_config(config_path, 'appium', 'ip')
-    port = read_config(config_path, 'appium', 'port')
-    bundleId = read_config(config_path, 'appium', 'bundleId')
-    platformName = read_config(config_path, 'appium', 'platformName')
-    platformVersion = read_config(config_path, 'appium', 'platformVersion')
-    deviceName = read_config(config_path, 'appium', 'deviceName')
-    app = read_config(config_path, 'appium', 'app')
+    ip = read_config('appium', 'ip')
+    port = read_config('appium', 'port')
+    bundleId = read_config('appium', 'bundleId')
+    platformName = read_config('appium', 'platformName')
+    platformVersion = read_config('appium', 'platformVersion')
+    deviceName = read_config('appium', 'deviceName')
+    app = read_config('appium', 'app')
+    autoAcceptAlerts = read_config('appium', 'autoAcceptAlerts')
     desired_caps = {}
     desired_caps['bundleId'] = bundleId
     desired_caps['platformName'] = platformName
     desired_caps['platformVersion'] = platformVersion
     desired_caps['deviceName'] = deviceName
+    desired_caps['autoAcceptAlerts'] = autoAcceptAlerts #弹窗自动确认关闭
     serverurl = 'http://' + ip + ':' + port + '/wd/hub'
 
     def _init__(self):
@@ -42,7 +44,6 @@ class MyDriver:
 
     @staticmethod
     def get_driver():
-
         try:
             if MyDriver.driver is None:
                 MyDriver.mutex.acquire()
@@ -84,7 +85,7 @@ class MyDriver:
 
 
 
-
+"""
 class Singleton(object):
     '''
     #方法,实现__new__方法
@@ -111,7 +112,7 @@ class Borg(object):
         ob = super(Borg, cls).__new__(cls, *args, **kw)
         ob.__dict__ = cls._state
         return ob
-
+"""
 # config_path = '/Users/zengyuanchen/Documents/Project/Anydoor_UI/conf/monitor.ini'
 
 class DriverSignleton(object):
@@ -124,13 +125,13 @@ class DriverSignleton(object):
         mutex.acquire()  # 上锁,防止多线程下出问题
         if not hasattr(cls, 'instance'):
             cls.instance = super(DriverSignleton, cls).__new__(cls)
-            cls.instance.ip = read_config(config_path, 'appium', 'ip')
-            cls.instance.port = read_config(config_path, 'appium', 'port')
-            cls.instance.bundleId = read_config(config_path, 'appium', 'bundleId')
-            cls.instance.platformName = read_config(config_path, 'appium', 'platformName')
-            cls.instance.platformVersion = read_config(config_path, 'appium', 'platformVersion')
-            cls.instance.deviceName = read_config(config_path, 'appium', 'deviceName')
-            cls.instance. app = read_config(config_path, 'appium', 'app')
+            cls.instance.ip = read_config( 'appium', 'ip')
+            cls.instance.port = read_config( 'appium', 'port')
+            cls.instance.bundleId = read_config( 'appium', 'bundleId')
+            cls.instance.platformName = read_config( 'appium', 'platformName')
+            cls.instance.platformVersion = read_config( 'appium', 'platformVersion')
+            cls.instance.deviceName = read_config( 'appium', 'deviceName')
+            cls.instance. app = read_config( 'appium', 'app')
 
             desired_caps = {}
             desired_caps['bundleId'] = cls.instance.bundleId
@@ -145,13 +146,13 @@ class DriverSignleton(object):
         mutex.release()  # 释放锁
         return cls.instance
 
-        # ip = read_config(config_path, 'appium', 'ip')
-        # port = read_config(config_path, 'appium', 'port')
-        # bundleId = read_config(config_path, 'appium', 'bundleId')
-        # platformName = read_config(config_path, 'appium', 'platformName')
-        # platformVersion = read_config(config_path, 'appium', 'platformVersion')
-        # deviceName = read_config(config_path, 'appium', 'deviceName')
-        # app = read_config(config_path, 'appium', 'app')
+        # ip = read_config( 'appium', 'ip')
+        # port = read_config( 'appium', 'port')
+        # bundleId = read_config( 'appium', 'bundleId')
+        # platformName = read_config( 'appium', 'platformName')
+        # platformVersion = read_config( 'appium', 'platformVersion')
+        # deviceName = read_config( 'appium', 'deviceName')
+        # app = read_config( 'appium', 'app')
         #
         # desired_caps = {}
         # desired_caps['bundleId'] = bundleId
@@ -166,7 +167,7 @@ class DriverSignleton(object):
         # self.driver = None
 
     def __start_driver(self):
-        driversignleton = DriverSignleton('/Users/zengyuanchen/Documents/Project/Anydoor_UI/conf/monitor.ini')
+        driversignleton = DriverSignleton(conf_path)
         if not driversignleton.is_runnnig():
             # # 加锁
             # self.mutex.acquire()

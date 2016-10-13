@@ -6,8 +6,8 @@
 #function:封装操作驱动元素
 #######################################################
 from appium.webdriver.mobilecommand import MobileCommand
-from appOperate import *
-# from Global import *
+# from appOperate import *
+from Global import *
 # from driver import MyDriver
 from Public.Log import *
 import time

@@ -5,14 +5,12 @@
 #date:2016-09-21
 #function:对日志进行操作处理
 #######################################################
-from Element import *
-# from Global import *
-import time
-import sys
-import unittest
+from Element import Element
+from Public.Public import *
+from Global import logger
+import time,requests,json,sys
 reload(sys)
 sys.setdefaultencoding('utf-8')
-
 
 class AppOperate (object):
 	def __init__(self):
@@ -32,6 +30,9 @@ class AppOperate (object):
 		self.Andr_PassWord = Andr_PassWord
 		self.driver = Element()
 		self.pluginList =[]
+		# global logger
+		# logsignleton = LogSignleton(config_path)
+		# logger = logsignleton.logger
 
 	def loginByHost(self):
 		'''
@@ -76,8 +77,8 @@ class AppOperate (object):
 	def loginByH5(self,userName,passWord):
 		appOperate = AppOperate()
 		self.driver.implicitly_wait(3)
-		logger.debug('进入个人中心')
-		self.driver.swipe_right()
+		# logger.debug('进入个人中心')
+		# self.driver.swipe_right()
 		self.driver.implicitly_wait(3)
 		self.driver.by_id("个人中心").click()
 		self.driver.implicitly_wait(10)
