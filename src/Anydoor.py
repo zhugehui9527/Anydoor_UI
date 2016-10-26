@@ -5,9 +5,10 @@
 #date:2016-09-21
 #function:对日志进行操作处理
 #######################################################
-import unittest
+import unittest,pytest
 from HTMLTestRunner import HTMLTestRunner
-from appOperate import *
+# from AppiumServer import AppiumServer
+from appOperate import AppOperate
 from Element import *
 from Global import *
 import sys
@@ -16,16 +17,24 @@ sys.setdefaultencoding('utf-8')
 
 
 class Anydoor_UI(unittest.TestCase):
+    def setup_class(cls):
+        '''
+        setup class
+        :return:
+        '''
+        cls.driver = Element()
+        cls.appOperate = AppOperate()
+        cls.username = read_config('login','login_username')
+        cls.password = read_config('login', 'login_password')
+        logger.debug('测试用例即将执行,初始化工作')
 
-    def setUp(self):
-        self.driver = Element()
-        self.appOperate = AppOperate()
-        self.username = read_config('login','login_username')
-        self.password = read_config('login', 'login_password')
-
-    def tearDown(self):
-        pass
-        # self.driver.quit()
+    def teardown_class(cls):
+        '''
+        teardown class
+        :return:
+        '''
+        cls.driver.quit()
+        logger.debug('测试用例执行完成,退出服务')
 
     def test_A1(self):
         '''用例名称:宿主一账通H5登录'''
@@ -45,19 +54,22 @@ class Anydoor_UI(unittest.TestCase):
         '''用例名称:获取插件列表'''
         self.appOperate.getPluginList()
 
+
     def test_A3(self):
         '''用例名称: 检查插件,插件名称: 平安地图,插件ID: PA01100000000_02_PAZB ,插件断言: mapSelected '''
         pluginId = 'PA01100000000_02_PAZB'
         logger.debug('遍历插件,插件ID: %s' % pluginId)
         self.assertTrue(self.appOperate.check_plugin(pluginId, 'mapSelected'),'插件: %s 断言失败' % pluginId)
 
+    # """
     def test_A4(self):
         '''用例名称: 检查插件,插件名称: 模拟炒股,插件ID: PA01100000000_02_WLC ,插件断言: 值得买 '''
         pluginId = 'PA01100000000_02_WLC'
         logger.debug('遍历插件,插件ID: %s' % pluginId)
         self.assertTrue(self.appOperate.check_plugin(pluginId, '值得买'),'插件: %s 断言失败' % pluginId)
 
-
+    # @pytest.mark.xfail(run=False) #不运行此用例
+    @pytest.mark.skipif(True,reason='PA00300000000_02_MCX is offline!')
     def test_A5(self):
         '''用例名称: 检查插件,插件名称: 买车险,插件ID: PA00300000000_02_MCX,插件断言: 买车险' '''
         pluginId = 'PA00300000000_02_MCX'
@@ -68,7 +80,7 @@ class Anydoor_UI(unittest.TestCase):
         '''用例名称: 检查插件,插件名称: 看直播,插件ID: PA00500000000_02_GSZB,插件断言: 热 门 '''
         pluginId = 'PA00500000000_02_GSZB'
         logger.debug('遍历插件,插件ID: %s' % pluginId)
-        self.assertTrue(self.appOperate.check_plugin(pluginId, '热 门'), '插件: %s 断言失败' % pluginId)
+        self.assertTrue(self.appOperate.check_plugin(pluginId, '热门推荐'), '插件: %s 断言失败' % pluginId)
 
     # 进入第二个页面
     def test_A7(self):
@@ -131,6 +143,8 @@ class Anydoor_UI(unittest.TestCase):
         logger.debug('遍历插件,插件ID: %s' % pluginId)
         self.assertTrue(self.appOperate.check_plugin(pluginId, '使馆信息'), '插件: %s 断言失败' % pluginId)
 
+    #@pytest.mark.xfail(run=False) #不运行此用例
+    @pytest.mark.skipif(True,reason='PA01100000000_02_ZCCX is remaining!')
     def test_B7(self):
         '''用例名称: 检查插件,插件名称: 资产查询,插件ID: PA01100000000_02_ZCCX,插件断言: 资产提醒 '''
         pluginId = 'PA01100000000_02_ZCCX'
@@ -189,7 +203,7 @@ class Anydoor_UI(unittest.TestCase):
         '''用例名称: 检查插件,插件名称: 资产生活,插件ID: PA02100000000_02_QDCS,插件断言: 您已累计获得 '''
         pluginId = 'PA02100000000_02_QDCS'
         logger.debug('遍历插件,插件ID: %s' % pluginId)
-        self.assertTrue(self.appOperate.check_plugin(pluginId, '您已累计获得'), '插件: %s 断言失败' % pluginId)
+        self.assertTrue(self.appOperate.check_plugin(pluginId, '距离抢购结束'), '插件: %s 断言失败' % pluginId)
 
     def test_C7(self):
         '''用例名称: 检查插件,插件名称: 买保尊宝 ,插件ID: PA02500000000_02_BZB,插件断言: 热销基金 '''
@@ -268,31 +282,37 @@ class Anydoor_UI(unittest.TestCase):
         pluginId = 'PA00500000000_02_GPZH'
         logger.debug('遍历插件,插件ID: %s' % pluginId)
         self.assertTrue(self.appOperate.check_plugin(pluginId, '专家观点'), '插件: %s 断言失败' % pluginId)
+    # """
+    # def test_E0(self):
+    #     '''用例名称: 检查插件,插件名称: 平安地图,插件ID: PA01100000000_02_PAZB ,插件断言: mapSelected '''
+    #     pluginId = 'PA01100000000_02_PAZB'
+    #     logger.debug('遍历插件,插件ID: %s' % pluginId)
+    #     self.assertTrue(self.appOperate.check_plugin(pluginId, 'mapSelected'),'插件: %s 断言失败' % pluginId)
+    #
+    # def test_E1(self):
+    #     '''用例名称: 不存在的插件ID,测试用例失败专用 '''
+    #     pluginId = 'PA00500000000_02_1GPZH'
+    #     logger.debug('遍历插件,插件ID: %s' % pluginId)
+    #     self.assertTrue(self.appOperate.check_plugin(pluginId, '专家观点'), '插件: %s 断言失败' % pluginId)
+    #
+    # def test_E2(self):
+    #     '''用例名称: 存在的插件ID,不存在的断言,测试用例失败专用 '''
+    #     pluginId = 'PA00500000000_02_GPZH'
+    #     logger.debug('遍历插件,插件ID: %s' % pluginId)
+    #     self.assertTrue(self.appOperate.check_plugin(pluginId, '专家2观点'), '插件: %s 断言失败' % pluginId)
 
 if __name__=='__main__':
-    # if len(sys.argv) > 1:
-    #     unit_dir = sys.argv[1]
-    #     # print unit_dir
-    # else:
-    #     unit_dir = '.'
-    # test_modules = [filename.replace('.py', '') for filename in os.listdir(unit_dir)
-    #                 if filename.endswith('.py') and filename.startswith('Anydoor')]
-    # # print test_modules
-    # map(__import__, test_modules)
-    #
-    # suite = unittest.TestSuite()
-    # for mod in [sys.modules[modname] for modname in test_modules]:
-    #     suite.addTest(unittest.TestLoader().loadTestsFromModule(mod))
-
     try:
         print '*' * 40, " 开始测试 ", '*' * 40
         suite = unittest.TestSuite()
         # 跑指定某一个用例
-        suite.addTest(Anydoor_UI("test_A1"))
-        suite.addTest(Anydoor_UI("test_A4"))
+        # suite.addTest(Anydoor_UI("test_A1"))
+        # suite.addTest(Anydoor_UI("test_A3"))
+        # suite.addTest(Anydoor_UI("test_D3"))
+        # suite.addTest(Anydoor_UI("test_E0"))
         #加载一个测试类下的所有测试用例
-        # loader = unittest.TestLoader()
-        # suite = loader.loadTestsFromTestCase(Anydoor_UI)
+        loader = unittest.TestLoader()
+        suite = loader.loadTestsFromTestCase(Anydoor_UI)
 
         timestr = time.strftime('%Y%m%d%H%M%S', time.localtime(time.time()))
         report_path = '/Users/zengyuanchen/Documents/Project/Anydoor_UI/output/html/' + timestr + '_report.html'
@@ -301,7 +321,9 @@ if __name__=='__main__':
         testRunner.run(suite)
         ReportObject.close()
         print '*' * 40, " 结束测试 ", '*' * 40
-    except Exception:
-        raise
-    finally:
-        driver.quit()
+    except Exception as e:
+        logger.error(e)
+    # finally:
+    #     appiumserver.stop_server()
+    # finally:
+    #     driver.quit()

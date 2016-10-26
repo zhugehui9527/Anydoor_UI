@@ -27,6 +27,7 @@ class UI(unittest.TestCase):
 		self.driver.find_element_by_id('登陆').click()
 		self.assertTrue(self.driver.find_element_by_id('登陆').is_enabled())
 		# self.driver.find_element_by_id().is_enabled()
+		# self.driver.find_element_by_id().is_displayed()
 
 if __name__ == "__main__":
 	current_path = os.getcwd()

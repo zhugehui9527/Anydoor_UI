@@ -6,9 +6,8 @@
 #function:封装操作驱动元素
 #######################################################
 from appium.webdriver.mobilecommand import MobileCommand
-# from appOperate import *
+from selenium.webdriver.support.ui import WebDriverWait
 from Global import *
-# from driver import MyDriver
 from Public.Log import *
 import time
 import sys
@@ -17,21 +16,15 @@ sys.setdefaultencoding('utf-8')
 
 class Element(object):
     def __init__(self):
-        # getdriver = AppDriver()
-        # driver = getdriver.get_driver()
-        # driver = get_Driver()
-        # logger = get_Logger()
-        # global driver
-        # driversignleton = DriverSignleton('/Users/zengyuanchen/Documents/Project/Anydoor_UI/conf/monitor.ini')
         pass
-        # global driver,logger
-        # driver = MyDriver.get_driver()
-        # logsignleton = LogSignleton('/Users/zengyuanchen/Documents/Project/Anydoor_UI/conf/monitor.ini')
-        # logger = logsignleton.get_logger()
-        # driversignleton = DriverSignleton(conf_path)
-        # global driver
-        # driver = driversignleton.get_driver()
 
+    def find_element(self,value):
+        '''find element'''
+        try:
+            WebDriverWait(driver,20).until(lambda driver:driver.find_element_by_id(value))
+            return driver.find_element(*value)
+        except:
+            logger.warning('未找到元素: %s' % value)
 
 
     def by_id(self,id):
@@ -62,6 +55,11 @@ class Element(object):
         return elements
 
     def by_xpath(self,xpath):
+        '''
+        通过xpath查找元素
+        :param xpath:
+        :return:
+        '''
         element = driver.find_element_by_xpath(xpath)
         logger.debug('查找 xpath: %s' % xpath)
         return element
@@ -76,7 +74,7 @@ class Element(object):
         logger.debug('查找 classname: %s' % classname)
         return element
 
-    def click(self):
+    def click(self,id):
 
         element = driver.find_element_by_id(id)
         element.click()
@@ -84,6 +82,15 @@ class Element(object):
     def quit(self):
         logger.debug('driver quit!')
         return driver.quit()
+
+    def sceen_shot_as_file(self,filepath):
+        '''
+        截屏并保存到指定文件路径
+        :param filepath:
+        :return:
+        '''
+        logger.debug('截屏')
+        return driver.get_screenshot_as_file(filepath)
 
     def get_size(self):
         logger.debug('获取当前窗口大小')

@@ -147,7 +147,9 @@ class AppOperate (object):
 		'''
 		global appOperate
 		appOperate = AppOperate()
-		# if self.driver.by_id(pluginId).is_enabled():
+		logger.debug('开始检查插件: %s' % pluginId)
+		# logger.debug('元素 %s 是否可用: %s' % (pluginId,self.driver.by_id(pluginId).is_enabled()))
+		# logger.debug('元素 %s 是否显示: %s' % (pluginId,self.driver.by_id(pluginId).is_displayed()))
 		if appOperate.wait_for_text(3,pluginId):
 			logger.debug('找到插件:%s ,准备点击' % pluginId)
 		elif not appOperate.wait_for_text(3,pluginId):
@@ -288,6 +290,13 @@ class AppOperate (object):
 		else:
 			logger.debug('界面存在此元素: %s' % text)
 			return True
+
+	def sceen_shot(self):
+		'''
+		sceen shot
+		:return:
+		'''
+
 
 
 
