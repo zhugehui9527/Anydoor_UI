@@ -11,6 +11,7 @@ from Global import *
 from Public.Log import *
 import time
 import sys
+sys.path.append('.')
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
@@ -21,10 +22,11 @@ class Element(object):
     def find_element(self,value):
         '''find element'''
         try:
-            WebDriverWait(driver,20).until(lambda driver:driver.find_element_by_id(value))
-            return driver.find_element(*value)
+            WebDriverWait(driver,20).until(lambda: driver.find_element_by_id(value))
+            return True
         except:
             logger.warning('未找到元素: %s' % value)
+            return False
 
 
     def by_id(self,id):
@@ -70,9 +72,14 @@ class Element(object):
         return elements
 
     def by_classname(self,classname):
-        element = driver.find_element_by_name(classname)
+        element = driver.find_element_by_class_name(classname)
         logger.debug('查找 classname: %s' % classname)
         return element
+
+    def by_classnames(self,classname):
+        elements = driver.find_element_by_class_name(classname)
+        logger.debug('查找 classname: %s' % classname)
+        return elements
 
     def click(self,id):
 
@@ -83,7 +90,26 @@ class Element(object):
         logger.debug('driver quit!')
         return driver.quit()
 
-    def sceen_shot_as_file(self,filepath):
+    def get_current_url(self):
+        '''
+        get current url
+        :return:
+        '''
+        url = driver.current_url()
+        logger.debug('获取当前URL: %s' % url)
+        return url
+    def screenshot_as_base64(self):
+        '''
+        Gets the screenshot of the current window as a base64 encoded string
+           which is useful in embedded images in HTML.
+        :Usage:
+            driver.screenshot_as_base64()
+        :return:
+        '''
+        logger.debug('截图保存为base64格式')
+        return driver.get_screenshot_as_base64()
+
+    def screenshot_as_file(self,filepath):
         '''
         截屏并保存到指定文件路径
         :param filepath:
@@ -318,27 +344,28 @@ class Element(object):
 
 
 if __name__ == '__main__':
-    appOperate = AppOperate()
-    appOperate.loginByH5('18589091413','Solution123')
+    screenshot_path = os.path.abspath('../output/screenshot')+'_'+str(time.time())+'.png'
     try:
         wd = Element()
-        wd.swipe_right()
-        wd.implicitly_wait(10)
-        wd.by_id('个人中心').click()
-        wd.implicitly_wait(15)
-        wd.by_xpath("//*[@value='一账通号/手机号/身份证号/邮箱']").click()
-        wd.implicitly_wait(1)
-        wd.by_xpath("//*[@value='一账通号/手机号/身份证号/邮箱']").clear()
-        wd.implicitly_wait(1)
-        wd.by_xpath("//*[@value='一账通号/手机号/身份证号/邮箱']").send_keys('18589091413')
-        wd.implicitly_wait(10)
-        wd.by_xpath("//*[@value='密码']").click()
-        wd.by_xpath("//*[@value='密码']").clear()
-        wd.by_xpath("//*[@value='密码']").send_keys('Solution123')
-        wd.by_id('完成').click()
-        wd.by_xpath("//UIALink[@name='登 录']").click()
-        wd.implicitly_wait(60)
-        wd.swipe_left()
+        # wd.swipe_right()
+        # wd.implicitly_wait(10)
+        # wd.by_id('个人中心').click()
+        # wd.implicitly_wait(15)
+        # wd.by_xpath("//*[@value='一账通号/手机号/身份证号/邮箱']").click()
+        # wd.implicitly_wait(1)
+        # wd.by_xpath("//*[@value='一账通号/手机号/身份证号/邮箱']").clear()
+        # wd.implicitly_wait(1)
+        # wd.by_xpath("//*[@value='一账通号/手机号/身份证号/邮箱']").send_keys('18589091413')
+        # wd.implicitly_wait(10)
+        # wd.by_xpath("//*[@value='密码']").click()
+        # wd.by_xpath("//*[@value='密码']").clear()
+        # wd.by_xpath("//*[@value='密码']").send_keys('Solution123')
+        # wd.by_id('完成').click()
+        # wd.by_xpath("//UIALink[@name='登 录']").click()
+        # wd.implicitly_wait(60)
+        # wd.swipe_left()
+        print 'screenshot_as_base64 : ',wd.screenshot_as_base64()
+        wd.screen_shot_as_file(screenshot_path)
     except Exception:
         raise
     else:

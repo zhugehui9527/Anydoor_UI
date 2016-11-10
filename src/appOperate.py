@@ -6,7 +6,7 @@
 #function:对日志进行操作处理
 #######################################################
 from Element import Element
-from Public.Public import *
+from conf.Run_conf import read_config
 from Global import logger
 import time,requests,json,sys
 reload(sys)
@@ -20,9 +20,8 @@ class AppOperate (object):
 		iOS_PassWord = "//*[@value='密码']"
 		Andr_UserName = "com.paic.example.simpleapp:id/user-id-input"
 		Andr_PassWord = "com.paic.example.simpleapp:id/user-psd-input"
-		config_path = '/Users/zengyuanchen/Documents/Project/Anydoor_UI/conf/monitor.ini'
-		platformName = read_config(config_path, 'appium', 'platformName')
-		self.pluginURL = read_config(config_path, 'plugin', 'plugin_url_iOS')
+		platformName = read_config('appium', 'platformName')
+		self.pluginURL = read_config('plugin', 'plugin_url_iOS')
 		self.platformName = platformName
 		self.iOS_UserName = iOS_UserName
 		self.iOS_PassWord = iOS_PassWord
@@ -106,9 +105,10 @@ class AppOperate (object):
 				time.sleep(5)
 				self.driver.implicitly_wait(10)
 				#收起键盘
-				self.driver.by_id('完成').click()
+				self.driver.hide_keyboard()
+				# self.driver.by_id('完成').click()
 				self.driver.by_xpath("//UIALink[@name='登 录']").click()
-				self.driver.load_page_timeout(30)
+				# self.driver.load_page_timeout(30)
 				# self.assertIn('个人中心',self.driver.page_source(),'登录成功')
 			except IOError as e:
 				raise logger.error(e)
@@ -170,28 +170,30 @@ class AppOperate (object):
 		try:
 			self.driver.by_id(pluginId).click()
 			time.sleep(3)
-			self.driver.implicitly_wait(20)
-			#判断是否有弹窗,有弹窗就点击确定关闭弹窗
-			# appOperate.isAlert()
+			self.driver.implicitly_wait(10)
 			logger.debug('判断插件页面,是否包含: %s' % expectResult)
-			if appOperate.wait_for_text(40,expectResult):
+			if appOperate.wait_for_text(30,expectResult):
 				logger.debug('插件页面中包含 %s,返回True' % expectResult)
 				return True
 			else:
 				logger.error('插件页面中不包含 %s,返回False' % expectResult)
+				self.driver.screenshot_as_base64()
 				return False
 
 		except Exception as e:
 			logger.error(e)
 			return False
 		finally:
-			logger.debug('关闭H5页面!')
-			if pluginId == 'PA01100000000_02_KB' or pluginId == 'PA01100000000_02_PAZB':
-				self.driver.by_id('关闭').click()
-			elif pluginId == 'PA02100000000_02_WXYJ':
-				self.driver.by_xpath('//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIAImage[1]').click()
-			else:
-				appOperate.closeH5()
+			appOperate.closeH5_byPluginId(pluginId)
+
+	def closeH5_byPluginId(self,pluginId):
+		logger.debug('关闭H5页面!')
+		if pluginId == 'PA01100000000_02_KB' or pluginId == 'PA01100000000_02_PAZB':
+			self.driver.by_id('关闭').click()
+		elif pluginId == 'PA02100000000_02_WXYJ':
+			self.driver.by_xpath('//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIAImage[1]').click()
+		else:
+			appOperate.closeH5()
 
 	def closeH5(self):
 		'''
@@ -208,6 +210,8 @@ class AppOperate (object):
 				self.driver.by_id('返回').click()
 			elif self.driver.by_id('htmlbackhome'):
 				self.driver.by_id('htmlbackhome').click()
+			# elif self.driver.by_xpath('//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIAImage[1]'):
+			# 	self.driver.by_xpath('//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIAImage[1]').click()
 			else:
 				logger.warning('关闭H5页面失败!')
 				return False
@@ -285,24 +289,25 @@ class AppOperate (object):
 			time.sleep(1)
 			i +=1
 			if i>=time_second:
-				logger.warning('轮询超时,未找到元素: %s' % text)
+				logger.warning('轮询超时,未找到元素:[ %s ]' % text)
 				return False
 		else:
-			logger.debug('界面存在此元素: %s' % text)
+			logger.debug('界面存在此元素:[ %s ]' % text)
 			return True
 
-	def sceen_shot(self):
+	def get_screen_shot(self):
 		'''
 		sceen shot
 		:return:
 		'''
-
-
-
+		timestr = time.strftime('%Y%m%d%H%M%S', time.localtime(time.time()))
+		filepath = os.path.abspath('../output/sceenshot/') + timestr + '.png'
+		return self.driver.screen_shot_as_file(filepath)
 
 if __name__ == '__main__':
 	appOperates = AppOperate()
 	appOperates.getPluginList()
+	appOperates.get_sceen_shot()
 	# appOperates.loginByH5('18589091413','Solution123')
 	# ss = appOperates.wait_for_text(30,'我的资产')
 	# print ss

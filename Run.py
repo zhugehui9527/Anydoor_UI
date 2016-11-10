@@ -1,18 +1,20 @@
 # -*- coding:utf-8 -*-
-import os,sys,pytest_instafail
+import os
+# from src.Global import logger
 
-# from AppiumServer import RunServerOnMac
-# from AppiumServer import AppiumServer
-# appiumserver = AppiumServer()
-# def driver_on():
-# 	return appiumserver.start_server()
-case_path = os.path.abspath('./src/Anydoor.py')
+case_path = os.path.abspath('./TestCase/Scripts/Anydoor.py')
 report_path = os.path.abspath('./output/html/report.html')
+cmd1 = 'py.test '+case_path+' --html='+ report_path +' --rerun 2' + ' --self-contained-html'
 
 def run_on_mac(cmd):
+	'''
+	run command on mac
+	:param cmd:
+	:return:
+	'''
 	os.system(cmd)
+	print '命令: ',cmd
 
-cmd1 = 'py.test '+case_path+' --html='+ report_path +' --rerun 2'
-# cmd2 = 'py.test --lf'
+
+# 运行命令
 run_on_mac(cmd1)
-# run_on_mac(cmd2)

@@ -6,7 +6,7 @@
 #function:
 #######################################################
 import sys
-from src.Public.Public import pyh
+# from src.Public.Public import pyh
 import time
 import os
 
@@ -26,7 +26,7 @@ class HtmlReport(object):
         self.filename = filename
         #判断是否为目录
         if os.path.isdir(self.filename):
-            raise IOError("%s must point to a file" % path)
+            raise IOError("%s must point to a file" % self.filename)
         elif '' == self.filename:
             raise IOError('filename can not be empty')
         else:

@@ -8,7 +8,7 @@
 import xlrd
 import xlwt
 import xlutils.copy
-import os.path
+import os
 
 class XlsEngine():
     """
@@ -51,16 +51,18 @@ class XlsEngine():
             #print('file %s is not open.'%self.xls_name)
             return -2
 
-    def info(self,sheetname='sheet1'):
+    def info(self,sheetname='Sheet1'):
         """
         show xls file information
         Usage:
             xlseng.info()
         """
+
         if self.isopentrue == True:
             if sheetname in self.xlrd_object.sheet_names():
                 worksheet = self.xlrd_object.sheet_by_name(sheetname)
                 #print('%s:(%d row,%d col).'%(sheetname,worksheet.nrows,worksheet.ncols))
+                # return [worksheet.col_values,worksheet.row_values]
                 return [worksheet.nrows,worksheet.ncols]
             else:
                 #print('sheetname: %s is error.' % sheetname)
@@ -69,7 +71,24 @@ class XlsEngine():
             #print('file %s is not open.'%self.xls_name)
             return -2
 
-    def readcell(self,sheetname='sheet1',rown=1,coln=1):
+    def readsheet(self,sheetname='Sheet1'):
+        if self.isopentrue == True:
+            if sheetname in self.xlrd_object.sheet_names():
+                worksheet = self.xlrd_object.sheet_by_name(sheetname)
+                rowns = worksheet.nrows
+                print 'rowns = ',rowns
+                listsheet=[]
+                for curr_row in range(rowns):
+                    listsheet.append(worksheet.row_values(curr_row))
+                    if curr_row == 0:
+                        continue
+                return listsheet
+            else:
+                return -3
+        else:
+            return -2
+
+    def readcell(self,sheetname='Sheet1',rown=1,coln=1):
         """
         read file's a cell content
         Usage:
@@ -94,7 +113,7 @@ class XlsEngine():
             #print('readcell is false! please check sheetn rown and coln is right.')
             return -1
 
-    def readrow(self,sheetname='sheet1',rown=1):
+    def readrow(self,sheetname='Sheet1',rown=1):
         """
         read file's a row content
         Usage:
@@ -118,7 +137,7 @@ class XlsEngine():
             #print('readrow is false! please check sheetn rown is right.')
             return -1
 
-    def readcol(self,sheetname='sheet1',coln=1):
+    def readcol(self,sheetname='Sheet1',coln=1):
         """
         read file's a col content
         Usage:
@@ -221,7 +240,7 @@ class XlsEngine():
             return -1
 
 
-    def filecreate(self,sheetnames='sheet1'):
+    def filecreate(self,sheetnames='Sheet1'):
         """
         create a empty xlsfile
         Usage:
@@ -243,7 +262,7 @@ class XlsEngine():
             return -1
 
 
-    def addsheet(self,sheetnames='sheet1'):
+    def addsheet(self,sheetnames='Sheet1'):
         """
         add sheets to a exit xlsfile
         Usage:
@@ -278,12 +297,14 @@ class XlsEngine():
 
 #测试
 if __name__ == '__main__':
+    casepath = os.path.abspath('../../TestCase/Excel/TestCase.xls')
+    print '用例路径',casepath
     #初始化对象
-    xlseng = XlsEngine('test1.xls')
+    xlseng = XlsEngine(casepath)
 
-    #新建文件，可以指定要新建的sheet页面名称，默认值新建sheet1
+    #新建文件，可以指定要新建的sheet页面名称，默认值新建Sheet1
     #print("\nxlseng.filecreate():")
-    #xlseng.filecreate('newesheet1,newesheet2,newesheet3')
+    #xlseng.filecreate('neweSheet1,newesheet2,newesheet3')
 
     #打开文件
     print("xlseng.open():")
@@ -291,23 +312,23 @@ if __name__ == '__main__':
 
     #添加sheet页
     #print("\nxlseng.addsheet():")
-    #xlseng.addsheet('addsheet1,addsheet2,addsheet3')
+    #xlseng.addsheet('addSheet1,addsheet2,addsheet3')
 
     #输出文件信息
     print("\nxlseng.info():")
     print xlseng.info()
 
-    #读取sheet1页第2行第1列单元格数据（默认读取sheet1页第1行第1列单元格数据）
+    #读取Sheet1页第2行第1列单元格数据（默认读取Sheet1页第1行第1列单元格数据）
     print("\nxlseng.readcell():")
-    print xlseng.readcell('sheet1',3,1)
+    print xlseng.readcell('Sheet1',3,1)
 
-    #读取sheet1页第2行的数据（默认读取sheet1页第1行的数据）
+    #读取Sheet1页第2行的数据（默认读取Sheet1页第1行的数据）
     print("\nxlseng.readrow():")
-    print xlseng.readrow('sheet1',3)
+    print xlseng.readrow('Sheet1',3)
 
-    #读取sheet1页第2列的数据（默认读取sheet1页第1列的数据）
+    #读取Sheet1页第2列的数据（默认读取Sheet1页第1列的数据）
     print("\nxlseng.readcol():")
-    print xlseng.readcol('sheet1',2)
+    print xlseng.readcol('Sheet1',2)
 
     #向第一个sheet页的第2行第4列写字符串数据‘I am writecell writed’(默认向第一个sheet页的第1行第1列写空字符串)
     #print("\nxlseng.writecell():")

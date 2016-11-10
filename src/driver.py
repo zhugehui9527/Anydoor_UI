@@ -12,7 +12,7 @@ import threading
 import requests,json
 from urllib2 import URLError
 from appium import webdriver
-from conf.Run_conf import *
+from conf.Run_conf import read_config
 # from Global import conf_path
 import urllib,urllib2
 import sys
@@ -143,31 +143,13 @@ class DriverSignleton(object):
             cls.instance.desired_caps = desired_caps
             # cls.instance.__start_driver()
             cls.instance.driver = cls.instance.__start_driver()
+            cls.config_path = config_path
         mutex.release()  # 释放锁
         return cls.instance
 
-        # ip = read_config( 'appium', 'ip')
-        # port = read_config( 'appium', 'port')
-        # bundleId = read_config( 'appium', 'bundleId')
-        # platformName = read_config( 'appium', 'platformName')
-        # platformVersion = read_config( 'appium', 'platformVersion')
-        # deviceName = read_config( 'appium', 'deviceName')
-        # app = read_config( 'appium', 'app')
-        #
-        # desired_caps = {}
-        # desired_caps['bundleId'] = bundleId
-        # desired_caps['platformName'] = platformName
-        # desired_caps['platformVersion'] = platformVersion
-        # desired_caps['deviceName'] = deviceName
-        # # desired_caps['app'] = os.path.abspath(app')
-        # self.serverIp = 'http://' + ip + ':' + port + '/wd/hub'
-        #
-        # self.mutex = threading.Lock()
-        # self.desired_caps = desired_caps
-        # self.driver = None
 
     def __start_driver(self):
-        driversignleton = DriverSignleton(conf_path)
+        driversignleton = DriverSignleton(self.conf_path)
         if not driversignleton.is_runnnig():
             # # 加锁
             # self.mutex.acquire()
@@ -220,9 +202,3 @@ if __name__ == '__main__':
     # print cc
     mydriver = MyDriver()
     driver = mydriver.get_driver()
-#     getDriver = AppDriver()
-#     getDriver.start_driver()
-#     driver = getDriver.get_driver()
-#     print driver.contexts
-#     print driver.device_time
-#     print driver.current_url

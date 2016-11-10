@@ -7,10 +7,12 @@
 #######################################################
 # from src.Global import *
 # from src.Public.Public import *
-from conf.Run_conf import *
+from conf.Run_conf import read_config
+from conf.Run_conf import load_config
 from logging.handlers import RotatingFileHandler
 import logging, time
-import threading
+import threading,sys
+import os
 
 # conf_path = '/Users/zengyuanchen/Documents/Project/Anydoor_UI/conf/monitor.ini'
 # class MyLog(object):
@@ -42,7 +44,13 @@ class LogSignleton(object):
 		mutex.acquire() #上锁,防止多线程下出问题
 		if not hasattr(cls,'instance'):
 			cls.instance = super(LogSignleton,cls).__new__(cls)
-			cls.instance.log_filename = read_config('logger','log_file')
+			# cls.instance.log_filename = read_config('logger','log_file')
+
+			cls.instance.log_filename = os.path.abspath('./output/log/AnyDoor_UI.log')
+			# current_path = os.path.split(os.path.realpath(sys.argv[0]))[0]
+			# par_path1 = os.path.pardir(current_path)
+			# par_path2 = os.path.pardir(par_path1)
+			# cls.instance.log_filename = par_path2 + '/output/log/AnyDoor_UI.log'
 			if cls.instance.log_filename is not None: # 判断是否为目录
 				try:
 					# 返回的是文件名,不包括前面的路径
@@ -74,7 +82,6 @@ class LogSignleton(object):
 
 	def get_logger(self):
 		return logging.getLogger(self.logger_name)
-
 
 	def __config_logger(self):
 		fmt = self.format.replace('|','%')
@@ -166,7 +173,11 @@ class LogSignleton(object):
 
 
 if __name__ == '__main__':
-	pass
+	print os.path.realpath(sys.argv[0])
+	prjDir = os.path.split(os.path.realpath(__file__))[0]
+	print prjDir
+	conf_path = os.path.join(prjDir, "monitor.ini")
+	print conf_path
 	# logsignleton = LogSignleton('/Users/zengyuanchen/Documents/Project/Anydoor_UI/conf/monitor.ini')
 	# loggers = logsignleton.get_logger()
 	#

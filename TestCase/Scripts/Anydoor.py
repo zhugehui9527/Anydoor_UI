@@ -6,14 +6,11 @@
 #function:对日志进行操作处理
 #######################################################
 import unittest,pytest
-# from HTMLTestRunner import HTMLTestRunner
-# from selenium.webdriver.support.ui import WebDriverWait
-# from AppiumServer import AppiumServer
-from appOperate import AppOperate
-from Element import *
-from Global import *
+from HTMLTestRunner import HTMLTestRunner
+from src.appOperate import AppOperate
+from src.Element import *
+from src.Global import *
 import sys
-
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
@@ -181,6 +178,7 @@ class Anydoor_UI(unittest.TestCase):
         self.assertTrue(self.appOperate.check_plugin(pluginId, '获取验证码'), '插件: %s 断言失败' % pluginId)
         #self.appOperate.closeH5_byPluginId(pluginId)
 
+    # @pytest.mark.skipif(True, reason='PA01100000000_02_RYG is remaining!')
     def test_C0(self):
         '''用例名称: 检查插件,插件名称: 精品特卖,插件ID: PA01100000000_02_RYG,插件断言: 查看详情 '''
         pluginId = 'PA01100000000_02_RYG'
@@ -342,29 +340,28 @@ class Anydoor_UI(unittest.TestCase):
     #     self.assertTrue(self.appOperate.check_plugin(pluginId, '专家2观点'), '插件: %s 断言失败' % pluginId)
 
 if __name__=='__main__':
-    pass
-    # try:
-    #     print '*' * 40, " 开始测试 ", '*' * 40
-    #     suite = unittest.TestSuite()
-    #     # 跑指定某一个用例
-    #     # suite.addTest(Anydoor_UI("test_A1"))
-    #     # suite.addTest(Anydoor_UI("test_A3"))
-    #     # suite.addTest(Anydoor_UI("test_D3"))
-    #     # suite.addTest(Anydoor_UI("test_E0"))
-    #     #加载一个测试类下的所有测试用例
-    #     loader = unittest.TestLoader()
-    #     suite = loader.loadTestsFromTestCase(Anydoor_UI)
-    #
-    #     timestr = time.strftime('%Y%m%d%H%M%S', time.localtime(time.time()))
-    #     report_path = os.path.abspath('../output/html/') + timestr + '_report.html'
-    #     ReportObject = open(report_path, "wb")
-    #     testRunner = HTMLTestRunner(stream=ReportObject,title='测试报告',description='IOS UI 自动化')
-    #     testRunner.run(suite)
-    #     ReportObject.close()
-    #     print '*' * 40, " 结束测试 ", '*' * 40
-    # except Exception as e:
-    #     logger.error(e)
-    # # finally:
+    try:
+        print '*' * 40, " 开始测试 ", '*' * 40
+        suite = unittest.TestSuite()
+        # 跑指定某一个用例
+        # suite.addTest(Anydoor_UI("test_A1"))
+        # suite.addTest(Anydoor_UI("test_A3"))
+        # suite.addTest(Anydoor_UI("test_D3"))
+        # suite.addTest(Anydoor_UI("test_E0"))
+        #加载一个测试类下的所有测试用例
+        loader = unittest.TestLoader()
+        suite = loader.loadTestsFromTestCase(Anydoor_UI)
+
+        timestr = time.strftime('%Y%m%d%H%M%S', time.localtime(time.time()))
+        report_path = os.path.abspath('../../output/html/') + timestr + '_report.html'
+        ReportObject = open(report_path, "wb")
+        testRunner = HTMLTestRunner(stream=ReportObject,title='测试报告',description='IOS UI 自动化')
+        testRunner.run(suite)
+        ReportObject.close()
+        print '*' * 40, " 结束测试 ", '*' * 40
+    except Exception as e:
+        logger.error(e)
+    # finally:
     #     appiumserver.stop_server()
     # finally:
     #     self.driver.quit()

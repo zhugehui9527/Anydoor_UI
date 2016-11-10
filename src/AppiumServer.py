@@ -9,7 +9,7 @@ from Global import *
 from Public.Log import *
 from conf.Run_conf import *
 from multiprocessing import Process
-import threading
+import threading,requests,json
 import sys,os
 reload(sys)
 sys.setdefaultencoding('utf-8')
@@ -44,14 +44,16 @@ class AppiumServer(object):
 				return True
 			else:
 				return False
-		except URLError:
+		except:
 			return False
 		finally:
 			if response:
 				response.close()
 
 class RunServerOnMac(threading.Thread):
-
+	'''
+	run cmd on mac
+	'''
 	def __init__(self, cmd):
 		threading.Thread.__init__(self)
 		self.cmd = cmd
