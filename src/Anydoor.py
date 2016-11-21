@@ -239,10 +239,10 @@ class Anydoor_UI(unittest.TestCase):
         self.assertTrue(self.appOperate.check_plugin(pluginId, '电影'), '插件: %s 断言失败' % pluginId)
     
     def test_C52(self):
-        '''用例名称: 检查插件,插件名称: 薪易通,插件ID: SZDBK00000000_02_XYT,插件断言: 贷款描述 '''
+        '''用例名称: 检查插件,插件名称: 薪易通,插件ID: SZDBK00000000_02_XYT,插件断言: 个人信息 '''
         pluginId = 'SZDBK00000000_02_XYT'
         logger.debug('遍历插件,插件ID: %s' % pluginId)
-        self.assertTrue(self.appOperate.check_plugin(pluginId, '贷款描述'), '插件: %s 断言失败' % pluginId)
+        self.assertTrue(self.appOperate.check_plugin(pluginId, '个人信息'), '插件: %s 断言失败' % pluginId)
         # self.appOperate.closeH5_byPluginId(pluginId)
     
     @pytest.mark.skipif(True, reason='PA02100000000_02_WDZC is remaining!')
