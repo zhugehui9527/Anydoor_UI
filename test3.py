@@ -71,10 +71,12 @@ print os.path.realpath(sys.argv[0])
 #         print "the full name of the file is:" + os.path.join(parent,filename)
 #         print '-------------'
 #
+
 '''
 print '*'*40
-
-
-
+list1 = [1,2,3,4,5]
+print len(list1)
+for x in range(len(list1)):
+	print list1[x]
 
 print '*'*40

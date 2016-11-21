@@ -29,6 +29,8 @@ class MyDriver:
     platformName = read_config('appium', 'platformName')
     platformVersion = read_config('appium', 'platformVersion')
     deviceName = read_config('appium', 'deviceName')
+    noReset = read_config('appium', 'noReset')
+    automationName = read_config('appium', 'automationName')
     app = read_config('appium', 'app')
     autoAcceptAlerts = read_config('appium', 'autoAcceptAlerts')
     desired_caps = {}
@@ -36,6 +38,8 @@ class MyDriver:
     desired_caps['platformName'] = platformName
     desired_caps['platformVersion'] = platformVersion
     desired_caps['deviceName'] = deviceName
+    desired_caps['automationName'] = automationName
+    desired_caps['noReset'] = noReset
     desired_caps['autoAcceptAlerts'] = autoAcceptAlerts #弹窗自动确认关闭
     serverurl = 'http://' + ip + ':' + port + '/wd/hub'
 

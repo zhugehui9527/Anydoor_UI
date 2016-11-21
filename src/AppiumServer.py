@@ -16,11 +16,10 @@ sys.setdefaultencoding('utf-8')
 
 class AppiumServer(object):
 	def __init__(self):
-		global config_path,start_appium,serverIp,serverport
-		config_path = '/Users/zengyuanchen/Documents/Project/Anydoor_UI/conf/monitor.ini'
-		start_appium = read_config(config_path,'command','start_appium')
-		serverIp = read_config(config_path,'appium','ip')
-		serverport = read_config(config_path, 'appium', 'port')
+		global start_appium,serverIp,serverport
+		start_appium = read_config('command','start_appium')
+		serverIp = read_config('appium','ip')
+		serverport = read_config('appium', 'port')
 
 	def start_server(self):
 		t1 = RunServerOnMac(start_appium)

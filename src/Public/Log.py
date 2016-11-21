@@ -13,7 +13,9 @@ from logging.handlers import RotatingFileHandler
 import logging, time
 import threading,sys
 import os
-
+PATH = lambda p: os.path.abspath(
+    os.path.join(os.path.dirname(__file__), p)
+)
 # conf_path = '/Users/zengyuanchen/Documents/Project/Anydoor_UI/conf/monitor.ini'
 # class MyLog(object):
 # 	'''This class is used to get log'''
@@ -46,7 +48,8 @@ class LogSignleton(object):
 			cls.instance = super(LogSignleton,cls).__new__(cls)
 			# cls.instance.log_filename = read_config('logger','log_file')
 
-			cls.instance.log_filename = os.path.abspath('./output/log/AnyDoor_UI.log')
+			cls.instance.log_filename = os.path.abspath('/Users/zengyuanchen/Documents/SVN/ShareFromCloud/share/Project/Anydoor_UI/output/log/AnyDoor_UI.log')
+				# cls.instance.log_filename = PATH('./output/log/AnyDoor_UI.log')
 			# current_path = os.path.split(os.path.realpath(sys.argv[0]))[0]
 			# par_path1 = os.path.pardir(current_path)
 			# par_path2 = os.path.pardir(par_path1)

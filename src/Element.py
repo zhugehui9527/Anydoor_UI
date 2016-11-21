@@ -9,9 +9,9 @@ from appium.webdriver.mobilecommand import MobileCommand
 from selenium.webdriver.support.ui import WebDriverWait
 from Global import *
 from Public.Log import *
+from src.Common import element_by as By
 import time
 import sys
-sys.path.append('.')
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
@@ -19,15 +19,25 @@ class Element(object):
     def __init__(self):
         pass
 
-    def find_element(self,value):
+    def find_element(self,by_dict):
         '''find element'''
         try:
-            WebDriverWait(driver,20).until(lambda: driver.find_element_by_id(value))
+            WebDriverWait(driver,20).until(lambda: driver.element_by(by_dict))
             return True
         except:
-            logger.warning('未找到元素: %s' % value)
+            logger.warning('未找到元素: %s' % by_dict)
             return False
-
+    
+    def element_by(self,by_type,by_value,by_index):
+        by_dict={By.by_id:lambda :self.by_id(by_value),
+                 By.by_name:lambda :self.by_name(by_value),
+                 By.by_xpath:lambda :self.by_xpath(by_value),
+                 By.by_classname:lambda :self.by_classname(by_value)
+	    }
+        if by_dict.has_key(by_type):
+            return by_dict[by_type]()
+        else:
+            logger.warning('暂不支持的方法')
 
     def by_id(self,id):
         '''by_Id 在1.5.x版本以上取代了by_name'''
@@ -81,10 +91,8 @@ class Element(object):
         logger.debug('查找 classname: %s' % classname)
         return elements
 
-    def click(self,id):
-
-        element = driver.find_element_by_id(id)
-        element.click()
+    def click(self,element_object):
+	    element_object.click()
 
     def quit(self):
         logger.debug('driver quit!')
@@ -132,7 +140,7 @@ class Element(object):
             width = size.get('width')
             height = size.get('height')
             logger.debug('向上滑动,起始滑动坐标: (%s,%s),坐标偏移量(%s,%s)' % (width / 2, height * 3/4, 0, height * (-2)/4))
-            driver.swipe(width / 2, height * 3/4, 0, height * (-2)/4, 1000)
+            driver.swipe(width / 2, height * 3/4, 0, -2/4*height, 1000)
         except:
             raise
 
@@ -173,8 +181,8 @@ class Element(object):
             size = self.get_size()
             width = size.get('width')
             height = size.get('height')
-            logger.debug('向左滑动,滑动起始坐标: (%s,%s),偏移量(%s,%s)' % (width * 8 / 10, height * 8 / 10, width * (-4) / 10,0))
-            driver.swipe(width * 8 / 10, height * 8 / 10, width * (-4) / 10, 0, 1000)
+            logger.debug('向左滑动,滑动起始坐标: (%s,%s),偏移量(%s,%s)' % (width * 8 / 10, height * 8 / 10, -1*6*width/10,0))
+            driver.swipe(width * 8 / 10, height * 8 / 10, -1*6*width/10, 0, 1000)
         except:
             raise
 
@@ -196,7 +204,7 @@ class Element(object):
     def swith_h5(self):
         try:
             logger.debug('切换到h5')
-            driver.execute(MobileCommand.SWITCH_TO_CONTEXT,{'name':''})
+            driver.execute(MobileCommand.SWITCH_TO_CONTEXT,{'name':'com.pingan.rympush'})
         except:
             logger.error('切换到h5异常')
 
@@ -220,21 +228,29 @@ class Element(object):
         return driver.set_page_load_timeout(second)
 
     def context(self):
-        logger.debug('获取当前上下文:context')
-        return driver.context
+        context = driver.context()
+        logger.debug('获取当前上下文 context: %s' % context)
+        return context
 
     def contexts(self):
-        logger.debug('获取当前上下文:contexts')
-        return driver.contexts
+        contexts = driver.contexts()
+        logger.debug('获取当前上下文 contexts %s ' % contexts)
+        return contexts
 
-    def current_content(self):
-        logger.debug('获取当前页面上下文:current_content')
-        return driver.current_content
+    def current_context(self):
+        current_context = driver.current_context()
+        logger.debug('获取当前页面上下文 current_context : %s' % current_context)
+        return current_context
 
 
     def device_time(self):
-        logger.debug('获取设备时间:device_time')
-        return driver.device_time
+        device_time = driver.device_time()
+        logger.debug('获取设备时间 device_time : %s ' % device_time)
+        return device_time
+    
+    def close_app(self):
+        logger.debug('关闭App')
+        return driver.close_app()
 
     def send_keys(self,element,text):
         logger.debug('元素:%s,发送内容:%s' % (element,text))
@@ -337,10 +353,10 @@ class Element(object):
         KEYCODE_Z 按键'Z' 54'''
         return driver.keyevent(keycode)
 
-    def hide_keyboard(self,key=None,key_name=None,strategy=None):
+    def hide_keyboard(self,key_name=None,key=None,strategy=None):
         ''' for Android'''
         logger.debug('隐藏键盘')
-        return driver.hide_keyboard(key,key_name,strategy)
+        return driver.hide_keyboard(key_name,key,strategy)
 
 
 if __name__ == '__main__':

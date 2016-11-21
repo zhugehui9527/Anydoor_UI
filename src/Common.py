@@ -14,6 +14,8 @@ class operate_api(object):
 	assertNotTrue = 'assertNotTrue'
 	waitFortext = 'waitFortext'
 	hidekeyboard = 'hidekeyboard'
+	sleep = 'sleep'
+	publicCase = u'公共库'
 
 class element_by(object):
 	by_id = 'id'
@@ -27,6 +29,7 @@ class public(object):
 	public_case_sheet =u'公共案例库'
 
 class element_by_excel(object):
+	element_sheet_name =u'元素表'
 	msgCenter = u'消息中心'
 	personalCenter = u'个人中心'
 	loginUsername_H5 =u'H5一账通登陆页面账号'

@@ -27,41 +27,16 @@ class CaseEngine(object):
         self.appoperate = AppOperate()
 
     # 点击操作
-    def click(self):
+    def click(self,element_object):
         try:
-            el = self.elementEngine.get_excel_eleObject()
-            el.click()
+            element_object.click()
         except AttributeError as A:
             logger.error(A)
             raise
 
     #输入框发送事件
-    def sendkeys(self):
-        pass
-
-        # if self.data == '':
-        #     if self.index == '':
-        #         try:
-        #             el = self.find_element()
-        #             el.clear()
-        #             # logger.debug('清除输入框内容')
-        #             el.send_keys(self.data)
-        #             logger.debug('输入框输入: %s' % self.data)
-        #         except Exception as e :
-        #             logger.error(e)
-        #             raise e
-        #     else:
-        #         try:
-        #             el = self.find_elements()
-        #             el.clear()
-        #             logger.debug('清除输入框内容')
-        #             el.send_keys(self.data)
-        #             logger.debug('输入框输入: %s' % self.data)
-        #         except Exception as e:
-        #             logger.error(e)
-        #             raise e
-        # else:
-        #     logger.warning('没有从excel中获取到data')
+    def sendkeys(self,element_object,send_text):
+        return element_object.send_key(send_text)
 
     def swipe_left(self):
         self.wd.swipe_left()

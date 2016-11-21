@@ -4,7 +4,7 @@ import os
 
 case_path = os.path.abspath('./TestCase/Scripts/Anydoor.py')
 report_path = os.path.abspath('./output/html/report.html')
-cmd1 = 'py.test '+case_path+' --html='+ report_path +' --rerun 2' + ' --self-contained-html'
+cmd1 = 'py.test '+case_path+' --html='+ report_path +' --rerun 0' + ' --self-contained-html'
 
 def run_on_mac(cmd):
 	'''

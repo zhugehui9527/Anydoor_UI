@@ -8,7 +8,10 @@
 from Element import Element
 from conf.Run_conf import read_config
 from Global import logger
-import time,requests,json,sys
+import requests,json
+import sys
+import time
+import re,os
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
@@ -89,26 +92,38 @@ class AppOperate (object):
 				logger.debug('点击账号输入框')
 				self.driver.implicitly_wait(3)
 				self.driver.by_xpath(self.iOS_UserName).clear()
+				# self.driver.by_id('一账通号/手机号/身份证号/邮箱').click()
+				# self.driver.implicitly_wait(3)
+				# self.driver.by_id('一账通号/手机号/身份证号/邮箱').clear()
 				logger.debug('清除输入框文本内容')
 				self.driver.implicitly_wait(3)
 				self.driver.by_xpath(self.iOS_UserName).send_keys(userName)
+				# self.driver.by_id('一账通号/手机号/身份证号/邮箱').send_keys(userName)
 				logger.debug('输入账号: %s' % userName)
+				# 收起键盘
+				# self.driver.hide_keyboard()
+				self.driver.by_id('完成').click()
 				#填写密码
 				self.driver.implicitly_wait(3)
 				self.driver.by_xpath(self.iOS_PassWord).click()
 				self.driver.implicitly_wait(3)
 				self.driver.by_xpath(self.iOS_PassWord).clear()
+				# self.driver.by_id('密码').click()
+				# self.driver.implicitly_wait(3)
+				# self.driver.by_id('密码').clear()
 				logger.debug('清除输入框文本内容')
 				self.driver.implicitly_wait(3)
 				self.driver.by_xpath(self.iOS_PassWord).send_keys(passWord)
+				# self.driver.by_id('密码').send_keys(passWord)
 				logger.debug('输入密码: %s' % passWord)
 				time.sleep(5)
 				self.driver.implicitly_wait(10)
 				#收起键盘
-				self.driver.hide_keyboard()
-				# self.driver.by_id('完成').click()
-				self.driver.by_xpath("//UIALink[@name='登 录']").click()
-				# self.driver.load_page_timeout(30)
+				# self.driver.hide_keyboard()
+				self.driver.by_id('完成').click()
+				# self.driver.by_xpath("//UIALink[@name='登 录']").click()
+				self.driver.by_xpath("//*[@value='登 录']").click()
+				self.driver.load_page_timeout(30)
 				# self.assertIn('个人中心',self.driver.page_source(),'登录成功')
 			except IOError as e:
 				raise logger.error(e)
@@ -137,7 +152,14 @@ class AppOperate (object):
 				logger.error(e)
 		else:
 			logger.error('请在配置文件中添加正确的platformName!!')
-
+	
+	def pluginNum_contain(self,contain):
+		pageSource = self.driver.page_source()
+		contain_list = re.findall(contain,pageSource)
+		contain_count = contain_list.count(contain)
+		logger.debug('包含: %s 的个数是: %d' % (contain,contain_count))
+		return contain_count
+	
 	def check_plugin(self, pluginId, expectResult):
 		'''
 		对插件进行校验
@@ -147,29 +169,49 @@ class AppOperate (object):
 		'''
 		global appOperate
 		appOperate = AppOperate()
+		# PA_count = self.pluginNum_contain('PA')
 		logger.debug('开始检查插件: %s' % pluginId)
-		# logger.debug('元素 %s 是否可用: %s' % (pluginId,self.driver.by_id(pluginId).is_enabled()))
-		# logger.debug('元素 %s 是否显示: %s' % (pluginId,self.driver.by_id(pluginId).is_displayed()))
 		if appOperate.wait_for_text(3,pluginId):
 			logger.debug('找到插件:%s ,准备点击' % pluginId)
-		elif not appOperate.wait_for_text(3,pluginId):
-			try:
-				logger.debug('没找到插件:%s ,准备滑动' % pluginId)
+			i=4
+			j=5
+			isDisplayed = self.driver.by_id(pluginId).is_displayed()
+			logger.debug('当前插件是否显示: %s' % isDisplayed)
+			while (not (self.driver.by_id(pluginId).is_displayed()) and i>0):
+				logger.debug('当前插件是否显示: %s' % self.driver.by_id(pluginId).is_displayed())
+				logger.debug('插件未显示,左滑')
 				self.driver.swipe_left()
 				self.driver.implicitly_wait(3)
-			except:
-				logger.error('滑动后,仍找不到插件!')
-		elif not appOperate.wait_for_text(3,pluginId):
-			try:
-				logger.debug('没找到插件:%s ,准备滑动' % pluginId)
+				i=i-1
+			while(i==0 and j>0):
 				self.driver.swipe_right()
 				self.driver.implicitly_wait(3)
-			except:
-				logger.error('滑动后,仍找不到插件!')
-
+				j=j-1
+		else:
+			self.driver.swipe_left()
+			self.driver.implicitly_wait(3)
+			if appOperate.wait_for_text(3,pluginId):
+				logger.debug('找到插件:%s ,准备点击' % pluginId)
+				i = 5
+				j = 3
+				isDisplayed = self.driver.by_id(pluginId).is_displayed()
+				logger.debug('当前插件是否显示: %s' % isDisplayed)
+				while (not (self.driver.by_id(pluginId).is_displayed()) and i > 0):
+					logger.debug('当前插件是否显示: %s' % self.driver.by_id(pluginId).is_displayed())
+					logger.debug('插件未显示,左滑')
+					self.driver.swipe_left()
+					self.driver.implicitly_wait(3)
+					i = i - 1
+				while (i == 0 and j > 0):
+					self.driver.swipe_right()
+					self.driver.implicitly_wait(3)
+					j = j - 1
+			else:
+				logger.debug('未找到插件:%s ,准备右滑' % pluginId)
+				self.driver.swipe_right()
 		try:
 			self.driver.by_id(pluginId).click()
-			time.sleep(3)
+			time.sleep(7)
 			self.driver.implicitly_wait(10)
 			logger.debug('判断插件页面,是否包含: %s' % expectResult)
 			if appOperate.wait_for_text(30,expectResult):
@@ -177,7 +219,7 @@ class AppOperate (object):
 				return True
 			else:
 				logger.error('插件页面中不包含 %s,返回False' % expectResult)
-				self.driver.screenshot_as_base64()
+				# self.driver.screenshot_as_base64()
 				return False
 
 		except Exception as e:
@@ -185,21 +227,30 @@ class AppOperate (object):
 			return False
 		finally:
 			appOperate.closeH5_byPluginId(pluginId)
-
+			# appOperate.closeH5()
+			
 	def closeH5_byPluginId(self,pluginId):
 		logger.debug('关闭H5页面!')
-		if pluginId == 'PA01100000000_02_KB' or pluginId == 'PA01100000000_02_PAZB':
-			self.driver.by_id('关闭').click()
-		elif pluginId == 'PA02100000000_02_WXYJ':
-			self.driver.by_xpath('//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIAImage[1]').click()
+		# if pluginId == 'PA01100000000_02_KB' or pluginId == 'PA01100000000_02_PAZB':
+		# 	# self.driver.by_xpath('//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeTable[1]/XCUIElementTypeCell[5]').click()
+		# 	self.driver.by_xpath("//*[@name='com nav ic back']").click()
+		if pluginId == 'PA02700000000_02_PAYX':
+			self.driver.by_xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeButton[1]").click()
+			self.driver.implicitly_wait(5)
+			self.driver.by_xpath("//*[@name='关闭']").click()
+		elif pluginId == 'PA02100000000_02_CJKX':
+			self.driver.by_xpath('//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeButton[1]').click()
+		# elif pluginId == 'PA01100000000_02_RYG':
+		# 	self.driver.by_xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeButton[1]").click()
 		else:
 			appOperate.closeH5()
-
+			
 	def closeH5(self):
 		'''
 		关闭H5界面
 		:return: True
 		'''
+		
 		try:
 			self.driver.implicitly_wait(3)
 			if self.driver.by_id('closeButton'):
@@ -208,17 +259,23 @@ class AppOperate (object):
 				self.driver.by_id('关闭').click()
 			elif self.driver.by_id('返回'):
 				self.driver.by_id('返回').click()
-			elif self.driver.by_id('htmlbackhome'):
-				self.driver.by_id('htmlbackhome').click()
-			# elif self.driver.by_xpath('//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIAImage[1]'):
-			# 	self.driver.by_xpath('//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAWebView[1]/UIAImage[1]').click()
+			elif self.driver.by_id('com nav ic back'):
+				self.driver.by_id('com nav ic back').click()
 			else:
-				logger.warning('关闭H5页面失败!')
-				return False
-			return True
-		except Exception as e:
-			logger.warning(e)
-			return False
+				logger.warning('通过[ by id ]关闭H5失败')
+		except:
+				if self.driver.by_xpath("//*[@name='closeButton']"):
+					self.driver.by_xpath("//*[@name='closeButton']").click()
+				elif self.driver.by_xpath("//*[@name='关闭']"):
+					self.driver.by_xpath("//*[@name='关闭']").click()
+				elif self.driver.by_xpath("//*[@name='返回']"):
+					self.driver.by_xpath("//*[@name='返回']").click()
+				elif self.driver.by_xpath("//*[@name='com nav ic back']"):
+					self.driver.by_xpath("//*[@name='com nav ic back']").click()
+				else:
+					logger.warning('暂不支持的关闭方式,xpah关闭H5失败')
+		# finally:
+		# 	self.driver.close_app()
 
 	def getPluginList(self):
 		try:
@@ -290,6 +347,7 @@ class AppOperate (object):
 			i +=1
 			if i>=time_second:
 				logger.warning('轮询超时,未找到元素:[ %s ]' % text)
+				logger.warning('轮询超时,pageSource: %s ' % str(self.driver.page_source()))
 				return False
 		else:
 			logger.debug('界面存在此元素:[ %s ]' % text)
@@ -302,12 +360,26 @@ class AppOperate (object):
 		'''
 		timestr = time.strftime('%Y%m%d%H%M%S', time.localtime(time.time()))
 		filepath = os.path.abspath('../output/sceenshot/') + timestr + '.png'
-		return self.driver.screen_shot_as_file(filepath)
-
+		return self.driver.screenshot_as_file(filepath)
+	
+	def click(self,element_object,msg=None):
+		logger.debug(msg)
+		return element_object.click()
+	
+	def sendKeys(self,element_object,sendtext):
+		logger.debug('输入内容: %s' % sendtext)
+		return element_object.send_keys()
+	
+	def clear(self,element_object,msg=None):
+		logger.debug(msg)
+		return element_object.clear()
+	
+	def swipe2left(self):
+		pass
 if __name__ == '__main__':
 	appOperates = AppOperate()
 	appOperates.getPluginList()
-	appOperates.get_sceen_shot()
+	appOperates.get_screen_shot()
 	# appOperates.loginByH5('18589091413','Solution123')
 	# ss = appOperates.wait_for_text(30,'我的资产')
 	# print ss
