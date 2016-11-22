@@ -11,11 +11,18 @@ class operate_api(object):
 	swipe2left = 'swipe2left'
 	swipe2right = 'swipe2right'
 	assertTrue = 'assertTrue'
+	assertTrueCheckPlugin = 'assertTrueCheckPlugin'
 	assertNotTrue = 'assertNotTrue'
 	waitFortext = 'waitFortext'
 	hidekeyboard = 'hidekeyboard'
 	sleep = 'sleep'
 	publicCase = u'公共库'
+	checkPlugin = 'checkPlugin'
+	closeH5='closeH5'
+	closeH5ByPluginId='closeH5ByPluginId'
+	getPluginList='getPluginList'
+	getScreenShot='getScreenShot'
+	
 
 class element_by(object):
 	by_id = 'id'
@@ -27,6 +34,7 @@ class public(object):
 	time2wait = 20
 	element_sheet = u'元素表'
 	public_case_sheet =u'公共案例库'
+	case_sheet = u'Sheet1'
 
 class element_by_excel(object):
 	element_sheet_name =u'元素表'

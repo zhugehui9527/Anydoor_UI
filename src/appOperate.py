@@ -231,10 +231,12 @@ class AppOperate (object):
 			
 	def closeH5_byPluginId(self,pluginId):
 		logger.debug('关闭H5页面!')
-		# if pluginId == 'PA01100000000_02_KB' or pluginId == 'PA01100000000_02_PAZB':
-		# 	# self.driver.by_xpath('//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeTable[1]/XCUIElementTypeCell[5]').click()
-		# 	self.driver.by_xpath("//*[@name='com nav ic back']").click()
-		if pluginId == 'PA02700000000_02_PAYX':
+		if  pluginId == 'PA01100000000_02_PAZB':
+			try:
+				self.driver.by_xpath('//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeButton[1]').click()
+			except:
+				self.driver.by_xpath("//*[@name='com nav ic back']").click()
+		elif pluginId == 'PA02700000000_02_PAYX':
 			self.driver.by_xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeButton[1]").click()
 			self.driver.implicitly_wait(5)
 			self.driver.by_xpath("//*[@name='关闭']").click()
@@ -368,14 +370,15 @@ class AppOperate (object):
 	
 	def sendKeys(self,element_object,sendtext):
 		logger.debug('输入内容: %s' % sendtext)
-		return element_object.send_keys()
+		# self.click(element_object,'click')
+		# self.clear(element_object,'clear')
+		return element_object.send_keys(sendtext)
 	
 	def clear(self,element_object,msg=None):
 		logger.debug(msg)
 		return element_object.clear()
 	
-	def swipe2left(self):
-		pass
+	
 if __name__ == '__main__':
 	appOperates = AppOperate()
 	appOperates.getPluginList()

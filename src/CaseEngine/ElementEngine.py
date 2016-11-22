@@ -26,19 +26,18 @@ class ElementEngine(object):
 
     def find_element(self,by_type,by_value):
         logger.debug('调用查找元素方法: find_element')
-        element_by_dic = {element_by.by_id: self.wd.by_id(by_value),
-                         element_by.by_classname: self.wd.by_classname(by_value),
-                         element_by.by_name: self.wd.by_name(by_value),
-                         element_by.by_xpath: self.wd.by_xpath(by_value)
+        element_by_dic = {element_by.by_id: lambda :self.wd.by_id(by_value),
+                         element_by.by_classname: lambda :self.wd.by_classname(by_value),
+                         element_by.by_name: lambda :self.wd.by_name(by_value),
+                         element_by.by_xpath: lambda :self.wd.by_xpath(by_value)
                          }
         if by_type:
             if element_by_dic.has_key(str(by_type).lower()):
                 return element_by_dic[str(by_type).lower()]()
             else:
                 logger.warning('暂不支持的类型: %s' % by_type)
-                return False  # 暂不支持的类型
         else:
-            return 0
+            logger.warning('by_type为空')
 
     def find_elements(self,by_type,by_value,by_index):
         logger.debug('调用查找元素方法: find_elements')
@@ -53,9 +52,8 @@ class ElementEngine(object):
                 return elements_by_dic[str(by_type).lower()]()
             else:
                 logger.warning('暂不支持的类型: %s' % by_type)
-                return False  # 暂不支持的类型
         else:
-            return 0
+            logger.warning('by_type为空')
 
 
 if __name__ == 'main':

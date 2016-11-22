@@ -76,7 +76,7 @@ class XlsEngine():
             if sheetname in self.xlrd_object.sheet_names():
                 worksheet = self.xlrd_object.sheet_by_name(sheetname)
                 rowns = worksheet.nrows
-                print 'rowns = ',rowns
+                # print 'rowns = ',rowns
                 listsheet=[]
                 for curr_row in range(rowns):
                     listsheet.append(worksheet.row_values(curr_row))

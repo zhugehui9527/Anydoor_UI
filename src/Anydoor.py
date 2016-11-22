@@ -35,7 +35,7 @@ class Anydoor_UI(unittest.TestCase):
         teardown class
         :return:
         '''
-        cls.driver.close_app()
+        # cls.driver.close_app()
         cls.driver.quit()
         logger.debug('测试用例执行完成,退出服务')
     

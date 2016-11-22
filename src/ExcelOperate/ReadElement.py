@@ -45,19 +45,22 @@ class ReadElement(object):
         find_element = elementEngine.get_excel_eleObject()
         return find_element
     
-    # 读取元素表的第一列判断是否包含元素,并返回改行元素所在列
+    # 读取元素表的每一行,判断是否包含元素,并返回改行元素所在列表
     def read_element_text(self,element_text):
         '''
         :param element_text:
         :return:row_list
         :eg: row_list=['消息中心','xpath','//android.widget.TextView[@text='消息中心']',...]
         '''
-        for row_list in self.element_list:
-            if element_text in row_list:
+        logger.debug('元素表: %s' % self.element_list)
+        for row_list in self.element_list[1:]:
+            logger.debug('元素表中每一行的元素列表为: %s' % row_list)
+            logger.debug('元素表中第一列元素为: %s' % row_list[0])
+            if element_text == row_list[0]:
                 logger.debug('元素表中存在此元素: %s' % element_text)
                 return row_list
-            else:
-                logger.warning('元素表中不存在此元素: %s' % element_text)
-                return 0
-
+            # else:
+            #     logger.warning('元素表中不存在此元素: %s' % element_text)
+                
+    
 
