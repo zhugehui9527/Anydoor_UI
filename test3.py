@@ -74,9 +74,12 @@ print os.path.realpath(sys.argv[0])
 
 '''
 print '*'*40
-list1 = [1,2,3,4,5]
-print len(list1)
-for x in range(len(list1)):
-	print list1[x]
-
+import os
+path1 = 'niiwoo.apk'
+path2 = 'C:\\niiwoo\\apk\\'
+path33 = path2 +path1
+path4= os.path.join('',path33)
+print path4,type(path4)
+path3 = os.path.join(path2,path1)
+print os.path.abspath(path3)
 print '*'*40

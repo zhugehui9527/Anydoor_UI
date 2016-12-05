@@ -5,6 +5,7 @@
 #date:2015-7
 #function:
 #######################################################
+"""
 from src.Element import Element
 from src.Global import logger
 from src.appOperate import AppOperate
@@ -47,7 +48,7 @@ class CaseEngine(object):
     def assertTrue(self):
         assert self.appoperate.wait_for_text(int(self.data),self.operate_value)
 
-    def assertNotTrue(self):
+    def assertFalse(self):
         assert not self.appoperate.wait_for_text(int(self.data),self.operate_value)
 
     def waitFortext(self):
@@ -78,3 +79,5 @@ class CaseEngine(object):
 if __name__ == 'main':
     caseengine = CaseEngine('test_0001','by_id','一账通登陆')
     caseengine.click()
+
+"""

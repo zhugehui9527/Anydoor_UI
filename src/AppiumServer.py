@@ -22,10 +22,13 @@ class AppiumServer(object):
 		serverport = read_config('appium', 'port')
 
 	def start_server(self):
-		t1 = RunServerOnMac(start_appium)
-		p = Process(target=t1.start())
-		p.start()
-		logger.debug('服务启动完毕')
+		try:
+			t1 = RunServerOnMac(start_appium)
+			p = Process(target=t1.start())
+			p.start()
+			logger.debug('服务启动完毕')
+		except Exception as e:
+			logger.error('服务启动异常: %s') % e
 
 	def is_runnnig(self):
 		"""Determine whether server is running
@@ -62,6 +65,7 @@ class RunServerOnMac(threading.Thread):
 		os.system(self.cmd)
 
 if __name__ == 'main':
-	# appiumserver = AppiumServer()
-	# appiumserver.start_server()
-	os.system('appium -a 127.0.0.1 -p 4723')
+	appiumserver = AppiumServer()
+	appiumserver.start_server()
+	# os.system('appium -a 127.0.0.1 -p 4723')
+	

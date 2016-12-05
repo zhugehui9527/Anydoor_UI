@@ -5,6 +5,7 @@
 #date:2016-11
 #function:
 #######################################################
+'''
 class common():
 	#Excel相关
 	TEST_ID = 'testid'
@@ -26,5 +27,5 @@ class common():
 	find_elements_by_class_name = "class_names"
 
 
-
+'''
 

@@ -1,16 +1,17 @@
 #coding=utf8
 #######################################################
-#filename:Interface_Test.py
-#author:defias
-#date:2015-7
+#filename:FindElementBy.py
+#author:Jeff
+#date:2016-9
 #function:
 #######################################################
+
 from src.Element import Element
 from src.Global import logger
 from src.Common import element_by
 
 #读取元素表,拼接并返回element对象
-class ElementEngine(object):
+class FindElementBy(object):
     def __init__(self,operate_type,operate_value,operate_index):
         self.wd = Element()
         self.operate_type = operate_type
@@ -57,4 +58,4 @@ class ElementEngine(object):
 
 
 if __name__ == 'main':
-    caseengine = ElementEngine('test_0001','by_id','一账通登陆')
+    caseengine = FindElementBy('test_0001','by_id','一账通登陆')

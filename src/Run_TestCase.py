@@ -5,9 +5,10 @@
 #date:2016-09-21
 #function:对运行用例进行操作处理
 #######################################################
+"""
 from Global import driver
 from Global import logger
-from Public.Public import *
+from Public.readConfig import *
 from Public import ExcelRW
 import HtmlReport
 import os,time
@@ -143,3 +144,4 @@ if __name__ == '__main__':
     run_testcase(data_file, conf_file)
     # '''
     # pass
+"""

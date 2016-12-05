@@ -48,28 +48,23 @@ class LogSignleton(object):
 			cls.instance = super(LogSignleton,cls).__new__(cls)
 			# cls.instance.log_filename = read_config('logger','log_file')
 
-			cls.instance.log_filename = os.path.abspath('/Users/zengyuanchen/Documents/SVN/ShareFromCloud/share/Project/Anydoor_UI/output/log/AnyDoor_UI.log')
-				# cls.instance.log_filename = PATH('./output/log/AnyDoor_UI.log')
-			# current_path = os.path.split(os.path.realpath(sys.argv[0]))[0]
-			# par_path1 = os.path.pardir(current_path)
-			# par_path2 = os.path.pardir(par_path1)
-			# cls.instance.log_filename = par_path2 + '/output/log/AnyDoor_UI.log'
-			if cls.instance.log_filename is not None: # 判断是否为目录
-				try:
-					# 返回的是文件名,不包括前面的路径
-					filename = os.path.basename(cls.instance.log_filename)
-					# 返回的是目录名,不包括文件名
-					filepath = os.path.dirname(cls.instance.log_filename)
-					print filepath
-					# splitext:分离文件名和后缀 split:分离文件路径和文件
-					parent_path, ext = os.path.splitext(filename)
-					# 定义时间显示格式
-					tm = time.strftime('%Y%m%d%H%M%S', time.localtime())
-					# 重新组装日志文件名
-					filename = parent_path + '_' + tm + ext
-					cls.instance.log_filename = filepath + '/' + filename
-				except Exception:
-					raise
+			cls.instance.log_filename = read_config('logger','log_file')
+			# if cls.instance.log_filename is not None: # 判断是否为目录
+			# 	try:
+			# 		# 返回的是文件名,不包括前面的路径
+			# 		filename = os.path.basename(cls.instance.log_filename)
+			# 		# 返回的是目录名,不包括文件名
+			# 		filepath = os.path.dirname(cls.instance.log_filename)
+			# 		print filepath
+			# 		# splitext:分离文件名和后缀 split:分离文件路径和文件
+			# 		parent_path, ext = os.path.splitext(filename)
+			# 		# 定义时间显示格式
+			# 		tm = time.strftime('%Y%m%d%H%M%S', time.localtime())
+			# 		# 重新组装日志文件名
+			# 		filename = parent_path + '_' + tm + ext
+			# 		cls.instance.log_filename = filepath + '/' + filename
+			# 	except Exception:
+			# 		raise
 			cls.instance.max_bytes_each = int(read_config('logger','max_bytes_each'))
 			cls.instance.backup_count = int(read_config('logger','backup_count'))
 			cls.instance.format = read_config('logger','format')

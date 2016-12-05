@@ -54,3 +54,9 @@ def get_index():
 def get_unindex(self, *section):
 	'''指定配置段获取不执行的列表'''
 	return eval(str(read_config('runmode', 'unindex')))
+
+
+if __name__ == '__main__':
+	ini_path = '/Users/zengyuanchen/Documents/SVN/ShareFromCloud/share/Project/Anydoor_UI/conf/monitor.ini'
+	deviceName = read_config('appium','deviceName')
+	print 'deviceName : %s' % deviceName

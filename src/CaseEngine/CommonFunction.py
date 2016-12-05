@@ -1,10 +1,11 @@
 #coding=gbk
 #######################################################
 #filename:Comm_Function.py
-#author:defias
-#date:2015-8
+#author:Jeff
+#date:2016-10
 #function:公共函数、全局变量
 #######################################################
+'''
 from src.Public import ExcelRW
 from RunCaseEngine import RunCaseEngine
 from RunCaseEngine import RunElementEngine
@@ -127,3 +128,4 @@ if __name__ == '__main__':
     # print response.content
 
     #print Get_Testcase_Name(datafile,'Sheet1', 1)[2]
+'''

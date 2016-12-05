@@ -1,10 +1,11 @@
 #coding=utf8
 #######################################################
-#filename:Interface_Test.py
-#author:defias
-#date:2015-7
+#filename:RunCaseEngine.py
+#author:Jeff
+#date:2016-9
 #function:
 #######################################################
+'''
 from CaseEngine import CaseEngine
 from ElementEngine import ElementEngine
 from src.Global import logger
@@ -27,7 +28,7 @@ class RunCaseEngine(object):
 		              operate_api.swipe2left:lambda: self.case_engine.swipe_left(),
 		              operate_api.swipe2right:lambda: self.case_engine.swipe_right(),
 		              operate_api.assertTrue:lambda: self.case_engine.assertTrue(),
-		              operate_api.assertNotTrue:lambda: self.case_engine.assertNotTrue(),
+		              operate_api.assertFalse:lambda: self.case_engine.assertFalse(),
 		              operate_api.waitFortext:lambda: self.case_engine.waitFortext()
 		              }
 		# logger.debug('operate_dict = %s' % operate_dict )
@@ -49,7 +50,7 @@ class RunElementEngine(object):
 		                operate_api.swipe2left: lambda: self.case_engine.swipe_left(),
 		                operate_api.swipe2right: lambda: self.case_engine.swipe_right(),
 		                operate_api.assertTrue: lambda: self.case_engine.assertTrue(),
-		                operate_api.assertNotTrue: lambda: self.case_engine.assertNotTrue(),
+		                operate_api.assertFalse: lambda: self.case_engine.assertFalse(),
 		                operate_api.waitFortext: lambda: self.case_engine.waitFortext()
 		                }
 		element_sheet_dict={element_by_excel.login_low_button: lambda: self.element_engine
@@ -59,3 +60,5 @@ class RunElementEngine(object):
 		if operate_dict.has_key(str(self.operate_method).lower()):
 			logger.debug('找到方法 : %s ' % self.operate_method)
 			return operate_dict[self.operate_method]()
+
+'''

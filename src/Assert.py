@@ -6,14 +6,17 @@
 #function:对运行用例进行操作处理
 #######################################################
 import unittest
-class Assert(unittest.TestCase):
+class AssertExcel(unittest.TestCase):
     def __init__(self):
+        super(AssertExcel,self).__init__()
         pass
-    def assertTrue(self):
-        return self.assertTrue()
     
-
-
+    def assertTrue_excel(self, expr, msg1=None):
+        return self.assertTrue(expr, msg=msg1)
+    
+    def assertFalse_excel(self, expr, msg1=None):
+        return self.assertFalse(expr, msg=msg1)
+    
 
 if __name__ == "__main__":
    pass

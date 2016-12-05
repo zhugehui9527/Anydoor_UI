@@ -354,7 +354,12 @@ class AppOperate (object):
 		else:
 			logger.debug('界面存在此元素:[ %s ]' % text)
 			return True
-
+	
+	
+	
+	def get_screen_shot_base64(self):
+		return self.driver.screenshot_as_base64()
+	
 	def get_screen_shot(self):
 		'''
 		sceen shot

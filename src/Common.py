@@ -12,7 +12,7 @@ class operate_api(object):
 	swipe2right = 'swipe2right'
 	assertTrue = 'assertTrue'
 	assertTrueCheckPlugin = 'assertTrueCheckPlugin'
-	assertNotTrue = 'assertNotTrue'
+	assertFalse = 'assertFalse'
 	waitFortext = 'waitFortext'
 	hidekeyboard = 'hidekeyboard'
 	sleep = 'sleep'
@@ -23,7 +23,22 @@ class operate_api(object):
 	getPluginList='getPluginList'
 	getScreenShot='getScreenShot'
 	
-
+class resultStutas(object):
+	success = 'PASS'
+	fail = 'FAIL'
+	error = 'ERROR'
+	successCode = 1
+	failCode = 0
+	errorCode = -1
+	timestamp ='timestamp'
+	status = 'status'
+	
+class resultClass:
+	result=[]
+	img_base64={}
+	trace={}
+	log={}
+	
 class element_by(object):
 	by_id = 'id'
 	by_xpath = 'xpath'
@@ -35,6 +50,7 @@ class public(object):
 	element_sheet = u'元素表'
 	public_case_sheet =u'公共案例库'
 	case_sheet = u'Sheet1'
+	
 
 class element_by_excel(object):
 	element_sheet_name =u'元素表'

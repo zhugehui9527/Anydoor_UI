@@ -18,15 +18,26 @@ sys.setdefaultencoding('utf-8')
 class Element(object):
     def __init__(self):
         pass
+        # 重新封装单个元素定位方法
 
-    def find_element(self,by_dict):
-        '''find element'''
+    def find_element(self, loc, wait=15):
         try:
-            WebDriverWait(driver,20).until(lambda: driver.element_by(by_dict))
-            return True
+            WebDriverWait(
+                driver, wait).until(
+                lambda driver1: driver1.find_element(
+                    *loc).is_displayed())
+            return driver.find_element(*loc)
         except:
-            logger.warning('未找到元素: %s' % by_dict)
-            return False
+            logger.warning('未找到元素 : %s' % loc)
+
+    # def find_element(self,by_dict):
+    #     '''find element'''
+    #     try:
+    #         WebDriverWait(driver,20).until(lambda: driver.element_by(by_dict))
+    #         return True
+    #     except:
+    #         logger.warning('未找到元素: %s' % by_dict)
+    #         return False
     
     def element_by(self,by_type,by_value,by_index):
         by_dict={By.by_id:lambda :self.by_id(by_value),

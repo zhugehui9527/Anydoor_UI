@@ -369,9 +369,8 @@ class Anydoor_UI(unittest.TestCase):
         '''用例名称: 检查插件,插件名称: 签到礼,插件ID: PA02100000000_02_KXJ1,插件断言: 签到，立即兑换好礼（每日限量） '''
         pluginId = 'PA02100000000_02_KXJ1'
         logger.debug('遍历插件,插件ID: %s' % pluginId)
-        self.assertTrue(self.appOperate.check_plugin(pluginId, '签到，立即兑换好礼（每日限量）'), '插件: %s 断言失败' % pluginId)
+        self.assertTrue(self.appOperate.check_plugin(pluginId, '您已累计签到'), '插件: %s 断言失败' % pluginId)
         # self.appOperate.closeH5_byPluginId(pluginId)
-        
         
         # """
         # def test_E0(self):
