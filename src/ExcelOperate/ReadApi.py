@@ -5,15 +5,18 @@
 #date:2015-7
 #function:
 #######################################################
-from src.appOperate import AppOperate
-from conf.Run_conf import read_config
-from src.Global import logger
-from src.Common import operate_api
-from src.Common import resultClass
-from src.Element import Element
-from ReadElement import ReadElement
-import unittest,time
+import time
+import unittest
 
+from ReadElement import ReadElement
+from conf.Run_conf import read_config
+from src.Element import Element
+from src.Public.Common import operate_api
+from src.Public.Common import resultClass
+from src.Public.Global import L
+from src.appOperate import AppOperate
+
+logger = L.logger
 class ReadApi(unittest.TestCase):
 	
 	def __init__(self):
@@ -52,11 +55,6 @@ class ReadApi(unittest.TestCase):
 		:return:
 		'''
 		logger.debug('callApi执行中')
-		# case_list[6]= PageObject(页面元素),case_list[7] =Parameter（传入参数）
-		# element_text = self.readElement.find_element(self.readElement.read_element_text(case_list[5]))
-		# pageObject_text = case_list[6]
-		# param_text = case_list[7]
-		# api_text = case_list[3]
 		
 		api_dict = {
 					operate_api.assertTrueCheckPlugin:lambda :self.assertTrue(self.appOperate.check_plugin(case_list[6],case_list[7]),case_list[2]),
@@ -83,74 +81,6 @@ class ReadApi(unittest.TestCase):
 			logger.warning('请检查Action_Keyword中的api是否输入正确!')
 			# raise
 			
-	# def callPublicCase(self,casename):
-	# 	'''
-	# 	:description:判断casename是否在公共案例库中,如有则执行公共案例库
-	# 	:param casename:
-	# 	:return:
-	# 	'''
-	# 	logger.debug('callCase 执行中')
-	#
-	# 	# 遍历公共案例库
-	# 	for publicCase in self.publicCaseList:
-	# 		if casename in publicCase[0]:
-	# 			logger.debug('公共案例库中存在此方法: %s' % casename)
-	# 			logger.debug('当前用例列表为: %s ' % publicCase)
-	# 			try:
-	# 				self.readApiList(publicCase)
-	# 				# self.result[casename]='PASS'
-	# 			except Exception as e:
-	# 				logger.warning(e)
-	# 				raise e
-	# 				# self.result[casename] = 'FAIL'
-	# 		else:
-	# 			# self.result[casename] = 'ERROR'
-	# 			# raise
-	# 			pass
-	#
-	# def callCase(self,caselists):
-	# 	'''
-	# 	:description:读取案例库
-	# 	:param caselist: 为二维数组
-	# 	:return:
-	# 	'''
-	# 	cases =[]
-	# 	for caselist in caselists[1:]:
-	# 		if operate_api.publicCase == caselist[3]:
-	#
-	# 			cases.append(caselist[0])
-	# 			try:
-	# 				self.callPublicCase(caselist[7]) #执行公共案例库
-	# 				self.result[caselist[0]] = resultStutas.success
-	# 			except Exception as e:
-	# 				logger.warning(e)
-	# 				self.result[caselist[0]] = resultStutas.fail
-	# 			logger.debug('===' * 40)
-	# 			logger.debug('当前行列表: %s' % caselist)
-	# 			logger.debug('当前用例:%s ,执行结果: %s' % (caselist[0],self.result[caselist[0]]))
-	# 			logger.debug('===' * 40)
-	#
-	# 		else:
-	# 			cases.append(caselist[0])
-	# 			try:
-	# 				self.readApiList(caselist) #执行测试用例
-	# 				self.result[caselist[0]] = resultStutas.success
-	# 			except Exception as e:
-	# 				logger.warning(e)
-	# 				self.result[caselist[0]] = resultStutas.fail
-	# 			logger.debug('===' * 40)
-	# 			logger.debug('当前行列表: %s' % caselist)
-	# 			logger.debug('当前用例:%s ,执行结果: %s' % (caselist[0], self.result[caselist[0]]))
-	# 			logger.debug('===' * 40)
-	# 			# logger.debug('当前用例执行结果: %s' % self.result[caselist[0]])
-	# 	logger.debug('用例执行结果: %s' % self.result)
-	# 	logger.debug('用例列表为: %s' % cases)
-	# 	# return cases
-	
-	# def getCaselist(self,caselists):
-	# 	cases = []
-	# 	for caslist in caselists[1:]:
-	#
 	
 	
 if __name__ == '__main__':

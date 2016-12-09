@@ -5,16 +5,21 @@
 #date:2016-09-21
 #function:封装操作驱动元素
 #######################################################
+import os
+import sys
+import time
+
 from appium.webdriver.mobilecommand import MobileCommand
 from selenium.webdriver.support.ui import WebDriverWait
-from Global import *
-from Public.Log import *
-from src.Common import element_by as By
-import time
-import sys
+
+from src.Public.Common import element_by as By
+from src.Public.Global import L,D
+
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
+driver = D.driver
+logger = L.logger
 class Element(object):
     def __init__(self):
         pass
@@ -103,7 +108,7 @@ class Element(object):
         return elements
 
     def click(self,element_object):
-	    element_object.click()
+        element_object.click()
 
     def quit(self):
         logger.debug('driver quit!')

@@ -5,16 +5,22 @@
 #date:2016-09-21
 #function:对日志进行操作处理
 #######################################################
-from Element import Element
-from conf.Run_conf import read_config
-from Global import logger
-import requests,json
+import json
+import os
+import re
 import sys
 import time
-import re,os
+
+import requests
+
+from Element import Element
+from conf.Run_conf import read_config
+from src.Public.Global import L
+
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
+logger = L.logger
 class AppOperate (object):
 	def __init__(self):
 		# super(AppOperate,self).__init__()

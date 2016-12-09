@@ -6,13 +6,18 @@
 #function:
 #######################################################
 
-import time
 import os
 import platform
-from src.Public import pyh
-# from src.ExcelOperate.ReadApi import ReadApi
-from src.Common import resultStutas
+import sys
+import time
+
 from conf.Run_conf import read_config
+from src.Public import pyh
+from src.Public.Common import resultStutas
+from src.Public.Log import LogSignleton
+
+reload(sys)
+sys.setdefaultencoding('utf8')
 # HTML测试报告
 class HtmlReport(object):
     def __init__(self):
@@ -75,11 +80,14 @@ class HtmlReport(object):
         # 表格头
         tab2 << pyh.tr(pyh.th(u'报告生成时间'.encode('gbk'), bgcolor='#E6E6FA', align='middle') +
                        pyh.th(u'Platform'.encode('gbk'), bgcolor='#E6E6FA', align='middle') +
-                       pyh.th(u'Python'.encode('gbk'), bgcolor='#E6E6FA', align='middle'))
+                       pyh.th(u'Python'.encode('gbk'), bgcolor='#E6E6FA', align='middle')+
+                       pyh.th(u'Appium'.encode('gbk'), bgcolor='#E6E6FA', align='middle'))
         
         tab2 << pyh.tr(pyh.td(str(self.current_time), align='middle') +
                        pyh.td(str(platform.platform()), align='middle') +
-                       pyh.td(str(platform.python_version()), align='middle'))
+                       pyh.td(str(platform.python_version()), align='middle')+
+                       pyh.td(str(os.popen('appium -v').read()), align='middle')
+                       )
         
         page << pyh.h3('Summary', align='left')  # 标题居左
         tab1 = get_tab()
@@ -114,36 +122,12 @@ class HtmlReport(object):
                       pyh.th(u'测试结果'.encode('gbk'), bgcolor='#E6E6FA', align='middle'))
         
         logpath = self.logpath
-        def get_filter_log(logpath, casename,start_filter='', end_fileter=''):
-            log_file_path = os.path.split(logpath)[0]
-            log_fileter_path = os.path.split(log_file_path)[0] + '/html/filter/{}.log'.format(casename)
-            # print 'log_fileter_path = %s' % log_fileter_path
-            go_on_id = 0
-            with open(log_fileter_path, 'w') as s:
         
-                with open(logpath) as f:
-                    for line in f:
-                        if start_filter in line:
-                            go_on_id = 1
-                            s.write(line)
-                        elif go_on_id == 1:
-                            if end_fileter not in line:
-                                s.write(line)
-                            else:
-                                s.write(line)
-                                break
-                f.close()
-            s.close()
-            # return log_fileter_path
 
         # print resultlist
         for testcase_list in self.testcase_result:
             testresult = testcase_list[1]
-            testcase_name = str(testcase_list[0])
-            # print '编码1: ',str(testcase_list[0]).decode('utf-8')
-            # print '编码2: ', str(testcase_list[0]).decode('gbk')
-            # print '编码3: ', str(testcase_list[0]).encode('utf-8')
-            # print '编码4: ', str(testcase_list[0]).encode('gbk')
+            testcase_name = testcase_list[0]
             testcase_duration = str(testcase_list[2])
             testcase_log = './filter/{}.log'.format(testcase_name)
             # print 'testcase_log = %s ' % testcase_log
@@ -154,7 +138,8 @@ class HtmlReport(object):
             end_filter = '测试用例:{} ,执行结束'.format(testcase_name)
             # print 'end_filter = %s' % end_filter
             log_href = '<a href="{}">{}</a>'.format(testcase_log.encode('gbk', 'ignore'),testcase_log_detail.encode('gbk', 'ignore'))
-            get_filter_log(logpath,testcase_name,start_filter,end_filter)
+            
+            LogSignleton.get_filter_log(logpath,testcase_name,start_filter,end_filter)
 
             if 'PASS' == testresult:
                 tab << pyh.tr(pyh.td(testcase_name.encode('gbk', 'ignore'), align='middle') +
@@ -310,7 +295,7 @@ if __name__ == '__main__':
     path = '/Users/zengyuanchen/Documents/SVN/ShareFromCloud/share/Project/Anydoor_UI/output/html/report.html'
     tcHtmlReport.set_result_filename(path)
 
-    testcase_result =[['登录', 'PASS','2016-11-1'], [u'test_loginByH5_1000','FAIL','2016-11-2'], [u'test_CheckPlugin_1001', 'ERROR','2016-11-3']]
+    testcase_result =[['检查插件:PA00500000000_02_GSZB', 'PASS','2016-11-1'], ['登录_1000','FAIL','2016-11-2'], ['test_CheckPlugin_1001', 'ERROR','2016-11-3']]
 
     tcHtmlReport.set_testcase_result(testcase_result)
     tcHtmlReport.set_run_time(123)

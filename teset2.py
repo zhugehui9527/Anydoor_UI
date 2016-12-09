@@ -1,12 +1,10 @@
 # -*- coding:utf-8 -*-
 # from src.ExcelOperate.ReadApi import ReadApi
+import os
+
 from conf.Run_conf import read_config
 from src.Public import ExcelRW
-from src.Common import public
-
-import os,sys
-import pytest_html.plugin
-import time
+from src.Public.Common import public
 
 # '''
 xls_file_path = read_config('testcase', 'xls_case_path')

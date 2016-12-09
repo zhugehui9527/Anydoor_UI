@@ -4,9 +4,11 @@
 #author:Jeff
 #date:2016-09-21
 #function:对配置文件进行操作处理
-from src.Common import resultStutas
-from src.Global import logger
-# isRetrys=True
+from src.Public.Common import resultStutas
+
+from src.Public.Global import L
+
+logger = L.logger
 def Retry(retry_count = 3,isRetry=True):
 	'''
 	:description:失败重跑
@@ -14,9 +16,9 @@ def Retry(retry_count = 3,isRetry=True):
 	:return:
 	'''
 	def info(func):
-		if isRetry:
-			def wrapper(*args, **kwargs):
-				result_func = func(*args, **kwargs)
+		def wrapper(*args, **kwargs):
+			result_func = func(*args, **kwargs)
+			if isRetry:
 				logger.debug('调用函数: %s' % func.__name__)
 				casename = result_func[0]  # 返回用例名
 				caseresult = result_func[1]  # 返回结果
@@ -34,7 +36,9 @@ def Retry(retry_count = 3,isRetry=True):
 					# return t
 				else:
 					logger.warning('函数: %s 返回结果为空' % func.__name__)
+			else:
+				return result_func
 	
-			return wrapper
+		return wrapper
 	
 	return info

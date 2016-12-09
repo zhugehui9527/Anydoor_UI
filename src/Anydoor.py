@@ -5,14 +5,13 @@
 #date:2016-09-21
 #function:对日志进行操作处理
 #######################################################
-import unittest,pytest
-# from HTMLTestRunner import HTMLTestRunner
-# from selenium.webdriver.support.ui import WebDriverWait
-# from AppiumServer import AppiumServer
-from appOperate import AppOperate
-from Element import *
-from Global import *
+import pytest
 import sys
+import unittest
+
+from Element import *
+from appOperate import AppOperate
+
 reload(sys)
 sys.setdefaultencoding('utf-8')
 

@@ -5,11 +5,13 @@
 #date:2016-09-21
 #function:对日志进行操作处理
 #######################################################
-import unittest,pytest
-from src.appOperate import AppOperate
-from src.Element import *
-from src.Global import *
+import pytest
 import sys
+import unittest
+
+from src.Element import *
+from src.appOperate import AppOperate
+
 reload(sys)
 sys.setdefaultencoding('utf-8')
 

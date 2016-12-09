@@ -1,33 +1,39 @@
 # -*- coding:utf-8 -*-
-from src.ExcelOperate.ReadApi import ReadApi
+import os
+import time
+import unittest
+
 from conf.Run_conf import read_config
-from src.Public import ExcelRW
-from src.Common import public
-from src.Common import operate_api
-from src.Common import resultStutas
-from src.Common import resultClass
 from src.Element import Element
-from src.Global import logger
 from src.ExcelOperate import ReadApi
+from src.ExcelOperate.ReadApi import ReadApi
+from src.Public import ExcelRW
+from src.Public.Common import operate_api
+from src.Public.Common import public
+from src.Public.Common import resultClass
+from src.Public.Common import resultStutas
+from src.Public.Global import L
 from src.Public.HtmlReport import HtmlReport
 from src.Public.Retry import Retry
-import unittest
-import os,time
-import HTMLTestRunner
 
+logger = L.logger
 xls_file_path = read_config('testcase', 'xls_case_path')
+retry_num = int(read_config('retry', 'retry_num'))
+retry_isTrue = bool(read_config('retry', 'retry_isTrue'))
 xlsEngine = ExcelRW.XlsEngine(xls_file_path)
 xlsEngine.open()  # 打开excel
-readApi = ReadApi.ReadApi()
+readApi = ReadApi()
 case_sheet1 = xlsEngine.readsheet(public.case_sheet)
 # 记录测试开始时间
 start_time = time.time()
 result = resultClass.result
+
 class RunExcelCase(unittest.TestCase):
 	def __init__(self,mouldeName,caselist):
 		super(RunExcelCase,self).__init__(mouldeName)
 		self.readApi = ReadApi.ReadApi()
 		self.xls_file_path = read_config('testcase', 'xls_case_path')
+		self.platform = read_config('appium','platformName')
 		self.xlsEngine = ExcelRW.XlsEngine(self.xls_file_path)
 		self.xlsEngine.open()  # 打开excel
 		self.publicCaseList = self.xlsEngine.readsheet(public.public_case_sheet)
@@ -35,35 +41,42 @@ class RunExcelCase(unittest.TestCase):
 		self.caselist = caselist
 		
 	def setup_class(cls):
+		# appiumserver = AppiumServer()
+		# appiumserver.main()
 		cls.driver = Element()
 		
 	def teardown_class(cls):
 		cls.driver.quit()
+		# cp = Cp()
+		# cp.clean_process_all()
+		
 	
 	def callPublicCase(self, casename):
 		'''
 		:description:判断casename是否在公共案例库中,如有则执行公共案例库
 		:param casename:
-		:return:
+		:return:   还缺少对ios或者Android独有的判断
 		'''
+		
 		public_case_type = 0 #公共案例库名称不为空
 		result_public = [] #存放公共案例库执行结果
 		logger.debug('callPublicCase 执行中')
-		
-		
 		# 遍历公共案例库
 		for publicCase in self.publicCaseList[1:] :
 			# 执行公共案例库,案例名称为空的部分
 			if public_case_type == 1:
 				if (publicCase[0] == '') and (publicCase[1] !=''):
-					if readApi.readApiList(publicCase):
-						# 公共案例每步执行结果记录
-						result_public.append(resultStutas.success)
+					if ((self.platform).lower() == str(publicCase[4]).lower()) or (len(publicCase[4]) == 0):
+						if readApi.readApiList(publicCase):
+							# 公共案例每步执行结果记录
+							result_public.append(resultStutas.success)
+						else:
+							# 公共案例每步执行结果记录
+							result_public.append(resultStutas.fail)
+							# #跳出循环继续执行
+							break
 					else:
-						# 公共案例每步执行结果记录
-						result_public.append(resultStutas.fail)
-						# #跳出循环继续执行
-						break
+						continue
 				else:
 					break
 					
@@ -73,20 +86,24 @@ class RunExcelCase(unittest.TestCase):
 					result_public.append(publicCase[0])
 					# publicCaseID = publicCase[1]
 					logger.debug('公共案例库中存在此方法: %s' % casename)
-					if readApi.readApiList(publicCase):
-						# 公共案例每步执行结果记录
-						result_public.append(resultStutas.success)
+					if ((self.platform).lower() == str(publicCase[4]).lower()) or (len(publicCase[4]) == 0):
+						if readApi.readApiList(publicCase):
+							# 公共案例每步执行结果记录
+							result_public.append(resultStutas.success)
+						else:
+							# 公共案例每步执行结果记录
+							result_public.append(resultStutas.fail)
+							#跳出循环继续执行
+							break
 					else:
-						# 公共案例每步执行结果记录
-						result_public.append(resultStutas.fail)
-						#跳出循环继续执行
-						break
+						continue
 					public_case_type = 1
 				
 		return result_public
 
 	#function:运行一条测试用例,Retry 失败重跑,1重跑次数,isRetry重跑开关
-	@Retry(1,isRetry=True)
+	# @pytest.hookimpl()
+	@Retry(retry_num,isRetry=retry_isTrue)
 	def function(self):
 		logger.debug('测试用例:%s ,执行开始' % self.caselist[0])
 		case_start_time = time.time()

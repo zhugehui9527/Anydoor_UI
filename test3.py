@@ -74,12 +74,29 @@ print os.path.realpath(sys.argv[0])
 
 '''
 print '*'*40
-import os
-path1 = 'niiwoo.apk'
-path2 = 'C:\\niiwoo\\apk\\'
-path33 = path2 +path1
-path4= os.path.join('',path33)
-print path4,type(path4)
-path3 = os.path.join(path2,path1)
-print os.path.abspath(path3)
+
+log_path = '/Users/zengyuanchen/Documents/SVN/ShareFromCloud/share/Project/Anydoor_UI/output/log/AnyDoor_UI.log'
+with open(log_path) as f:
+	start_filter = '测试用例:登录_1000 ,执行开始'
+	s = f.read()
+	
+	ct =  s.count(start_filter)
+	if ct == 3:
+		print 'sss'
+	if start_filter in s:
+		print 'YES'
+# from src.AppiumServer import AppiumServer
+# server = AppiumServer()
+# server.start_server()
+# import pytest
+#
+# @pytest.hookimpl(hookwrapper=True)
+# def pytest_pyfunc_call(pyfuncitem):
+#     # do whatever you want before the next hook executes
+#
+#     outcome = yield
+#     # outcome.excinfo may be None or a (cls, val, tb) tuple
+#
+#     res = outcome.get_result()  # will raise if outcome was exception
+#     # postprocess result
 print '*'*40

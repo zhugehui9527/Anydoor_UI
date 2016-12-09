@@ -21,6 +21,6 @@ setup(
     author_email='2571226011@qq.com',
     description='',
     install_requires=[
-        'xlrd','xlwt','Appium-Python-Client','selenium','xlutils','PyH','ConfigParser'
+        'xlrd','xlwt','Appium-Python-Client','selenium','xlutils','PyH','ConfigParser','Pytest','pytest-html','pytest-rerunfailures'
     ]
 )

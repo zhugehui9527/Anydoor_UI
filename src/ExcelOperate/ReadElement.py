@@ -6,14 +6,12 @@
 #function:
 #######################################################
 from conf.Run_conf import read_config
-from src.Common import public
 from src.ExcelOperate import FindElementBy
-from src.Global import logger
 from src.Public import ExcelRW
+from src.Public.Common import public
+from src.Public.Global import L
 
-
-# element_col = {u'元素封装':1,u'定位方式(android)':2,u'元素实体(android)':3,
-#                u'索引(android)':4,u'定位方式(ios)':5,u'元素实体(ios)':6,u'索引(ios)':7}
+logger = L.logger
 #元素和方法封装
 class ReadElement(object):
     def __init__(self):
@@ -51,7 +49,7 @@ class ReadElement(object):
         :return:row_list
         :eg: row_list=['消息中心','xpath','//android.widget.TextView[@text='消息中心']',...]
         '''
-        logger.debug('元素表: %s' % self.element_list)
+        # logger.debug('元素表: %s' % self.element_list)
         for row_list in self.element_list[1:]:
             # logger.debug('元素表中每一行的元素列表为: %s' % row_list)
             # logger.debug('元素表中第一列元素为: %s' % row_list[0])

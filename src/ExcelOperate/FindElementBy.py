@@ -7,9 +7,10 @@
 #######################################################
 
 from src.Element import Element
-from src.Global import logger
-from src.Common import element_by
+from src.Public.Common import element_by
+from src.Public.Global import L
 
+logger =L.logger
 #读取元素表,拼接并返回element对象
 class FindElementBy(object):
     def __init__(self,operate_type,operate_value,operate_index):

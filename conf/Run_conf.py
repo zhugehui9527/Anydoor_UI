@@ -7,8 +7,7 @@
 #######################################################
 import os
 import ConfigParser
-# from src.Global import logger
-# global conf_path
+
 prjDir = os.path.split(os.path.realpath(__file__))[0]
 conf_path = os.path.join(prjDir, "monitor.ini")
 # logger.debug('conf path is %s ' % conf_path)

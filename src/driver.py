@@ -5,18 +5,14 @@
 #date:2016-09-21
 #function:对日志进行操作处理
 #######################################################
-import os
-# from src.Public.Public import *
+
 from selenium.common.exceptions import WebDriverException
 import threading
+import subprocess
 import requests,json
 from urllib2 import URLError
 from appium import webdriver
 from conf.Run_conf import read_config
-# from Global import conf_path
-import urllib,urllib2
-import sys
-
 
 class MyDriver:
     global desired_caps,serverurl
@@ -33,14 +29,27 @@ class MyDriver:
     automationName = read_config('appium', 'automationName')
     app = read_config('appium', 'app')
     autoAcceptAlerts = read_config('appium', 'autoAcceptAlerts')
+    unicodeKeyboard = read_config('appium','unicodeKeyboard')
+    resetKeyboard = read_config('appium', 'resetKeyboard')
+    autoWebview = read_config('appium', 'autoWebview')
+    
     desired_caps = {}
+    desired_caps['noReset'] = noReset
+    desired_caps['autoAcceptAlerts'] = autoAcceptAlerts #弹窗自动确认关闭
     desired_caps['bundleId'] = bundleId
     desired_caps['platformName'] = platformName
     desired_caps['platformVersion'] = platformVersion
     desired_caps['deviceName'] = deviceName
-    desired_caps['automationName'] = automationName
-    desired_caps['noReset'] = noReset
-    desired_caps['autoAcceptAlerts'] = autoAcceptAlerts #弹窗自动确认关闭
+    
+    if platformName.lower() == 'android':
+        desired_caps['unicodeKeyboard'] = unicodeKeyboard
+        desired_caps['resetKeyboard'] = resetKeyboard
+        desired_caps['autoWebview'] = autoWebview
+    elif platformName.lower() == 'ios':
+        desired_caps['automationName'] = automationName
+    else:
+        pass
+    
     serverurl = 'http://' + ip + ':' + port + '/wd/hub'
 
     def _init__(self):
@@ -55,6 +64,9 @@ class MyDriver:
                 if MyDriver.driver is None:
 
                     try:
+                        # cmd = 'appium -a 127.0.0.1 -p 4723 -bp 4724'
+                        # subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+                        # time.sleep(10)
                         MyDriver.driver = webdriver.Remote(serverurl,desired_caps)
 
                     except URLError:
@@ -66,10 +78,8 @@ class MyDriver:
         except WebDriverException:
             raise
 
+    """
     def is_runnnig(self):
-        """Determine whether server is running
-            :return:True or False
-            """
         response = None
         url = self.serverurl + "/status"
         try:
@@ -89,7 +99,6 @@ class MyDriver:
 
 
 
-"""
 class Singleton(object):
     '''
     #方法,实现__new__方法
@@ -121,8 +130,8 @@ class Borg(object):
 
 class DriverSignleton(object):
     '''单例模式'''
-    def __init__(self, config_path):
-        pass
+    # def __init__(self, config_path):
+    #     pass
 
     def __new__(cls, config_path):
         mutex = threading.Lock()
@@ -145,26 +154,21 @@ class DriverSignleton(object):
             # desired_caps['app'] = os.path.abspath(app')
             cls.instance.serverurl = 'http://' + cls.instance.ip + ':' + cls.instance.port + '/wd/hub'
             cls.instance.desired_caps = desired_caps
-            # cls.instance.__start_driver()
-            cls.instance.driver = cls.instance.__start_driver()
+            cls.instance.__start_driver()
+            # cls.instance.driver = cls.instance.__start_driver()
             cls.config_path = config_path
         mutex.release()  # 释放锁
         return cls.instance
 
 
     def __start_driver(self):
-        driversignleton = DriverSignleton(self.conf_path)
-        if not driversignleton.is_runnnig():
+        if not self.is_runnnig():
             # # 加锁
             # self.mutex.acquire()
 
              # if appdriver.driver is None:
             try:
-                print self.serverurl
-                print self.desired_caps
                 self.driver = webdriver.Remote(self.serverurl,self.desired_caps)
-
-                print self.driver
             except URLError:
                 self.driver = None
                 # #释放锁
@@ -201,8 +205,17 @@ class DriverSignleton(object):
 
 
 if __name__ == '__main__':
-    # ddriver = DriverSignleton('/Users/zengyuanchen/Documents/Project/Anydoor_UI/conf/monitor.ini')
-    # cc = ddriver.is_runnnig()
-    # print cc
-    mydriver = MyDriver()
-    driver = mydriver.get_driver()
+    import os,time
+    from multiprocessing import Process
+    print '启动服务'
+    cmd = 'appium -a 127.0.0.1 -p 4723 -bp 4724'
+    subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+ 
+    # subprocess.Popen('appium -a 127.0.0.1 -p 4723',shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    
+    ddriver = DriverSignleton('/Users/zengyuanchen/Documents/SVN/ShareFromCloud/share/Project/Anydoor_UI/conf/monitor.ini')
+    while not ddriver.is_runnnig():
+        time.sleep(2)
+    print '启动成功'
+    # mydriver = MyDriver()
+    # driver = mydriver.get_driver()

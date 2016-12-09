@@ -5,53 +5,21 @@
 #date:2016-09-21
 #function:对日志进行操作处理
 #######################################################
-from Global import *
-from Public.Log import *
-from conf.Run_conf import *
-from multiprocessing import Process
-import threading,requests,json
-import sys,os
+import json
+import os
+import subprocess
+import sys
+import threading
+
+import requests
+
+from conf.Run_conf import read_config
+from src.Public.Global import L
+
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
-class AppiumServer(object):
-	def __init__(self):
-		global start_appium,serverIp,serverport
-		start_appium = read_config('command','start_appium')
-		serverIp = read_config('appium','ip')
-		serverport = read_config('appium', 'port')
-
-	def start_server(self):
-		try:
-			t1 = RunServerOnMac(start_appium)
-			p = Process(target=t1.start())
-			p.start()
-			logger.debug('服务启动完毕')
-		except Exception as e:
-			logger.error('服务启动异常: %s') % e
-
-	def is_runnnig(self):
-		"""Determine whether server is running
-			:return:True or False
-			"""
-		response = None
-		url = 'http://'+ serverIp +':'+serverport+ "/wd/hub/status"
-		print url
-		try:
-			# response = urllib2.request_host(url)
-			# response = urllib.request.urlopen(url, timeout=5)
-			response = requests.get(url)
-			response_dict = json.loads(response.text)
-			if response_dict['status'] == 0:
-				return True
-			else:
-				return False
-		except:
-			return False
-		finally:
-			if response:
-				response.close()
-
+logger = L.logger
 class RunServerOnMac(threading.Thread):
 	'''
 	run cmd on mac
@@ -61,11 +29,70 @@ class RunServerOnMac(threading.Thread):
 		self.cmd = cmd
 
 	def run(self):
-		print self.cmd
+		logger.debug('命令: %s' % self.cmd)
 		os.system(self.cmd)
 
+class AppiumServer(object):
+	def __init__(self):
+		# self.start_appium = read_config('command','start_appium')
+		self.serverIp = read_config('appium','ip')
+		self.serverport = str(read_config('appium', 'port'))
+
+	def start_server(self):
+		# print 'start_server 。。。'
+		if not self.is_runnnig():
+			try:
+				
+				import os,time
+				
+				cmd_str = 'appium -a {} -p {} -bp 4700'.format(self.serverIp,self.serverport)
+				print cmd_str
+				cmd(cmd_str)
+				time.sleep(20)
+				# while not self.is_runnnig():
+				# 	time.sleep(2)
+				# 	print 'sleep 2s'
+				return self.serverport
+			except Exception as e:
+				raise e
+		else:
+			logger.debug('服务已正常启动')
+			# print '服务已正常启动'
+		
+	def main(self):
+		return self.start_server()
+	
+	def is_runnnig(self):
+		"""Determine whether server is running
+			:return:True or False
+			"""
+		response = None
+		url = 'http://'+ self.serverIp +':'+ self.serverport + "/wd/hub/status"
+		# print '获取status 的地址: %s' % url
+		logger.debug('获取status 的地址: %s' % url)
+		try:
+			# response = urllib2.request_host(url)
+			# response = urllib.request.urlopen(url, timeout=5)
+			response = requests.get(url)
+			response_dict = json.loads(response.text)
+			print '响应',response_dict
+			logger.debug('响应信息: %s' % response_dict)
+			if response_dict['status'] == 0:
+				return True
+			else:
+				return False
+		except:
+			return False
+		finally:
+			if response:
+				response.close()
+				
+def cmd(cmd):
+	return subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+
+
+		
 if __name__ == 'main':
 	appiumserver = AppiumServer()
-	appiumserver.start_server()
-	# os.system('appium -a 127.0.0.1 -p 4723')
+	appiumserver.main()
 	
