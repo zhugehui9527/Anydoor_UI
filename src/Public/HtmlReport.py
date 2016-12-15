@@ -119,7 +119,8 @@ class HtmlReport(object):
         tab2 << pyh.tr(pyh.td(u'报告生成时间'.encode('gbk'), bgcolor='#E6E6FA', align='middle') +
                        pyh.td(u'Platform'.encode('gbk'), bgcolor='#E6E6FA', align='middle') +
                        pyh.td(u'Python'.encode('gbk'), bgcolor='#E6E6FA', align='middle') +
-                       pyh.td(u'Appium'.encode('gbk'), bgcolor='#E6E6FA', align='middle'))
+                       pyh.td(u'Appium'.encode('gbk'), bgcolor='#E6E6FA', align='middle')
+                       ,bt='0')
 
         tab2 << pyh.tr(pyh.td(str(self.current_time), align='middle') +
                        pyh.td(str(platform.platform()), align='middle') +
@@ -188,7 +189,8 @@ class HtmlReport(object):
                                                                     align='left'),
                                                            
                                                      style='background-color: #70DBDB;',
-                                                     cl='panel panel-default'),
+                                                     # cl='panel panel-default' #边框
+                                                     ),
                                              id='accordion',cl='panel-group',style='margin-bottom: 0px;'),
                                      align='middle') +
                               pyh.td(testresult, align='middle'), bgcolor='#70DBDB')
@@ -211,7 +213,8 @@ class HtmlReport(object):
                                                                     align='left'),
                                                             
                                                      style='background-color: #FF6EC7;',
-                                                     cl='panel panel-default'),
+                                                     # cl='panel panel-default'
+                                                     ),
                                              id='accordion', cl='panel-group',style='margin-bottom: 0px;'),
                                      align='middle') +
                               pyh.td(testresult, align='middle'), bgcolor='#FF6EC7')
@@ -234,7 +237,8 @@ class HtmlReport(object):
                                                                     align='left'),
                                                              
                                                      style='background-color: #DB7093;',
-                                                     cl='panel panel-default'),
+                                                     # cl='panel panel-default'
+                                                     ),
                                              id='accordion', cl='panel-group',style='margin-bottom: 0px;'),
                                      align='middle') +
                               pyh.td(testresult, align='middle'), bgcolor='#DB7093')
@@ -256,7 +260,8 @@ class HtmlReport(object):
                                                                     align='left'),
                                                            
                                                      style='background-color: #FF00FF;',
-                                                     cl='panel panel-default'),
+                                                     # cl='panel panel-default'
+                                                     ),
                                              id='accordion', cl='panel-group',style='margin-bottom: 0px;'),
                                      align='middle') +
                               pyh.td(testresult, align='middle'), bgcolor='#FF00FF')
@@ -390,4 +395,4 @@ if __name__ == '__main__':
 
     tcHtmlReport.set_testcase_result(testcase_result)
     tcHtmlReport.set_run_time(123)
-    tcHtmlReport.generate_html('测试报告'.encode('gbk','ignore'))
+    tcHtmlReport.generate_html('测试报告'.encode('gbk'))

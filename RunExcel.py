@@ -180,7 +180,7 @@ def get_html_report():
 	tcHtmlReport.set_result_filename(htmlreport_path)
 	tcHtmlReport.set_testcase_result(result)
 	tcHtmlReport.set_run_time(end_time - start_time)
-	tcHtmlReport.generate_html('测试报告'.encode('gbk'))
+	tcHtmlReport.generate_html(u'测试报告')
 	
 def get_test_suite(case_list):
 	test_suite = unittest.TestSuite()
