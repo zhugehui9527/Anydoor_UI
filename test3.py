@@ -74,17 +74,31 @@ print os.path.realpath(sys.argv[0])
 
 '''
 print '*'*40
+import requests
+url = 'https://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css'
+res = requests.get(url).status_code
+print res,type(res)
 
-log_path = '/Users/zengyuanchen/Documents/SVN/ShareFromCloud/share/Project/Anydoor_UI/output/log/AnyDoor_UI.log'
-with open(log_path) as f:
-	start_filter = '测试用例:登录_1000 ,执行开始'
-	s = f.read()
-	
-	ct =  s.count(start_filter)
-	if ct == 3:
-		print 'sss'
-	if start_filter in s:
-		print 'YES'
+# print '\033[;32;40m'
+# print '*' * 50
+# print '*HOST:\t'
+# print '*URI:\t'
+# print '*ARGS:\t'
+# print '*TIME:\t'
+# print '*' * 50
+# print '\033[0m'
+
+
+# log_path = '/Users/zengyuanchen/Documents/SVN/ShareFromCloud/share/Project/Anydoor_UI/output/log/AnyDoor_UI.log'
+# with open(log_path) as f:
+# 	start_filter = '测试用例:登录_1000 ,执行开始'
+# 	s = f.read()
+#
+# 	ct =  s.count(start_filter)
+# 	if ct == 3:
+# 		print 'sss'
+# 	if start_filter in s:
+# 		print 'YES'
 # from src.AppiumServer import AppiumServer
 # server = AppiumServer()
 # server.start_server()

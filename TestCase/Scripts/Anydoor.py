@@ -5,27 +5,25 @@
 #date:2016-09-21
 #function:对日志进行操作处理
 #######################################################
-import pytest
 import sys
 import unittest
-
-from src.Element import *
-from src.appOperate import AppOperate
+import pytest
+from conf.Run_conf import read_config
+from src.Public.Global import L
+from src.Public.appOperate import AppOperate
+from src.lib.Element import Element
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
-
+logger = L.logger
 class Anydoor_UI(unittest.TestCase):
-
-
     def setup_class(cls):
         '''
         setup class
         :return:
         '''
         cls.driver = Element()
-        # cls.self.driver = Element()
         cls.appOperate = AppOperate()
         cls.username = read_config('login','login_username')
         cls.password = read_config('login', 'login_password')
@@ -175,10 +173,10 @@ class Anydoor_UI(unittest.TestCase):
         self.assertTrue(self.appOperate.check_plugin(pluginId, '获取验证码'), '插件: %s 断言失败' % pluginId)
     
     def test_B71(self):
-        '''用例名称: 检查插件,插件名称: 明星理财,插件ID: PA02100000000_02_KY,插件断言: 立即领取'''
+        '''用例名称: 检查插件,插件名称: 明星理财,插件ID: PA02100000000_02_KY,插件断言: 立即投资'''
         pluginId = 'PA02100000000_02_KY'
         logger.debug('遍历插件,插件ID: %s' % pluginId)
-        self.assertTrue(self.appOperate.check_plugin(pluginId, '立即领取'), '插件: %s 断言失败' % pluginId)
+        self.assertTrue(self.appOperate.check_plugin(pluginId, '立即投资'), '插件: %s 断言失败' % pluginId)
         #self.appOperate.closeH5_byPluginId(pluginId)
 
     #------------ 下一页 ----------------
@@ -295,7 +293,7 @@ class Anydoor_UI(unittest.TestCase):
         self.assertTrue(self.appOperate.check_plugin(pluginId, '财经快讯'), '插件: %s 断言失败' % pluginId)
         #self.appOperate.closeH5_byPluginId(pluginId)
 
-    #@pytest.mark.skipif(True, reason='PA02800000000_02_ESF is wrong with closeButton!')
+    @pytest.mark.skipif(True, reason='PA02800000000_02_ESF is wrong with closeButton!')
     def test_D2(self):
         '''用例名称: 检查插件,插件名称: 二手房,插件ID: PA02800000000_02_ESF,插件断言: 售价 '''
         pluginId = 'PA02800000000_02_ESF'
@@ -303,6 +301,7 @@ class Anydoor_UI(unittest.TestCase):
         self.assertTrue(self.appOperate.check_plugin(pluginId, '售价'), '插件: %s 断言失败' % pluginId)
         #self.appOperate.closeH5_byPluginId(pluginId)
 
+    @pytest.mark.skipif(True, reason='PA02800000000_02_XF is offline!')
     def test_D3(self):
         '''用例名称: 检查插件,插件名称: 新房,插件ID: PA02800000000_02_XF,插件断言: 总价 '''
         pluginId = 'PA02800000000_02_XF'
@@ -369,6 +368,7 @@ class Anydoor_UI(unittest.TestCase):
         #self.appOperate.closeH5_byPluginId(pluginId)
 
     # 签到礼---PA02100000000_02_KXJ1---N
+    @pytest.mark.skipif(True, reason='PA02100000000_02_KXJ1 is offline!')
     def test_D91(self):
         '''用例名称: 检查插件,插件名称: 签到礼,插件ID: PA02100000000_02_KXJ1,插件断言: 签到，立即兑换好礼（每日限量） '''
         pluginId = 'PA02100000000_02_KXJ1'

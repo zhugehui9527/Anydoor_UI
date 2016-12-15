@@ -6,19 +6,15 @@
 #function:处理全局文件变量
 #######################################################
 
-
 class D:
-	from src.driver import MyDriver
+	from src.lib.driver import MyDriver
 	driver = MyDriver.get_driver()
 
 class L:
-	from src.Public.Log import LogSignleton
+	from src.lib.Log import LogSignleton
 	logsignleton = LogSignleton()
 	logger = logsignleton.logger
-# global logger
-# logger = MyLog.get_logger()
-# logger = logsignleton.logger
+	
+		
+	
 
-# driversignleton = DriverSignleton(conf_path)
-# # global driver
-# driver = driversignleton.get_driver()

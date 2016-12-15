@@ -4,10 +4,7 @@ import time
 import unittest
 
 from conf.Run_conf import read_config
-from src.Element import Element
-from src.ExcelOperate import ReadApi
 from src.ExcelOperate.ReadApi import ReadApi
-from src.Public import ExcelRW
 from src.Public.Common import operate_api
 from src.Public.Common import public
 from src.Public.Common import resultClass
@@ -15,6 +12,8 @@ from src.Public.Common import resultStutas
 from src.Public.Global import L
 from src.Public.HtmlReport import HtmlReport
 from src.Public.Retry import Retry
+from src.lib import ExcelRW
+from src.lib.Element import Element
 
 logger = L.logger
 xls_file_path = read_config('testcase', 'xls_case_path')
@@ -27,29 +26,28 @@ case_sheet1 = xlsEngine.readsheet(public.case_sheet)
 # 记录测试开始时间
 start_time = time.time()
 result = resultClass.result
+# driver = Element()
 
 class RunExcelCase(unittest.TestCase):
 	def __init__(self,mouldeName,caselist):
 		super(RunExcelCase,self).__init__(mouldeName)
-		self.readApi = ReadApi.ReadApi()
+		self.readApi = ReadApi()
 		self.xls_file_path = read_config('testcase', 'xls_case_path')
 		self.platform = read_config('appium','platformName')
+		# self.screen_shot_isTrue = bool(read_config('testcase','screen_shot_isTrue'))
 		self.xlsEngine = ExcelRW.XlsEngine(self.xls_file_path)
 		self.xlsEngine.open()  # 打开excel
 		self.publicCaseList = self.xlsEngine.readsheet(public.public_case_sheet)
 		self.sheetCaseList = self.xlsEngine.readsheet(public.case_sheet)
 		self.caselist = caselist
-		
+	
+	@classmethod
 	def setup_class(cls):
-		# appiumserver = AppiumServer()
-		# appiumserver.main()
 		cls.driver = Element()
 		
+	@classmethod
 	def teardown_class(cls):
 		cls.driver.quit()
-		# cp = Cp()
-		# cp.clean_process_all()
-		
 	
 	def callPublicCase(self, casename):
 		'''
@@ -57,7 +55,6 @@ class RunExcelCase(unittest.TestCase):
 		:param casename:
 		:return:   还缺少对ios或者Android独有的判断
 		'''
-		
 		public_case_type = 0 #公共案例库名称不为空
 		result_public = [] #存放公共案例库执行结果
 		logger.debug('callPublicCase 执行中')
@@ -73,13 +70,14 @@ class RunExcelCase(unittest.TestCase):
 						else:
 							# 公共案例每步执行结果记录
 							result_public.append(resultStutas.fail)
-							# #跳出循环继续执行
+							# 跳出循环
 							break
 					else:
+						# 跳出循环继续执行
 						continue
 				else:
+					# 跳出循环
 					break
-					
 			else:
 				# 先定位到指定案例
 				if casename == publicCase[0]:
@@ -100,12 +98,24 @@ class RunExcelCase(unittest.TestCase):
 					public_case_type = 1
 				
 		return result_public
-
+	
+	# def screen_shot_turn(self):
+	# 	try:
+	# 		screen_shot_path = os.path.abspath('./output/screenshot/{}.png'.format(self.caselist[0]))
+	# 		if self.screen_shot_isTrue:
+	# 			logger.debug('截图开关已打开,截图保存路径: %s' % screen_shot_path)
+	# 			driver.screenshot_as_file(screen_shot_path)
+	# 		else:
+	# 			pass
+	# 	except Exception as e:
+	# 		logger.error(e)
+		
 	#function:运行一条测试用例,Retry 失败重跑,1重跑次数,isRetry重跑开关
 	# @pytest.hookimpl()
 	@Retry(retry_num,isRetry=retry_isTrue)
 	def function(self):
 		logger.debug('测试用例:%s ,执行开始' % self.caselist[0])
+		
 		case_start_time = time.time()
 		case_list = []
 		case_list.append(self.caselist[0])
@@ -122,7 +132,6 @@ class RunExcelCase(unittest.TestCase):
 				case_list.append(resultStutas.success)
 			if case_list:
 				logger.debug('===' * 40)
-				# logger.debug('执行结果记录: %s' % case_list)
 				logger.debug('当前用例:%s ,执行结果: %s' % (case_list[0],case_list[1]))
 				logger.debug('===' * 40)
 			else:
@@ -134,6 +143,8 @@ class RunExcelCase(unittest.TestCase):
 				case_list.append(resultStutas.success)
 			else:
 				case_list.append(resultStutas.fail)
+				# 失败截图
+				# self.screen_shot_turn()
 			if case_list:
 				logger.debug('===' * 40)
 				# logger.debug('执行结果记录: %s' % case_list)
@@ -169,7 +180,7 @@ def get_html_report():
 	tcHtmlReport.set_result_filename(htmlreport_path)
 	tcHtmlReport.set_testcase_result(result)
 	tcHtmlReport.set_run_time(end_time - start_time)
-	tcHtmlReport.generate_html(u'测试报告'.encode('gbk'))
+	tcHtmlReport.generate_html('测试报告'.encode('gbk'))
 	
 def get_test_suite(case_list):
 	test_suite = unittest.TestSuite()
@@ -177,10 +188,14 @@ def get_test_suite(case_list):
 	return test_suite
 
 def Run_Case(runner):
+	# 类初始化
+	RunExcelCase.setup_class()
 	# 循环遍历测试用例列表
 	for case_list in case_sheet1[1:]:
 		test_suite = get_test_suite(case_list)
 		runner.run(test_suite)
+	# driver退出
+	# RunExcelCase.teardown_class()
 	logger.debug('所有用例的结果: %s' % result)
 	get_html_report()
 

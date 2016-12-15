@@ -1,20 +1,20 @@
 #coding=utf8
 #######################################################
-#filename:Interface_Test.py
-#author:defias
-#date:2015-7
-#function:
+#filename:ReadApi.py
+#author:Jeff
+#date:2016-11
+#function:读取api相关功能和封装
 #######################################################
 import time
 import unittest
 
 from ReadElement import ReadElement
 from conf.Run_conf import read_config
-from src.Element import Element
 from src.Public.Common import operate_api
 from src.Public.Common import resultClass
 from src.Public.Global import L
-from src.appOperate import AppOperate
+from src.Public.appOperate import AppOperate
+from src.lib.Element import Element
 
 logger = L.logger
 class ReadApi(unittest.TestCase):

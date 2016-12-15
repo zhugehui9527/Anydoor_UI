@@ -10,11 +10,12 @@ import os
 import platform
 import sys
 import time
+import requests
+from src.lib.Log import LogSignleton
 
 from conf.Run_conf import read_config
-from src.Public import pyh
 from src.Public.Common import resultStutas
-from src.Public.Log import LogSignleton
+from src.lib import pyh
 
 reload(sys)
 sys.setdefaultencoding('utf8')
@@ -31,7 +32,7 @@ class HtmlReport(object):
         self.case_total = 0                   #运行测试用例总数
         self.logfile = ''                     #每个用例运行日志
         self.logerr = ''                      #每个用例运行错误日志
-        self.logpath = read_config('logger','log_file')
+        # self.logpath = read_config('logger','log_file')
         
     #设置结果文件名
     def set_result_filename(self, filename='Test_Report_Filename.html'):
@@ -59,7 +60,21 @@ class HtmlReport(object):
     def set_run_time(self, seconds):
         self.time_took = time.strftime('%H:%M:%S', time.gmtime(seconds))
         return self.time_took
-
+    
+    def read_filter_log(self,casename):
+        filter_log_path = read_config('testcase','project_path')+'/output/html/filter/{}.log'.format(casename).encode('utf-8')
+        print filter_log_path
+        try:
+            with open(filter_log_path) as f:
+                text =  f.read()
+                return text
+        except Exception as e:
+            print e
+        
+    def get_url_res(self,url):
+        res = requests.get(url).status_code
+        return res
+    
     #生成HTML报告
     def generate_html(self, report_header):
         def get_tab():
@@ -73,102 +88,178 @@ class HtmlReport(object):
             tab.attributes['width'] = '90%'
             return tab
         page = pyh.PyH(self.title)
+        css_url = 'https://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css'
+        js1_url = 'https://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js'
+        js2_url = 'https://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js'
+        if self.get_url_res(css_url)== 200:
+            page.addCSS(css_url)
+        else:
+            css_local = './css/bootstrap.min.css'
+            page.addCSS(css_local)
+        if self.get_url_res(js1_url) == 200:
+            page.addJS(js1_url)
+        else:
+            js1_local = './js/jquery.min.js'
+            page.addJS(js1_local)
+        if self.get_url_res(js2_url) == 200:
+            page.addJS(js2_url)
+        else:
+            js2_local = './js/bootstrap.min.js'
+            page.addJS(js2_local)
+        
+        # page.addCSS('https://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css')
+        # page.addJS('https://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js')
+        # page.addJS('https://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js')
         page << pyh.h1(report_header, align='middle') #标题居中
         # page << pyh.p(u'报告生成时间：'.encode('gbk') + str(self.current_time))
         page << pyh.h3('Environment', align='left')  # 标题居左
         tab2 = get_tab()
-        # 表格头
-        tab2 << pyh.tr(pyh.th(u'报告生成时间'.encode('gbk'), bgcolor='#E6E6FA', align='middle') +
-                       pyh.th(u'Platform'.encode('gbk'), bgcolor='#E6E6FA', align='middle') +
-                       pyh.th(u'Python'.encode('gbk'), bgcolor='#E6E6FA', align='middle')+
-                       pyh.th(u'Appium'.encode('gbk'), bgcolor='#E6E6FA', align='middle'))
         
+        # 表格头
+        tab2 << pyh.tr(pyh.td(u'报告生成时间'.encode('gbk'), bgcolor='#E6E6FA', align='middle') +
+                       pyh.td(u'Platform'.encode('gbk'), bgcolor='#E6E6FA', align='middle') +
+                       pyh.td(u'Python'.encode('gbk'), bgcolor='#E6E6FA', align='middle') +
+                       pyh.td(u'Appium'.encode('gbk'), bgcolor='#E6E6FA', align='middle'))
+
         tab2 << pyh.tr(pyh.td(str(self.current_time), align='middle') +
                        pyh.td(str(platform.platform()), align='middle') +
-                       pyh.td(str(platform.python_version()), align='middle')+
+                       pyh.td(str(platform.python_version()), align='middle') +
                        pyh.td(str(os.popen('appium -v').read()), align='middle')
                        )
-        
+
         page << pyh.h3('Summary', align='left')  # 标题居左
         tab1 = get_tab()
 
         # 表格头
-        tab1 << pyh.tr(pyh.th(u'测试总耗时'.encode('gbk'), bgcolor='#E6E6FA', align='middle') +
-                      pyh.th(u'测试用例总数'.encode('gbk'), bgcolor='#E6E6FA', align='middle') +
-                      pyh.th(u'成功用例数'.encode('gbk'), bgcolor='#E6E6FA', align='middle') +
-                      pyh.th(u'失败用例数'.encode('gbk'), bgcolor='#E6E6FA', align='middle')+
-                      pyh.th(u'报错用例数'.encode('gbk'), bgcolor='#E6E6FA', align='middle'))
-        
+        tab1 << pyh.tr(pyh.td(u'测试总耗时'.encode('gbk'), bgcolor='#E6E6FA', align='middle') +
+                       pyh.td(u'测试用例总数'.encode('gbk'), bgcolor='#E6E6FA', align='middle') +
+                       pyh.td(u'成功用例数'.encode('gbk'), bgcolor='#E6E6FA', align='middle') +
+                       pyh.td(u'失败用例数'.encode('gbk'), bgcolor='#E6E6FA', align='middle') +
+                       pyh.td(u'报错用例数'.encode('gbk'), bgcolor='#E6E6FA', align='middle'))
+
         tab1 << pyh.tr(pyh.td(str(self.time_took), align='middle') +
-                      pyh.td(str(self.case_total), align='middle') +
-                      pyh.td(str(self.success_num), align='middle') +
-                      pyh.th(str(self.fail_num), align='middle') +
-                       pyh.th(str(self.error_num), align='middle'))
+                       pyh.td(str(self.case_total), align='middle') +
+                       pyh.td(str(self.success_num), align='middle') +
+                       pyh.td(str(self.fail_num), align='middle') +
+                       pyh.td(str(self.error_num), align='middle'))
         
-        # page << pyh.p(u'测试总耗时：'.encode('gbk') + str(self.time_took)+
-        #               '<br>' + u'测试用例总数：'.encode('gbk') + str(self.case_total)+
-        #               '<br>'+ u'成功用例数：'.encode('gbk') + str(self.success_num)+
-        #               '<br>' +u'失败用例数：'.encode('gbk') + str(self.fail_num)+
-        #               # '<br>'+ u'出错用例数：'.encode('gbk') + str(self.error_num)
-        #               )
         page << pyh.h3('Results', align='left')  # 标题居左
         
         tab = get_tab()
 
         # 表格头
-        tab << pyh.tr(pyh.th(u'用例名称'.encode('gbk'), bgcolor='#E6E6FA', align='middle') +
-                      pyh.th(u'运行时间(s)'.encode('gbk'), bgcolor='#E6E6FA', align='middle') +
-                      pyh.th(u'运行日志'.encode('gbk'), bgcolor='#E6E6FA', align='middle') +
-                      pyh.th(u'测试结果'.encode('gbk'), bgcolor='#E6E6FA', align='middle'))
+        tab << pyh.tr(pyh.td(u'用例名称'.encode('gbk'), bgcolor='#E6E6FA', align='middle') +
+                      pyh.td(u'运行时间(s)'.encode('gbk'), bgcolor='#E6E6FA', align='middle') +
+                      pyh.td(u'运行日志'.encode('gbk'), bgcolor='#E6E6FA', align='middle') +
+                      pyh.td(u'测试结果'.encode('gbk'), bgcolor='#E6E6FA', align='middle'))
         
-        logpath = self.logpath
-        
-
         # print resultlist
         for testcase_list in self.testcase_result:
+            testcase_id = str(self.testcase_result.index(testcase_list))
+            print 'testcase_id = ',testcase_id
             testresult = testcase_list[1]
             testcase_name = testcase_list[0]
             testcase_duration = str(testcase_list[2])
-            testcase_log = './filter/{}.log'.format(testcase_name)
+            testcase_log = self.read_filter_log(testcase_name)
             # print 'testcase_log = %s ' % testcase_log
             testcase_log_detail =u'日志详情'
             
             start_filter = '测试用例:{} ,执行开始'.format(testcase_name)
             # print 'start_filter = %s' % start_filter
             end_filter = '测试用例:{} ,执行结束'.format(testcase_name)
-            # print 'end_filter = %s' % end_filter
-            log_href = '<a href="{}">{}</a>'.format(testcase_log.encode('gbk', 'ignore'),testcase_log_detail.encode('gbk', 'ignore'))
-            
-            LogSignleton.get_filter_log(logpath,testcase_name,start_filter,end_filter)
+           
+            LogSignleton.get_filter_log(testcase_name,start_filter,end_filter)
 
             if 'PASS' == testresult:
                 tab << pyh.tr(pyh.td(testcase_name.encode('gbk', 'ignore'), align='middle') +
-                              pyh.td(testcase_duration.encode('gbk', 'ignore'),align='middle') +
-                              pyh.td(log_href, align='middle') +
-                              pyh.th(testresult,align='middle'),bgcolor='#70DBDB')
+                              pyh.td(testcase_duration.encode('gbk', 'ignore'), align='middle') +
+                              pyh.td(pyh.div(pyh.div(pyh.a(testcase_log_detail.encode('gbk','ignore'),
+                                                           dt='collapse',
+                                                           href='#{}'.format(testcase_id),
+                                                           dp='#accordion',
+                                                           cl='collapsed',
+                                                           ae='false',
+                                                           align='middle')+
+                                                     pyh.div(testcase_log.encode('gbk', 'ignore'),
+                                                                     id=testcase_id,
+                                                                     cl='panel-collapse collapse',
+                                                                     ae='false',
+                                                                     style='height: 0px;',
+                                                                    align='left'),
+                                                           
+                                                     style='background-color: #70DBDB;',
+                                                     cl='panel panel-default'),
+                                             id='accordion',cl='panel-group',style='margin-bottom: 0px;'),
+                                     align='middle') +
+                              pyh.td(testresult, align='middle'), bgcolor='#70DBDB')
                 
             elif 'FAIL' == testresult:
                 tab << pyh.tr(pyh.td(testcase_name.encode('gbk', 'ignore'), align='middle') +
                               pyh.td(testcase_duration.encode('gbk', 'ignore'), align='middle') +
-                              pyh.td('<a href="{}">{}</a>'.format(testcase_log.encode('gbk', 'ignore'),
-                                                                  testcase_log_detail.encode('gbk', 'ignore')),
+                              pyh.td(pyh.div(pyh.div(pyh.a(testcase_log_detail.encode('gbk', 'ignore'),
+                                                           dt='collapse',
+                                                           href='#{}'.format(testcase_id),
+                                                           dp='#accordion',
+                                                           cl='collapsed',
+                                                           ae='false',
+                                                           align='middle') +
+                                                     pyh.div(testcase_log.encode('gbk', 'ignore'),
+                                                                     id=testcase_id,
+                                                                     cl='panel-collapse collapse',
+                                                                     ae='false',
+                                                                     style='height: 0px;',
+                                                                    align='left'),
+                                                            
+                                                     style='background-color: #FF6EC7;',
+                                                     cl='panel panel-default'),
+                                             id='accordion', cl='panel-group',style='margin-bottom: 0px;'),
                                      align='middle') +
-                              pyh.th(testresult,align='middle'),bgcolor='#FF6EC7')
+                              pyh.td(testresult, align='middle'), bgcolor='#FF6EC7')
 
             elif 'ERROR' == testresult:
                 tab << pyh.tr(pyh.td(testcase_name.encode('gbk', 'ignore'), align='middle') +
                               pyh.td(testcase_duration.encode('gbk', 'ignore'), align='middle') +
-                              pyh.td('<a href="{}">{}</a>'.format(testcase_log.encode('gbk', 'ignore'),
-                                                                  testcase_log_detail.encode('gbk', 'ignore')),
+                              pyh.td(pyh.div(pyh.div(pyh.a(testcase_log_detail.encode('gbk', 'ignore'),
+                                                           dt='collapse',
+                                                           href='#{}'.format(testcase_id),
+                                                           dp='#accordion',
+                                                           cl='collapsed',
+                                                           ae='false',
+                                                           align='middle') +
+                                                    pyh.div(testcase_log.encode('gbk', 'ignore'),
+                                                                     id=testcase_id,
+                                                                     cl='panel-collapse collapse',
+                                                                     ae='false',
+                                                                     style='height: 0px;',
+                                                                    align='left'),
+                                                             
+                                                     style='background-color: #DB7093;',
+                                                     cl='panel panel-default'),
+                                             id='accordion', cl='panel-group',style='margin-bottom: 0px;'),
                                      align='middle') +
-                              pyh.th(testresult,align='middle'),bgcolor='#DB7093')
+                              pyh.td(testresult, align='middle'), bgcolor='#DB7093')
             else:
                 tab << pyh.tr(pyh.td(testcase_name.encode('gbk', 'ignore'), align='middle') +
                               pyh.td(testcase_duration.encode('gbk', 'ignore'), align='middle') +
-                              pyh.td('<a href="{}">{}</a>'.format(testcase_log.encode('gbk', 'ignore'),
-                                                                  testcase_log_detail.encode('gbk', 'ignore')),
+                              pyh.td(pyh.div(pyh.div(pyh.a(testcase_log_detail.encode('gbk', 'ignore'),
+                                                           dt='collapse',
+                                                           href='#{}'.format(testcase_id),
+                                                           dp='#accordion',
+                                                           cl='collapsed',
+                                                           ae='false',
+                                                           align='middle') +
+                                                     pyh.div(testcase_log.encode('gbk', 'ignore'),
+                                                                     id=testcase_id,
+                                                                     cl='panel-collapse collapse',
+                                                                     ae='false',
+                                                                     style='height: 0px;',
+                                                                    align='left'),
+                                                           
+                                                     style='background-color: #FF00FF;',
+                                                     cl='panel panel-default'),
+                                             id='accordion', cl='panel-group',style='margin-bottom: 0px;'),
                                      align='middle') +
-                              pyh.th(testresult,align='middle'),bgcolor='#FF00FF')
+                              pyh.td(testresult, align='middle'), bgcolor='#FF00FF')
                 
         # print self.filename
         page.printOut(self.filename)
@@ -295,8 +386,8 @@ if __name__ == '__main__':
     path = '/Users/zengyuanchen/Documents/SVN/ShareFromCloud/share/Project/Anydoor_UI/output/html/report.html'
     tcHtmlReport.set_result_filename(path)
 
-    testcase_result =[['检查插件:PA00500000000_02_GSZB', 'PASS','2016-11-1'], ['登录_1000','FAIL','2016-11-2'], ['test_CheckPlugin_1001', 'ERROR','2016-11-3']]
+    testcase_result =[['登录_1000', 'PASS','2016-11-1'], ['获取插件列表','FAIL','2016-11-2'], ['检查插件:PA01100000000_02_PAZB', 'ERROR','2016-11-3']]
 
     tcHtmlReport.set_testcase_result(testcase_result)
     tcHtmlReport.set_run_time(123)
-    tcHtmlReport.generate_html(u'测试报告'.encode('gbk'))
+    tcHtmlReport.generate_html('测试报告'.encode('gbk','ignore'))

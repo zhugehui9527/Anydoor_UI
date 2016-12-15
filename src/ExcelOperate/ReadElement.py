@@ -1,15 +1,15 @@
 #coding=utf8
 #######################################################
-#filename:Interface_Test.py
-#author:defias
-#date:2015-7
-#function:
+#filename:ReadElement.py
+#author:Jeff
+#date:2016-11
+#function: 读取元素表并进行处理
 #######################################################
 from conf.Run_conf import read_config
 from src.ExcelOperate import FindElementBy
-from src.Public import ExcelRW
 from src.Public.Common import public
 from src.Public.Global import L
+from src.lib import ExcelRW
 
 logger = L.logger
 #元素和方法封装
@@ -23,19 +23,24 @@ class ReadElement(object):
         self.element_list = self.xlsEngine.readsheet(public.element_sheet)
         
     def find_element(self,element_list=[]):
+        '''
+        :desc:excel 元素表中查找元素
+        :param element_list:
+        :return:
+        '''
         logger.debug('element_list : %s' % element_list)
         if self.platformName.lower() == 'ios':
-            operate_type = element_list[4]
-            operate_value = element_list[5]
-            operate_index = element_list[6]
+            operate_type = element_list[4] #操作类型
+            operate_value = element_list[5] #操作值
+            operate_index = element_list[6] #索引
             logger.debug('operate_type: %s' % operate_type)
             logger.debug('operate_value: %s' % operate_value)
             logger.debug('operate_index: %s' % operate_index)
             
         elif self.platformName.lower() == 'android':
-            operate_type = element_list[1]
-            operate_value = element_list[2]
-            operate_index = element_list[3]
+            operate_type = element_list[1] #操作类型
+            operate_value = element_list[2] #操作值
+            operate_index = element_list[3] #索引
         else:
             logger.warning('暂不支持的平台')
         elementEngine = FindElementBy.FindElementBy(str(operate_type), str(operate_value), str(operate_index))
@@ -56,8 +61,7 @@ class ReadElement(object):
             if element_text == row_list[0]:
                 logger.debug('元素表中存在此元素: %s' % element_text)
                 return row_list
-            # else:
-            #     logger.warning('元素表中不存在此元素: %s' % element_text)
+           
                 
     
 

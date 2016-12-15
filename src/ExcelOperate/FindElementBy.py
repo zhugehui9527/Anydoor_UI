@@ -3,12 +3,12 @@
 #filename:FindElementBy.py
 #author:Jeff
 #date:2016-9
-#function:
+#function: 查找元素相关功能与封装
 #######################################################
 
-from src.Element import Element
 from src.Public.Common import element_by
 from src.Public.Global import L
+from src.lib.Element import Element
 
 logger =L.logger
 #读取元素表,拼接并返回element对象

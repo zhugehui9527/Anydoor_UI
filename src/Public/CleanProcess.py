@@ -8,7 +8,8 @@ __author__ = 'Jeff'
 import platform
 import subprocess
 
-from src.Public.Global import logger
+from src.Public.Global import L
+logger = L.logger
 
 
 class Cp(object):

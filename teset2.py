@@ -3,8 +3,8 @@
 import os
 
 from conf.Run_conf import read_config
-from src.Public import ExcelRW
 from src.Public.Common import public
+from src.lib import ExcelRW
 
 # '''
 xls_file_path = read_config('testcase', 'xls_case_path')

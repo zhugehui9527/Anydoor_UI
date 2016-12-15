@@ -10,9 +10,11 @@
 # from src.Global import logger
 # from src.appOperate import AppOperatef
 # from src.CaseEngine import ElementEngine
-from conf.Run_conf import read_config
-from src.Public import ExcelRW
 import os
+
+from conf.Run_conf import read_config
+from src.lib import ExcelRW
+
 PATH = lambda p: os.path.abspath(
     os.path.join(os.path.dirname(__file__), p)
 )
