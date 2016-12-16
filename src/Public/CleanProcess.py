@@ -11,7 +11,6 @@ import subprocess
 from src.Public.Global import L
 logger = L.logger
 
-
 class Cp(object):
 	
     def cmd(self,cmd):

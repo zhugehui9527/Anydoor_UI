@@ -2,7 +2,6 @@
 import os
 import time
 import unittest
-
 from conf.Run_conf import read_config
 from src.ExcelOperate.ReadApi import ReadApi
 from src.Public.Common import operate_api

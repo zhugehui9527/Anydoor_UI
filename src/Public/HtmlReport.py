@@ -12,7 +12,6 @@ import sys
 import time
 import requests
 from src.lib.Log import LogSignleton
-
 from conf.Run_conf import read_config
 from src.Public.Common import resultStutas
 from src.lib import pyh
@@ -107,9 +106,6 @@ class HtmlReport(object):
             js2_local = './js/bootstrap.min.js'
             page.addJS(js2_local)
         
-        # page.addCSS('https://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css')
-        # page.addJS('https://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js')
-        # page.addJS('https://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js')
         page << pyh.h1(report_header, align='middle') #标题居中
         # page << pyh.p(u'报告生成时间：'.encode('gbk') + str(self.current_time))
         page << pyh.h3('Environment', align='left')  # 标题居左
@@ -157,7 +153,7 @@ class HtmlReport(object):
         # print resultlist
         for testcase_list in self.testcase_result:
             testcase_id = str(self.testcase_result.index(testcase_list))
-            print 'testcase_id = ',testcase_id
+            # print 'testcase_id = ',testcase_id
             testresult = testcase_list[1]
             testcase_name = testcase_list[0]
             testcase_duration = str(testcase_list[2])
@@ -168,7 +164,7 @@ class HtmlReport(object):
             start_filter = '测试用例:{} ,执行开始'.format(testcase_name)
             # print 'start_filter = %s' % start_filter
             end_filter = '测试用例:{} ,执行结束'.format(testcase_name)
-           
+        
             LogSignleton.get_filter_log(testcase_name,start_filter,end_filter)
 
             if 'PASS' == testresult:
