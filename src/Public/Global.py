@@ -7,9 +7,10 @@
 #######################################################
 
 class D:
-	from src.lib.driver import MyDriver
+	from src.lib.Driver import MyDriver
 	driver = MyDriver.get_driver()
-
+	# from src.lib.Driver import Driver
+	# driver =
 class L:
 	from src.lib.Log import LogSignleton
 	logsignleton = LogSignleton()

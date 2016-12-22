@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 #######################################################
-#filename:self.driver.py
+#filename:self.Driver.py
 #author:Jeff
 #date:2016-09-21
 #function:对日志进行操作处理
@@ -34,23 +34,29 @@ class Anydoor_UI(unittest.TestCase):
         teardown class
         :return:
         '''
-        cls.driver.close_app()
-        cls.driver.quit()
+        # cls.driver.close_app()
+        # cls.driver.quit()
         logger.debug('测试用例执行完成,退出服务')
-
 
     # """
     def test_A1(self):
         '''用例名称:宿主一账通H5登录'''
-        logger.debug('向右滑动,进入个人中心')
-        self.driver.swipe_right()
-        logger.debug('H5页面进行账密登录')
-        self.appOperate.loginByH5(self.username, self.password)
-        loginResult = self.appOperate.wait_for_text(30,'我的订单')
-        self.appOperate.closeH5()
-        self.driver.swipe_left()
-        self.assertTrue(loginResult, '登陆成功')
-
+       
+        try:
+            logger.debug('向右滑动,进入个人中心')
+            self.driver.swipe_right()
+            logger.debug('H5页面进行账密登录')
+            self.appOperate.loginByH5(self.username, self.password)
+            
+            # logger.debug('当前上下文:%s' % self.driver.current_context())
+            assert_text = '我的订单'
+            self.assertTrue(self.appOperate.wait_for_text(30,assert_text),'断言失败:未找到 [ %s ] 返回False' % assert_text)
+            # self.assertTrue(self.driver.find_element('我的订单',35),'断言:找到 [我的订单] 返回False')
+        finally:
+            self.appOperate.closeH5()
+            self.driver.swipe_left()
+        
+    # """
     def test_A2(self):
         '''用例名称:获取插件列表'''
         self.appOperate.getPluginList()
@@ -173,10 +179,10 @@ class Anydoor_UI(unittest.TestCase):
         self.assertTrue(self.appOperate.check_plugin(pluginId, '获取验证码'), '插件: %s 断言失败' % pluginId)
     
     def test_B71(self):
-        '''用例名称: 检查插件,插件名称: 明星理财,插件ID: PA02100000000_02_KY,插件断言: 立即投资'''
+        '''用例名称: 检查插件,插件名称: 明星理财,插件ID: PA02100000000_02_KY,插件断言: 产品名称'''
         pluginId = 'PA02100000000_02_KY'
         logger.debug('遍历插件,插件ID: %s' % pluginId)
-        self.assertTrue(self.appOperate.check_plugin(pluginId, '立即投资'), '插件: %s 断言失败' % pluginId)
+        self.assertTrue(self.appOperate.check_plugin(pluginId, '产品名称'), '插件: %s 断言失败' % pluginId)
         #self.appOperate.closeH5_byPluginId(pluginId)
 
     #------------ 下一页 ----------------
@@ -382,19 +388,25 @@ class Anydoor_UI(unittest.TestCase):
     #     '''用例名称: 检查插件,插件名称: 平安地图,插件ID: PA01100000000_02_PAZB ,插件断言: mapSelected '''
     #     pluginId = 'PA01100000000_02_PAZB'
     #     logger.debug('遍历插件,插件ID: %s' % pluginId)
-    #     self.assertTrue(self.appOperate.check_plugin(pluginId, 'mapSelected'),'插件: %s 断言失败' % pluginId)
+    #     self.assertTrue(self.appOperate.check_plugin(pluginId, '加油站'),'插件: %s 断言失败' % pluginId)
     #
     # def test_E1(self):
     #     '''用例名称: 不存在的插件ID,测试用例失败专用 '''
-    #     pluginId = 'PA00500000000_02_1GPZH'
+    #     pluginId = 'PA02100000000_02_PAYD'
     #     logger.debug('遍历插件,插件ID: %s' % pluginId)
-    #     self.assertTrue(self.appOperate.check_plugin(pluginId, '专家观点'), '插件: %s 断言失败' % pluginId)
+    #     self.assertTrue(self.appOperate.check_plugin(pluginId, '小额消费贷款'), '插件: %s 断言失败' % pluginId)
     #
     # def test_E2(self):
     #     '''用例名称: 存在的插件ID,不存在的断言,测试用例失败专用 '''
+    #     pluginId = 'PA02500000000_02_BZB'
+    #     logger.debug('遍历插件,插件ID: %s' % pluginId)
+    #     self.assertTrue(self.appOperate.check_plugin(pluginId, '热销基金'), '插件: %s 断言失败' % pluginId)
+    #
+    # def test_E3(self):
+    #     '''用例名称: 存在的插件ID,不存在的断言,测试用例失败专用 '''
     #     pluginId = 'PA00500000000_02_GPZH'
     #     logger.debug('遍历插件,插件ID: %s' % pluginId)
-    #     self.assertTrue(self.appOperate.check_plugin(pluginId, '专家2观点'), '插件: %s 断言失败' % pluginId)
+    #     self.assertTrue(self.appOperate.check_plugin(pluginId, '股市有风险，投资需谨慎'), '插件: %s 断言失败' % pluginId)
 
 if __name__=='__main__':
     unittest.main()

@@ -62,11 +62,11 @@ class HtmlReport(object):
     
     def read_filter_log(self,casename):
         filter_log_path = read_config('testcase','project_path')+'/output/html/filter/{}.log'.format(casename).encode('utf-8')
-        print filter_log_path
+        # print filter_log_path
         try:
             with open(filter_log_path) as f:
                 text =  f.read()
-                return text
+                return str(text)
         except Exception as e:
             print e
         
@@ -106,7 +106,7 @@ class HtmlReport(object):
             js2_local = './js/bootstrap.min.js'
             page.addJS(js2_local)
         
-        page << pyh.h1(report_header, align='middle') #标题居中
+        page << pyh.h1((unicode(report_header)).encode('gbk'), align='middle') #标题居中
         # page << pyh.p(u'报告生成时间：'.encode('gbk') + str(self.current_time))
         page << pyh.h3('Environment', align='left')  # 标题居左
         tab2 = get_tab()
@@ -132,12 +132,14 @@ class HtmlReport(object):
                        pyh.td(u'测试用例总数'.encode('gbk'), bgcolor='#E6E6FA', align='middle') +
                        pyh.td(u'成功用例数'.encode('gbk'), bgcolor='#E6E6FA', align='middle') +
                        pyh.td(u'失败用例数'.encode('gbk'), bgcolor='#E6E6FA', align='middle') +
-                       pyh.td(u'报错用例数'.encode('gbk'), bgcolor='#E6E6FA', align='middle'))
+                       pyh.td(u'报错用例数'.encode('gbk'), bgcolor='#E6E6FA', align='middle') +
+                       pyh.td(u'重跑用例数'.encode('gbk'), bgcolor='#E6E6FA', align='middle'))
 
         tab1 << pyh.tr(pyh.td(str(self.time_took), align='middle') +
                        pyh.td(str(self.case_total), align='middle') +
                        pyh.td(str(self.success_num), align='middle') +
                        pyh.td(str(self.fail_num), align='middle') +
+                       pyh.td(str(self.error_num), align='middle')+
                        pyh.td(str(self.error_num), align='middle'))
         
         page << pyh.h3('Results', align='left')  # 标题居左
@@ -387,8 +389,8 @@ if __name__ == '__main__':
     path = '/Users/zengyuanchen/Documents/SVN/ShareFromCloud/share/Project/Anydoor_UI/output/html/report.html'
     tcHtmlReport.set_result_filename(path)
 
-    testcase_result =[['登录_1000', 'PASS','2016-11-1'], ['获取插件列表','FAIL','2016-11-2'], ['检查插件:PA01100000000_02_PAZB', 'ERROR','2016-11-3']]
+    testcase_result =[['登录_1000', 'PASS','2016-11-1'], ['检查插件:PA02100000001_02_JF','FAIL','2016-11-2'], ['检查插件:PA01100000000_02_PAZB', 'ERROR','2016-11-3']]
 
     tcHtmlReport.set_testcase_result(testcase_result)
     tcHtmlReport.set_run_time(123)
-    tcHtmlReport.generate_html('测试报告'.encode('gbk'))
+    tcHtmlReport.generate_html('测试报告')

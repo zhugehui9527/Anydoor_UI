@@ -43,7 +43,7 @@ class RunExcelCase(unittest.TestCase):
 	@classmethod
 	def setup_class(cls):
 		cls.driver = Element()
-		
+
 	@classmethod
 	def teardown_class(cls):
 		cls.driver.quit()
@@ -153,7 +153,9 @@ class RunExcelCase(unittest.TestCase):
 				logger.warning('case_list 为空')
 		case_cost_time = time.time() - case_start_time
 		case_cost_time =round(case_cost_time,3)
+		retry_flag = False
 		case_list.append(case_cost_time)
+		case_list.append(retry_flag)
 		# 判断result列表最后一个元素是否是当前的测试用例,如果是当前用例则更新原用例的结果,如果不是,则添加新结果
 		if result:
 			if result[-1][0] == case_list[0]:
@@ -179,7 +181,7 @@ def get_html_report():
 	tcHtmlReport.set_result_filename(htmlreport_path)
 	tcHtmlReport.set_testcase_result(result)
 	tcHtmlReport.set_run_time(end_time - start_time)
-	tcHtmlReport.generate_html(u'测试报告')
+	tcHtmlReport.generate_html('测试报告')
 	
 def get_test_suite(case_list):
 	test_suite = unittest.TestSuite()
@@ -194,7 +196,7 @@ def Run_Case(runner):
 		test_suite = get_test_suite(case_list)
 		runner.run(test_suite)
 	# driver退出
-	# RunExcelCase.teardown_class()
+	RunExcelCase.teardown_class()
 	logger.debug('所有用例的结果: %s' % result)
 	get_html_report()
 

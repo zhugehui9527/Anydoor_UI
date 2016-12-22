@@ -7,9 +7,9 @@ __author__ = 'Jeff'
 """
 import platform
 import subprocess
-
-from src.Public.Global import L
-logger = L.logger
+#
+# from src.Public.Global import L
+# logger = L.logger
 
 class Cp(object):
 	
@@ -21,11 +21,11 @@ class Cp(object):
             "lsof -i tcp:%s | grep node|awk '{print $2}'" %
                 str(port)).stdout.readlines():
             self.cmd('kill -9 %s' % line.strip())
-            logger.debug('CleanProcess:Darwin:kill appium')
+            # logger.debug('CleanProcess:Darwin:kill appium')
         for line in self.cmd(
                 "ps -A | grep logcat | grep %s" % device).stdout.readlines():
             self.cmd('kill -9 %s' % line.strip())
-            logger.debug('CleanProcess:Darwin:kill logcat')
+            # logger.debug('CleanProcess:Darwin:kill logcat')
 
     def __linux(self, port, device):
         # linux必须最高权限才可获取到端口
@@ -33,12 +33,12 @@ class Cp(object):
             "lsof -i:%s |awk '{print $2}'" %
                 str(port)).stdout.readlines():
             self.cmd('kill -9 %s' % line.strip())
-            logger.debug('CleanProcess:linux:kill appium')
+            # logger.debug('CleanProcess:linux:kill appium')
         for line in self.cmd(
             "ps -ef | grep logcat | grep %s|awk '{print $2}'" %
                 device).stdout.readlines():
             self.cmd('kill -9 %s' % line.strip())
-            logger.debug('CleanProcess:linux:kill logcat')
+            # logger.debug('CleanProcess:linux:kill logcat')
 
     def __darwin_all(self, ):
         # for line in self.cmd(
@@ -49,21 +49,23 @@ class Cp(object):
         lines = self.cmd("ps -A | grep appium|awk '{print $1}'").stdout.readline()
         lines_list.append(lines)
         if len(lines_list) !=0:
-            logger.debug('appium 相关进程列表 = %s ' % lines_list)
+            print "appium 相关进程列表 = %s " %lines_list
+            # logger.debug('appium 相关进程列表 = %s ' % lines_list)
             for line in lines_list:
                 self.cmd('kill -9 %s' % line)
-                logger.debug('CleanProcess:Darwin:kill appium')
+                print 'CleanProcess:Darwin:kill appium'
+                # logger.debug('CleanProcess:Darwin:kill appium')
 
     def __linux_all(self):
         for line in self.cmd(
                 "ps -ef | grep logcat|grep -v grep|awk '{print $2}'").stdout.readlines():
             self.cmd('kill -9 %s' % line.strip())
-            logger.debug('CleanProcess:linux:kill logcat')
+            # logger.debug('CleanProcess:linux:kill logcat')
 
         for line in self.cmd(
                 "ps -ef |grep appium |grep -v grep|awk '{print $2}'").stdout.readlines():
             self.cmd('kill -9 %s' % line.strip())
-            logger.debug('CleanProcess:linux:kill appium')
+            # logger.debug('CleanProcess:linux:kill appium')
 
     def __windows(self):
         # todo windows未完成
@@ -84,8 +86,9 @@ class Cp(object):
         elif platform.system() == 'Linux':
             self.__linux(port, device)
         else:
-            logger.debug(
-                'CleanProcess:Not identifying your operating system')
+            print 'CleanProcess:Not identifying your operating system'
+            # logger.debug(
+            #     'CleanProcess:Not identifying your operating system')
 
     def clean_process_all(self, ):
         """
@@ -97,8 +100,9 @@ class Cp(object):
         elif platform.system() == 'Linux':
             self.__linux_all()
         else:
-            logger.debug(
-                'CleanProcess:Not identifying your operating system')
+            'CleanProcess:Not identifying your operating system'
+            # logger.debug(
+            #     'CleanProcess:Not identifying your operating system')
 
 
 if __name__ == '__main__':

@@ -45,13 +45,31 @@ class element_by(object):
 	by_name = 'name'
 	by_classname = 'classname'
 
+
 class public(object):
 	time2wait = 20
 	element_sheet = u'元素表'
 	public_case_sheet =u'公共案例库'
 	case_sheet = u'Sheet1'
 	
-
+	
+class desired_caps:
+	deviceName = 'deviceName'
+	bundleId = 'bundleId'
+	platformName = 'platformName'
+	platformVersion = 'platformVersion'
+	package = 'package'
+	activity= 'activity'
+	autoAcceptAlerts = 'autoAcceptAlerts'
+	noReset = 'noReset'
+	automationName = 'automationName'
+	unicodeKeyboard = 'unicodeKeyboard'
+	resetKeyboard = 'resetKeyboard'
+	autoWebview = 'autoWebview'
+	app = 'app'
+	
+	
+'''
 class element_by_excel(object):
 	element_sheet_name =u'元素表'
 	msgCenter = u'消息中心'
@@ -71,4 +89,4 @@ class element_by_excel(object):
 	loginPassword_low = u'低门槛账密登陆页面密码'
 	login_low_button =u'低门槛账密登陆页面登录按钮'
 
-
+'''
