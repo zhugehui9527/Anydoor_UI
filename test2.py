@@ -1,10 +1,13 @@
 # -*- coding:utf-8 -*-
 from conf.Run_conf import read_config
 
-isMonitor = read_config('appium', 'isMonitor')
-tt =  eval(isMonitor)
-print tt,type(tt)
-
+project_path = read_config('testcase', 'project_path')
+print project_path
+project_path = read_config('testcase','project_path')
+udid = 'udid'
+casename = 'casename'
+log_filter_path = project_path + '/output/{}/html/filter/{}.log'.format(udid,casename)
+print log_filter_path
 # import sys
 # print sys.platform
 # str1 = '(10.2)'

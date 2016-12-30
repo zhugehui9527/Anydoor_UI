@@ -9,36 +9,16 @@ import json
 import requests
 import os, time
 from conf.Run_conf import read_config
-from multiprocessing import Pool
 from src.lib.Utils import Utils
 
 class AppiumServer(object):
 	def __init__(self):
 		self.serverIp = read_config('appium', 'ip')
 		self.serverport = int(read_config('appium', 'port'))
+		self.Get_Android = 'adb devices'
+		self.Get_iOS = 'instruments -s devices'
 		self.utils = Utils()
-	
-	def pool_run(self):
-		'''
-		线程池启动多线程
-		:return:
-		'''
-		# result = []
-		devices = self.utils.get_device()
-		# print devices
-		count = len(devices)
-		
-		pool = Pool(processes=count)
-		pool_list = self.get_port(count)
-		# 启动多个服务
-		for i in range(count):
-			self.start_server(devices[i],pool_list[i])
-			# pool.apply_async(self.start_server, args=(devices[i], pool_list[i]))
-		pool.close()
-		pool.join()
-		# for res in result:
-		# 	print 'pool 运行结果: ' + str(res)
-	
+
 	def start_server(self, device, Port):
 		'''
 		启动appium服务
@@ -51,7 +31,9 @@ class AppiumServer(object):
 			try:
 				# 启动appium服务
 				cmd_str = 'appium -a {} -p {} -U {}'.format(self.serverIp,Port,device['udid'])
-				print '启动命令: ' + cmd_str
+				print '*' * 80
+				print '* [', __name__, '::', self.start_server.__name__, '] :','*  启动appium命令: ' + cmd_str
+				print '*' * 80
 				self.utils.cmd_subprocess(cmd_str)
 				time.sleep(10)
 				i = 0
@@ -62,15 +44,12 @@ class AppiumServer(object):
 					if i > 300:
 						break
 			except Exception as e:
+				print 'device 中 未找到 [ udid ]'
 				raise e
 		else:
 			print '端口: %d 已正常启动' % Port
+
 		
-	def run_server(self,device,port):
-		self.start_server(device,port)
-		from src.lib.Driver import Driver
-		D = Driver(device,port)
-		driver = D.get_driver()
 		
 	def is_using(self, port):
 		'''
@@ -113,7 +92,9 @@ class AppiumServer(object):
 			# response = urllib.request.urlopen(url, timeout=5)
 			response = requests.get(url)
 			response_dict = json.loads(response.text)
-			print '启动服务响应: ', response_dict
+			# print '*' * 80
+			print '* [', __name__, '::', self.start_server.__name__, '] :','启动服务响应: ', response_dict
+			print '*' * 80
 			# logger.debug('响应信息: %s' % response_dict)
 			if response_dict['status'] == 0:
 				return True
@@ -124,6 +105,72 @@ class AppiumServer(object):
 		finally:
 			if response:
 				response.close()
+	
+	def get_device(self):
+		'''
+		获取真实设备列表
+		:param deviceName:
+		:param deviceType:
+		:return:
+		'''
+		# 存储设备信息
+		device = []
+		iOS = {}
+		Android = {}
+		iOS_Monitor = {}
+		# value_ios = os.popen(self.Get_iOS)
+		isMonitor = eval(read_config('appium', 'isMonitor'))
+		# 获取模拟器设备列表
+		if isMonitor:
+			deviceName = read_config('appium', 'deviceName')
+			platformVersion = read_config('appium', 'platformVersion')
+			iOS_Monitor['deviceName'] = deviceName
+			iOS_Monitor['platformVersion'] = platformVersion
+			for dev in os.popen(self.Get_iOS):
+				dev_value = dev.split()
+				if dev.rfind(deviceName) == -1:
+					continue
+				if dev.rfind(platformVersion) == -1:
+					continue
+				iOS_Monitor['udid'] = dev_value[3][1:-1]
+				iOS_Monitor['platformName'] = 'iOS'
+			device.append(iOS_Monitor)
+		else:
+			pass
+		# 是否运行真机
+		isRealDevice = eval(read_config('appium', 'isRealDevice'))
+		if isRealDevice:
+			# 获取iOS真实设备列表
+			for dev in os.popen(self.Get_iOS):
+				dev_value = dev.split()
+				if dev.rfind('Simulator') != -1:
+					continue
+				if dev.rfind('(') == -1:
+					continue
+				# iOS['platformName'] = read_config('appium', 'platformName')
+				# iOS['bundleId'] = read_config('appium','bundleId')
+				iOS['deviceName'] = dev_value[0]
+				iOS['platformVersion'] = str(eval(dev_value[1], {}))
+				# [ae679a86542a57c31e57a1d66351c87570c9bac7] 进行分片[1:-1]
+				iOS['udid'] = dev_value[2][1:-1]
+				iOS['platformName'] = 'iOS'
+				device.append(iOS)
+			# print iOS
+			
+			# 命令获取Android设备列表
+			for dev in os.popen(self.Get_Android):
+				dev_value = dev.split()
+				if len(dev_value) == 0:
+					continue
+				if dev_value[0].startswith('List'):
+					continue
+				Android['udid'] = dev_value[0]
+				Android['deviceName'] = dev_value[1]
+				Android['platformName'] = 'Android'
+				device.append(Android)
+		else:
+			pass
+		return device
 
 
 if __name__ == '__main__':
@@ -133,6 +180,6 @@ if __name__ == '__main__':
 	appiumserver = AppiumServer()
 	# appiumserver.start_server(device,port)
 	# print appiumserver.get_port(2)
-	appiumserver.start_server(device, port)
+	print appiumserver.get_device()
 	# appiumserver.pool_run()
 	print '*' * 40

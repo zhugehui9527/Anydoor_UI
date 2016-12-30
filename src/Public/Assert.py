@@ -9,9 +9,9 @@ import unittest
 from src.lib.Element import Element
 from conf.Run_conf import read_config
 class AssertExcel(unittest.TestCase):
-    def __init__(self):
+    def __init__(self,driver):
         super(AssertExcel,self).__init__()
-        self.driver = Element()
+        self.driver = Element(driver)
         self.screenshot_path =read_config('screenshot','screen_shot_path')
         self.screen_shot_isTrue = bool(read_config('testcase', 'screen_shot_isTrue'))
     

@@ -21,56 +21,37 @@
 | Parameter         | 入参                  |            |     否      | 
 
 * api解释(api主要封装在ReadApi)
-| Action_Keyword | 解释     | 所有字段                                     | 配合字段                                     | 辅助配合字段    |
-| -----------    | ----    | ---------------------------------------- | ---------------------------------------- | --------- |
-| click          | 点击     | click                                    | test_control_type，test_control           | /         |
-| send_keys      | 发送文本 | send_keys                                | test_control_type，test_control，test_text | /         |
-| swipe          | 滑动     | swipe_left,swipe_right,swipe_up,swipe_down | /                                        | /         |
-| assert         | 断言     | assert                                   | test_control_type，test_control，test_text | test_wait |
-| entity         | 实体按键 | entity_home，entity_back，entity_menu，entity_volume_up，entity_volume_down | /                                        | /         |
 
-## 完整用例范例,用例名:login
+| Action_Keyword          | 解释              |  配合字段                     | 辅助配合字段      |
+| ----------------------- | ------------------| --------------------------- | --------------- |
+| click                   | 点击              |  Element                     | ios |  android  |
+| send_keys               | 发送文本           |  Element，Parameter          | ios |  android  |
+| sleep                   | 等待               |  Parameter                  | ios |  android  |
+| assertTrue              | 断言真             |  PageObject，Parameter       | ios |  android  |
+| assertFalse             | 断言假             |  PageObject，Parameter       |     ios         |
+| assertTrueCheckPlugin   | 断言插件为真        |  PageObject，Parameter       | ios |  android  |
+| swipe2left              | 左滑动             |   /                          | ios |  android  |
+| swipe2right             | 右滑动             |   /                          | ios |  android  |
+| hidekeyboard            | 隐藏键盘           |   Parameter                  | ios |  android  |
+| waitFortext             | 智能等待           |   Element，Parameter          |     ios         |
+| checkPlugin             | 检查插件           |   Element，Parameter          |     ios         |
+| closeH5                 | 关闭H5             |   /                          |     ios         |
+| closeH5ByPluginId       | 通过插件ID关闭H5    |   Element                    | ios |  android  |
+| getScreenShot           | 截图               |   /                          |       /         |
+| getPluginList           | 获取插件列表        |   /                          |       /         |
 
-```yaml
----
--
-  test_name: 点击跳过
-  test_id: 0001
-  test_control_type: id
-  test_action: click
-  test_control: test.joko.com.myapplication:id/button1
--
-  test_name: 输入帐号名
-  test_id: 0002
-  test_control_type: id
-  test_action: send_keys
-  test_control: test.joko.com.myapplication:id/editText
-  test_text: 199999999
--
-  test_name: 输入密码
-  test_id: 0003
-  test_control_type: id
-  test_action: send_keys
-  test_control: test.joko.com.myapplication:id/editText2
-  test_text: 9999
+## 完整测试用例范例
 
--
-  test_name: 点击登录
-  test_id: 0004
-  test_control_type: xpath
-  test_action: click
-  test_control: //android.widget.Button[contains(@text,'确定')]
+|CaseSuite（案例） |CaseID(步骤id)|Description（步骤描述）|	Action_Keyword(操作)	 |ios or android(ios或android独有操作)|Element（元素封装）	 |PageObject(页面元素)|Parameter（传入参数）
+| --------------- | ------------| ---------------------|---------------------|-----------------------------------|-------------------|-------------------|--------------------------|
+| 登录_1000	      |    1	    | 滑动打开个人中心        |公共库				 |                  /                |          /        |         /         |SwipeToClickPersonalCenter|
+| 登录_1001	      |    2	    | H5页面登录	            |公共库				 |                  /                |          /        |         /         |loginyztByH5              |
 
--
-  test_name: 向上滑动页面
-  test_id: 0005
-  test_action: swipe_up
-  test_range: 3
+## 完整公共案例库用例范例
 
--
-  test_name: 向下滑动页面
-  test_id: 0005
-  test_action: swipe_down
-  test_range: 3
-
-```
+|CaseSuite（案例） |CaseID(步骤id)|Description（步骤描述）|	Action_Keyword(操作)	 |ios or android(ios或android独有操作)|Element（元素封装）	 |PageObject(页面元素)|Parameter（传入参数）
+| --------------- | ------------| ---------------------|---------------------|-----------------------------------|-------------------|-------------------|--------------------------|
+| ClickMsgCenter  |    1	    | 向右滑动              |swipe2right			 |                  /                |          /        |         /         |         /                |
+|        /	      |    2	    | 等待文本显示（消息中心） |waitFortext		     |                  /                |     消息中心       |         /         |         30               |
+|        /	      |    3	    | 点击消息中心           |click   		     |                  /                |     消息中心       |         /         |         /                |
+|        /	      |    4	    | 延迟等待              |sleep		         |                  /                |       /           |         /         |         5                |

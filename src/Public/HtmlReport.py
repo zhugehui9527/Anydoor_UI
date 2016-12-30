@@ -14,6 +14,7 @@ import requests
 from src.lib.Log import LogSignleton
 from conf.Run_conf import read_config
 from src.Public.Common import resultStutas
+from src.Public.Global import S
 from src.lib import pyh
 
 reload(sys)
@@ -31,6 +32,7 @@ class HtmlReport(object):
         self.case_total = 0                   #运行测试用例总数
         self.logfile = ''                     #每个用例运行日志
         self.logerr = ''                      #每个用例运行错误日志
+        self.device = S.device
         # self.logpath = read_config('logger','log_file')
         
     #设置结果文件名
@@ -61,7 +63,7 @@ class HtmlReport(object):
         return self.time_took
     
     def read_filter_log(self,casename):
-        filter_log_path = read_config('testcase','project_path')+'/output/html/filter/{}.log'.format(casename).encode('utf-8')
+        filter_log_path = read_config('testcase','project_path')+'/output/{}/html/filter/{}.log'.format(self.device['udid'],casename).encode('utf-8')
         # print filter_log_path
         try:
             with open(filter_log_path) as f:
