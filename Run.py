@@ -5,66 +5,26 @@
 # date:2016-11-21
 # function:驱动Excel、脚本 测试用例
 #######################################################
-import unittest
+import unittest,autoinstall
 from conf.Run_conf import read_config
 from multiprocessing import Pool
+# from pathos import multiprocessing as mp
+import threading,os,thread
 # from RunScript import run_pytest
 from src.Public.AppiumServer import AppiumServer
+from src.Public.GetDevices import GetDevices
 from src.lib import ExcelRW
 from src.Public.Common import public
 from src.Public.Global import D,S,L
+from src.lib.Driver import Driver
+import time
+
 # from src.lib.Utils import utils
 xls_file_path = read_config('testcase', 'xls_case_path')
 xlsEngine = ExcelRW.XlsEngine(xls_file_path)
 xlsEngine.open()  # 打开excel
 case_sheet1 = xlsEngine.readsheet(public.case_sheet)
-appium_server = AppiumServer()
 
-def run(device, port):
-	'''
-	:param device: dict
-	:param port: int
-	:return:
-	'''
-	# 启动appium 服务
-	appium_server.start_server(device, port)
-	from src.lib.Driver import Driver
-	# 实例化Dirver
-	Dr = Driver(device, port)
-	Dr.init() #初始化driver
-	# 获取driver
-	driver = Dr.start_driver()
-	D.set_driver(driver)
-
-	# 运行不同模式的测试用例
-	run_mode()
-	
-def pool_run():
-	'''
-	线程池启动多线程
-	:return:
-	'''
-	# result = []
-	devices = appium_server.get_device()
-	# print devices
-	count = len(devices)
-	
-	pool = Pool(processes=count)
-	pool_list = appium_server.get_port(count)
-	# 启动多个服务
-	for i in range(count):
-		S.set_device(devices[i])
-		print 'devices = ',devices[i]['udid']
-		from src.lib.Log import LogSignleton
-		logsignleton = LogSignleton()
-		logger = logsignleton.logger
-		L.set_logger(logger)
-		
-		run(devices[i], pool_list[i])
-	# pool.apply_async(self.start_server, args=(devices[i], pool_list[i]))
-	pool.close()
-	pool.join()
-	
 def run_mode():
 	'''
 	runmod 选择运行模式,1:运行excel用例,0:运行脚本用例
@@ -73,17 +33,20 @@ def run_mode():
 	runmod = str(read_config('runmode','mode'))
 	if runmod == '1':
 		# print '*' * 80
-		print '* [',__name__,'::',run_mode.__name__,'] :',' 运行 Excel 测试用例 '
+		print time.ctime(),' [',__name__,'::',run_mode.__name__,'] :',' 运行 Excel 测试用例 '
 		print '*' * 80
 		#驱动测试
-		runner = unittest.TextTestRunner(verbosity=2)
+		runner = unittest.TextTestRunner()
 		__Run_Case(runner)
+		
 	elif runmod == '0':
 		# print '*' * 80
-		print '* [', __name__, '::', run_mode.__name__, '] :', ' 运行 Script 测试用例 '
+		print time.ctime(),' [', __name__, '::', run_mode.__name__, '] :', ' 运行 Script 测试用例 '
 		print '*' * 80
 		import RunScript
 		RunScript.run_pytest()
+	else:
+		pass
 		
 def clean_process():
 	'''
@@ -102,8 +65,9 @@ def __get_test_suite(case_list):
 	:param case_list:
 	:return:
 	'''
+	# print time.ctime(), ' [', __name__, '::', __get_test_suite.__name__, '] :', ' 获取suite '
+	print '*' * 80
 	test_suite = unittest.TestSuite()
-	
 	run_excel_case = RunExcel.RunExcelCase(case_list, "function")
 	test_suite.addTest(run_excel_case)
 	return test_suite
@@ -114,16 +78,78 @@ def __Run_Case(runner):
 	:param runner:
 	:return:
 	'''
+	# print time.ctime(), ' [', __name__, '::', __Run_Case.__name__, '] :', ' 开始进行用例遍历 '
+	print '*' * 80
 	# 循环遍历测试用例列表
 	for case_list in case_sheet1[1:]:
+		#判断是否是独有操作,如果不是对应平台的独有操作就跳过循环
+		if str(case_list[4]).lower() != str(S.device['platformName']).lower() and len(case_list[4]) !=0:
+			continue
 		test_suite = __get_test_suite(case_list)
 		runner.run(test_suite)
-	# 退出服务
-	# D.driver.quit()
+	
+	D.driver.close_app() # 退出app
+	D.driver.quit() # 退出服务
 	# 生成测试报告
 	RunExcel.get_html_report()
 
-#执行 - 结束进程
-pool_run()
-clean_process()
+def Run_one(device,port):
+	print 'Run task %s (%s) at %s' % (str(port), os.getpid(), time.ctime())
+	S.set_device(device)
+	
+	from src.lib.Log import LogSignleton
+	logsignleton = LogSignleton(device)
+	logger = logsignleton.logger
+	L.set_logger(logger)
+	print '*' * 80
+	# print time.ctime(),' [', __name__, '::', Run_one.__name__, '] :', ' logger =  ', logger
+	
+	# 启动appium 服务
+	A = AppiumServer()
+	A.start_server(device, port)
+	
+	print '*' * 80
+	# print time.ctime(), ' [', __name__, '::', Run_one.__name__, '] :', ' device =  ', device
+	# 实例化Dirver
+	Dr = Driver(device, port)
+	Dr.init()  # 初始化driver
+	driver = Dr.getDriver()
+	D.set_driver(driver)
+	print '*' * 80
+	# print time.ctime(),' [', __name__, '::', Run_one.__name__, '] :', ' driver =  ', driver
 
+	# # 生成runner
+	# runner = unittest.TextTestRunner()
+	# # 循环遍历测试用例列表
+	# for case_list in case_sheet1[1:]:
+	# 	test_suite = __get_test_suite(case_list)
+	# 	runner.run(test_suite)
+	#
+	# # 生成测试报告
+	# RunExcel.get_html_report()
+	
+	run_mode() # 运行模式
+
+if __name__ == '__main__':
+	G = GetDevices()
+	devices = G.get_device()
+	count = len(devices)
+	ports = G.get_port(count)
+	print '设备数: ',count,' 端口列表: ',ports
+	print 'Run task pid: (%s) at: %s' % ( os.getpid(), time.ctime())
+	print '*'*80
+	p = Pool(processes=count) # set the processes max number 3
+	
+	# 多线程并发
+	for i in range(count):
+		result = p.apply_async(Run_one,(devices[i],ports[i],))
+	
+	p.close()
+	p.join()
+	if result.successful():
+		print '并发执行成功'
+	clean_process()
+	print 'All finished'
+	
+	
+	

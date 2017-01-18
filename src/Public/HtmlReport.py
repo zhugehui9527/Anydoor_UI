@@ -33,6 +33,7 @@ class HtmlReport(object):
         self.logfile = ''                     #每个用例运行日志
         self.logerr = ''                      #每个用例运行错误日志
         self.device = S.device
+        # self.device = '32E6D124-29B6-48A2-9B38-0A9D54121E10'
         # self.logpath = read_config('logger','log_file')
         
     #设置结果文件名
@@ -63,12 +64,12 @@ class HtmlReport(object):
         return self.time_took
     
     def read_filter_log(self,casename):
-        filter_log_path = read_config('testcase','project_path')+'/output/{}/html/filter/{}.log'.format(self.device['udid'],casename).encode('utf-8')
+        filter_log_path = read_config('testcase','project_path')+'/output/{}/html/filter/{}.log'.format(self.device['udid'],casename)
         # print filter_log_path
         try:
             with open(filter_log_path) as f:
                 text =  f.read()
-                return str(text)
+                return text
         except Exception as e:
             print e
         
@@ -161,16 +162,19 @@ class HtmlReport(object):
             testresult = testcase_list[1]
             testcase_name = testcase_list[0]
             testcase_duration = str(testcase_list[2])
-            testcase_log = self.read_filter_log(testcase_name)
             # print 'testcase_log = %s ' % testcase_log
             testcase_log_detail =u'日志详情'
             
             start_filter = '测试用例:{} ,执行开始'.format(testcase_name)
             # print 'start_filter = %s' % start_filter
             end_filter = '测试用例:{} ,执行结束'.format(testcase_name)
-        
-            LogSignleton.get_filter_log(testcase_name,start_filter,end_filter)
-
+            try:
+                LogSignleton.get_filter_log(testcase_name,start_filter,end_filter)
+                testcase_log = self.read_filter_log(testcase_name)
+            except Exception as e:
+                print e
+            else:
+                print '日志过滤完毕!'
             if 'PASS' == testresult:
                 tab << pyh.tr(pyh.td(testcase_name.encode('gbk', 'ignore'), align='middle') +
                               pyh.td(testcase_duration.encode('gbk', 'ignore'), align='middle') +
@@ -189,7 +193,7 @@ class HtmlReport(object):
                                                                     align='left'),
                                                            
                                                      style='background-color: #70DBDB;',
-                                                     # cl='panel panel-default' #边框
+                                                     # cl='panel panel-default' # 添加按钮边框
                                                      ),
                                              id='accordion',cl='panel-group',style='margin-bottom: 0px;'),
                                      align='middle') +
@@ -213,7 +217,7 @@ class HtmlReport(object):
                                                                     align='left'),
                                                             
                                                      style='background-color: #FF6EC7;',
-                                                     # cl='panel panel-default'
+                                                     # cl='panel panel-default' # 添加按钮边框
                                                      ),
                                              id='accordion', cl='panel-group',style='margin-bottom: 0px;'),
                                      align='middle') +
@@ -237,7 +241,7 @@ class HtmlReport(object):
                                                                     align='left'),
                                                              
                                                      style='background-color: #DB7093;',
-                                                     # cl='panel panel-default'
+                                                     # cl='panel panel-default' # 添加按钮边框
                                                      ),
                                              id='accordion', cl='panel-group',style='margin-bottom: 0px;'),
                                      align='middle') +
@@ -260,7 +264,7 @@ class HtmlReport(object):
                                                                     align='left'),
                                                            
                                                      style='background-color: #FF00FF;',
-                                                     # cl='panel panel-default'
+                                                     # cl='panel panel-default' # 添加按钮边框
                                                      ),
                                              id='accordion', cl='panel-group',style='margin-bottom: 0px;'),
                                      align='middle') +
@@ -268,124 +272,7 @@ class HtmlReport(object):
                 
         # print self.filename
         page.printOut(self.filename)
-'''
-import datetime
-import StringIO
-import sys
-import time
-import unittest
-TestResult = unittest.TestResult
 
-class OutputRedirector(object):
-    """ Wrapper to redirect stdout or stderr """
-    def __init__(self, fp):
-        self.fp = fp
-
-    def write(self, s):
-        self.fp.write(s)
-
-    def writelines(self, lines):
-        self.fp.writelines(lines)
-
-    def flush(self):
-        self.fp.flush()
-
-stdout_redirector = OutputRedirector(sys.stdout)
-stderr_redirector = OutputRedirector(sys.stderr)
-
-class _TestResult(TestResult):
-    # note: _TestResult is a pure representation of results.
-    # It lacks the output and reporting ability compares to unittest._TextTestResult.
-
-    def __init__(self, verbosity=1):
-        TestResult.__init__(self)
-        self.stdout0 = None
-        self.stderr0 = None
-        self.success_count = 0
-        self.failure_count = 0
-        self.error_count = 0
-        self.verbosity = verbosity
-
-        # result is a list of result in 4 tuple
-        # (
-        #   result code (0: success; 1: fail; 2: error),
-        #   TestCase object,
-        #   Test output (byte string),
-        #   stack trace,
-        # )
-        self.result = []
-
-
-    def startTest(self, test):
-        TestResult.startTest(self, test)
-        # just one buffer for both stdout and stderr
-        self.outputBuffer = StringIO.StringIO()
-        stdout_redirector.fp = self.outputBuffer
-        stderr_redirector.fp = self.outputBuffer
-        self.stdout0 = sys.stdout
-        self.stderr0 = sys.stderr
-        sys.stdout = stdout_redirector
-        sys.stderr = stderr_redirector
-
-
-    def complete_output(self):
-        """
-        Disconnect output redirection and return buffer.
-        Safe to call multiple times.
-        """
-        if self.stdout0:
-            sys.stdout = self.stdout0
-            sys.stderr = self.stderr0
-            self.stdout0 = None
-            self.stderr0 = None
-        return self.outputBuffer.getvalue()
-
-
-    def stopTest(self, test):
-        # Usually one of addSuccess, addError or addFailure would have been called.
-        # But there are some path in unittest that would bypass this.
-        # We must disconnect stdout in stopTest(), which is guaranteed to be called.
-        self.complete_output()
-
-
-    def addSuccess(self, test):
-        self.success_count += 1
-        TestResult.addSuccess(self, test)
-        output = self.complete_output()
-        self.result.append((0, test, output, ''))
-        if self.verbosity > 1:
-            sys.stderr.write('ok ')
-            sys.stderr.write(str(test))
-            sys.stderr.write('\n')
-        else:
-            sys.stderr.write('.')
-
-    def addError(self, test, err):
-        self.error_count += 1
-        TestResult.addError(self, test, err)
-        _, _exc_str = self.errors[-1]
-        output = self.complete_output()
-        self.result.append((2, test, output, _exc_str))
-        if self.verbosity > 1:
-            sys.stderr.write('E  ')
-            sys.stderr.write(str(test))
-            sys.stderr.write('\n')
-        else:
-            sys.stderr.write('E')
-
-    def addFailure(self, test, err):
-        self.failure_count += 1
-        TestResult.addFailure(self, test, err)
-        _, _exc_str = self.failures[-1]
-        output = self.complete_output()
-        self.result.append((1, test, output, _exc_str))
-        if self.verbosity > 1:
-            sys.stderr.write('F  ')
-            sys.stderr.write(str(test))
-            sys.stderr.write('\n')
-        else:
-            sys.stderr.write('F')
-'''
 if __name__ == '__main__':
     tcHtmlReport = HtmlReport()
     path = '/Users/zengyuanchen/Documents/SVN/ShareFromCloud/share/Project/Anydoor_UI/output/html/report.html'

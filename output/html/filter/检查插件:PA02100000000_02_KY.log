@@ -1,0 +1,70 @@
+<br>2016-12-29 09:53:55,011 : RunExcel.py[line:112] [ DEBUG ] 测试用例:检查插件:PA02100000000_02_KY ,执行开始
+<br>2016-12-29 09:53:55,011 : ReadApi.py[line:34] [ DEBUG ] case_list :[u'\u68c0\u67e5\u63d2\u4ef6:PA02100000000_02_KY', 1.0, u'\u68c0\u67e5\u63d2\u4ef6', u'assertTrueCheckPlugin', u'', u'', u'PA02100000000_02_KY', u'5\u3001\u6b64\u6d3b\u52a8\u4e0e\u82f9\u679c\u516c\u53f8\u65e0\u5173\u3002']
+<br>2016-12-29 09:53:55,012 : ReadApi.py[line:57] [ DEBUG ] callApi执行中
+<br>2016-12-29 09:53:55,012 : ReadApi.py[line:78] [ DEBUG ] Action_Keyword 操作:[ assertTrueCheckPlugin ]
+<br>2016-12-29 09:53:55,012 : appOperate.py[line:176] [ DEBUG ] 开始检查插件: PA02100000000_02_KY
+<br>2016-12-29 09:53:55,012 : appOperate.py[line:349] [ DEBUG ] 开始轮询元素: PA02100000000_02_KY
+<br>2016-12-29 09:53:55,012 : Element.py[line:238] [ DEBUG ] 获取 page_source
+<br>2016-12-29 09:54:25,045 : appOperate.py[line:358] [ DEBUG ] 界面存在此元素:[ PA02100000000_02_KY ]
+<br>2016-12-29 09:54:25,046 : appOperate.py[line:178] [ DEBUG ] 找到插件:PA02100000000_02_KY ,准备点击
+<br>2016-12-29 09:54:26,774 : Element.py[line:59] [ DEBUG ] 查找id: PA02100000000_02_KY
+<br>2016-12-29 09:54:28,251 : appOperate.py[line:182] [ DEBUG ] 当前插件是否显示: False
+<br>2016-12-29 09:54:30,167 : Element.py[line:59] [ DEBUG ] 查找id: PA02100000000_02_KY
+<br>2016-12-29 09:54:33,399 : Element.py[line:59] [ DEBUG ] 查找id: PA02100000000_02_KY
+<br>2016-12-29 09:54:35,036 : appOperate.py[line:184] [ DEBUG ] 当前插件是否显示: False
+<br>2016-12-29 09:54:35,037 : appOperate.py[line:185] [ DEBUG ] 插件未显示,左滑
+<br>2016-12-29 09:54:35,037 : Element.py[line:145] [ DEBUG ] 获取当前窗口大小
+<br>2016-12-29 09:54:35,808 : Element.py[line:199] [ DEBUG ] 向左滑动,滑动起始坐标: (256,454),偏移量(-192,0)
+<br>2016-12-29 09:54:39,910 : Element.py[line:234] [ DEBUG ] 隐式等待 3 秒
+<br>2016-12-29 09:54:41,703 : Element.py[line:59] [ DEBUG ] 查找id: PA02100000000_02_KY
+<br>2016-12-29 09:54:44,926 : Element.py[line:59] [ DEBUG ] 查找id: PA02100000000_02_KY
+<br>2016-12-29 09:54:46,567 : appOperate.py[line:184] [ DEBUG ] 当前插件是否显示: False
+<br>2016-12-29 09:54:46,567 : appOperate.py[line:185] [ DEBUG ] 插件未显示,左滑
+<br>2016-12-29 09:54:46,568 : Element.py[line:145] [ DEBUG ] 获取当前窗口大小
+<br>2016-12-29 09:54:47,299 : Element.py[line:199] [ DEBUG ] 向左滑动,滑动起始坐标: (256,454),偏移量(-192,0)
+<br>2016-12-29 09:54:51,169 : Element.py[line:234] [ DEBUG ] 隐式等待 3 秒
+<br>2016-12-29 09:54:52,873 : Element.py[line:59] [ DEBUG ] 查找id: PA02100000000_02_KY
+<br>2016-12-29 09:54:56,330 : Element.py[line:59] [ DEBUG ] 查找id: PA02100000000_02_KY
+<br>2016-12-29 09:54:57,805 : appOperate.py[line:184] [ DEBUG ] 当前插件是否显示: False
+<br>2016-12-29 09:54:57,805 : appOperate.py[line:185] [ DEBUG ] 插件未显示,左滑
+<br>2016-12-29 09:54:57,805 : Element.py[line:145] [ DEBUG ] 获取当前窗口大小
+<br>2016-12-29 09:54:58,490 : Element.py[line:199] [ DEBUG ] 向左滑动,滑动起始坐标: (256,454),偏移量(-192,0)
+<br>2016-12-29 09:55:03,392 : Element.py[line:234] [ DEBUG ] 隐式等待 3 秒
+<br>2016-12-29 09:55:04,988 : Element.py[line:59] [ DEBUG ] 查找id: PA02100000000_02_KY
+<br>2016-12-29 09:55:07,562 : Element.py[line:59] [ DEBUG ] 查找id: PA02100000000_02_KY
+<br>2016-12-29 09:55:08,903 : appOperate.py[line:184] [ DEBUG ] 当前插件是否显示: False
+<br>2016-12-29 09:55:08,904 : appOperate.py[line:185] [ DEBUG ] 插件未显示,左滑
+<br>2016-12-29 09:55:08,904 : Element.py[line:145] [ DEBUG ] 获取当前窗口大小
+<br>2016-12-29 09:55:09,491 : Element.py[line:199] [ DEBUG ] 向左滑动,滑动起始坐标: (256,454),偏移量(-192,0)
+<br>2016-12-29 09:55:14,328 : Element.py[line:234] [ DEBUG ] 隐式等待 3 秒
+<br>2016-12-29 09:55:15,914 : Element.py[line:59] [ DEBUG ] 查找id: PA02100000000_02_KY
+<br>2016-12-29 09:55:17,112 : Element.py[line:145] [ DEBUG ] 获取当前窗口大小
+<br>2016-12-29 09:55:17,654 : Element.py[line:185] [ DEBUG ] 向右滑动,起始滑动坐标: (64,454),坐标偏移量(192,0)
+<br>2016-12-29 09:55:21,300 : Element.py[line:234] [ DEBUG ] 隐式等待 3 秒
+<br>2016-12-29 09:55:21,304 : Element.py[line:145] [ DEBUG ] 获取当前窗口大小
+<br>2016-12-29 09:55:21,868 : Element.py[line:185] [ DEBUG ] 向右滑动,起始滑动坐标: (64,454),坐标偏移量(192,0)
+<br>2016-12-29 09:55:26,064 : Element.py[line:234] [ DEBUG ] 隐式等待 3 秒
+<br>2016-12-29 09:55:26,069 : Element.py[line:145] [ DEBUG ] 获取当前窗口大小
+<br>2016-12-29 09:55:26,712 : Element.py[line:185] [ DEBUG ] 向右滑动,起始滑动坐标: (64,454),坐标偏移量(192,0)
+<br>2016-12-29 09:55:31,026 : Element.py[line:234] [ DEBUG ] 隐式等待 3 秒
+<br>2016-12-29 09:55:31,034 : Element.py[line:145] [ DEBUG ] 获取当前窗口大小
+<br>2016-12-29 09:55:31,808 : Element.py[line:185] [ DEBUG ] 向右滑动,起始滑动坐标: (64,454),坐标偏移量(192,0)
+<br>2016-12-29 09:55:35,934 : Element.py[line:234] [ DEBUG ] 隐式等待 3 秒
+<br>2016-12-29 09:55:35,938 : Element.py[line:145] [ DEBUG ] 获取当前窗口大小
+<br>2016-12-29 09:55:36,498 : Element.py[line:185] [ DEBUG ] 向右滑动,起始滑动坐标: (64,454),坐标偏移量(192,0)
+<br>2016-12-29 09:55:40,911 : Element.py[line:234] [ DEBUG ] 隐式等待 3 秒
+<br>2016-12-29 09:55:42,636 : Element.py[line:59] [ DEBUG ] 查找id: PA02100000000_02_KY
+<br>2016-12-29 09:55:52,515 : Element.py[line:234] [ DEBUG ] 隐式等待 10 秒
+<br>2016-12-29 09:55:52,520 : appOperate.py[line:219] [ DEBUG ] 判断插件页面,是否包含: 5、此活动与苹果公司无关。
+<br>2016-12-29 09:55:52,520 : appOperate.py[line:349] [ DEBUG ] 开始轮询元素: 5、此活动与苹果公司无关。
+<br>2016-12-29 09:55:52,520 : Element.py[line:238] [ DEBUG ] 获取 page_source
+<br>2016-12-29 09:55:56,160 : appOperate.py[line:358] [ DEBUG ] 界面存在此元素:[ 5、此活动与苹果公司无关。 ]
+<br>2016-12-29 09:55:56,160 : appOperate.py[line:221] [ DEBUG ] 插件页面中包含 5、此活动与苹果公司无关。,返回True
+<br>2016-12-29 09:55:56,160 : appOperate.py[line:236] [ DEBUG ] 关闭H5页面!
+<br>2016-12-29 09:55:56,160 : Element.py[line:234] [ DEBUG ] 隐式等待 3 秒
+<br>2016-12-29 09:55:57,042 : Element.py[line:59] [ DEBUG ] 查找id: closeButton
+<br>2016-12-29 09:55:57,982 : Element.py[line:59] [ DEBUG ] 查找id: closeButton
+<br>2016-12-29 09:55:59,759 : RunExcel.py[line:143] [ DEBUG ] ========================================================================================================================
+<br>2016-12-29 09:55:59,759 : RunExcel.py[line:145] [ DEBUG ] 当前用例:检查插件:PA02100000000_02_KY ,执行结果: PASS
+<br>2016-12-29 09:55:59,759 : RunExcel.py[line:146] [ DEBUG ] ========================================================================================================================
+<br>2016-12-29 09:55:59,759 : RunExcel.py[line:165] [ DEBUG ] 测试用例:检查插件:PA02100000000_02_KY ,执行结束

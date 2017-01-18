@@ -1,0 +1,303 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"><head><title>Test Report Page</title>
+<link href="https://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+<script src="https://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js" type="text/javascript"></script>
+<script src="https://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js" type="text/javascript"></script>
+</head>
+<body><h1 align="middle">测试报告</h1>
+<h3 align="left">Environment</h3>
+<table borderColor="#504F4F" class="table" border="1" width="90%" cellspacing="0" cellpa dding="1"><tr border-top="0"><td bgcolor="#E6E6FA" align="middle">报告生成时间</td>
+<td bgcolor="#E6E6FA" align="middle">Platform</td>
+<td bgcolor="#E6E6FA" align="middle">Python</td>
+<td bgcolor="#E6E6FA" align="middle">Appium</td>
+
+</tr>
+<tr><td align="middle">2016-12-30 11:03:13</td>
+<td align="middle">Darwin-16.3.0-x86_64-i386-64bit</td>
+<td align="middle">2.7.11</td>
+<td align="middle">1.6.3
+</td>
+
+</tr>
+</table>
+<h3 align="left">Summary</h3>
+<table borderColor="#504F4F" class="table" border="1" width="90%" cellspacing="0" cellpa dding="1"><tr><td bgcolor="#E6E6FA" align="middle">测试总耗时</td>
+<td bgcolor="#E6E6FA" align="middle">测试用例总数</td>
+<td bgcolor="#E6E6FA" align="middle">成功用例数</td>
+<td bgcolor="#E6E6FA" align="middle">失败用例数</td>
+<td bgcolor="#E6E6FA" align="middle">报错用例数</td>
+<td bgcolor="#E6E6FA" align="middle">重跑用例数</td>
+
+</tr>
+<tr><td align="middle">00:00:00</td>
+<td align="middle">7</td>
+<td align="middle">6</td>
+<td align="middle">1</td>
+<td align="middle">0</td>
+<td align="middle">0</td>
+
+</tr>
+</table>
+<h3 align="left">Results</h3>
+<table borderColor="#504F4F" class="table" border="1" width="90%" cellspacing="0" cellpa dding="1"><tr><td bgcolor="#E6E6FA" align="middle">用例名称</td>
+<td bgcolor="#E6E6FA" align="middle">运行时间(s)</td>
+<td bgcolor="#E6E6FA" align="middle">运行日志</td>
+<td bgcolor="#E6E6FA" align="middle">测试结果</td>
+
+</tr>
+<tr bgcolor="#70DBDB"><td align="middle">登录_1000</td>
+<td align="middle">14.063</td>
+<td align="middle"><div style="margin-bottom: 0px;" id="accordion" class="panel-group"><div style="background-color: #70DBDB;"><a aria-expanded="false" class="collapsed" align="middle" href="#0" data-toggle="collapse" data-parent="#accordion">日志详情</a>
+<div align="left" style="height: 0px;" aria-expanded="false" id="0" class="panel-collapse collapse"><br>2016-12-30 10:42:50,421 : RunExcel.py[line:113] [ DEBUG ] 测试用例:登录_1000 ,执行开始
+<br>2016-12-30 10:42:50,422 : RunExcel.py[line:56] [ DEBUG ] callPublicCase 执行中
+<br>2016-12-30 10:42:50,422 : RunExcel.py[line:82] [ DEBUG ] 公共案例库中存在此方法: SwipeToClickPersonalCenter
+<br>2016-12-30 10:42:50,422 : ReadApi.py[line:27] [ DEBUG ] case_list :[u'SwipeToClickPersonalCenter', 1.0, u'\u5411\u53f3\u6ed1\u52a8', u'swipe2right', u'', u'', u'', u'']
+<br>2016-12-30 10:42:50,422 : ReadApi.py[line:50] [ DEBUG ] callApi执行中
+<br>2016-12-30 10:42:50,422 : ReadApi.py[line:71] [ DEBUG ] Action_Keyword 操作:[ swipe2right ]
+<br>2016-12-30 10:42:50,422 : Element.py[line:145] [ DEBUG ] 获取当前窗口大小
+<br>2016-12-30 10:42:50,598 : Element.py[line:185] [ DEBUG ] 向右滑动,起始滑动坐标: (64,454),坐标偏移量(192,0)
+<br>2016-12-30 10:42:53,415 : ReadApi.py[line:27] [ DEBUG ] case_list :[u'', 2.0, u'\u7b49\u5f85\u6587\u672c\u663e\u793a\uff08\u4e2a\u4eba\u4e2d\u5fc3\uff09', u'waitFortext', u'', u'', u'\u4e2a\u4eba\u4e2d\u5fc3', u'30']
+<br>2016-12-30 10:42:53,415 : ReadApi.py[line:50] [ DEBUG ] callApi执行中
+<br>2016-12-30 10:42:53,415 : ReadApi.py[line:71] [ DEBUG ] Action_Keyword 操作:[ waitFortext ]
+<br>2016-12-30 10:42:53,416 : ReadApi.py[line:33] [ ERROR ] 'NoneType' object has no attribute 'debug'
+<br>2016-12-30 10:42:53,416 : RunExcel.py[line:121] [ DEBUG ] 公共案例库执行记录: [u'SwipeToClickPersonalCenter', 'PASS', 'FAIL']
+<br>2016-12-30 10:42:53,416 : RunExcel.py[line:129] [ DEBUG ] ========================================================================================================================
+<br>2016-12-30 10:42:53,416 : RunExcel.py[line:130] [ DEBUG ] 当前用例:登录_1000 ,执行结果: FAIL
+<br>2016-12-30 10:42:53,416 : RunExcel.py[line:131] [ DEBUG ] ========================================================================================================================
+<br>2016-12-30 10:42:53,416 : RunExcel.py[line:166] [ DEBUG ] 测试用例:登录_1000 ,执行结束
+<br>2016-12-30 10:42:53,416 : RunExcel.py[line:167] [ DEBUG ] 用例执行总结果: [[u'\u767b\u5f55_1000', 'FAIL', 2.994, False]]
+<br>2016-12-30 10:42:53,416 : Retry.py[line:21] [ DEBUG ] 调用函数: function
+<br>2016-12-30 10:42:53,416 : Retry.py[line:26] [ DEBUG ] 当前用例名称: 登录_1000 ,当前执行结果: FAIL
+<br>2016-12-30 10:42:53,416 : Retry.py[line:28] [ DEBUG ] 失败重跑第 【 1 】 次执行中
+<br>2016-12-30 10:42:53,417 : RunExcel.py[line:113] [ DEBUG ] 测试用例:登录_1000 ,执行开始
+<br>2016-12-30 10:42:53,417 : RunExcel.py[line:56] [ DEBUG ] callPublicCase 执行中
+<br>2016-12-30 10:42:53,417 : RunExcel.py[line:82] [ DEBUG ] 公共案例库中存在此方法: SwipeToClickPersonalCenter
+<br>2016-12-30 10:42:53,417 : ReadApi.py[line:27] [ DEBUG ] case_list :[u'SwipeToClickPersonalCenter', 1.0, u'\u5411\u53f3\u6ed1\u52a8', u'swipe2right', u'', u'', u'', u'']
+<br>2016-12-30 10:42:53,417 : ReadApi.py[line:50] [ DEBUG ] callApi执行中
+<br>2016-12-30 10:42:53,417 : ReadApi.py[line:71] [ DEBUG ] Action_Keyword 操作:[ swipe2right ]
+<br>2016-12-30 10:42:53,417 : Element.py[line:145] [ DEBUG ] 获取当前窗口大小
+<br>2016-12-30 10:42:53,543 : Element.py[line:185] [ DEBUG ] 向右滑动,起始滑动坐标: (64,454),坐标偏移量(192,0)
+<br>2016-12-30 10:42:56,238 : ReadApi.py[line:27] [ DEBUG ] case_list :[u'', 2.0, u'\u7b49\u5f85\u6587\u672c\u663e\u793a\uff08\u4e2a\u4eba\u4e2d\u5fc3\uff09', u'waitFortext', u'', u'', u'\u4e2a\u4eba\u4e2d\u5fc3', u'30']
+<br>2016-12-30 10:42:56,239 : ReadApi.py[line:50] [ DEBUG ] callApi执行中
+<br>2016-12-30 10:42:56,239 : ReadApi.py[line:71] [ DEBUG ] Action_Keyword 操作:[ waitFortext ]
+<br>2016-12-30 10:42:56,239 : ReadApi.py[line:33] [ ERROR ] 'NoneType' object has no attribute 'debug'
+<br>2016-12-30 10:42:56,239 : RunExcel.py[line:121] [ DEBUG ] 公共案例库执行记录: [u'SwipeToClickPersonalCenter', 'PASS', 'FAIL']
+<br>2016-12-30 10:42:56,239 : RunExcel.py[line:129] [ DEBUG ] ========================================================================================================================
+<br>2016-12-30 10:42:56,239 : RunExcel.py[line:130] [ DEBUG ] 当前用例:登录_1000 ,执行结果: FAIL
+<br>2016-12-30 10:42:56,240 : RunExcel.py[line:131] [ DEBUG ] ========================================================================================================================
+<br>2016-12-30 10:42:56,240 : RunExcel.py[line:166] [ DEBUG ] 测试用例:登录_1000 ,执行结束
+</div>
+
+</div>
+</div>
+</td>
+<td align="middle">PASS</td>
+
+</tr>
+<tr bgcolor="#70DBDB"><td align="middle">登录_1001</td>
+<td align="middle">53.758</td>
+<td align="middle"><div style="margin-bottom: 0px;" id="accordion" class="panel-group"><div style="background-color: #70DBDB;"><a aria-expanded="false" class="collapsed" align="middle" href="#1" data-toggle="collapse" data-parent="#accordion">日志详情</a>
+<div align="left" style="height: 0px;" aria-expanded="false" id="1" class="panel-collapse collapse"><br>2016-12-30 10:42:56,302 : RunExcel.py[line:113] [ DEBUG ] 测试用例:登录_1001 ,执行开始
+<br>2016-12-30 10:42:56,302 : RunExcel.py[line:56] [ DEBUG ] callPublicCase 执行中
+<br>2016-12-30 10:42:56,302 : RunExcel.py[line:82] [ DEBUG ] 公共案例库中存在此方法: loginyztByH5
+<br>2016-12-30 10:42:56,302 : ReadApi.py[line:27] [ DEBUG ] case_list :[u'loginyztByH5', 1.0, u'\u7b49\u5f85\u6587\u672c\u663e\u793a\uff08\u4e00\u8d26\u901a\u767b\u5f55\uff09', u'waitFortext', u'', u'', u'\u4e00\u8d26\u901a\u767b\u5f55', u'30']
+<br>2016-12-30 10:42:56,302 : ReadApi.py[line:50] [ DEBUG ] callApi执行中
+<br>2016-12-30 10:42:56,302 : ReadApi.py[line:71] [ DEBUG ] Action_Keyword 操作:[ waitFortext ]
+<br>2016-12-30 10:42:56,302 : ReadApi.py[line:33] [ ERROR ] 'NoneType' object has no attribute 'debug'
+<br>2016-12-30 10:42:56,302 : RunExcel.py[line:121] [ DEBUG ] 公共案例库执行记录: [u'loginyztByH5', 'FAIL']
+<br>2016-12-30 10:42:56,302 : RunExcel.py[line:129] [ DEBUG ] ========================================================================================================================
+<br>2016-12-30 10:42:56,302 : RunExcel.py[line:130] [ DEBUG ] 当前用例:登录_1001 ,执行结果: FAIL
+<br>2016-12-30 10:42:56,302 : RunExcel.py[line:131] [ DEBUG ] ========================================================================================================================
+<br>2016-12-30 10:42:56,302 : RunExcel.py[line:166] [ DEBUG ] 测试用例:登录_1001 ,执行结束
+<br>2016-12-30 10:42:56,303 : RunExcel.py[line:167] [ DEBUG ] 用例执行总结果: [[u'\u767b\u5f55_1000', 'FAIL', 2.823, False], [u'\u767b\u5f55_1001', 'FAIL', 0.001, False]]
+<br>2016-12-30 10:42:56,303 : Retry.py[line:21] [ DEBUG ] 调用函数: function
+<br>2016-12-30 10:42:56,303 : Retry.py[line:26] [ DEBUG ] 当前用例名称: 登录_1001 ,当前执行结果: FAIL
+<br>2016-12-30 10:42:56,303 : Retry.py[line:28] [ DEBUG ] 失败重跑第 【 1 】 次执行中
+<br>2016-12-30 10:42:56,303 : RunExcel.py[line:113] [ DEBUG ] 测试用例:登录_1001 ,执行开始
+<br>2016-12-30 10:42:56,303 : RunExcel.py[line:56] [ DEBUG ] callPublicCase 执行中
+<br>2016-12-30 10:42:56,303 : RunExcel.py[line:82] [ DEBUG ] 公共案例库中存在此方法: loginyztByH5
+<br>2016-12-30 10:42:56,303 : ReadApi.py[line:27] [ DEBUG ] case_list :[u'loginyztByH5', 1.0, u'\u7b49\u5f85\u6587\u672c\u663e\u793a\uff08\u4e00\u8d26\u901a\u767b\u5f55\uff09', u'waitFortext', u'', u'', u'\u4e00\u8d26\u901a\u767b\u5f55', u'30']
+<br>2016-12-30 10:42:56,303 : ReadApi.py[line:50] [ DEBUG ] callApi执行中
+<br>2016-12-30 10:42:56,303 : ReadApi.py[line:71] [ DEBUG ] Action_Keyword 操作:[ waitFortext ]
+<br>2016-12-30 10:42:56,303 : ReadApi.py[line:33] [ ERROR ] 'NoneType' object has no attribute 'debug'
+<br>2016-12-30 10:42:56,303 : RunExcel.py[line:121] [ DEBUG ] 公共案例库执行记录: [u'loginyztByH5', 'FAIL']
+<br>2016-12-30 10:42:56,303 : RunExcel.py[line:129] [ DEBUG ] ========================================================================================================================
+<br>2016-12-30 10:42:56,303 : RunExcel.py[line:130] [ DEBUG ] 当前用例:登录_1001 ,执行结果: FAIL
+<br>2016-12-30 10:42:56,304 : RunExcel.py[line:131] [ DEBUG ] ========================================================================================================================
+<br>2016-12-30 10:42:56,304 : RunExcel.py[line:166] [ DEBUG ] 测试用例:登录_1001 ,执行结束
+</div>
+
+</div>
+</div>
+</td>
+<td align="middle">PASS</td>
+
+</tr>
+<tr bgcolor="#70DBDB"><td align="middle">获取插件列表</td>
+<td align="middle">0.287</td>
+<td align="middle"><div style="margin-bottom: 0px;" id="accordion" class="panel-group"><div style="background-color: #70DBDB;"><a aria-expanded="false" class="collapsed" align="middle" href="#2" data-toggle="collapse" data-parent="#accordion">日志详情</a>
+<div align="left" style="height: 0px;" aria-expanded="false" id="2" class="panel-collapse collapse"><br>2016-12-30 10:42:56,364 : RunExcel.py[line:113] [ DEBUG ] 测试用例:获取插件列表 ,执行开始
+<br>2016-12-30 10:42:56,364 : ReadApi.py[line:27] [ DEBUG ] case_list :[u'\u83b7\u53d6\u63d2\u4ef6\u5217\u8868', 1.0, u'\u83b7\u53d6\u63d2\u4ef6\u5217\u8868', u'getPluginList', u'', u'', u'', u'']
+<br>2016-12-30 10:42:56,364 : ReadApi.py[line:50] [ DEBUG ] callApi执行中
+<br>2016-12-30 10:42:56,364 : ReadApi.py[line:71] [ DEBUG ] Action_Keyword 操作:[ getPluginList ]
+<br>2016-12-30 10:42:56,364 : ReadApi.py[line:33] [ ERROR ] 'NoneType' object has no attribute 'warning'
+<br>2016-12-30 10:42:56,364 : RunExcel.py[line:144] [ DEBUG ] ========================================================================================================================
+<br>2016-12-30 10:42:56,364 : RunExcel.py[line:146] [ DEBUG ] 当前用例:获取插件列表 ,执行结果: FAIL
+<br>2016-12-30 10:42:56,364 : RunExcel.py[line:147] [ DEBUG ] ========================================================================================================================
+<br>2016-12-30 10:42:56,364 : RunExcel.py[line:166] [ DEBUG ] 测试用例:获取插件列表 ,执行结束
+<br>2016-12-30 10:42:56,364 : RunExcel.py[line:167] [ DEBUG ] 用例执行总结果: [[u'\u767b\u5f55_1000', 'FAIL', 2.823, False], [u'\u767b\u5f55_1001', 'FAIL', 0.001, False], [u'\u83b7\u53d6\u63d2\u4ef6\u5217\u8868', 'FAIL', 0.001, False]]
+<br>2016-12-30 10:42:56,365 : Retry.py[line:21] [ DEBUG ] 调用函数: function
+<br>2016-12-30 10:42:56,365 : Retry.py[line:26] [ DEBUG ] 当前用例名称: 获取插件列表 ,当前执行结果: FAIL
+<br>2016-12-30 10:42:56,365 : Retry.py[line:28] [ DEBUG ] 失败重跑第 【 1 】 次执行中
+<br>2016-12-30 10:42:56,365 : RunExcel.py[line:113] [ DEBUG ] 测试用例:获取插件列表 ,执行开始
+<br>2016-12-30 10:42:56,365 : ReadApi.py[line:27] [ DEBUG ] case_list :[u'\u83b7\u53d6\u63d2\u4ef6\u5217\u8868', 1.0, u'\u83b7\u53d6\u63d2\u4ef6\u5217\u8868', u'getPluginList', u'', u'', u'', u'']
+<br>2016-12-30 10:42:56,365 : ReadApi.py[line:50] [ DEBUG ] callApi执行中
+<br>2016-12-30 10:42:56,365 : ReadApi.py[line:71] [ DEBUG ] Action_Keyword 操作:[ getPluginList ]
+<br>2016-12-30 10:42:56,365 : ReadApi.py[line:33] [ ERROR ] 'NoneType' object has no attribute 'warning'
+<br>2016-12-30 10:42:56,365 : RunExcel.py[line:144] [ DEBUG ] ========================================================================================================================
+<br>2016-12-30 10:42:56,365 : RunExcel.py[line:146] [ DEBUG ] 当前用例:获取插件列表 ,执行结果: FAIL
+<br>2016-12-30 10:42:56,365 : RunExcel.py[line:147] [ DEBUG ] ========================================================================================================================
+<br>2016-12-30 10:42:56,365 : RunExcel.py[line:166] [ DEBUG ] 测试用例:获取插件列表 ,执行结束
+</div>
+
+</div>
+</div>
+</td>
+<td align="middle">PASS</td>
+
+</tr>
+<tr bgcolor="#70DBDB"><td align="middle">检查插件:PA01100000000_02_PAZB</td>
+<td align="middle">24.609</td>
+<td align="middle"><div style="margin-bottom: 0px;" id="accordion" class="panel-group"><div style="background-color: #70DBDB;"><a aria-expanded="false" class="collapsed" align="middle" href="#3" data-toggle="collapse" data-parent="#accordion">日志详情</a>
+<div align="left" style="height: 0px;" aria-expanded="false" id="3" class="panel-collapse collapse"><br>2016-12-30 10:42:56,424 : RunExcel.py[line:113] [ DEBUG ] 测试用例:检查插件:PA01100000000_02_PAZB ,执行开始
+<br>2016-12-30 10:42:56,424 : ReadApi.py[line:27] [ DEBUG ] case_list :[u'\u68c0\u67e5\u63d2\u4ef6:PA01100000000_02_PAZB', 1.0, u'\u68c0\u67e5\u63d2\u4ef6', u'assertTrueCheckPlugin', u'', u'', u'PA01100000000_02_PAZB', u'\u52a0\u6cb9\u7ad9']
+<br>2016-12-30 10:42:56,424 : ReadApi.py[line:50] [ DEBUG ] callApi执行中
+<br>2016-12-30 10:42:56,424 : ReadApi.py[line:71] [ DEBUG ] Action_Keyword 操作:[ assertTrueCheckPlugin ]
+<br>2016-12-30 10:42:56,424 : ReadApi.py[line:33] [ ERROR ] 'NoneType' object has no attribute 'debug'
+<br>2016-12-30 10:42:56,424 : RunExcel.py[line:144] [ DEBUG ] ========================================================================================================================
+<br>2016-12-30 10:42:56,424 : RunExcel.py[line:146] [ DEBUG ] 当前用例:检查插件:PA01100000000_02_PAZB ,执行结果: FAIL
+<br>2016-12-30 10:42:56,424 : RunExcel.py[line:147] [ DEBUG ] ========================================================================================================================
+<br>2016-12-30 10:42:56,424 : RunExcel.py[line:166] [ DEBUG ] 测试用例:检查插件:PA01100000000_02_PAZB ,执行结束
+<br>2016-12-30 10:42:56,424 : RunExcel.py[line:167] [ DEBUG ] 用例执行总结果: [[u'\u767b\u5f55_1000', 'FAIL', 2.823, False], [u'\u767b\u5f55_1001', 'FAIL', 0.001, False], [u'\u83b7\u53d6\u63d2\u4ef6\u5217\u8868', 'FAIL', 0.0, False], [u'\u68c0\u67e5\u63d2\u4ef6:PA01100000000_02_PAZB', 'FAIL', 0.001, False]]
+<br>2016-12-30 10:42:56,424 : Retry.py[line:21] [ DEBUG ] 调用函数: function
+<br>2016-12-30 10:42:56,425 : Retry.py[line:26] [ DEBUG ] 当前用例名称: 检查插件:PA01100000000_02_PAZB ,当前执行结果: FAIL
+<br>2016-12-30 10:42:56,425 : Retry.py[line:28] [ DEBUG ] 失败重跑第 【 1 】 次执行中
+<br>2016-12-30 10:42:56,425 : RunExcel.py[line:113] [ DEBUG ] 测试用例:检查插件:PA01100000000_02_PAZB ,执行开始
+<br>2016-12-30 10:42:56,425 : ReadApi.py[line:27] [ DEBUG ] case_list :[u'\u68c0\u67e5\u63d2\u4ef6:PA01100000000_02_PAZB', 1.0, u'\u68c0\u67e5\u63d2\u4ef6', u'assertTrueCheckPlugin', u'', u'', u'PA01100000000_02_PAZB', u'\u52a0\u6cb9\u7ad9']
+<br>2016-12-30 10:42:56,425 : ReadApi.py[line:50] [ DEBUG ] callApi执行中
+<br>2016-12-30 10:42:56,425 : ReadApi.py[line:71] [ DEBUG ] Action_Keyword 操作:[ assertTrueCheckPlugin ]
+<br>2016-12-30 10:42:56,425 : ReadApi.py[line:33] [ ERROR ] 'NoneType' object has no attribute 'debug'
+<br>2016-12-30 10:42:56,425 : RunExcel.py[line:144] [ DEBUG ] ========================================================================================================================
+<br>2016-12-30 10:42:56,425 : RunExcel.py[line:146] [ DEBUG ] 当前用例:检查插件:PA01100000000_02_PAZB ,执行结果: FAIL
+<br>2016-12-30 10:42:56,425 : RunExcel.py[line:147] [ DEBUG ] ========================================================================================================================
+<br>2016-12-30 10:42:56,425 : RunExcel.py[line:166] [ DEBUG ] 测试用例:检查插件:PA01100000000_02_PAZB ,执行结束
+</div>
+
+</div>
+</div>
+</td>
+<td align="middle">PASS</td>
+
+</tr>
+<tr bgcolor="#70DBDB"><td align="middle">检查插件:PA02100000001_02_JF</td>
+<td align="middle">63.614</td>
+<td align="middle"><div style="margin-bottom: 0px;" id="accordion" class="panel-group"><div style="background-color: #70DBDB;"><a aria-expanded="false" class="collapsed" align="middle" href="#4" data-toggle="collapse" data-parent="#accordion">日志详情</a>
+<div align="left" style="height: 0px;" aria-expanded="false" id="4" class="panel-collapse collapse"><br>2016-12-30 10:42:56,509 : RunExcel.py[line:113] [ DEBUG ] 测试用例:检查插件:PA02100000001_02_JF ,执行开始
+<br>2016-12-30 10:42:56,509 : ReadApi.py[line:27] [ DEBUG ] case_list :[u'\u68c0\u67e5\u63d2\u4ef6:PA02100000001_02_JF', 1.0, u'\u68c0\u67e5\u63d2\u4ef6', u'assertTrueCheckPlugin', u'', u'', u'PA02100000001_02_JF', u'\u53ef\u7528\u79ef\u5206']
+<br>2016-12-30 10:42:56,509 : ReadApi.py[line:50] [ DEBUG ] callApi执行中
+<br>2016-12-30 10:42:56,509 : ReadApi.py[line:71] [ DEBUG ] Action_Keyword 操作:[ assertTrueCheckPlugin ]
+<br>2016-12-30 10:42:56,509 : ReadApi.py[line:33] [ ERROR ] 'NoneType' object has no attribute 'debug'
+<br>2016-12-30 10:42:56,510 : RunExcel.py[line:144] [ DEBUG ] ========================================================================================================================
+<br>2016-12-30 10:42:56,510 : RunExcel.py[line:146] [ DEBUG ] 当前用例:检查插件:PA02100000001_02_JF ,执行结果: FAIL
+<br>2016-12-30 10:42:56,511 : RunExcel.py[line:147] [ DEBUG ] ========================================================================================================================
+<br>2016-12-30 10:42:56,511 : RunExcel.py[line:166] [ DEBUG ] 测试用例:检查插件:PA02100000001_02_JF ,执行结束
+<br>2016-12-30 10:42:56,512 : RunExcel.py[line:167] [ DEBUG ] 用例执行总结果: [[u'\u767b\u5f55_1000', 'FAIL', 2.823, False], [u'\u767b\u5f55_1001', 'FAIL', 0.001, False], [u'\u83b7\u53d6\u63d2\u4ef6\u5217\u8868', 'FAIL', 0.0, False], [u'\u68c0\u67e5\u63d2\u4ef6:PA01100000000_02_PAZB', 'FAIL', 0.0, False], [u'\u68c0\u67e5\u63d2\u4ef6:PA02100000001_02_JF', 'FAIL', 0.002, False]]
+<br>2016-12-30 10:42:56,512 : Retry.py[line:21] [ DEBUG ] 调用函数: function
+<br>2016-12-30 10:42:56,512 : Retry.py[line:26] [ DEBUG ] 当前用例名称: 检查插件:PA02100000001_02_JF ,当前执行结果: FAIL
+<br>2016-12-30 10:42:56,512 : Retry.py[line:28] [ DEBUG ] 失败重跑第 【 1 】 次执行中
+<br>2016-12-30 10:42:56,513 : RunExcel.py[line:113] [ DEBUG ] 测试用例:检查插件:PA02100000001_02_JF ,执行开始
+<br>2016-12-30 10:42:56,513 : ReadApi.py[line:27] [ DEBUG ] case_list :[u'\u68c0\u67e5\u63d2\u4ef6:PA02100000001_02_JF', 1.0, u'\u68c0\u67e5\u63d2\u4ef6', u'assertTrueCheckPlugin', u'', u'', u'PA02100000001_02_JF', u'\u53ef\u7528\u79ef\u5206']
+<br>2016-12-30 10:42:56,513 : ReadApi.py[line:50] [ DEBUG ] callApi执行中
+<br>2016-12-30 10:42:56,513 : ReadApi.py[line:71] [ DEBUG ] Action_Keyword 操作:[ assertTrueCheckPlugin ]
+<br>2016-12-30 10:42:56,514 : ReadApi.py[line:33] [ ERROR ] 'NoneType' object has no attribute 'debug'
+<br>2016-12-30 10:42:56,514 : RunExcel.py[line:144] [ DEBUG ] ========================================================================================================================
+<br>2016-12-30 10:42:56,514 : RunExcel.py[line:146] [ DEBUG ] 当前用例:检查插件:PA02100000001_02_JF ,执行结果: FAIL
+<br>2016-12-30 10:42:56,514 : RunExcel.py[line:147] [ DEBUG ] ========================================================================================================================
+<br>2016-12-30 10:42:56,514 : RunExcel.py[line:166] [ DEBUG ] 测试用例:检查插件:PA02100000001_02_JF ,执行结束
+</div>
+
+</div>
+</div>
+</td>
+<td align="middle">PASS</td>
+
+</tr>
+<tr bgcolor="#70DBDB"><td align="middle">检查插件:PA02100000000_02_DYP</td>
+<td align="middle">82.641</td>
+<td align="middle"><div style="margin-bottom: 0px;" id="accordion" class="panel-group"><div style="background-color: #70DBDB;"><a aria-expanded="false" class="collapsed" align="middle" href="#5" data-toggle="collapse" data-parent="#accordion">日志详情</a>
+<div align="left" style="height: 0px;" aria-expanded="false" id="5" class="panel-collapse collapse"><br>2016-12-30 10:42:56,613 : RunExcel.py[line:113] [ DEBUG ] 测试用例:检查插件:PA02100000000_02_DYP ,执行开始
+<br>2016-12-30 10:42:56,613 : ReadApi.py[line:27] [ DEBUG ] case_list :[u'\u68c0\u67e5\u63d2\u4ef6:PA02100000000_02_DYP', 1.0, u'\u68c0\u67e5\u63d2\u4ef6', u'assertTrueCheckPlugin', u'', u'', u'PA02100000000_02_DYP', u'\u7535\u5f71']
+<br>2016-12-30 10:42:56,613 : ReadApi.py[line:50] [ DEBUG ] callApi执行中
+<br>2016-12-30 10:42:56,613 : ReadApi.py[line:71] [ DEBUG ] Action_Keyword 操作:[ assertTrueCheckPlugin ]
+<br>2016-12-30 10:42:56,613 : ReadApi.py[line:33] [ ERROR ] 'NoneType' object has no attribute 'debug'
+<br>2016-12-30 10:42:56,614 : RunExcel.py[line:144] [ DEBUG ] ========================================================================================================================
+<br>2016-12-30 10:42:56,614 : RunExcel.py[line:146] [ DEBUG ] 当前用例:检查插件:PA02100000000_02_DYP ,执行结果: FAIL
+<br>2016-12-30 10:42:56,614 : RunExcel.py[line:147] [ DEBUG ] ========================================================================================================================
+<br>2016-12-30 10:42:56,614 : RunExcel.py[line:166] [ DEBUG ] 测试用例:检查插件:PA02100000000_02_DYP ,执行结束
+<br>2016-12-30 10:42:56,614 : RunExcel.py[line:167] [ DEBUG ] 用例执行总结果: [[u'\u767b\u5f55_1000', 'FAIL', 2.823, False], [u'\u767b\u5f55_1001', 'FAIL', 0.001, False], [u'\u83b7\u53d6\u63d2\u4ef6\u5217\u8868', 'FAIL', 0.0, False], [u'\u68c0\u67e5\u63d2\u4ef6:PA01100000000_02_PAZB', 'FAIL', 0.0, False], [u'\u68c0\u67e5\u63d2\u4ef6:PA02100000001_02_JF', 'FAIL', 0.001, False], [u'\u68c0\u67e5\u63d2\u4ef6:PA02100000000_02_DYP', 'FAIL', 0.001, False]]
+<br>2016-12-30 10:42:56,614 : Retry.py[line:21] [ DEBUG ] 调用函数: function
+<br>2016-12-30 10:42:56,614 : Retry.py[line:26] [ DEBUG ] 当前用例名称: 检查插件:PA02100000000_02_DYP ,当前执行结果: FAIL
+<br>2016-12-30 10:42:56,614 : Retry.py[line:28] [ DEBUG ] 失败重跑第 【 1 】 次执行中
+<br>2016-12-30 10:42:56,614 : RunExcel.py[line:113] [ DEBUG ] 测试用例:检查插件:PA02100000000_02_DYP ,执行开始
+<br>2016-12-30 10:42:56,614 : ReadApi.py[line:27] [ DEBUG ] case_list :[u'\u68c0\u67e5\u63d2\u4ef6:PA02100000000_02_DYP', 1.0, u'\u68c0\u67e5\u63d2\u4ef6', u'assertTrueCheckPlugin', u'', u'', u'PA02100000000_02_DYP', u'\u7535\u5f71']
+<br>2016-12-30 10:42:56,614 : ReadApi.py[line:50] [ DEBUG ] callApi执行中
+<br>2016-12-30 10:42:56,614 : ReadApi.py[line:71] [ DEBUG ] Action_Keyword 操作:[ assertTrueCheckPlugin ]
+<br>2016-12-30 10:42:56,614 : ReadApi.py[line:33] [ ERROR ] 'NoneType' object has no attribute 'debug'
+<br>2016-12-30 10:42:56,614 : RunExcel.py[line:144] [ DEBUG ] ========================================================================================================================
+<br>2016-12-30 10:42:56,614 : RunExcel.py[line:146] [ DEBUG ] 当前用例:检查插件:PA02100000000_02_DYP ,执行结果: FAIL
+<br>2016-12-30 10:42:56,614 : RunExcel.py[line:147] [ DEBUG ] ========================================================================================================================
+<br>2016-12-30 10:42:56,615 : RunExcel.py[line:166] [ DEBUG ] 测试用例:检查插件:PA02100000000_02_DYP ,执行结束
+</div>
+
+</div>
+</div>
+</td>
+<td align="middle">PASS</td>
+
+</tr>
+<tr bgcolor="#FF6EC7"><td align="middle">检查插件:PA02100000000_02_KY</td>
+<td align="middle">117.218</td>
+<td align="middle"><div style="margin-bottom: 0px;" id="accordion" class="panel-group"><div style="background-color: #FF6EC7;"><a aria-expanded="false" class="collapsed" align="middle" href="#6" data-toggle="collapse" data-parent="#accordion">日志详情</a>
+<div align="left" style="height: 0px;" aria-expanded="false" id="6" class="panel-collapse collapse"><br>2016-12-30 10:42:56,683 : RunExcel.py[line:113] [ DEBUG ] 测试用例:检查插件:PA02100000000_02_KY ,执行开始
+<br>2016-12-30 10:42:56,683 : ReadApi.py[line:27] [ DEBUG ] case_list :[u'\u68c0\u67e5\u63d2\u4ef6:PA02100000000_02_KY', 1.0, u'\u68c0\u67e5\u63d2\u4ef6', u'assertTrueCheckPlugin', u'', u'', u'PA02100000000_02_KY', u'5\u3001\u6b64\u6d3b\u52a8\u4e0e\u82f9\u679c\u516c\u53f8\u65e0\u5173\u3002']
+<br>2016-12-30 10:42:56,683 : ReadApi.py[line:50] [ DEBUG ] callApi执行中
+<br>2016-12-30 10:42:56,683 : ReadApi.py[line:71] [ DEBUG ] Action_Keyword 操作:[ assertTrueCheckPlugin ]
+<br>2016-12-30 10:42:56,683 : ReadApi.py[line:33] [ ERROR ] 'NoneType' object has no attribute 'debug'
+<br>2016-12-30 10:42:56,683 : RunExcel.py[line:144] [ DEBUG ] ========================================================================================================================
+<br>2016-12-30 10:42:56,684 : RunExcel.py[line:146] [ DEBUG ] 当前用例:检查插件:PA02100000000_02_KY ,执行结果: FAIL
+<br>2016-12-30 10:42:56,684 : RunExcel.py[line:147] [ DEBUG ] ========================================================================================================================
+<br>2016-12-30 10:42:56,684 : RunExcel.py[line:166] [ DEBUG ] 测试用例:检查插件:PA02100000000_02_KY ,执行结束
+<br>2016-12-30 10:42:56,684 : RunExcel.py[line:167] [ DEBUG ] 用例执行总结果: [[u'\u767b\u5f55_1000', 'FAIL', 2.823, False], [u'\u767b\u5f55_1001', 'FAIL', 0.001, False], [u'\u83b7\u53d6\u63d2\u4ef6\u5217\u8868', 'FAIL', 0.0, False], [u'\u68c0\u67e5\u63d2\u4ef6:PA01100000000_02_PAZB', 'FAIL', 0.0, False], [u'\u68c0\u67e5\u63d2\u4ef6:PA02100000001_02_JF', 'FAIL', 0.001, False], [u'\u68c0\u67e5\u63d2\u4ef6:PA02100000000_02_DYP', 'FAIL', 0.0, False], [u'\u68c0\u67e5\u63d2\u4ef6:PA02100000000_02_KY', 'FAIL', 0.001, False]]
+<br>2016-12-30 10:42:56,684 : Retry.py[line:21] [ DEBUG ] 调用函数: function
+<br>2016-12-30 10:42:56,684 : Retry.py[line:26] [ DEBUG ] 当前用例名称: 检查插件:PA02100000000_02_KY ,当前执行结果: FAIL
+<br>2016-12-30 10:42:56,684 : Retry.py[line:28] [ DEBUG ] 失败重跑第 【 1 】 次执行中
+<br>2016-12-30 10:42:56,684 : RunExcel.py[line:113] [ DEBUG ] 测试用例:检查插件:PA02100000000_02_KY ,执行开始
+<br>2016-12-30 10:42:56,684 : ReadApi.py[line:27] [ DEBUG ] case_list :[u'\u68c0\u67e5\u63d2\u4ef6:PA02100000000_02_KY', 1.0, u'\u68c0\u67e5\u63d2\u4ef6', u'assertTrueCheckPlugin', u'', u'', u'PA02100000000_02_KY', u'5\u3001\u6b64\u6d3b\u52a8\u4e0e\u82f9\u679c\u516c\u53f8\u65e0\u5173\u3002']
+<br>2016-12-30 10:42:56,684 : ReadApi.py[line:50] [ DEBUG ] callApi执行中
+<br>2016-12-30 10:42:56,684 : ReadApi.py[line:71] [ DEBUG ] Action_Keyword 操作:[ assertTrueCheckPlugin ]
+<br>2016-12-30 10:42:56,684 : ReadApi.py[line:33] [ ERROR ] 'NoneType' object has no attribute 'debug'
+<br>2016-12-30 10:42:56,684 : RunExcel.py[line:144] [ DEBUG ] ========================================================================================================================
+<br>2016-12-30 10:42:56,684 : RunExcel.py[line:146] [ DEBUG ] 当前用例:检查插件:PA02100000000_02_KY ,执行结果: FAIL
+<br>2016-12-30 10:42:56,684 : RunExcel.py[line:147] [ DEBUG ] ========================================================================================================================
+<br>2016-12-30 10:42:56,685 : RunExcel.py[line:166] [ DEBUG ] 测试用例:检查插件:PA02100000000_02_KY ,执行结束
+</div>
+
+</div>
+</div>
+</td>
+<td align="middle">FAIL</td>
+
+</tr>
+</table>
+</body>
+</html>

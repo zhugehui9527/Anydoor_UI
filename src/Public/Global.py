@@ -5,24 +5,23 @@
 #date:2016-09-21
 #function:处理全局文件变量
 #######################################################
-import os
+import os,time
 class D:
-	# from src.lib.Driver import MyDriver
-	# driver = MyDriver.get_driver()
 	driver = None
 	@classmethod
 	def set_driver(cls,driver):
+		print '*'*80
+		print time.ctime(), ' [', __name__, '::', D.set_driver.__name__, '] :', ' driver =  ', driver
 		cls.driver = driver
 	
 class L:
-
-	# from src.lib.Log import LogSignleton
-	# logsignleton = LogSignleton()
-	# logger = logsignleton.logger
 	logger = None
 	@classmethod
 	def set_logger(cls,logger):
-		cls.logger = logger
+		if logger:
+			cls.logger = logger
+		else:
+			print '[ error ] logger is null'
 		
 class S:
 	device = None
@@ -34,6 +33,7 @@ class S:
 		if device:
 			cls.device = device
 			device_dir = cls.project_path +'/output/'+ cls.device['udid']
+			# print '* [', __name__, '::', S.set_device.__name__, '] :', ' device_dir = ',device_dir
 			log_dir = device_dir + '/log'
 			report_dir = device_dir + '/html/filter'
 			screen_dir = device_dir + '/screen'

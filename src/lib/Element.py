@@ -11,39 +11,67 @@ import time
 
 from appium.webdriver.mobilecommand import MobileCommand
 from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.common.by import By
 from appium.webdriver.webelement import WebElement
 
-from src.Public.Common import element_by as By
-from src.Public.Global import L,D
+from src.Public.Common import element_by as eBy
+from src.Public.Common import desired_caps as Dc
+from src.Public.Common import public as pc
+from src.Public.Global import L,S
 
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
-# driver = D.driver
-# logger = L.logger
+class Element:
+    def __init__(self,driver):
+        self.driver = driver
 
-class Element(WebElement):
-    driver = None
-    def __init__(self):
-        self.driver = D.driver
-        # L.logger = L.logger
-    
-    # 重新封装单个元素定位方法
-
-    def find_element(self,loc,wait=15):
+    # 重新封装find_element
+    def find_element(self,loc,wait=pc.time2wait):
+        '''
+        重新封装find_element,查找元素设置了等待时间
+        :param loc: 查找元素变量
+        :param wait: 等待时间
+        :return: 找到元素返回元素对象,否则返回空
+        :eg : find_element((By.ID,id_value),10)
+        '''
         try:
             WebDriverWait(self.driver, wait).until(lambda driver: driver.find_element(*loc).is_displayed())
             return self.driver.find_element(*loc)
         except:
-            L.logger.warning('%s 未找到元素 : %s' % (self,loc))
-            return 0
+            L.logger.warning('%s 查找超时,未找到元素 : %s' % (self,loc))
+            return
+
+    # 重新封装find_elements
+    def find_elements(self, loc, wait=pc.time2wait):
+        '''
+        重新封装find_element,查找元素设置了等待时间
+        :param loc: 查找元素变量
+        :param wait: 等待时间
+        :return: 找到元素返回元素对象列表,否则返回空
+        :eg : find_elements((By.ID,id_value),10)
+        '''
+        try:
+            WebDriverWait(self.driver, wait).until(lambda driver: driver.find_elements(*loc).is_displayed())
+            return self.driver.find_elements(*loc)
+        except:
+            L.logger.warning('%s 查找超时,未找到元素 : %s' % (self, loc))
+            return
+        
+    def find_element_orign(self,by,value):
+        L.logger.debug('查找元素: %s, %s' % (by,value))
+        return self.driver.find_element(by,value)
     
+    def find_elements_orign(self,loc):
+        L.logger.debug('查找元素: %s' % loc)
+        return self.driver.find_elements(*loc)
+
     def element_by(self,by_type,by_value,by_index):
-        by_dict={By.by_id:lambda :self.by_id(by_value)[by_index],
-                 By.by_name:lambda :self.by_name(by_value)[by_index],
-                 By.by_xpath:lambda :self.by_xpath(by_value)[by_index],
-                 By.by_classname:lambda :self.by_classname(by_value)[by_index]
+        by_dict={eBy.by_id:lambda :self.by_id(by_value)[by_index],
+                 eBy.by_name:lambda :self.by_name(by_value)[by_index],
+                 eBy.by_xpath:lambda :self.by_xpath(by_value)[by_index],
+                 eBy.by_classname:lambda :self.by_classname(by_value)[by_index]
 	    }
         if by_dict.has_key(by_type):
             return by_dict[by_type]()
@@ -51,30 +79,41 @@ class Element(WebElement):
             L.logger.warning('暂不支持的方法')
 
     def by_id(self,id):
-        '''by_Id 在1.5.x版本以上取代了by_name'''
-        element = self.driver.find_element_by_id(id)
-        # element = self.find_element(id,15)
+        '''
+        通过id 进行查找
+        :param id: 查找的id值
+        :return: 元素对象
+        '''
+        # element = self.driver.find_element_by_id(id)
+        element = self.find_element((By.ID,id))
         L.logger.debug('查找id: %s' % id)
         return element
 
 
     def by_ids(self, id):
-        '''by_Id 在1.5.x版本以上取代了by_name'''
-        elements = self.driver.find_elements_by_id(id)
+        '''
+        通过id 进行查找
+        :param id: 查找的id值
+        :return: 元素对象列表
+        '''
+        # elements = self.driver.find_elements_by_id(id)
+        elements = self.find_elements((By.ID,id))
         L.logger.debug('查找 id: %s' % id)
         return elements
 
 
     def by_name(self,name):
-        '''by_Id 在1.5.x版本以上取代了by_name'''
-        element = self.driver.find_element_by_name(name)
+        '''by_Id 在1.5.x版本以上取代了by_name,所以请不要再使用by_name'''
+        # element = self.driver.find_element_by_name(name)
+        element = self.find_element((By.NAME,name))
         L.logger.debug('查找 name: %s' % name)
         return element
 
 
     def by_names(self, names):
-        '''by_Id 在1.5.x版本以上取代了by_name'''
-        elements = self.driver.find_elements_by_name(names)
+        '''by_Id 在1.5.x版本以上取代了by_name,所以请不要再使用by_name'''
+        # elements = self.driver.find_elements_by_name(names)
+        elements = self.find_elements((By.NAME,names))
         L.logger.debug('查找 names: %s' % names)
         return elements
 
@@ -84,29 +123,58 @@ class Element(WebElement):
         :param xpath:
         :return:
         '''
-        element = self.driver.find_element_by_xpath(xpath)
+        # element = self.driver.find_element_by_xpath(xpath)
+        element = self.find_element((By.XPATH,xpath))
         L.logger.debug('查找 xpath: %s' % xpath)
         return element
 
     def by_xpaths(self,xpath):
-        elements = self.driver.find_elements_by_xpath(xpath)
+        '''
+        通过xpath查找元素
+        :param xpath:
+        :return:
+        '''
+        # elements = self.driver.find_elements_by_xpath(xpath)
+        elements = self.find_elements((By.XPATH,xpath))
         L.logger.debug('查找 xpath: %s' % xpath)
         return elements
 
     def by_classname(self,classname):
-        element = self.driver.find_element_by_class_name(classname)
+        '''
+        通过classname 进行元素查找
+        :param classname:
+        :return:
+        '''
+        # element = self.driver.find_element_by_class_name(classname)
+        element = self.find_element((By.CLASS_NAME,classname))
         L.logger.debug('查找 classname: %s' % classname)
         return element
 
     def by_classnames(self,classname):
-        elements = self.driver.find_element_by_class_name(classname)
+        '''
+        通过classname 进行元素查找
+        :param classname:
+        :return:
+        '''
+        # elements = self.driver.find_elements_by_class_name(classname)
+        elements = self.find_elements((By.CLASS_NAME,classname))
         L.logger.debug('查找 classname: %s' % classname)
         return elements
 
     def click(self,element_object):
+        '''
+        点击方法
+        :param element_object:
+        :return:
+        '''
+        L.logger.debug('click 点击操作')
         element_object.click()
 
     def quit(self):
+        '''
+        退出服务
+        :return:
+        '''
         L.logger.debug('driver quit!')
         return self.driver.quit()
 
@@ -133,69 +201,102 @@ class Element(WebElement):
     def screenshot_as_file(self,filepath):
         '''
         截屏并保存到指定文件路径
-        :param filepath:
+        :param filepath:保存截图的文件路径
         :return:
         '''
         L.logger.debug('截屏')
         return self.driver.get_screenshot_as_file(filepath)
 
     def get_size(self):
-        L.logger.debug('获取当前窗口大小')
-        return self.driver.get_window_size()
+        '''
+        获取当前窗口大小
+        :return:
+        '''
+        el = self.driver.get_window_size()
+        L.logger.debug('获取当前窗口大小: %s' % el)
+        return el
 
 
     def swipe_up(self):
-        '''swpie 在1.5.x版本以上已经使用偏移量来滑动,
-        所以end_x,end_y是相对于start_x,start_y偏移的值,
+        '''swpie 在1.5.x版本以上iOS已经使用偏移量来滑动,
+        所以end_x,end_y是相对于start_x,start_y偏移的值;
+        但是Android仍采用起始坐标到终点坐标进行滑动
         这里是向上滑动'''
         try:
             size = self.get_size()
             width = size.get('width')
             height = size.get('height')
-            L.logger.debug('向上滑动,起始滑动坐标: (%s,%s),坐标偏移量(%s,%s)' % (width / 2, height * 3/4, 0, height * (-2)/4))
-            self.driver.swipe(width / 2, height * 3/4, 0, -2/4*height, 1000)
+            if str(S.device[Dc.platformName]).lower() == 'ios':
+                L.logger.debug('向上滑动,起始滑动坐标: (%s,%s),坐标偏移量(%s,%s)' % (width / 2, height * 3/4, 0, height * (-1)/4))
+                self.driver.swipe(width / 2, height * 3/4, 0, (-1)/4*height, 1000)
+            else:
+                L.logger.debug('向上滑动,起始滑动坐标: (%s,%s),终点坐标(%s,%s)' % (width / 2, height * 3 / 4, width / 2,  height * 1 /4))
+                self.driver.swipe(width * 4/ 8, height * 7 / 8, width * 4/ 8, height * 1 / 8, 1000)
+            time.sleep(1)
         except:
             raise
 
 
     def swipe_down(self):
-        '''swpie 在1.5.x版本以上已经使用偏移量来滑动,
-        所以end_x,end_y是相对于start_x,start_y偏移的值,
+        '''swpie 在1.5.x版本以上iOS已经使用偏移量来滑动,
+        所以end_x,end_y是相对于start_x,start_y偏移的值;
+        但是Android仍采用起始坐标到终点坐标进行滑动
         这里是向下滑动'''
         try:
             size = self.get_size()
             width = size.get('width')
             height = size.get('height')
-            L.logger.debug('向下滑动,起始滑动坐标: (%s,%s),坐标偏移量(%s,%s)' % (width / 2, height * 1/4, 0, height * 2/4))
-            self.driver.swipe(width / 2, height * 1/4, 0, height * 2/4, 1000)
+            if str(S.device[Dc.platformName]).lower() == 'ios':
+                L.logger.debug('向下滑动,起始滑动坐标: (%s,%s),坐标偏移量(%s,%s)' % (width / 2, height * 1/4, 0, height * 3/4))
+                self.driver.swipe(width / 2, height * 1/4, 0, (-3)/4 * height , 1000)
+            else:
+                L.logger.debug('向下滑动,起始滑动坐标: (%s,%s),终点坐标(%s,%s)' % (width / 2, height * 1 / 4, width / 2, height * 3 / 4))
+                self.driver.swipe(width / 2, height * 1 / 4, width /2, 3 / 4 * height, 1000)
+            time.sleep(1)
         except:
             raise
 
 
     def swipe_right(self):
-        '''swpie 在1.5.x版本以上已经使用偏移量来滑动,
-        所以end_x,end_y是相对于start_x,start_y偏移的值,
+        '''swpie 在1.5.x版本以上iOS已经使用偏移量来滑动,
+        所以end_x,end_y是相对于start_x,start_y偏移的值;
+        但是Android仍采用起始坐标到终点坐标进行滑动
         这里是向右滑动'''
         try:
             size = self.get_size()
             width = size.get('width')
             height = size.get('height')
-            L.logger.debug('向右滑动,起始滑动坐标: (%s,%s),坐标偏移量(%s,%s)' % (width * 2 / 10, height * 8 / 10, width * 3 / 5,0))
-            self.driver.swipe(width * 2 / 10, height * 8 / 10, width * 3 / 5, 0,1000)
+            if str(S.device[Dc.platformName]).lower() == 'ios':
+                L.logger.debug('向右滑动,起始滑动坐标: (%s,%s),坐标偏移量(%s,%s)' % (width * 1 / 10, height * 9 / 10, width * 3 / 5,0))
+                self.driver.swipe(width * 1/10, height * 9/10, width * 3/5, 0,1000)
+            else:
+                L.logger.debug('向右滑动,起始滑动坐标: (%s,%s),终点坐标(%s,%s)' % (width / 10, height * 9 / 10, width * 6/ 10, height * 9 / 10))
+                self.driver.swipe(width / 10, height * 9 / 10, width * 6/ 10, height * 9 / 10, 1000)
+            time.sleep(1)
+        
         except:
             raise
 
 
     def swipe_left(self):
-        '''swpie 在1.5.x版本以上已经使用偏移量来滑动,
-        所以end_x,end_y是相对于start_x,start_y偏移的值,
-        这里是向左滑动'''
+        '''
+        swpie 在1.5.x版本以上iOS已经使用偏移量来滑动,
+        所以end_x,end_y是相对于start_x,start_y偏移的值;
+        但是Android仍采用起始坐标到终点坐标进行滑动
+        这里是向左滑动
+        '''
         try:
             size = self.get_size()
             width = size.get('width')
             height = size.get('height')
-            L.logger.debug('向左滑动,滑动起始坐标: (%s,%s),偏移量(%s,%s)' % (width * 8 / 10, height * 8 / 10, -1*6*width/10,0))
-            self.driver.swipe(width * 8 / 10, height * 8 / 10, -1*6*width/10, 0, 1000)
+            if str(S.device[Dc.platformName]).lower() == 'ios':
+                L.logger.debug('向左滑动,起始滑动坐标: (%s,%s),坐标偏移量(%s,%s)' % (width * 9 / 10, height * 9 / 10, width * (-3) / 5,0))
+                self.driver.swipe(width * 9 / 10, height * 9 / 10, width * (-3) / 5,0,1000)
+            else:
+                L.logger.debug('向左滑动,起始滑动坐标: (%s,%s),终点坐标(%s,%s)' % (width * 7 / 10, height * 9 / 10, width / 10, height * 9 / 10))
+                self.driver.swipe(width * 7 / 10, height * 9 / 10, width / 10, height * 9 / 10, 1000)
+            time.sleep(1)
+
         except:
             raise
 
@@ -371,31 +472,5 @@ class Element(WebElement):
         L.logger.debug('隐藏键盘')
         return self.driver.hide_keyboard(key_name,key,strategy)
 
-if __name__ == '__main__':
-    screenshot_path = os.path.abspath('../output/screenshot')+'_'+str(time.time())+'.png'
-    try:
-        wd = Element()
-        # wd.swipe_right()
-        # wd.implicitly_wait(10)
-        # wd.by_id('个人中心').click()
-        # wd.implicitly_wait(15)
-        # wd.by_xpath("//*[@value='一账通号/手机号/身份证号/邮箱']").click()
-        # wd.implicitly_wait(1)
-        # wd.by_xpath("//*[@value='一账通号/手机号/身份证号/邮箱']").clear()
-        # wd.implicitly_wait(1)
-        # wd.by_xpath("//*[@value='一账通号/手机号/身份证号/邮箱']").send_keys('18589091413')
-        # wd.implicitly_wait(10)
-        # wd.by_xpath("//*[@value='密码']").click()
-        # wd.by_xpath("//*[@value='密码']").clear()
-        # wd.by_xpath("//*[@value='密码']").send_keys('Solution123')
-        # wd.by_id('完成').click()
-        # wd.by_xpath("//UIALink[@name='登 录']").click()
-        # wd.implicitly_wait(60)
-        # wd.swipe_left()
-        print 'screenshot_as_base64 : ',wd.screenshot_as_base64()
-        wd.screenshot_as_file(screenshot_path)
-    except Exception:
-        raise
-    else:
-        wd.quit()
+
 

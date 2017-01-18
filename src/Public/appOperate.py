@@ -14,28 +14,29 @@ import time
 import requests
 
 from conf.Run_conf import read_config
-from src.Public.Global import L
+from src.Public.Global import L,S
+from src.Public.Common import desired_caps as Dc
 from src.lib.Element import Element
+from selenium.webdriver.common.by import By
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
 # logger = L.logger
 class AppOperate (object):
-	def __init__(self):
+	def __init__(self,driver):
 		# super(AppOperate,self).__init__()
 		iOS_UserName = "//*[@value='一账通号/手机号/身份证号/邮箱']"
 		iOS_PassWord = "//*[@value='密码']"
-		Andr_UserName = "com.paic.example.simpleapp:id/user-id-input"
-		Andr_PassWord = "com.paic.example.simpleapp:id/user-psd-input"
-		platformName = read_config('appium', 'platformName')
+		Andr_UserName = "user-id-input"
+		Andr_PassWord = "user-psd-input"
 		self.pluginURL = read_config('plugin', 'plugin_url_iOS')
-		self.platformName = platformName
+		self.platformName = S.device['platformName']
 		self.iOS_UserName = iOS_UserName
 		self.iOS_PassWord = iOS_PassWord
 		self.Andr_UserName = Andr_UserName
 		self.Andr_PassWord = Andr_PassWord
-		self.driver = Element()
+		self.driver = Element(driver)
 		self.pluginList =[]
 
 	def loginByHost(self):
@@ -44,23 +45,21 @@ class AppOperate (object):
 		:return:True
 		'''
 		try:
-			self.driver.implicitly_wait(3)
-			self.driver.by_id("一账通").click()
-			self.driver.implicitly_wait(3)
-			self.driver.by_id("宿主登陆").click()
-			#"//UIAPickerWheel"
-			# self.driver.send_keys(self.driver.by_name(''),'rymtest001')
-			# self.driver.by_xpath("//UIAPickerWheel")
-			self.driver.implicitly_wait(3)
-			self.driver.by_id("选择登陆用户").click()
-			self.driver.implicitly_wait(3)
-			self.driver.by_id("确认").click()
-			self.driver.implicitly_wait(3)
-			self.driver.by_id("登陆").click()
-			self.driver.implicitly_wait(10)
-			# self.driver.swipe_right()
-			# self.assertIsNotNone(self.driver.by_id('个人中心'),'登陆成功 ')
-			# self.driver.swipe_left()
+			if self.platformName.lower() == 'ios':
+				self.driver.by_id("一账通").click()
+				time.sleep(3)
+				self.driver.by_id("宿主登陆").click()
+				time.sleep(3)
+				self.driver.by_id("选择登陆用户").click()
+				time.sleep(3)
+				self.driver.by_id("确认").click()
+				time.sleep(3)
+				self.driver.by_id("登陆").click()
+				time.sleep(3)
+			else:
+				# TODO 待添加Android
+				L.logger.debug('待添加Android')
+
 		except Exception as e:
 			L.logger.warning(e)
 
@@ -70,8 +69,10 @@ class AppOperate (object):
 		:return: True
 		'''
 		try:
-			self.driver.implicitly_wait(3)
-			self.driver.by_id("无用户").click()
+			if str(S.device[Dc.platformName]) == 'ios':
+				self.driver.by_id("无用户").click()
+			else:
+				self.driver.by_id('rb_no_user').click()
 			return True
 		except Exception as e:
 			L.logger.warning(e)
@@ -79,83 +80,65 @@ class AppOperate (object):
 
 	#支持iOS和Android
 	def loginByH5(self,userName,passWord):
-		
-		# self.driver.implicitly_wait(3)
-		# L.logger.debug('进入个人中心')
-		# self.driver.swipe_right()
-		# self.driver.find_element('个人中心')
-		if self.wait_for_text(6,"个人中心"):
-			self.driver.by_id("个人中心").click()
-		self.driver.implicitly_wait(10)
-		if self.platformName.lower() =='ios' and self.wait_for_text(40,'一账通登录'):
+
+		if self.platformName.lower() == 'ios':
 			try:
-				self.driver.implicitly_wait(10)
-				#填写账号
-				# self.driver.by_xpath(self.iOS_UserName).click()
-				L.logger.debug('点击账号输入框')
-				# self.driver.implicitly_wait(3)
-				# self.driver.by_xpath(self.iOS_UserName).clear()
-				# self.driver.by_id('一账通号/手机号/身份证号/邮箱').click()
-				# self.driver.implicitly_wait(3)
-				# self.driver.by_id('一账通号/手机号/身份证号/邮箱').clear()
-				# L.logger.debug('清除输入框文本内容')
-				# self.driver.implicitly_wait(3)
+				self.driver.swipe_right()  # 右滑动
+				time.sleep(3)
+				self.driver.by_id("个人中心").click()
+				time.sleep(3)
 				self.driver.by_xpath(self.iOS_UserName).send_keys(userName)
-				# self.driver.by_id('一账通号/手机号/身份证号/邮箱').send_keys(userName)
+				time.sleep(3)
 				L.logger.debug('输入账号: %s' % userName)
 				# 收起键盘
-				# self.driver.hide_keyboard('完成')
 				self.driver.by_id('完成').click()
-				# #填写密码
-				# self.driver.implicitly_wait(3)
-				# self.driver.by_xpath(self.iOS_PassWord).click()
-				# self.driver.implicitly_wait(3)
-				# self.driver.by_xpath(self.iOS_PassWord).clear()
-				# self.driver.by_id('密码').click()
-				# self.driver.implicitly_wait(3)
-				# self.driver.by_id('密码').clear()
-				# L.logger.debug('清除输入框文本内容')
-				self.driver.implicitly_wait(3)
+				time.sleep(3)
 				self.driver.by_xpath(self.iOS_PassWord).send_keys(passWord)
-				# self.driver.by_id('密码').send_keys(passWord)
+				time.sleep(3)
 				L.logger.debug('输入密码: %s' % passWord)
-				# time.sleep(5)
-				# self.driver.implicitly_wait(10)
-				#收起键盘
-				# self.driver.hide_keyboard('完成')
-				# self.driver.hide_keyboard()
+				# 收起键盘
 				self.driver.by_id('完成').click()
-				# self.driver.by_xpath("//UIALink[@name='登 录']").click()
+				time.sleep(3)
 				self.driver.by_xpath("//*[@value='登 录']").click()
-				self.driver.load_page_timeout(30)
-				# self.assertIn('个人中心',self.driver.page_source(),'登录成功')
+				time.sleep(3)
+				
 			except IOError as e:
 				raise L.logger.error(e)
 
 		elif self.platformName.lower() =='android':
 			try:
-				self.driver.implicitly_wait(3)
+				self.driver.swipe_up() # 向上滑动
+				# self.driver.implicitly_wait(3)
+				time.sleep(3)
+				self.driver.by_xpath("//android.widget.Button[contains(@text,'loading')]").click()
+				# self.driver.implicitly_wait(3)
+				time.sleep(3)
+				self.driver.swipe_right()  # 右滑动
+				# self.driver.implicitly_wait(3)
+				time.sleep(3)
+				# 点击个人中心
+				self.driver.by_xpath("//android.widget.TextView[@text='个人中心']").click()
+				# self.driver.implicitly_wait(3)
+				time.sleep(3)
 				# 填写账号
-				self.driver.by_xpath(self.Andr_UserName).click()
-				self.driver.implicitly_wait(3)
-				self.driver.by_xpath(self.Andr_UserName).clear()
-				self.driver.implicitly_wait(3)
-				self.driver.by_xpath(self.Andr_UserName).send_keys(userName)
+				self.driver.by_id(self.Andr_UserName).send_keys(userName)
+				# self.driver.implicitly_wait(3)
+				time.sleep(2)
 				# 填写密码
-				self.driver.implicitly_wait(3)
-				self.driver.by_xpath(self.Andr_PassWord).click()
-				self.driver.implicitly_wait(3)
-				self.driver.by_xpath(self.Andr_PassWord).clear()
-				self.driver.implicitly_wait(3)
-				self.driver.by_xpath(self.Andr_PassWord).send_keys(userName)
-				self.driver.implicitly_wait(3)
-				self.driver.keyevent(4)
-				self.driver.by_name("登 录 Link").click()
-				self.driver.implicitly_wait(10)
+				self.driver.by_id(self.Andr_PassWord).send_keys(passWord)
+				# self.driver.implicitly_wait(3)
+				time.sleep(2)
+				# 点击登录
+				self.driver.by_id("login-button").click()
+				# self.driver.implicitly_wait(3)
+				time.sleep(3)
+				
 			except Exception as e:
 				L.logger.error(e)
 		else:
 			L.logger.error('请在配置文件中添加正确的platformName!!')
+		
+			
 	
 	def pluginNum_contain(self,contain):
 		pageSource = self.driver.page_source()
@@ -171,65 +154,77 @@ class AppOperate (object):
 		:param expectResult:
 		:return:True
 		'''
+		ele_xpath = "//android.view.ViewGroup[contains(@content-desc,'{}')]".format(pluginId)
+		# element_dict = {
+		# 	'ios': lambda : self.driver.find_element_orign((By.ID,pluginId)),
+		# 	'android': lambda : self.driver.find_element_orign((By.XPATH,ele_xpath))
+		# }
+		# if element_dict.has_key(self.platformName.lower()):
+		# 	# 如果element_dict 有key值 self.platformName,则将该key的value赋值给ele
+		# 	ele = element_dict[self.platformName.lower()]()
+		# else:
+		# 	L.logger.warning('element_dict 字典中不包含key值: %s' % self.platformName.lower())
+			
 		L.logger.debug('开始检查插件: %s' % pluginId)
 		if self.wait_for_text(3,pluginId):
 			L.logger.debug('找到插件:%s ,准备点击' % pluginId)
 			i=4
 			j=5
-			isDisplayed = self.driver.by_id(pluginId).is_displayed()
-			L.logger.debug('当前插件是否显示: %s' % isDisplayed)
-			while (not (self.driver.by_id(pluginId).is_displayed()) and i>0):
-				L.logger.debug('当前插件是否显示: %s' % self.driver.by_id(pluginId).is_displayed())
+			if self.platformName.lower() == 'ios':
+				ele = self.driver.find_element_orign(By.ID,pluginId)
+			else:
+				ele = self.driver.find_element_orign(By.XPATH,ele_xpath)
+			L.logger.debug('当前插件是否显示: %s' % ele.is_displayed())
+			while (not (ele.is_displayed()) and i>0):
+				# L.logger.debug('当前插件是否显示: %s' % ele.is_displayed())
 				L.logger.debug('插件未显示,左滑')
 				self.driver.swipe_left()
-				self.driver.implicitly_wait(3)
 				i=i-1
 			while(i==0 and j>0):
 				self.driver.swipe_right()
-				self.driver.implicitly_wait(3)
 				j=j-1
 		else:
 			self.driver.swipe_left()
-			self.driver.implicitly_wait(3)
 			if self.wait_for_text(3,pluginId):
 				L.logger.debug('找到插件:%s ,准备点击' % pluginId)
 				i = 5
 				j = 3
-				isDisplayed = self.driver.by_id(pluginId).is_displayed()
-				L.logger.debug('当前插件是否显示: %s' % isDisplayed)
-				while (not (self.driver.by_id(pluginId).is_displayed()) and i > 0):
-					L.logger.debug('当前插件是否显示: %s' % self.driver.by_id(pluginId).is_displayed())
+				if self.platformName.lower() == 'ios':
+					ele2 = self.driver.find_element_orign(By.ID, pluginId)
+				else:
+					ele2 = self.driver.find_element_orign(By.XPATH, ele_xpath)
+				L.logger.debug('当前插件是否显示: %s' % ele2.is_displayed())
+				while (not (ele2.is_displayed()) and i > 0):
+					# L.logger.debug('当前插件是否显示: %s' % ele.is_displayed())
 					L.logger.debug('插件未显示,左滑')
 					self.driver.swipe_left()
-					self.driver.implicitly_wait(3)
 					i = i - 1
 				while (i == 0 and j > 0):
 					self.driver.swipe_right()
-					self.driver.implicitly_wait(3)
 					j = j - 1
 			else:
 				L.logger.debug('未找到插件:%s ,准备右滑' % pluginId)
 				self.driver.swipe_right()
+				
+		if self.platformName.lower() == 'ios':
+			ele3 = self.driver.find_element_orign(By.ID, pluginId)
+		else:
+			ele3 = self.driver.find_element_orign(By.XPATH, ele_xpath)
 		try:
-			self.driver.by_id(pluginId).click()
-			# if self.driver.by_id().is_display
-			# time.sleep(7)
-			self.driver.implicitly_wait(10)
+			self.driver.click(ele3)
 			L.logger.debug('判断插件页面,是否包含: %s' % expectResult)
 			if self.wait_for_text(30,expectResult):
 				L.logger.debug('插件页面中包含 %s,返回True' % expectResult)
 				return True
 			else:
 				L.logger.error('插件页面中不包含 %s,返回False' % expectResult)
-				# self.driver.screenshot_as_base64()
 				return False
-
 		except Exception as e:
 			L.logger.error(e)
 			return False
 		finally:
 			self.closeH5_byPluginId(pluginId)
-			# self.closeH5()
+			
 			
 	def closeH5_byPluginId(self,pluginId):
 		L.logger.debug('关闭H5页面!')
@@ -256,17 +251,22 @@ class AppOperate (object):
 		'''
 		
 		try:
-			self.driver.implicitly_wait(3)
-			if self.driver.by_id('closeButton'):
-				self.driver.by_id('closeButton').click()
-			elif self.driver.by_id('关闭'):
-				self.driver.by_id('关闭').click()
-			elif self.driver.by_id('返回'):
-				self.driver.by_id('返回').click()
-			elif self.driver.by_id('com nav ic back'):
-				self.driver.by_id('com nav ic back').click()
+			if self.platformName.lower() == 'ios':
+				if self.driver.by_id('closeButton'):
+					self.driver.by_id('closeButton').click()
+				elif self.driver.by_id('关闭'):
+					self.driver.by_id('关闭').click()
+				elif self.driver.by_id('返回'):
+					self.driver.by_id('返回').click()
+				elif self.driver.by_id('com nav ic back'):
+					self.driver.by_id('com nav ic back').click()
+				else:
+					L.logger.warning('通过[ by id ]关闭H5失败')
 			else:
-				L.logger.warning('通过[ by id ]关闭H5失败')
+				# Android 关闭H5
+				el = self.driver.by_id('com.paic.example.simpleapp:array/user_system')
+				if el:
+					el.click()
 		except:
 				if self.driver.by_xpath("//*[@name='closeButton']"):
 					self.driver.by_xpath("//*[@name='closeButton']").click()
@@ -278,8 +278,7 @@ class AppOperate (object):
 					self.driver.by_xpath("//*[@name='com nav ic back']").click()
 				else:
 					L.logger.warning('暂不支持的关闭方式,xpah关闭H5失败')
-		# finally:
-		# 	self.driver.close_app()
+		
 
 	def getPluginList(self):
 		try:
@@ -295,6 +294,7 @@ class AppOperate (object):
 
 		except Exception as e:
 			L.logger.warning(e)
+			raise e
 
 	def isAlert(self):
 		'''

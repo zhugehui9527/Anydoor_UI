@@ -1,0 +1,860 @@
+<?xml version="1.0" encoding="utf-8"?><testsuite errors="0" failures="3" name="pytest" skips="0" tests="42" time="733.314"><testcase classname="Anydoor.Anydoor_UI" file="Anydoor.py" line="29" name="test_A1" time="65.1092042923"><system-err>2016-10-14 11:40:27,752 : Anydoor.py[line:32] [ DEBUG ] 向右滑动,进入个人中心
+2016-10-14 11:40:27,752 : Element.py[line:89] [ DEBUG ] 获取当前窗口大小
+2016-10-14 11:40:29,749 : Element.py[line:129] [ DEBUG ] 向右滑动,起始滑动坐标: (64,454),坐标偏移量(192,0)
+2016-10-14 11:40:32,246 : Anydoor.py[line:34] [ DEBUG ] H5页面进行账密登录
+2016-10-14 11:40:32,247 : Element.py[line:178] [ DEBUG ] 隐式等待 3 秒
+2016-10-14 11:40:32,254 : Element.py[line:178] [ DEBUG ] 隐式等待 3 秒
+2016-10-14 11:40:33,217 : Element.py[line:40] [ DEBUG ] 查找id: 个人中心
+2016-10-14 11:40:34,583 : Element.py[line:178] [ DEBUG ] 隐式等待 10 秒
+2016-10-14 11:40:34,591 : appOperate.py[line:283] [ DEBUG ] 开始轮询元素: 一账通登录
+2016-10-14 11:40:34,591 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:40:36,731 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:40:38,917 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:40:40,219 : appOperate.py[line:291] [ DEBUG ] 界面存在此元素: 一账通登录
+2016-10-14 11:40:40,220 : Element.py[line:178] [ DEBUG ] 隐式等待 10 秒
+2016-10-14 11:40:42,385 : Element.py[line:66] [ DEBUG ] 查找 xpath: //*[@value=&apos;一账通号/手机号/身份证号/邮箱&apos;]
+2016-10-14 11:40:43,545 : appOperate.py[line:90] [ DEBUG ] 点击账号输入框
+2016-10-14 11:40:43,545 : Element.py[line:178] [ DEBUG ] 隐式等待 3 秒
+2016-10-14 11:40:46,055 : Element.py[line:66] [ DEBUG ] 查找 xpath: //*[@value=&apos;一账通号/手机号/身份证号/邮箱&apos;]
+2016-10-14 11:40:47,280 : appOperate.py[line:93] [ DEBUG ] 清除输入框文本内容
+2016-10-14 11:40:47,280 : Element.py[line:178] [ DEBUG ] 隐式等待 3 秒
+2016-10-14 11:40:49,733 : Element.py[line:66] [ DEBUG ] 查找 xpath: //*[@value=&apos;一账通号/手机号/身份证号/邮箱&apos;]
+2016-10-14 11:40:55,524 : appOperate.py[line:96] [ DEBUG ] 输入账号: 18602753065
+2016-10-14 11:40:55,524 : Element.py[line:178] [ DEBUG ] 隐式等待 3 秒
+2016-10-14 11:40:57,945 : Element.py[line:66] [ DEBUG ] 查找 xpath: //*[@value=&apos;密码&apos;]
+2016-10-14 11:40:59,304 : Element.py[line:178] [ DEBUG ] 隐式等待 3 秒
+2016-10-14 11:41:01,744 : Element.py[line:66] [ DEBUG ] 查找 xpath: //*[@value=&apos;密码&apos;]
+2016-10-14 11:41:02,973 : appOperate.py[line:102] [ DEBUG ] 清除输入框文本内容
+2016-10-14 11:41:02,973 : Element.py[line:178] [ DEBUG ] 隐式等待 3 秒
+2016-10-14 11:41:05,290 : Element.py[line:66] [ DEBUG ] 查找 xpath: //*[@value=&apos;密码&apos;]
+2016-10-14 11:41:10,073 : appOperate.py[line:105] [ DEBUG ] 输入密码: qweqwe123
+2016-10-14 11:41:15,075 : Element.py[line:178] [ DEBUG ] 隐式等待 10 秒
+2016-10-14 11:41:16,220 : Element.py[line:40] [ DEBUG ] 查找id: 完成
+2016-10-14 11:41:19,850 : Element.py[line:66] [ DEBUG ] 查找 xpath: //UIALink[@name=&apos;登 录&apos;]
+2016-10-14 11:41:22,019 : Element.py[line:186] [ DEBUG ] 页面加载等待,超时时间 30 秒
+2016-10-14 11:41:22,027 : appOperate.py[line:283] [ DEBUG ] 开始轮询元素: 我的资产
+2016-10-14 11:41:22,028 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:41:24,473 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:41:26,038 : appOperate.py[line:291] [ DEBUG ] 界面存在此元素: 我的资产
+2016-10-14 11:41:26,038 : Element.py[line:178] [ DEBUG ] 隐式等待 3 秒
+2016-10-14 11:41:27,119 : Element.py[line:40] [ DEBUG ] 查找id: closeButton
+2016-10-14 11:41:28,086 : Element.py[line:40] [ DEBUG ] 查找id: closeButton
+2016-10-14 11:41:29,247 : Element.py[line:89] [ DEBUG ] 获取当前窗口大小
+2016-10-14 11:41:30,262 : Element.py[line:143] [ DEBUG ] 向左滑动,滑动起始坐标: (256,454),偏移量(-128,0)
+</system-err></testcase><testcase classname="Anydoor.Anydoor_UI" file="Anydoor.py" line="43" name="test_A2" time="0.634592294693"><system-err>2016-10-14 11:41:32,864 : appOperate.py[line:221] [ DEBUG ] 开始获取插件列表。。。
+2016-10-14 11:41:33,491 : appOperate.py[line:224] [ DEBUG ] 当前插件总数: 46
+2016-10-14 11:41:33,491 : appOperate.py[line:225] [ DEBUG ] 当前插件列表: 
+2016-10-14 11:41:33,492 : appOperate.py[line:229] [ DEBUG ] 平安地图---PA01100000000_02_PAZB---H
+2016-10-14 11:41:33,492 : appOperate.py[line:229] [ DEBUG ] 模拟炒股---PA01100000000_02_WLC---H
+2016-10-14 11:41:33,492 : appOperate.py[line:229] [ DEBUG ] 个人中心---PA01100000000_02_GRZX---Y
+2016-10-14 11:41:33,492 : appOperate.py[line:229] [ DEBUG ] 看直播---PA00500000000_02_GSZB---N
+2016-10-14 11:41:33,492 : appOperate.py[line:229] [ DEBUG ] 买车险---PA00300000000_02_MCX---Y
+2016-10-14 11:41:33,492 : appOperate.py[line:229] [ DEBUG ] 活动集合---PA01100000000_02_HDJHY---H
+2016-10-14 11:41:33,492 : appOperate.py[line:229] [ DEBUG ] 找网点---PA01100000001_02_WDCX---N
+2016-10-14 11:41:33,493 : appOperate.py[line:229] [ DEBUG ] 卡面由你---PA01100000001_02_XYK---H
+2016-10-14 11:41:33,493 : appOperate.py[line:229] [ DEBUG ] 买航意险---PA01100000000_02_YYG---N
+2016-10-14 11:41:33,493 : appOperate.py[line:229] [ DEBUG ] 金融超市---PA02100000000_02_JRQJD---H
+2016-10-14 11:41:33,493 : appOperate.py[line:229] [ DEBUG ] 房按揭---PA03300000000_02_AJDK---Y
+2016-10-14 11:41:33,493 : appOperate.py[line:229] [ DEBUG ] 在线投资---PA02500000000_02_TZLC---N
+2016-10-14 11:41:33,493 : appOperate.py[line:229] [ DEBUG ] 积分福利---PA02100000001_02_JF---Y
+2016-10-14 11:41:33,493 : appOperate.py[line:229] [ DEBUG ] 平安好贷---PA01200000000_02_XYD---N
+2016-10-14 11:41:33,493 : appOperate.py[line:229] [ DEBUG ] 应急钱包---PA02100000000_02_YJQB---N
+2016-10-14 11:41:33,493 : appOperate.py[line:229] [ DEBUG ] 5-6%---PA02100000000_02_KY---N
+2016-10-14 11:41:33,493 : appOperate.py[line:229] [ DEBUG ] 活期盈---PA02100000000_02_HQY---H
+2016-10-14 11:41:33,493 : appOperate.py[line:229] [ DEBUG ] 查号码---PA00800000000_02_PACX---N
+2016-10-14 11:41:33,493 : appOperate.py[line:229] [ DEBUG ] 财富宝---PA00400000000_02_CFBXZZC---H
+2016-10-14 11:41:33,493 : appOperate.py[line:229] [ DEBUG ] 精品特卖---PA01100000000_02_RYG---H
+2016-10-14 11:41:33,494 : appOperate.py[line:229] [ DEBUG ] 融e贷---PA00500000000_02_RED---N
+2016-10-14 11:41:33,494 : appOperate.py[line:229] [ DEBUG ] 资产查询---PA01100000000_02_ZCCX---Y
+2016-10-14 11:41:33,494 : appOperate.py[line:229] [ DEBUG ] 意见反馈---PA01100000000_02_YHFK---N
+2016-10-14 11:41:33,494 : appOperate.py[line:229] [ DEBUG ] 财富礼包---PA02100000000_02_JNHPS---N
+2016-10-14 11:41:33,494 : appOperate.py[line:229] [ DEBUG ] 网点地图---PA01100000003_02_WDCX---N
+2016-10-14 11:41:33,494 : appOperate.py[line:229] [ DEBUG ] 资产生活---PA02100000000_02_QDCS---N
+2016-10-14 11:41:33,494 : appOperate.py[line:229] [ DEBUG ] 薪易通---SZDBK00000000_02_XYT---N
+2016-10-14 11:41:33,494 : appOperate.py[line:229] [ DEBUG ] 平安易贷 ---PA02100000000_02_PAYD---N
+2016-10-14 11:41:33,494 : appOperate.py[line:229] [ DEBUG ] 平安游戏---PA02700000000_02_PAYX---Y
+2016-10-14 11:41:33,494 : appOperate.py[line:229] [ DEBUG ] 房估值---PA02100000000_02_FGZ---Y
+2016-10-14 11:41:33,494 : appOperate.py[line:229] [ DEBUG ] 车估值---PA02100000000_02_CGZ---Y
+2016-10-14 11:41:33,494 : appOperate.py[line:229] [ DEBUG ] 二手房---PA02800000000_02_ESF---Y
+2016-10-14 11:41:33,495 : appOperate.py[line:229] [ DEBUG ] 新房---PA02800000000_02_XF---Y
+2016-10-14 11:41:33,495 : appOperate.py[line:229] [ DEBUG ] 买保尊宝---PA02500000000_02_BZB---Y
+2016-10-14 11:41:33,495 : appOperate.py[line:229] [ DEBUG ] 安金购---PA02100000000_02_AJGCS---N
+2016-10-14 11:41:33,495 : appOperate.py[line:229] [ DEBUG ] 投资类---PA02100000000_02_CS3---N
+2016-10-14 11:41:33,495 : appOperate.py[line:229] [ DEBUG ] 平安易贷---PA02100000000_02_XEDK---N
+2016-10-14 11:41:33,495 : appOperate.py[line:229] [ DEBUG ] 亲子礼包---PA02100000000_02_JNHRS---N
+2016-10-14 11:41:33,495 : appOperate.py[line:229] [ DEBUG ] 个人生活---PA02100000000_02_HDCS---N
+2016-10-14 11:41:33,495 : appOperate.py[line:229] [ DEBUG ] 领话费---PA02100000000_02_JNHJK---N
+2016-10-14 11:41:33,495 : appOperate.py[line:229] [ DEBUG ] 保险超市---PA01100000000_02_BXCS---H
+2016-10-14 11:41:33,495 : appOperate.py[line:229] [ DEBUG ] 消息中心---PA01100000000_02_XXZX_F---H
+2016-10-14 11:41:33,495 : appOperate.py[line:229] [ DEBUG ] 现金理财---PA01100000000_02_LHBLC---H
+2016-10-14 11:41:33,495 : appOperate.py[line:229] [ DEBUG ] 银行---PA02100000001_02_HDCS---N
+2016-10-14 11:41:33,495 : appOperate.py[line:229] [ DEBUG ] 签到有礼---PA02100000000_02_KXJ1---N
+2016-10-14 11:41:33,496 : appOperate.py[line:229] [ DEBUG ] 股票组合---PA00500000000_02_GPZH---N
+</system-err></testcase><testcase classname="Anydoor.Anydoor_UI" file="Anydoor.py" line="47" name="test_A3" time="11.9893743992"><system-err>2016-10-14 11:41:33,502 : Anydoor.py[line:51] [ DEBUG ] 遍历插件,插件ID: PA01100000000_02_PAZB
+2016-10-14 11:41:33,503 : appOperate.py[line:150] [ DEBUG ] 开始检查插件: PA01100000000_02_PAZB
+2016-10-14 11:41:33,503 : appOperate.py[line:283] [ DEBUG ] 开始轮询元素: PA01100000000_02_PAZB
+2016-10-14 11:41:33,503 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:41:35,096 : appOperate.py[line:291] [ DEBUG ] 界面存在此元素: PA01100000000_02_PAZB
+2016-10-14 11:41:35,096 : appOperate.py[line:154] [ DEBUG ] 找到插件:PA01100000000_02_PAZB ,准备点击
+2016-10-14 11:41:36,188 : Element.py[line:40] [ DEBUG ] 查找id: PA01100000000_02_PAZB
+2016-10-14 11:41:40,409 : Element.py[line:178] [ DEBUG ] 隐式等待 20 秒
+2016-10-14 11:41:40,416 : appOperate.py[line:176] [ DEBUG ] 判断插件页面,是否包含: mapSelected
+2016-10-14 11:41:40,416 : appOperate.py[line:283] [ DEBUG ] 开始轮询元素: mapSelected
+2016-10-14 11:41:40,416 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:41:43,368 : appOperate.py[line:291] [ DEBUG ] 界面存在此元素: mapSelected
+2016-10-14 11:41:43,370 : appOperate.py[line:178] [ DEBUG ] 插件页面中包含 mapSelected,返回True
+2016-10-14 11:41:43,370 : appOperate.py[line:188] [ DEBUG ] 关闭H5页面!
+2016-10-14 11:41:44,278 : Element.py[line:40] [ DEBUG ] 查找id: 关闭
+</system-err></testcase><testcase classname="Anydoor.Anydoor_UI" file="Anydoor.py" line="53" name="test_A4" time="11.6031901836"><system-err>2016-10-14 11:41:45,492 : Anydoor.py[line:57] [ DEBUG ] 遍历插件,插件ID: PA01100000000_02_WLC
+2016-10-14 11:41:45,493 : appOperate.py[line:150] [ DEBUG ] 开始检查插件: PA01100000000_02_WLC
+2016-10-14 11:41:45,493 : appOperate.py[line:283] [ DEBUG ] 开始轮询元素: PA01100000000_02_WLC
+2016-10-14 11:41:45,493 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:41:46,927 : appOperate.py[line:291] [ DEBUG ] 界面存在此元素: PA01100000000_02_WLC
+2016-10-14 11:41:46,927 : appOperate.py[line:154] [ DEBUG ] 找到插件:PA01100000000_02_WLC ,准备点击
+2016-10-14 11:41:47,904 : Element.py[line:40] [ DEBUG ] 查找id: PA01100000000_02_WLC
+2016-10-14 11:41:52,175 : Element.py[line:178] [ DEBUG ] 隐式等待 20 秒
+2016-10-14 11:41:52,184 : appOperate.py[line:176] [ DEBUG ] 判断插件页面,是否包含: 值得买
+2016-10-14 11:41:52,184 : appOperate.py[line:283] [ DEBUG ] 开始轮询元素: 值得买
+2016-10-14 11:41:52,184 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:41:53,865 : appOperate.py[line:291] [ DEBUG ] 界面存在此元素: 值得买
+2016-10-14 11:41:53,865 : appOperate.py[line:178] [ DEBUG ] 插件页面中包含 值得买,返回True
+2016-10-14 11:41:53,865 : appOperate.py[line:188] [ DEBUG ] 关闭H5页面!
+2016-10-14 11:41:53,865 : Element.py[line:178] [ DEBUG ] 隐式等待 3 秒
+2016-10-14 11:41:54,928 : Element.py[line:40] [ DEBUG ] 查找id: closeButton
+2016-10-14 11:41:55,898 : Element.py[line:40] [ DEBUG ] 查找id: closeButton
+</system-err></testcase><testcase classname="Anydoor.Anydoor_UI" file="Anydoor.py" line="60" name="test_A5" time="11.1440708637"><system-err>2016-10-14 11:41:57,097 : Anydoor.py[line:64] [ DEBUG ] 遍历插件,插件ID: PA00300000000_02_MCX
+2016-10-14 11:41:57,098 : appOperate.py[line:150] [ DEBUG ] 开始检查插件: PA00300000000_02_MCX
+2016-10-14 11:41:57,098 : appOperate.py[line:283] [ DEBUG ] 开始轮询元素: PA00300000000_02_MCX
+2016-10-14 11:41:57,098 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:41:58,464 : appOperate.py[line:291] [ DEBUG ] 界面存在此元素: PA00300000000_02_MCX
+2016-10-14 11:41:58,467 : appOperate.py[line:154] [ DEBUG ] 找到插件:PA00300000000_02_MCX ,准备点击
+2016-10-14 11:41:59,533 : Element.py[line:40] [ DEBUG ] 查找id: PA00300000000_02_MCX
+2016-10-14 11:42:03,716 : Element.py[line:178] [ DEBUG ] 隐式等待 20 秒
+2016-10-14 11:42:03,723 : appOperate.py[line:176] [ DEBUG ] 判断插件页面,是否包含: 买车险
+2016-10-14 11:42:03,723 : appOperate.py[line:283] [ DEBUG ] 开始轮询元素: 买车险
+2016-10-14 11:42:03,723 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:42:05,061 : appOperate.py[line:291] [ DEBUG ] 界面存在此元素: 买车险
+2016-10-14 11:42:05,061 : appOperate.py[line:178] [ DEBUG ] 插件页面中包含 买车险,返回True
+2016-10-14 11:42:05,061 : appOperate.py[line:188] [ DEBUG ] 关闭H5页面!
+2016-10-14 11:42:05,062 : Element.py[line:178] [ DEBUG ] 隐式等待 3 秒
+2016-10-14 11:42:06,014 : Element.py[line:40] [ DEBUG ] 查找id: closeButton
+2016-10-14 11:42:07,137 : Element.py[line:40] [ DEBUG ] 查找id: closeButton
+</system-err></testcase><testcase classname="Anydoor.Anydoor_UI" file="Anydoor.py" line="66" name="test_A6" time="11.4086258411"><system-err>2016-10-14 11:42:08,242 : Anydoor.py[line:70] [ DEBUG ] 遍历插件,插件ID: PA00500000000_02_GSZB
+2016-10-14 11:42:08,244 : appOperate.py[line:150] [ DEBUG ] 开始检查插件: PA00500000000_02_GSZB
+2016-10-14 11:42:08,244 : appOperate.py[line:283] [ DEBUG ] 开始轮询元素: PA00500000000_02_GSZB
+2016-10-14 11:42:08,244 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:42:09,580 : appOperate.py[line:291] [ DEBUG ] 界面存在此元素: PA00500000000_02_GSZB
+2016-10-14 11:42:09,580 : appOperate.py[line:154] [ DEBUG ] 找到插件:PA00500000000_02_GSZB ,准备点击
+2016-10-14 11:42:10,643 : Element.py[line:40] [ DEBUG ] 查找id: PA00500000000_02_GSZB
+2016-10-14 11:42:14,919 : Element.py[line:178] [ DEBUG ] 隐式等待 20 秒
+2016-10-14 11:42:14,926 : appOperate.py[line:176] [ DEBUG ] 判断插件页面,是否包含: 热 门
+2016-10-14 11:42:14,926 : appOperate.py[line:283] [ DEBUG ] 开始轮询元素: 热 门
+2016-10-14 11:42:14,926 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:42:16,317 : appOperate.py[line:291] [ DEBUG ] 界面存在此元素: 热 门
+2016-10-14 11:42:16,317 : appOperate.py[line:178] [ DEBUG ] 插件页面中包含 热 门,返回True
+2016-10-14 11:42:16,317 : appOperate.py[line:188] [ DEBUG ] 关闭H5页面!
+2016-10-14 11:42:16,317 : Element.py[line:178] [ DEBUG ] 隐式等待 3 秒
+2016-10-14 11:42:17,395 : Element.py[line:40] [ DEBUG ] 查找id: closeButton
+2016-10-14 11:42:18,350 : Element.py[line:40] [ DEBUG ] 查找id: closeButton
+</system-err></testcase><testcase classname="Anydoor.Anydoor_UI" file="Anydoor.py" line="73" name="test_A7" time="24.7752358913"><system-err>2016-10-14 11:42:19,654 : Anydoor.py[line:77] [ DEBUG ] 遍历插件,插件ID: PA02100000001_02_JF
+2016-10-14 11:42:19,656 : appOperate.py[line:150] [ DEBUG ] 开始检查插件: PA02100000001_02_JF
+2016-10-14 11:42:19,656 : appOperate.py[line:283] [ DEBUG ] 开始轮询元素: PA02100000001_02_JF
+2016-10-14 11:42:19,656 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:42:22,876 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:42:25,179 : appOperate.py[line:288] [ WARNING ] 轮询超时,未找到元素: PA02100000001_02_JF
+2016-10-14 11:42:25,179 : appOperate.py[line:283] [ DEBUG ] 开始轮询元素: PA02100000001_02_JF
+2016-10-14 11:42:25,180 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:42:27,478 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:42:29,803 : appOperate.py[line:288] [ WARNING ] 轮询超时,未找到元素: PA02100000001_02_JF
+2016-10-14 11:42:29,803 : appOperate.py[line:157] [ DEBUG ] 没找到插件:PA02100000001_02_JF ,准备滑动
+2016-10-14 11:42:29,803 : Element.py[line:89] [ DEBUG ] 获取当前窗口大小
+2016-10-14 11:42:30,821 : Element.py[line:143] [ DEBUG ] 向左滑动,滑动起始坐标: (256,454),偏移量(-128,0)
+2016-10-14 11:42:33,274 : Element.py[line:178] [ DEBUG ] 隐式等待 3 秒
+2016-10-14 11:42:35,705 : Element.py[line:40] [ DEBUG ] 查找id: PA02100000001_02_JF
+2016-10-14 11:42:40,299 : Element.py[line:178] [ DEBUG ] 隐式等待 20 秒
+2016-10-14 11:42:40,305 : appOperate.py[line:176] [ DEBUG ] 判断插件页面,是否包含: 可用积分
+2016-10-14 11:42:40,306 : appOperate.py[line:283] [ DEBUG ] 开始轮询元素: 可用积分
+2016-10-14 11:42:40,306 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:42:41,196 : appOperate.py[line:291] [ DEBUG ] 界面存在此元素: 可用积分
+2016-10-14 11:42:41,197 : appOperate.py[line:178] [ DEBUG ] 插件页面中包含 可用积分,返回True
+2016-10-14 11:42:41,197 : appOperate.py[line:188] [ DEBUG ] 关闭H5页面!
+2016-10-14 11:42:41,197 : Element.py[line:178] [ DEBUG ] 隐式等待 3 秒
+2016-10-14 11:42:42,287 : Element.py[line:40] [ DEBUG ] 查找id: closeButton
+2016-10-14 11:42:43,233 : Element.py[line:40] [ DEBUG ] 查找id: closeButton
+</system-err></testcase><testcase classname="Anydoor.Anydoor_UI" file="Anydoor.py" line="79" name="test_A8" time="12.9928250313"><system-err>2016-10-14 11:42:44,430 : Anydoor.py[line:83] [ DEBUG ] 遍历插件,插件ID: PA01100000000_02_HDJHY
+2016-10-14 11:42:44,432 : appOperate.py[line:150] [ DEBUG ] 开始检查插件: PA01100000000_02_HDJHY
+2016-10-14 11:42:44,432 : appOperate.py[line:283] [ DEBUG ] 开始轮询元素: PA01100000000_02_HDJHY
+2016-10-14 11:42:44,432 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:42:47,577 : appOperate.py[line:291] [ DEBUG ] 界面存在此元素: PA01100000000_02_HDJHY
+2016-10-14 11:42:47,577 : appOperate.py[line:154] [ DEBUG ] 找到插件:PA01100000000_02_HDJHY ,准备点击
+2016-10-14 11:42:48,777 : Element.py[line:40] [ DEBUG ] 查找id: PA01100000000_02_HDJHY
+2016-10-14 11:42:52,964 : Element.py[line:178] [ DEBUG ] 隐式等待 20 秒
+2016-10-14 11:42:52,969 : appOperate.py[line:176] [ DEBUG ] 判断插件页面,是否包含: 本活动的最终解释权归平安科技所有
+2016-10-14 11:42:52,970 : appOperate.py[line:283] [ DEBUG ] 开始轮询元素: 本活动的最终解释权归平安科技所有
+2016-10-14 11:42:52,970 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:42:54,197 : appOperate.py[line:291] [ DEBUG ] 界面存在此元素: 本活动的最终解释权归平安科技所有
+2016-10-14 11:42:54,197 : appOperate.py[line:178] [ DEBUG ] 插件页面中包含 本活动的最终解释权归平安科技所有,返回True
+2016-10-14 11:42:54,197 : appOperate.py[line:188] [ DEBUG ] 关闭H5页面!
+2016-10-14 11:42:54,197 : Element.py[line:178] [ DEBUG ] 隐式等待 3 秒
+2016-10-14 11:42:55,264 : Element.py[line:40] [ DEBUG ] 查找id: closeButton
+2016-10-14 11:42:56,230 : Element.py[line:40] [ DEBUG ] 查找id: closeButton
+</system-err></testcase><testcase classname="Anydoor.Anydoor_UI" file="Anydoor.py" line="85" name="test_A9" time="12.9819009304"><system-err>2016-10-14 11:42:57,423 : Anydoor.py[line:89] [ DEBUG ] 遍历插件,插件ID: PA01100000001_02_WDCX
+2016-10-14 11:42:57,424 : appOperate.py[line:150] [ DEBUG ] 开始检查插件: PA01100000001_02_WDCX
+2016-10-14 11:42:57,424 : appOperate.py[line:283] [ DEBUG ] 开始轮询元素: PA01100000001_02_WDCX
+2016-10-14 11:42:57,424 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:43:00,547 : appOperate.py[line:291] [ DEBUG ] 界面存在此元素: PA01100000001_02_WDCX
+2016-10-14 11:43:00,547 : appOperate.py[line:154] [ DEBUG ] 找到插件:PA01100000001_02_WDCX ,准备点击
+2016-10-14 11:43:01,743 : Element.py[line:40] [ DEBUG ] 查找id: PA01100000001_02_WDCX
+2016-10-14 11:43:06,052 : Element.py[line:178] [ DEBUG ] 隐式等待 20 秒
+2016-10-14 11:43:06,061 : appOperate.py[line:176] [ DEBUG ] 判断插件页面,是否包含: ATM
+2016-10-14 11:43:06,062 : appOperate.py[line:283] [ DEBUG ] 开始轮询元素: ATM
+2016-10-14 11:43:06,062 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:43:07,145 : appOperate.py[line:291] [ DEBUG ] 界面存在此元素: ATM
+2016-10-14 11:43:07,145 : appOperate.py[line:178] [ DEBUG ] 插件页面中包含 ATM,返回True
+2016-10-14 11:43:07,145 : appOperate.py[line:188] [ DEBUG ] 关闭H5页面!
+2016-10-14 11:43:07,146 : Element.py[line:178] [ DEBUG ] 隐式等待 3 秒
+2016-10-14 11:43:08,236 : Element.py[line:40] [ DEBUG ] 查找id: closeButton
+2016-10-14 11:43:09,218 : Element.py[line:40] [ DEBUG ] 查找id: closeButton
+</system-err></testcase><testcase classname="Anydoor.Anydoor_UI" file="Anydoor.py" line="91" name="test_B0" time="13.2470748425"><system-err>2016-10-14 11:43:10,406 : Anydoor.py[line:95] [ DEBUG ] 遍历插件,插件ID: PA01100000001_02_XYK
+2016-10-14 11:43:10,407 : appOperate.py[line:150] [ DEBUG ] 开始检查插件: PA01100000001_02_XYK
+2016-10-14 11:43:10,407 : appOperate.py[line:283] [ DEBUG ] 开始轮询元素: PA01100000001_02_XYK
+2016-10-14 11:43:10,407 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:43:13,603 : appOperate.py[line:291] [ DEBUG ] 界面存在此元素: PA01100000001_02_XYK
+2016-10-14 11:43:13,603 : appOperate.py[line:154] [ DEBUG ] 找到插件:PA01100000001_02_XYK ,准备点击
+2016-10-14 11:43:14,731 : Element.py[line:40] [ DEBUG ] 查找id: PA01100000001_02_XYK
+2016-10-14 11:43:18,954 : Element.py[line:178] [ DEBUG ] 隐式等待 20 秒
+2016-10-14 11:43:18,960 : appOperate.py[line:176] [ DEBUG ] 判断插件页面,是否包含: 我的信用卡
+2016-10-14 11:43:18,961 : appOperate.py[line:283] [ DEBUG ] 开始轮询元素: 我的信用卡
+2016-10-14 11:43:18,961 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:43:20,447 : appOperate.py[line:291] [ DEBUG ] 界面存在此元素: 我的信用卡
+2016-10-14 11:43:20,447 : appOperate.py[line:178] [ DEBUG ] 插件页面中包含 我的信用卡,返回True
+2016-10-14 11:43:20,447 : appOperate.py[line:188] [ DEBUG ] 关闭H5页面!
+2016-10-14 11:43:20,447 : Element.py[line:178] [ DEBUG ] 隐式等待 3 秒
+2016-10-14 11:43:21,356 : Element.py[line:40] [ DEBUG ] 查找id: closeButton
+2016-10-14 11:43:22,438 : Element.py[line:40] [ DEBUG ] 查找id: closeButton
+</system-err></testcase><testcase classname="Anydoor.Anydoor_UI" file="Anydoor.py" line="97" name="test_B1" time="13.0067510605"><system-err>2016-10-14 11:43:23,654 : Anydoor.py[line:101] [ DEBUG ] 遍历插件,插件ID: PA01100000000_02_YYG
+2016-10-14 11:43:23,655 : appOperate.py[line:150] [ DEBUG ] 开始检查插件: PA01100000000_02_YYG
+2016-10-14 11:43:23,655 : appOperate.py[line:283] [ DEBUG ] 开始轮询元素: PA01100000000_02_YYG
+2016-10-14 11:43:23,655 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:43:26,796 : appOperate.py[line:291] [ DEBUG ] 界面存在此元素: PA01100000000_02_YYG
+2016-10-14 11:43:26,796 : appOperate.py[line:154] [ DEBUG ] 找到插件:PA01100000000_02_YYG ,准备点击
+2016-10-14 11:43:27,989 : Element.py[line:40] [ DEBUG ] 查找id: PA01100000000_02_YYG
+2016-10-14 11:43:32,118 : Element.py[line:178] [ DEBUG ] 隐式等待 20 秒
+2016-10-14 11:43:32,128 : appOperate.py[line:176] [ DEBUG ] 判断插件页面,是否包含: 立即投保
+2016-10-14 11:43:32,129 : appOperate.py[line:283] [ DEBUG ] 开始轮询元素: 立即投保
+2016-10-14 11:43:32,129 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:43:33,427 : appOperate.py[line:291] [ DEBUG ] 界面存在此元素: 立即投保
+2016-10-14 11:43:33,427 : appOperate.py[line:178] [ DEBUG ] 插件页面中包含 立即投保,返回True
+2016-10-14 11:43:33,427 : appOperate.py[line:188] [ DEBUG ] 关闭H5页面!
+2016-10-14 11:43:33,427 : Element.py[line:178] [ DEBUG ] 隐式等待 3 秒
+2016-10-14 11:43:34,429 : Element.py[line:40] [ DEBUG ] 查找id: closeButton
+2016-10-14 11:43:35,455 : Element.py[line:40] [ DEBUG ] 查找id: closeButton
+</system-err></testcase><testcase classname="Anydoor.Anydoor_UI" file="Anydoor.py" line="103" name="test_B2" time="12.9370150566"><system-err>2016-10-14 11:43:36,662 : Anydoor.py[line:107] [ DEBUG ] 遍历插件,插件ID: PA02500000000_02_TZLC
+2016-10-14 11:43:36,663 : appOperate.py[line:150] [ DEBUG ] 开始检查插件: PA02500000000_02_TZLC
+2016-10-14 11:43:36,663 : appOperate.py[line:283] [ DEBUG ] 开始轮询元素: PA02500000000_02_TZLC
+2016-10-14 11:43:36,663 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:43:39,796 : appOperate.py[line:291] [ DEBUG ] 界面存在此元素: PA02500000000_02_TZLC
+2016-10-14 11:43:39,797 : appOperate.py[line:154] [ DEBUG ] 找到插件:PA02500000000_02_TZLC ,准备点击
+2016-10-14 11:43:41,039 : Element.py[line:40] [ DEBUG ] 查找id: PA02500000000_02_TZLC
+2016-10-14 11:43:45,264 : Element.py[line:178] [ DEBUG ] 隐式等待 20 秒
+2016-10-14 11:43:45,269 : appOperate.py[line:176] [ DEBUG ] 判断插件页面,是否包含: Containers
+2016-10-14 11:43:45,269 : appOperate.py[line:283] [ DEBUG ] 开始轮询元素: Containers
+2016-10-14 11:43:45,269 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:43:46,408 : appOperate.py[line:291] [ DEBUG ] 界面存在此元素: Containers
+2016-10-14 11:43:46,408 : appOperate.py[line:178] [ DEBUG ] 插件页面中包含 Containers,返回True
+2016-10-14 11:43:46,408 : appOperate.py[line:188] [ DEBUG ] 关闭H5页面!
+2016-10-14 11:43:46,409 : Element.py[line:178] [ DEBUG ] 隐式等待 3 秒
+2016-10-14 11:43:47,359 : Element.py[line:40] [ DEBUG ] 查找id: closeButton
+2016-10-14 11:43:48,507 : Element.py[line:40] [ DEBUG ] 查找id: closeButton
+</system-err></testcase><testcase classname="Anydoor.Anydoor_UI" file="Anydoor.py" line="109" name="test_B3" time="13.0048499107"><system-err>2016-10-14 11:43:49,600 : Anydoor.py[line:113] [ DEBUG ] 遍历插件,插件ID: PA03300000000_02_AJDK
+2016-10-14 11:43:49,600 : appOperate.py[line:150] [ DEBUG ] 开始检查插件: PA03300000000_02_AJDK
+2016-10-14 11:43:49,601 : appOperate.py[line:283] [ DEBUG ] 开始轮询元素: PA03300000000_02_AJDK
+2016-10-14 11:43:49,601 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:43:52,833 : appOperate.py[line:291] [ DEBUG ] 界面存在此元素: PA03300000000_02_AJDK
+2016-10-14 11:43:52,833 : appOperate.py[line:154] [ DEBUG ] 找到插件:PA03300000000_02_AJDK ,准备点击
+2016-10-14 11:43:54,084 : Element.py[line:40] [ DEBUG ] 查找id: PA03300000000_02_AJDK
+2016-10-14 11:43:58,288 : Element.py[line:178] [ DEBUG ] 隐式等待 20 秒
+2016-10-14 11:43:58,293 : appOperate.py[line:176] [ DEBUG ] 判断插件页面,是否包含: 试算一下
+2016-10-14 11:43:58,293 : appOperate.py[line:283] [ DEBUG ] 开始轮询元素: 试算一下
+2016-10-14 11:43:58,293 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:43:59,351 : appOperate.py[line:291] [ DEBUG ] 界面存在此元素: 试算一下
+2016-10-14 11:43:59,351 : appOperate.py[line:178] [ DEBUG ] 插件页面中包含 试算一下,返回True
+2016-10-14 11:43:59,351 : appOperate.py[line:188] [ DEBUG ] 关闭H5页面!
+2016-10-14 11:43:59,351 : Element.py[line:178] [ DEBUG ] 隐式等待 3 秒
+2016-10-14 11:44:00,432 : Element.py[line:40] [ DEBUG ] 查找id: closeButton
+2016-10-14 11:44:01,380 : Element.py[line:40] [ DEBUG ] 查找id: closeButton
+</system-err></testcase><testcase classname="Anydoor.Anydoor_UI" file="Anydoor.py" line="115" name="test_B4" time="13.0172562599"><system-err>2016-10-14 11:44:02,606 : Anydoor.py[line:119] [ DEBUG ] 遍历插件,插件ID: PA01200000000_02_XYD
+2016-10-14 11:44:02,607 : appOperate.py[line:150] [ DEBUG ] 开始检查插件: PA01200000000_02_XYD
+2016-10-14 11:44:02,607 : appOperate.py[line:283] [ DEBUG ] 开始轮询元素: PA01200000000_02_XYD
+2016-10-14 11:44:02,607 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:44:05,758 : appOperate.py[line:291] [ DEBUG ] 界面存在此元素: PA01200000000_02_XYD
+2016-10-14 11:44:05,758 : appOperate.py[line:154] [ DEBUG ] 找到插件:PA01200000000_02_XYD ,准备点击
+2016-10-14 11:44:07,022 : Element.py[line:40] [ DEBUG ] 查找id: PA01200000000_02_XYD
+2016-10-14 11:44:11,432 : Element.py[line:178] [ DEBUG ] 隐式等待 20 秒
+2016-10-14 11:44:11,438 : appOperate.py[line:176] [ DEBUG ] 判断插件页面,是否包含: 马上贷款
+2016-10-14 11:44:11,438 : appOperate.py[line:283] [ DEBUG ] 开始轮询元素: 马上贷款
+2016-10-14 11:44:11,438 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:44:12,374 : appOperate.py[line:291] [ DEBUG ] 界面存在此元素: 马上贷款
+2016-10-14 11:44:12,374 : appOperate.py[line:178] [ DEBUG ] 插件页面中包含 马上贷款,返回True
+2016-10-14 11:44:12,374 : appOperate.py[line:188] [ DEBUG ] 关闭H5页面!
+2016-10-14 11:44:12,374 : Element.py[line:178] [ DEBUG ] 隐式等待 3 秒
+2016-10-14 11:44:13,441 : Element.py[line:40] [ DEBUG ] 查找id: closeButton
+2016-10-14 11:44:14,382 : Element.py[line:40] [ DEBUG ] 查找id: closeButton
+</system-err></testcase><testcase classname="Anydoor.Anydoor_UI" file="Anydoor.py" line="121" name="test_B5" time="13.2854790688"><system-err>2016-10-14 11:44:15,628 : Anydoor.py[line:125] [ DEBUG ] 遍历插件,插件ID: PA02100000000_02_YJQB
+2016-10-14 11:44:15,629 : appOperate.py[line:150] [ DEBUG ] 开始检查插件: PA02100000000_02_YJQB
+2016-10-14 11:44:15,630 : appOperate.py[line:283] [ DEBUG ] 开始轮询元素: PA02100000000_02_YJQB
+2016-10-14 11:44:15,630 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:44:18,902 : appOperate.py[line:291] [ DEBUG ] 界面存在此元素: PA02100000000_02_YJQB
+2016-10-14 11:44:18,903 : appOperate.py[line:154] [ DEBUG ] 找到插件:PA02100000000_02_YJQB ,准备点击
+2016-10-14 11:44:20,314 : Element.py[line:40] [ DEBUG ] 查找id: PA02100000000_02_YJQB
+2016-10-14 11:44:24,344 : Element.py[line:178] [ DEBUG ] 隐式等待 20 秒
+2016-10-14 11:44:24,351 : appOperate.py[line:176] [ DEBUG ] 判断插件页面,是否包含: 获取动态码
+2016-10-14 11:44:24,352 : appOperate.py[line:283] [ DEBUG ] 开始轮询元素: 获取动态码
+2016-10-14 11:44:24,352 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:44:25,676 : appOperate.py[line:291] [ DEBUG ] 界面存在此元素: 获取动态码
+2016-10-14 11:44:25,677 : appOperate.py[line:178] [ DEBUG ] 插件页面中包含 获取动态码,返回True
+2016-10-14 11:44:25,677 : appOperate.py[line:188] [ DEBUG ] 关闭H5页面!
+2016-10-14 11:44:25,677 : Element.py[line:178] [ DEBUG ] 隐式等待 3 秒
+2016-10-14 11:44:26,768 : Element.py[line:40] [ DEBUG ] 查找id: closeButton
+2016-10-14 11:44:27,705 : Element.py[line:40] [ DEBUG ] 查找id: closeButton
+</system-err></testcase><testcase classname="Anydoor.Anydoor_UI" file="Anydoor.py" line="127" name="test_B6" time="14.7555000782"><system-err>2016-10-14 11:44:28,912 : Anydoor.py[line:131] [ DEBUG ] 遍历插件,插件ID: PA00800000000_02_PACX
+2016-10-14 11:44:28,914 : appOperate.py[line:150] [ DEBUG ] 开始检查插件: PA00800000000_02_PACX
+2016-10-14 11:44:28,914 : appOperate.py[line:283] [ DEBUG ] 开始轮询元素: PA00800000000_02_PACX
+2016-10-14 11:44:28,914 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:44:32,742 : appOperate.py[line:291] [ DEBUG ] 界面存在此元素: PA00800000000_02_PACX
+2016-10-14 11:44:32,742 : appOperate.py[line:154] [ DEBUG ] 找到插件:PA00800000000_02_PACX ,准备点击
+2016-10-14 11:44:34,825 : Element.py[line:40] [ DEBUG ] 查找id: PA00800000000_02_PACX
+2016-10-14 11:44:39,106 : Element.py[line:178] [ DEBUG ] 隐式等待 20 秒
+2016-10-14 11:44:39,114 : appOperate.py[line:176] [ DEBUG ] 判断插件页面,是否包含: 使馆信息
+2016-10-14 11:44:39,115 : appOperate.py[line:283] [ DEBUG ] 开始轮询元素: 使馆信息
+2016-10-14 11:44:39,116 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:44:40,384 : appOperate.py[line:291] [ DEBUG ] 界面存在此元素: 使馆信息
+2016-10-14 11:44:40,385 : appOperate.py[line:178] [ DEBUG ] 插件页面中包含 使馆信息,返回True
+2016-10-14 11:44:40,385 : appOperate.py[line:188] [ DEBUG ] 关闭H5页面!
+2016-10-14 11:44:40,385 : Element.py[line:178] [ DEBUG ] 隐式等待 3 秒
+2016-10-14 11:44:41,450 : Element.py[line:40] [ DEBUG ] 查找id: closeButton
+2016-10-14 11:44:42,524 : Element.py[line:40] [ DEBUG ] 查找id: closeButton
+</system-err></testcase><testcase classname="Anydoor.Anydoor_UI" file="Anydoor.py" line="133" name="test_B7" time="13.2818450928"><system-err>2016-10-14 11:44:43,668 : Anydoor.py[line:137] [ DEBUG ] 遍历插件,插件ID: PA01100000000_02_ZCCX
+2016-10-14 11:44:43,670 : appOperate.py[line:150] [ DEBUG ] 开始检查插件: PA01100000000_02_ZCCX
+2016-10-14 11:44:43,670 : appOperate.py[line:283] [ DEBUG ] 开始轮询元素: PA01100000000_02_ZCCX
+2016-10-14 11:44:43,670 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:44:47,034 : appOperate.py[line:291] [ DEBUG ] 界面存在此元素: PA01100000000_02_ZCCX
+2016-10-14 11:44:47,034 : appOperate.py[line:154] [ DEBUG ] 找到插件:PA01100000000_02_ZCCX ,准备点击
+2016-10-14 11:44:48,213 : Element.py[line:40] [ DEBUG ] 查找id: PA01100000000_02_ZCCX
+2016-10-14 11:44:52,651 : Element.py[line:178] [ DEBUG ] 隐式等待 20 秒
+2016-10-14 11:44:52,659 : appOperate.py[line:176] [ DEBUG ] 判断插件页面,是否包含: 资产提醒
+2016-10-14 11:44:52,660 : appOperate.py[line:283] [ DEBUG ] 开始轮询元素: 资产提醒
+2016-10-14 11:44:52,660 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:44:53,713 : appOperate.py[line:291] [ DEBUG ] 界面存在此元素: 资产提醒
+2016-10-14 11:44:53,714 : appOperate.py[line:178] [ DEBUG ] 插件页面中包含 资产提醒,返回True
+2016-10-14 11:44:53,714 : appOperate.py[line:188] [ DEBUG ] 关闭H5页面!
+2016-10-14 11:44:53,714 : Element.py[line:178] [ DEBUG ] 隐式等待 3 秒
+2016-10-14 11:44:54,816 : Element.py[line:40] [ DEBUG ] 查找id: closeButton
+2016-10-14 11:44:55,744 : Element.py[line:40] [ DEBUG ] 查找id: closeButton
+</system-err></testcase><testcase classname="Anydoor.Anydoor_UI" file="Anydoor.py" line="139" name="test_B8" time="13.2369801998"><system-err>2016-10-14 11:44:56,952 : Anydoor.py[line:143] [ DEBUG ] 遍历插件,插件ID: PA00500000000_02_RED
+2016-10-14 11:44:56,953 : appOperate.py[line:150] [ DEBUG ] 开始检查插件: PA00500000000_02_RED
+2016-10-14 11:44:56,953 : appOperate.py[line:283] [ DEBUG ] 开始轮询元素: PA00500000000_02_RED
+2016-10-14 11:44:56,953 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:45:00,275 : appOperate.py[line:291] [ DEBUG ] 界面存在此元素: PA00500000000_02_RED
+2016-10-14 11:45:00,275 : appOperate.py[line:154] [ DEBUG ] 找到插件:PA00500000000_02_RED ,准备点击
+2016-10-14 11:45:01,440 : Element.py[line:40] [ DEBUG ] 查找id: PA00500000000_02_RED
+2016-10-14 11:45:05,637 : Element.py[line:178] [ DEBUG ] 隐式等待 20 秒
+2016-10-14 11:45:05,642 : appOperate.py[line:176] [ DEBUG ] 判断插件页面,是否包含: 申请条件
+2016-10-14 11:45:05,643 : appOperate.py[line:283] [ DEBUG ] 开始轮询元素: 申请条件
+2016-10-14 11:45:05,643 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:45:07,072 : appOperate.py[line:291] [ DEBUG ] 界面存在此元素: 申请条件
+2016-10-14 11:45:07,073 : appOperate.py[line:178] [ DEBUG ] 插件页面中包含 申请条件,返回True
+2016-10-14 11:45:07,073 : appOperate.py[line:188] [ DEBUG ] 关闭H5页面!
+2016-10-14 11:45:07,073 : Element.py[line:178] [ DEBUG ] 隐式等待 3 秒
+2016-10-14 11:45:07,941 : Element.py[line:40] [ DEBUG ] 查找id: closeButton
+2016-10-14 11:45:09,027 : Element.py[line:40] [ DEBUG ] 查找id: closeButton
+</system-err></testcase><testcase classname="Anydoor.Anydoor_UI" file="Anydoor.py" line="145" name="test_B9" time="13.3298377991"><system-err>2016-10-14 11:45:10,189 : Anydoor.py[line:149] [ DEBUG ] 遍历插件,插件ID: PA02100000000_02_HQY
+2016-10-14 11:45:10,191 : appOperate.py[line:150] [ DEBUG ] 开始检查插件: PA02100000000_02_HQY
+2016-10-14 11:45:10,191 : appOperate.py[line:283] [ DEBUG ] 开始轮询元素: PA02100000000_02_HQY
+2016-10-14 11:45:10,191 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:45:13,502 : appOperate.py[line:291] [ DEBUG ] 界面存在此元素: PA02100000000_02_HQY
+2016-10-14 11:45:13,502 : appOperate.py[line:154] [ DEBUG ] 找到插件:PA02100000000_02_HQY ,准备点击
+2016-10-14 11:45:14,823 : Element.py[line:40] [ DEBUG ] 查找id: PA02100000000_02_HQY
+2016-10-14 11:45:18,937 : Element.py[line:178] [ DEBUG ] 隐式等待 20 秒
+2016-10-14 11:45:18,942 : appOperate.py[line:176] [ DEBUG ] 判断插件页面,是否包含: 获取验证码
+2016-10-14 11:45:18,943 : appOperate.py[line:283] [ DEBUG ] 开始轮询元素: 获取验证码
+2016-10-14 11:45:18,943 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:45:20,224 : appOperate.py[line:291] [ DEBUG ] 界面存在此元素: 获取验证码
+2016-10-14 11:45:20,224 : appOperate.py[line:178] [ DEBUG ] 插件页面中包含 获取验证码,返回True
+2016-10-14 11:45:20,224 : appOperate.py[line:188] [ DEBUG ] 关闭H5页面!
+2016-10-14 11:45:20,224 : Element.py[line:178] [ DEBUG ] 隐式等待 3 秒
+2016-10-14 11:45:21,191 : Element.py[line:40] [ DEBUG ] 查找id: closeButton
+2016-10-14 11:45:22,251 : Element.py[line:40] [ DEBUG ] 查找id: closeButton
+</system-err></testcase><testcase classname="Anydoor.Anydoor_UI" file="Anydoor.py" line="151" name="test_C0" time="23.2160499096"><system-err>2016-10-14 11:45:23,520 : Anydoor.py[line:155] [ DEBUG ] 遍历插件,插件ID: PA01100000000_02_RYG
+2016-10-14 11:45:23,522 : appOperate.py[line:150] [ DEBUG ] 开始检查插件: PA01100000000_02_RYG
+2016-10-14 11:45:23,522 : appOperate.py[line:283] [ DEBUG ] 开始轮询元素: PA01100000000_02_RYG
+2016-10-14 11:45:23,523 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:45:26,474 : appOperate.py[line:291] [ DEBUG ] 界面存在此元素: PA01100000000_02_RYG
+2016-10-14 11:45:26,474 : appOperate.py[line:154] [ DEBUG ] 找到插件:PA01100000000_02_RYG ,准备点击
+2016-10-14 11:45:27,754 : Element.py[line:40] [ DEBUG ] 查找id: PA01100000000_02_RYG
+2016-10-14 11:45:31,917 : Element.py[line:178] [ DEBUG ] 隐式等待 20 秒
+2016-10-14 11:45:31,926 : appOperate.py[line:176] [ DEBUG ] 判断插件页面,是否包含: 安少爷の物:搜罗全网品质好物
+2016-10-14 11:45:31,927 : appOperate.py[line:283] [ DEBUG ] 开始轮询元素: 安少爷の物:搜罗全网品质好物
+2016-10-14 11:45:31,927 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:45:43,583 : appOperate.py[line:291] [ DEBUG ] 界面存在此元素: 安少爷の物:搜罗全网品质好物
+2016-10-14 11:45:43,583 : appOperate.py[line:178] [ DEBUG ] 插件页面中包含 安少爷の物:搜罗全网品质好物,返回True
+2016-10-14 11:45:43,583 : appOperate.py[line:188] [ DEBUG ] 关闭H5页面!
+2016-10-14 11:45:43,583 : Element.py[line:178] [ DEBUG ] 隐式等待 3 秒
+2016-10-14 11:45:44,555 : Element.py[line:40] [ DEBUG ] 查找id: closeButton
+2016-10-14 11:45:45,515 : Element.py[line:40] [ DEBUG ] 查找id: closeButton
+</system-err></testcase><testcase classname="Anydoor.Anydoor_UI" file="Anydoor.py" line="157" name="test_C1" time="14.2598230839"><system-err>2016-10-14 11:45:46,738 : Anydoor.py[line:161] [ DEBUG ] 遍历插件,插件ID: PA01100000000_02_YHFK
+2016-10-14 11:45:46,739 : appOperate.py[line:150] [ DEBUG ] 开始检查插件: PA01100000000_02_YHFK
+2016-10-14 11:45:46,739 : appOperate.py[line:283] [ DEBUG ] 开始轮询元素: PA01100000000_02_YHFK
+2016-10-14 11:45:46,739 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:45:50,155 : appOperate.py[line:291] [ DEBUG ] 界面存在此元素: PA01100000000_02_YHFK
+2016-10-14 11:45:50,156 : appOperate.py[line:154] [ DEBUG ] 找到插件:PA01100000000_02_YHFK ,准备点击
+2016-10-14 11:45:51,345 : Element.py[line:40] [ DEBUG ] 查找id: PA01100000000_02_YHFK
+2016-10-14 11:45:56,582 : Element.py[line:178] [ DEBUG ] 隐式等待 20 秒
+2016-10-14 11:45:56,587 : appOperate.py[line:176] [ DEBUG ] 判断插件页面,是否包含: 建议反馈
+2016-10-14 11:45:56,588 : appOperate.py[line:283] [ DEBUG ] 开始轮询元素: 建议反馈
+2016-10-14 11:45:56,588 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:45:57,815 : appOperate.py[line:291] [ DEBUG ] 界面存在此元素: 建议反馈
+2016-10-14 11:45:57,815 : appOperate.py[line:178] [ DEBUG ] 插件页面中包含 建议反馈,返回True
+2016-10-14 11:45:57,815 : appOperate.py[line:188] [ DEBUG ] 关闭H5页面!
+2016-10-14 11:45:57,815 : Element.py[line:178] [ DEBUG ] 隐式等待 3 秒
+2016-10-14 11:45:58,759 : Element.py[line:40] [ DEBUG ] 查找id: closeButton
+2016-10-14 11:45:59,823 : Element.py[line:40] [ DEBUG ] 查找id: closeButton
+</system-err></testcase><testcase classname="Anydoor.Anydoor_UI" file="Anydoor.py" line="163" name="test_C2" time="13.1308569908"><system-err>2016-10-14 11:46:00,999 : Anydoor.py[line:167] [ DEBUG ] 遍历插件,插件ID: PA02100000000_02_KY
+2016-10-14 11:46:01,001 : appOperate.py[line:150] [ DEBUG ] 开始检查插件: PA02100000000_02_KY
+2016-10-14 11:46:01,001 : appOperate.py[line:283] [ DEBUG ] 开始轮询元素: PA02100000000_02_KY
+2016-10-14 11:46:01,001 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:46:04,179 : appOperate.py[line:291] [ DEBUG ] 界面存在此元素: PA02100000000_02_KY
+2016-10-14 11:46:04,179 : appOperate.py[line:154] [ DEBUG ] 找到插件:PA02100000000_02_KY ,准备点击
+2016-10-14 11:46:05,366 : Element.py[line:40] [ DEBUG ] 查找id: PA02100000000_02_KY
+2016-10-14 11:46:09,609 : Element.py[line:178] [ DEBUG ] 隐式等待 20 秒
+2016-10-14 11:46:09,614 : appOperate.py[line:176] [ DEBUG ] 判断插件页面,是否包含: AnyDoorSDKBundle.bundle
+2016-10-14 11:46:09,614 : appOperate.py[line:283] [ DEBUG ] 开始轮询元素: AnyDoorSDKBundle.bundle
+2016-10-14 11:46:09,614 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:46:10,897 : appOperate.py[line:291] [ DEBUG ] 界面存在此元素: AnyDoorSDKBundle.bundle
+2016-10-14 11:46:10,898 : appOperate.py[line:178] [ DEBUG ] 插件页面中包含 AnyDoorSDKBundle.bundle,返回True
+2016-10-14 11:46:10,898 : appOperate.py[line:188] [ DEBUG ] 关闭H5页面!
+2016-10-14 11:46:10,898 : Element.py[line:178] [ DEBUG ] 隐式等待 3 秒
+2016-10-14 11:46:11,841 : Element.py[line:40] [ DEBUG ] 查找id: closeButton
+2016-10-14 11:46:12,914 : Element.py[line:40] [ DEBUG ] 查找id: closeButton
+</system-err></testcase><testcase classname="Anydoor.Anydoor_UI" file="Anydoor.py" line="169" name="test_C3" time="12.9728143215"><system-err>2016-10-14 11:46:14,131 : Anydoor.py[line:173] [ DEBUG ] 遍历插件,插件ID: PA02100000000_02_JNHPS
+2016-10-14 11:46:14,132 : appOperate.py[line:150] [ DEBUG ] 开始检查插件: PA02100000000_02_JNHPS
+2016-10-14 11:46:14,132 : appOperate.py[line:283] [ DEBUG ] 开始轮询元素: PA02100000000_02_JNHPS
+2016-10-14 11:46:14,132 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:46:17,291 : appOperate.py[line:291] [ DEBUG ] 界面存在此元素: PA02100000000_02_JNHPS
+2016-10-14 11:46:17,292 : appOperate.py[line:154] [ DEBUG ] 找到插件:PA02100000000_02_JNHPS ,准备点击
+2016-10-14 11:46:18,483 : Element.py[line:40] [ DEBUG ] 查找id: PA02100000000_02_JNHPS
+2016-10-14 11:46:22,843 : Element.py[line:178] [ DEBUG ] 隐式等待 20 秒
+2016-10-14 11:46:22,849 : appOperate.py[line:176] [ DEBUG ] 判断插件页面,是否包含: 点击查看活动规则
+2016-10-14 11:46:22,849 : appOperate.py[line:283] [ DEBUG ] 开始轮询元素: 点击查看活动规则
+2016-10-14 11:46:22,849 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:46:23,905 : appOperate.py[line:291] [ DEBUG ] 界面存在此元素: 点击查看活动规则
+2016-10-14 11:46:23,906 : appOperate.py[line:178] [ DEBUG ] 插件页面中包含 点击查看活动规则,返回True
+2016-10-14 11:46:23,906 : appOperate.py[line:188] [ DEBUG ] 关闭H5页面!
+2016-10-14 11:46:23,906 : Element.py[line:178] [ DEBUG ] 隐式等待 3 秒
+2016-10-14 11:46:24,853 : Element.py[line:40] [ DEBUG ] 查找id: closeButton
+2016-10-14 11:46:25,931 : Element.py[line:40] [ DEBUG ] 查找id: closeButton
+</system-err></testcase><testcase classname="Anydoor.Anydoor_UI" file="Anydoor.py" line="175" name="test_C4" time="13.0014050007"><system-err>2016-10-14 11:46:27,104 : Anydoor.py[line:179] [ DEBUG ] 遍历插件,插件ID: PA00400000000_02_CFBXZZC
+2016-10-14 11:46:27,105 : appOperate.py[line:150] [ DEBUG ] 开始检查插件: PA00400000000_02_CFBXZZC
+2016-10-14 11:46:27,105 : appOperate.py[line:283] [ DEBUG ] 开始轮询元素: PA00400000000_02_CFBXZZC
+2016-10-14 11:46:27,105 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:46:30,291 : appOperate.py[line:291] [ DEBUG ] 界面存在此元素: PA00400000000_02_CFBXZZC
+2016-10-14 11:46:30,291 : appOperate.py[line:154] [ DEBUG ] 找到插件:PA00400000000_02_CFBXZZC ,准备点击
+2016-10-14 11:46:31,495 : Element.py[line:40] [ DEBUG ] 查找id: PA00400000000_02_CFBXZZC
+2016-10-14 11:46:35,751 : Element.py[line:178] [ DEBUG ] 隐式等待 20 秒
+2016-10-14 11:46:35,757 : appOperate.py[line:176] [ DEBUG ] 判断插件页面,是否包含: 温馨提示
+2016-10-14 11:46:35,757 : appOperate.py[line:283] [ DEBUG ] 开始轮询元素: 温馨提示
+2016-10-14 11:46:35,757 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:46:36,897 : appOperate.py[line:291] [ DEBUG ] 界面存在此元素: 温馨提示
+2016-10-14 11:46:36,898 : appOperate.py[line:178] [ DEBUG ] 插件页面中包含 温馨提示,返回True
+2016-10-14 11:46:36,898 : appOperate.py[line:188] [ DEBUG ] 关闭H5页面!
+2016-10-14 11:46:36,898 : Element.py[line:178] [ DEBUG ] 隐式等待 3 秒
+2016-10-14 11:46:37,855 : Element.py[line:40] [ DEBUG ] 查找id: closeButton
+2016-10-14 11:46:38,910 : Element.py[line:40] [ DEBUG ] 查找id: closeButton
+</system-err></testcase><testcase classname="Anydoor.Anydoor_UI" file="Anydoor.py" line="181" name="test_C5" time="13.132267952"><system-err>2016-10-14 11:46:40,106 : Anydoor.py[line:185] [ DEBUG ] 遍历插件,插件ID: PA01100000001_02_WDCX
+2016-10-14 11:46:40,107 : appOperate.py[line:150] [ DEBUG ] 开始检查插件: PA01100000001_02_WDCX
+2016-10-14 11:46:40,107 : appOperate.py[line:283] [ DEBUG ] 开始轮询元素: PA01100000001_02_WDCX
+2016-10-14 11:46:40,107 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:46:43,270 : appOperate.py[line:291] [ DEBUG ] 界面存在此元素: PA01100000001_02_WDCX
+2016-10-14 11:46:43,270 : appOperate.py[line:154] [ DEBUG ] 找到插件:PA01100000001_02_WDCX ,准备点击
+2016-10-14 11:46:44,486 : Element.py[line:40] [ DEBUG ] 查找id: PA01100000001_02_WDCX
+2016-10-14 11:46:48,684 : Element.py[line:178] [ DEBUG ] 隐式等待 20 秒
+2016-10-14 11:46:48,690 : appOperate.py[line:176] [ DEBUG ] 判断插件页面,是否包含: ATM
+2016-10-14 11:46:48,690 : appOperate.py[line:283] [ DEBUG ] 开始轮询元素: ATM
+2016-10-14 11:46:48,691 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:46:49,992 : appOperate.py[line:291] [ DEBUG ] 界面存在此元素: ATM
+2016-10-14 11:46:49,993 : appOperate.py[line:178] [ DEBUG ] 插件页面中包含 ATM,返回True
+2016-10-14 11:46:49,993 : appOperate.py[line:188] [ DEBUG ] 关闭H5页面!
+2016-10-14 11:46:49,993 : Element.py[line:178] [ DEBUG ] 隐式等待 3 秒
+2016-10-14 11:46:50,933 : Element.py[line:40] [ DEBUG ] 查找id: closeButton
+2016-10-14 11:46:52,039 : Element.py[line:40] [ DEBUG ] 查找id: closeButton
+</system-err></testcase><testcase classname="Anydoor.Anydoor_UI" file="Anydoor.py" line="187" name="test_C6" time="13.0205340385"><system-err>2016-10-14 11:46:53,239 : Anydoor.py[line:191] [ DEBUG ] 遍历插件,插件ID: PA02100000000_02_QDCS
+2016-10-14 11:46:53,240 : appOperate.py[line:150] [ DEBUG ] 开始检查插件: PA02100000000_02_QDCS
+2016-10-14 11:46:53,240 : appOperate.py[line:283] [ DEBUG ] 开始轮询元素: PA02100000000_02_QDCS
+2016-10-14 11:46:53,240 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:46:56,377 : appOperate.py[line:291] [ DEBUG ] 界面存在此元素: PA02100000000_02_QDCS
+2016-10-14 11:46:56,377 : appOperate.py[line:154] [ DEBUG ] 找到插件:PA02100000000_02_QDCS ,准备点击
+2016-10-14 11:46:57,546 : Element.py[line:40] [ DEBUG ] 查找id: PA02100000000_02_QDCS
+2016-10-14 11:47:02,021 : Element.py[line:178] [ DEBUG ] 隐式等待 20 秒
+2016-10-14 11:47:02,027 : appOperate.py[line:176] [ DEBUG ] 判断插件页面,是否包含: 您已累计获得
+2016-10-14 11:47:02,027 : appOperate.py[line:283] [ DEBUG ] 开始轮询元素: 您已累计获得
+2016-10-14 11:47:02,027 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:47:03,119 : appOperate.py[line:291] [ DEBUG ] 界面存在此元素: 您已累计获得
+2016-10-14 11:47:03,119 : appOperate.py[line:178] [ DEBUG ] 插件页面中包含 您已累计获得,返回True
+2016-10-14 11:47:03,119 : appOperate.py[line:188] [ DEBUG ] 关闭H5页面!
+2016-10-14 11:47:03,119 : Element.py[line:178] [ DEBUG ] 隐式等待 3 秒
+2016-10-14 11:47:04,059 : Element.py[line:40] [ DEBUG ] 查找id: closeButton
+2016-10-14 11:47:05,137 : Element.py[line:40] [ DEBUG ] 查找id: closeButton
+</system-err></testcase><testcase classname="Anydoor.Anydoor_UI" file="Anydoor.py" line="193" name="test_C7" time="15.5564820766"><system-err>2016-10-14 11:47:06,262 : Anydoor.py[line:197] [ DEBUG ] 遍历插件,插件ID: PA02500000000_02_BZB
+2016-10-14 11:47:06,263 : appOperate.py[line:150] [ DEBUG ] 开始检查插件: PA02500000000_02_BZB
+2016-10-14 11:47:06,263 : appOperate.py[line:283] [ DEBUG ] 开始轮询元素: PA02500000000_02_BZB
+2016-10-14 11:47:06,263 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:47:09,636 : appOperate.py[line:291] [ DEBUG ] 界面存在此元素: PA02500000000_02_BZB
+2016-10-14 11:47:09,636 : appOperate.py[line:154] [ DEBUG ] 找到插件:PA02500000000_02_BZB ,准备点击
+2016-10-14 11:47:10,814 : Element.py[line:40] [ DEBUG ] 查找id: PA02500000000_02_BZB
+2016-10-14 11:47:15,108 : Element.py[line:178] [ DEBUG ] 隐式等待 20 秒
+2016-10-14 11:47:15,114 : appOperate.py[line:176] [ DEBUG ] 判断插件页面,是否包含: 热销基金
+2016-10-14 11:47:15,114 : appOperate.py[line:283] [ DEBUG ] 开始轮询元素: 热销基金
+2016-10-14 11:47:15,114 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:47:17,259 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:47:18,720 : appOperate.py[line:291] [ DEBUG ] 界面存在此元素: 热销基金
+2016-10-14 11:47:18,720 : appOperate.py[line:178] [ DEBUG ] 插件页面中包含 热销基金,返回True
+2016-10-14 11:47:18,720 : appOperate.py[line:188] [ DEBUG ] 关闭H5页面!
+2016-10-14 11:47:18,721 : Element.py[line:178] [ DEBUG ] 隐式等待 3 秒
+2016-10-14 11:47:19,627 : Element.py[line:40] [ DEBUG ] 查找id: closeButton
+2016-10-14 11:47:20,719 : Element.py[line:40] [ DEBUG ] 查找id: closeButton
+</system-err></testcase><testcase classname="Anydoor.Anydoor_UI" file="Anydoor.py" line="199" name="test_C8" time="14.1593782902"><system-err>2016-10-14 11:47:21,818 : Anydoor.py[line:203] [ DEBUG ] 遍历插件,插件ID: PA02100000000_02_PAYD
+2016-10-14 11:47:21,820 : appOperate.py[line:150] [ DEBUG ] 开始检查插件: PA02100000000_02_PAYD
+2016-10-14 11:47:21,820 : appOperate.py[line:283] [ DEBUG ] 开始轮询元素: PA02100000000_02_PAYD
+2016-10-14 11:47:21,820 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:47:25,072 : appOperate.py[line:291] [ DEBUG ] 界面存在此元素: PA02100000000_02_PAYD
+2016-10-14 11:47:25,072 : appOperate.py[line:154] [ DEBUG ] 找到插件:PA02100000000_02_PAYD ,准备点击
+2016-10-14 11:47:26,276 : Element.py[line:40] [ DEBUG ] 查找id: PA02100000000_02_PAYD
+2016-10-14 11:47:30,495 : Element.py[line:178] [ DEBUG ] 隐式等待 20 秒
+2016-10-14 11:47:30,502 : appOperate.py[line:176] [ DEBUG ] 判断插件页面,是否包含: 小额消费贷款
+2016-10-14 11:47:30,502 : appOperate.py[line:283] [ DEBUG ] 开始轮询元素: 小额消费贷款
+2016-10-14 11:47:30,502 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:47:31,808 : appOperate.py[line:291] [ DEBUG ] 界面存在此元素: 小额消费贷款
+2016-10-14 11:47:31,808 : appOperate.py[line:178] [ DEBUG ] 插件页面中包含 小额消费贷款,返回True
+2016-10-14 11:47:31,808 : appOperate.py[line:188] [ DEBUG ] 关闭H5页面!
+2016-10-14 11:47:31,808 : Element.py[line:178] [ DEBUG ] 隐式等待 3 秒
+2016-10-14 11:47:32,806 : Element.py[line:40] [ DEBUG ] 查找id: closeButton
+2016-10-14 11:47:34,786 : Element.py[line:40] [ DEBUG ] 查找id: closeButton
+</system-err></testcase><testcase classname="Anydoor.Anydoor_UI" file="Anydoor.py" line="205" name="test_C9" time="13.0771141052"><system-err>2016-10-14 11:47:35,979 : Anydoor.py[line:209] [ DEBUG ] 遍历插件,插件ID: PA02100000000_02_CGZ
+2016-10-14 11:47:35,980 : appOperate.py[line:150] [ DEBUG ] 开始检查插件: PA02100000000_02_CGZ
+2016-10-14 11:47:35,980 : appOperate.py[line:283] [ DEBUG ] 开始轮询元素: PA02100000000_02_CGZ
+2016-10-14 11:47:35,980 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:47:39,137 : appOperate.py[line:291] [ DEBUG ] 界面存在此元素: PA02100000000_02_CGZ
+2016-10-14 11:47:39,137 : appOperate.py[line:154] [ DEBUG ] 找到插件:PA02100000000_02_CGZ ,准备点击
+2016-10-14 11:47:40,329 : Element.py[line:40] [ DEBUG ] 查找id: PA02100000000_02_CGZ
+2016-10-14 11:47:44,556 : Element.py[line:178] [ DEBUG ] 隐式等待 20 秒
+2016-10-14 11:47:44,562 : appOperate.py[line:176] [ DEBUG ] 判断插件页面,是否包含: 添加车
+2016-10-14 11:47:44,563 : appOperate.py[line:283] [ DEBUG ] 开始轮询元素: 添加车
+2016-10-14 11:47:44,563 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:47:45,868 : appOperate.py[line:291] [ DEBUG ] 界面存在此元素: 添加车
+2016-10-14 11:47:45,868 : appOperate.py[line:178] [ DEBUG ] 插件页面中包含 添加车,返回True
+2016-10-14 11:47:45,868 : appOperate.py[line:188] [ DEBUG ] 关闭H5页面!
+2016-10-14 11:47:45,868 : Element.py[line:178] [ DEBUG ] 隐式等待 3 秒
+2016-10-14 11:47:46,812 : Element.py[line:40] [ DEBUG ] 查找id: closeButton
+2016-10-14 11:47:47,902 : Element.py[line:40] [ DEBUG ] 查找id: closeButton
+</system-err></testcase><testcase classname="Anydoor.Anydoor_UI" file="Anydoor.py" line="211" name="test_D0" time="13.0445551872"><system-err>2016-10-14 11:47:49,057 : Anydoor.py[line:215] [ DEBUG ] 遍历插件,插件ID: PA02100000000_02_FGZ
+2016-10-14 11:47:49,058 : appOperate.py[line:150] [ DEBUG ] 开始检查插件: PA02100000000_02_FGZ
+2016-10-14 11:47:49,058 : appOperate.py[line:283] [ DEBUG ] 开始轮询元素: PA02100000000_02_FGZ
+2016-10-14 11:47:49,058 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:47:52,154 : appOperate.py[line:291] [ DEBUG ] 界面存在此元素: PA02100000000_02_FGZ
+2016-10-14 11:47:52,154 : appOperate.py[line:154] [ DEBUG ] 找到插件:PA02100000000_02_FGZ ,准备点击
+2016-10-14 11:47:53,334 : Element.py[line:40] [ DEBUG ] 查找id: PA02100000000_02_FGZ
+2016-10-14 11:47:57,860 : Element.py[line:178] [ DEBUG ] 隐式等待 20 秒
+2016-10-14 11:47:57,866 : appOperate.py[line:176] [ DEBUG ] 判断插件页面,是否包含: 我的房产
+2016-10-14 11:47:57,867 : appOperate.py[line:283] [ DEBUG ] 开始轮询元素: 我的房产
+2016-10-14 11:47:57,867 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:47:58,890 : appOperate.py[line:291] [ DEBUG ] 界面存在此元素: 我的房产
+2016-10-14 11:47:58,890 : appOperate.py[line:178] [ DEBUG ] 插件页面中包含 我的房产,返回True
+2016-10-14 11:47:58,890 : appOperate.py[line:188] [ DEBUG ] 关闭H5页面!
+2016-10-14 11:47:58,890 : Element.py[line:178] [ DEBUG ] 隐式等待 3 秒
+2016-10-14 11:47:59,900 : Element.py[line:40] [ DEBUG ] 查找id: closeButton
+2016-10-14 11:48:00,963 : Element.py[line:40] [ DEBUG ] 查找id: closeButton
+</system-err></testcase><testcase classname="Anydoor.Anydoor_UI" file="Anydoor.py" line="217" name="test_D1" time="13.1221768856"><system-err>2016-10-14 11:48:02,103 : Anydoor.py[line:221] [ DEBUG ] 遍历插件,插件ID: SZDBK00000000_02_XYT
+2016-10-14 11:48:02,105 : appOperate.py[line:150] [ DEBUG ] 开始检查插件: SZDBK00000000_02_XYT
+2016-10-14 11:48:02,106 : appOperate.py[line:283] [ DEBUG ] 开始轮询元素: SZDBK00000000_02_XYT
+2016-10-14 11:48:02,106 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:48:05,278 : appOperate.py[line:291] [ DEBUG ] 界面存在此元素: SZDBK00000000_02_XYT
+2016-10-14 11:48:05,278 : appOperate.py[line:154] [ DEBUG ] 找到插件:SZDBK00000000_02_XYT ,准备点击
+2016-10-14 11:48:06,600 : Element.py[line:40] [ DEBUG ] 查找id: SZDBK00000000_02_XYT
+2016-10-14 11:48:10,721 : Element.py[line:178] [ DEBUG ] 隐式等待 20 秒
+2016-10-14 11:48:10,726 : appOperate.py[line:176] [ DEBUG ] 判断插件页面,是否包含: 贷款描述
+2016-10-14 11:48:10,727 : appOperate.py[line:283] [ DEBUG ] 开始轮询元素: 贷款描述
+2016-10-14 11:48:10,727 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:48:12,027 : appOperate.py[line:291] [ DEBUG ] 界面存在此元素: 贷款描述
+2016-10-14 11:48:12,027 : appOperate.py[line:178] [ DEBUG ] 插件页面中包含 贷款描述,返回True
+2016-10-14 11:48:12,028 : appOperate.py[line:188] [ DEBUG ] 关闭H5页面!
+2016-10-14 11:48:12,028 : Element.py[line:178] [ DEBUG ] 隐式等待 3 秒
+2016-10-14 11:48:12,961 : Element.py[line:40] [ DEBUG ] 查找id: closeButton
+2016-10-14 11:48:14,105 : Element.py[line:40] [ DEBUG ] 查找id: closeButton
+</system-err></testcase><testcase classname="Anydoor.Anydoor_UI" file="Anydoor.py" line="223" name="test_D2" time="20.6883840561"><system-err>2016-10-14 11:48:15,228 : Anydoor.py[line:227] [ DEBUG ] 遍历插件,插件ID: PA02800000000_02_ESF
+2016-10-14 11:48:15,230 : appOperate.py[line:150] [ DEBUG ] 开始检查插件: PA02800000000_02_ESF
+2016-10-14 11:48:15,230 : appOperate.py[line:283] [ DEBUG ] 开始轮询元素: PA02800000000_02_ESF
+2016-10-14 11:48:15,230 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:48:18,403 : appOperate.py[line:291] [ DEBUG ] 界面存在此元素: PA02800000000_02_ESF
+2016-10-14 11:48:18,403 : appOperate.py[line:154] [ DEBUG ] 找到插件:PA02800000000_02_ESF ,准备点击
+2016-10-14 11:48:19,592 : Element.py[line:40] [ DEBUG ] 查找id: PA02800000000_02_ESF
+2016-10-14 11:48:23,845 : Element.py[line:178] [ DEBUG ] 隐式等待 20 秒
+2016-10-14 11:48:23,850 : appOperate.py[line:176] [ DEBUG ] 判断插件页面,是否包含: 售价
+2016-10-14 11:48:23,851 : appOperate.py[line:283] [ DEBUG ] 开始轮询元素: 售价
+2016-10-14 11:48:23,851 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:48:32,811 : appOperate.py[line:291] [ DEBUG ] 界面存在此元素: 售价
+2016-10-14 11:48:32,811 : appOperate.py[line:178] [ DEBUG ] 插件页面中包含 售价,返回True
+2016-10-14 11:48:32,811 : appOperate.py[line:188] [ DEBUG ] 关闭H5页面!
+2016-10-14 11:48:32,811 : Element.py[line:178] [ DEBUG ] 隐式等待 3 秒
+2016-10-14 11:48:33,772 : Element.py[line:40] [ DEBUG ] 查找id: closeButton
+2016-10-14 11:48:34,723 : Element.py[line:40] [ DEBUG ] 查找id: closeButton
+</system-err></testcase><testcase classname="Anydoor.Anydoor_UI" file="Anydoor.py" line="229" name="test_D3" time="16.3015449047"><system-err>2016-10-14 11:48:35,917 : Anydoor.py[line:233] [ DEBUG ] 遍历插件,插件ID: PA02800000000_02_XF
+2016-10-14 11:48:35,918 : appOperate.py[line:150] [ DEBUG ] 开始检查插件: PA02800000000_02_XF
+2016-10-14 11:48:35,918 : appOperate.py[line:283] [ DEBUG ] 开始轮询元素: PA02800000000_02_XF
+2016-10-14 11:48:35,918 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:48:39,040 : appOperate.py[line:291] [ DEBUG ] 界面存在此元素: PA02800000000_02_XF
+2016-10-14 11:48:39,041 : appOperate.py[line:154] [ DEBUG ] 找到插件:PA02800000000_02_XF ,准备点击
+2016-10-14 11:48:40,272 : Element.py[line:40] [ DEBUG ] 查找id: PA02800000000_02_XF
+2016-10-14 11:48:45,467 : Element.py[line:178] [ DEBUG ] 隐式等待 20 秒
+2016-10-14 11:48:45,473 : appOperate.py[line:176] [ DEBUG ] 判断插件页面,是否包含: 楼盘列表
+2016-10-14 11:48:45,473 : appOperate.py[line:283] [ DEBUG ] 开始轮询元素: 楼盘列表
+2016-10-14 11:48:45,473 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:48:49,043 : appOperate.py[line:291] [ DEBUG ] 界面存在此元素: 楼盘列表
+2016-10-14 11:48:49,043 : appOperate.py[line:178] [ DEBUG ] 插件页面中包含 楼盘列表,返回True
+2016-10-14 11:48:49,043 : appOperate.py[line:188] [ DEBUG ] 关闭H5页面!
+2016-10-14 11:48:49,043 : Element.py[line:178] [ DEBUG ] 隐式等待 3 秒
+2016-10-14 11:48:49,954 : Element.py[line:40] [ DEBUG ] 查找id: closeButton
+2016-10-14 11:48:51,039 : Element.py[line:40] [ DEBUG ] 查找id: closeButton
+</system-err></testcase><testcase classname="Anydoor.Anydoor_UI" file="Anydoor.py" line="235" name="test_D4" time="13.1509199142"><system-err>2016-10-14 11:48:52,222 : Anydoor.py[line:239] [ DEBUG ] 遍历插件,插件ID: PA02100000000_02_XEDK
+2016-10-14 11:48:52,223 : appOperate.py[line:150] [ DEBUG ] 开始检查插件: PA02100000000_02_XEDK
+2016-10-14 11:48:52,223 : appOperate.py[line:283] [ DEBUG ] 开始轮询元素: PA02100000000_02_XEDK
+2016-10-14 11:48:52,223 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:48:55,457 : appOperate.py[line:291] [ DEBUG ] 界面存在此元素: PA02100000000_02_XEDK
+2016-10-14 11:48:55,457 : appOperate.py[line:154] [ DEBUG ] 找到插件:PA02100000000_02_XEDK ,准备点击
+2016-10-14 11:48:56,633 : Element.py[line:40] [ DEBUG ] 查找id: PA02100000000_02_XEDK
+2016-10-14 11:49:00,975 : Element.py[line:178] [ DEBUG ] 隐式等待 20 秒
+2016-10-14 11:49:00,980 : appOperate.py[line:176] [ DEBUG ] 判断插件页面,是否包含: 小额消费贷款
+2016-10-14 11:49:00,980 : appOperate.py[line:283] [ DEBUG ] 开始轮询元素: 小额消费贷款
+2016-10-14 11:49:00,981 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:49:02,213 : appOperate.py[line:291] [ DEBUG ] 界面存在此元素: 小额消费贷款
+2016-10-14 11:49:02,213 : appOperate.py[line:178] [ DEBUG ] 插件页面中包含 小额消费贷款,返回True
+2016-10-14 11:49:02,213 : appOperate.py[line:188] [ DEBUG ] 关闭H5页面!
+2016-10-14 11:49:02,213 : Element.py[line:178] [ DEBUG ] 隐式等待 3 秒
+2016-10-14 11:49:03,136 : Element.py[line:40] [ DEBUG ] 查找id: closeButton
+2016-10-14 11:49:04,222 : Element.py[line:40] [ DEBUG ] 查找id: closeButton
+</system-err></testcase><testcase classname="Anydoor.Anydoor_UI" file="Anydoor.py" line="241" name="test_D5" time="13.0899412632"><system-err>2016-10-14 11:49:05,373 : Anydoor.py[line:245] [ DEBUG ] 遍历插件,插件ID: PA02100000000_02_JNHRS
+2016-10-14 11:49:05,374 : appOperate.py[line:150] [ DEBUG ] 开始检查插件: PA02100000000_02_JNHRS
+2016-10-14 11:49:05,374 : appOperate.py[line:283] [ DEBUG ] 开始轮询元素: PA02100000000_02_JNHRS
+2016-10-14 11:49:05,374 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:49:08,637 : appOperate.py[line:291] [ DEBUG ] 界面存在此元素: PA02100000000_02_JNHRS
+2016-10-14 11:49:08,637 : appOperate.py[line:154] [ DEBUG ] 找到插件:PA02100000000_02_JNHRS ,准备点击
+2016-10-14 11:49:09,773 : Element.py[line:40] [ DEBUG ] 查找id: PA02100000000_02_JNHRS
+2016-10-14 11:49:13,986 : Element.py[line:178] [ DEBUG ] 隐式等待 20 秒
+2016-10-14 11:49:13,992 : appOperate.py[line:176] [ DEBUG ] 判断插件页面,是否包含: 点击查看活动规则
+2016-10-14 11:49:13,993 : appOperate.py[line:283] [ DEBUG ] 开始轮询元素: 点击查看活动规则
+2016-10-14 11:49:13,993 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:49:15,312 : appOperate.py[line:291] [ DEBUG ] 界面存在此元素: 点击查看活动规则
+2016-10-14 11:49:15,312 : appOperate.py[line:178] [ DEBUG ] 插件页面中包含 点击查看活动规则,返回True
+2016-10-14 11:49:15,312 : appOperate.py[line:188] [ DEBUG ] 关闭H5页面!
+2016-10-14 11:49:15,312 : Element.py[line:178] [ DEBUG ] 隐式等待 3 秒
+2016-10-14 11:49:16,264 : Element.py[line:40] [ DEBUG ] 查找id: closeButton
+2016-10-14 11:49:17,341 : Element.py[line:40] [ DEBUG ] 查找id: closeButton
+</system-err></testcase><testcase classname="Anydoor.Anydoor_UI" file="Anydoor.py" line="247" name="test_D6" time="13.186704874"><system-err>2016-10-14 11:49:18,464 : Anydoor.py[line:251] [ DEBUG ] 遍历插件,插件ID: PA02100000000_02_JNHJK
+2016-10-14 11:49:18,465 : appOperate.py[line:150] [ DEBUG ] 开始检查插件: PA02100000000_02_JNHJK
+2016-10-14 11:49:18,465 : appOperate.py[line:283] [ DEBUG ] 开始轮询元素: PA02100000000_02_JNHJK
+2016-10-14 11:49:18,465 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:49:21,838 : appOperate.py[line:291] [ DEBUG ] 界面存在此元素: PA02100000000_02_JNHJK
+2016-10-14 11:49:21,839 : appOperate.py[line:154] [ DEBUG ] 找到插件:PA02100000000_02_JNHJK ,准备点击
+2016-10-14 11:49:23,035 : Element.py[line:40] [ DEBUG ] 查找id: PA02100000000_02_JNHJK
+2016-10-14 11:49:27,330 : Element.py[line:178] [ DEBUG ] 隐式等待 20 秒
+2016-10-14 11:49:27,335 : appOperate.py[line:176] [ DEBUG ] 判断插件页面,是否包含: 点击查看活动规则
+2016-10-14 11:49:27,335 : appOperate.py[line:283] [ DEBUG ] 开始轮询元素: 点击查看活动规则
+2016-10-14 11:49:27,336 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:49:28,459 : appOperate.py[line:291] [ DEBUG ] 界面存在此元素: 点击查看活动规则
+2016-10-14 11:49:28,459 : appOperate.py[line:178] [ DEBUG ] 插件页面中包含 点击查看活动规则,返回True
+2016-10-14 11:49:28,459 : appOperate.py[line:188] [ DEBUG ] 关闭H5页面!
+2016-10-14 11:49:28,459 : Element.py[line:178] [ DEBUG ] 隐式等待 3 秒
+2016-10-14 11:49:29,400 : Element.py[line:40] [ DEBUG ] 查找id: closeButton
+2016-10-14 11:49:30,511 : Element.py[line:40] [ DEBUG ] 查找id: closeButton
+</system-err></testcase><testcase classname="Anydoor.Anydoor_UI" file="Anydoor.py" line="253" name="test_D7" time="14.7086429596"><system-err>2016-10-14 11:49:31,654 : Anydoor.py[line:257] [ DEBUG ] 遍历插件,插件ID: PA01100000000_02_BXCS
+2016-10-14 11:49:31,656 : appOperate.py[line:150] [ DEBUG ] 开始检查插件: PA01100000000_02_BXCS
+2016-10-14 11:49:31,656 : appOperate.py[line:283] [ DEBUG ] 开始轮询元素: PA01100000000_02_BXCS
+2016-10-14 11:49:31,656 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:49:34,849 : appOperate.py[line:291] [ DEBUG ] 界面存在此元素: PA01100000000_02_BXCS
+2016-10-14 11:49:34,849 : appOperate.py[line:154] [ DEBUG ] 找到插件:PA01100000000_02_BXCS ,准备点击
+2016-10-14 11:49:36,165 : Element.py[line:40] [ DEBUG ] 查找id: PA01100000000_02_BXCS
+2016-10-14 11:49:40,288 : Element.py[line:178] [ DEBUG ] 隐式等待 20 秒
+2016-10-14 11:49:40,293 : appOperate.py[line:176] [ DEBUG ] 判断插件页面,是否包含: 旅行意外险
+2016-10-14 11:49:40,294 : appOperate.py[line:283] [ DEBUG ] 开始轮询元素: 旅行意外险
+2016-10-14 11:49:40,294 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:49:42,121 : appOperate.py[line:291] [ DEBUG ] 界面存在此元素: 旅行意外险
+2016-10-14 11:49:42,121 : appOperate.py[line:178] [ DEBUG ] 插件页面中包含 旅行意外险,返回True
+2016-10-14 11:49:42,121 : appOperate.py[line:188] [ DEBUG ] 关闭H5页面!
+2016-10-14 11:49:42,121 : Element.py[line:178] [ DEBUG ] 隐式等待 3 秒
+2016-10-14 11:49:43,117 : Element.py[line:40] [ DEBUG ] 查找id: closeButton
+2016-10-14 11:49:44,134 : Element.py[line:40] [ DEBUG ] 查找id: closeButton
+</system-err></testcase><testcase classname="Anydoor.Anydoor_UI" file="Anydoor.py" line="259" name="test_D8" time="13.0852770805"><system-err>2016-10-14 11:49:46,362 : Anydoor.py[line:263] [ DEBUG ] 遍历插件,插件ID: PA01100000000_02_LHBLC
+2016-10-14 11:49:46,363 : appOperate.py[line:150] [ DEBUG ] 开始检查插件: PA01100000000_02_LHBLC
+2016-10-14 11:49:46,363 : appOperate.py[line:283] [ DEBUG ] 开始轮询元素: PA01100000000_02_LHBLC
+2016-10-14 11:49:46,363 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:49:49,447 : appOperate.py[line:291] [ DEBUG ] 界面存在此元素: PA01100000000_02_LHBLC
+2016-10-14 11:49:49,447 : appOperate.py[line:154] [ DEBUG ] 找到插件:PA01100000000_02_LHBLC ,准备点击
+2016-10-14 11:49:50,765 : Element.py[line:40] [ DEBUG ] 查找id: PA01100000000_02_LHBLC
+2016-10-14 11:49:54,905 : Element.py[line:178] [ DEBUG ] 隐式等待 20 秒
+2016-10-14 11:49:54,910 : appOperate.py[line:176] [ DEBUG ] 判断插件页面,是否包含: 超强现金理财
+2016-10-14 11:49:54,910 : appOperate.py[line:283] [ DEBUG ] 开始轮询元素: 超强现金理财
+2016-10-14 11:49:54,910 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:49:56,232 : appOperate.py[line:291] [ DEBUG ] 界面存在此元素: 超强现金理财
+2016-10-14 11:49:56,232 : appOperate.py[line:178] [ DEBUG ] 插件页面中包含 超强现金理财,返回True
+2016-10-14 11:49:56,232 : appOperate.py[line:188] [ DEBUG ] 关闭H5页面!
+2016-10-14 11:49:56,232 : Element.py[line:178] [ DEBUG ] 隐式等待 3 秒
+2016-10-14 11:49:57,239 : Element.py[line:40] [ DEBUG ] 查找id: closeButton
+2016-10-14 11:49:58,211 : Element.py[line:40] [ DEBUG ] 查找id: closeButton
+</system-err></testcase><testcase classname="Anydoor.Anydoor_UI" file="Anydoor.py" line="265" name="test_D9" time="13.0011954308"><system-err>2016-10-14 11:49:59,450 : Anydoor.py[line:269] [ DEBUG ] 遍历插件,插件ID: PA00500000000_02_GPZH
+2016-10-14 11:49:59,452 : appOperate.py[line:150] [ DEBUG ] 开始检查插件: PA00500000000_02_GPZH
+2016-10-14 11:49:59,453 : appOperate.py[line:283] [ DEBUG ] 开始轮询元素: PA00500000000_02_GPZH
+2016-10-14 11:49:59,453 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:50:02,566 : appOperate.py[line:291] [ DEBUG ] 界面存在此元素: PA00500000000_02_GPZH
+2016-10-14 11:50:02,566 : appOperate.py[line:154] [ DEBUG ] 找到插件:PA00500000000_02_GPZH ,准备点击
+2016-10-14 11:50:03,761 : Element.py[line:40] [ DEBUG ] 查找id: PA00500000000_02_GPZH
+2016-10-14 11:50:08,257 : Element.py[line:178] [ DEBUG ] 隐式等待 20 秒
+2016-10-14 11:50:08,264 : appOperate.py[line:176] [ DEBUG ] 判断插件页面,是否包含: 专家观点
+2016-10-14 11:50:08,264 : appOperate.py[line:283] [ DEBUG ] 开始轮询元素: 专家观点
+2016-10-14 11:50:08,264 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:50:09,241 : appOperate.py[line:291] [ DEBUG ] 界面存在此元素: 专家观点
+2016-10-14 11:50:09,242 : appOperate.py[line:178] [ DEBUG ] 插件页面中包含 专家观点,返回True
+2016-10-14 11:50:09,243 : appOperate.py[line:188] [ DEBUG ] 关闭H5页面!
+2016-10-14 11:50:09,243 : Element.py[line:178] [ DEBUG ] 隐式等待 3 秒
+2016-10-14 11:50:10,302 : Element.py[line:40] [ DEBUG ] 查找id: closeButton
+2016-10-14 11:50:11,207 : Element.py[line:40] [ DEBUG ] 查找id: closeButton
+</system-err></testcase><testcase classname="Anydoor.Anydoor_UI" file="Anydoor.py" line="271" name="test_E0" time="9.19155311584"><failure message="NoSuchElementException: Message: An element could not be located on the page using the given search parameters.">self = &lt;src.Anydoor.Anydoor_UI testMethod=test_E0&gt;
+
+    def test_E0(self):
+        &apos;&apos;&apos;用例名称: 检查插件,插件名称: 平安地图,插件ID: PA01100000000_02_PAZB ,插件断言: mapSelected &apos;&apos;&apos;
+        pluginId = &apos;PA01100000000_02_PAZB&apos;
+        logger.debug(&apos;遍历插件,插件ID: %s&apos; % pluginId)
+&gt;       self.assertTrue(self.appOperate.check_plugin(pluginId, &apos;mapSelected&apos;),&apos;插件: %s 断言失败&apos; % pluginId)
+
+Anydoor.py:276: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+appOperate.py:190: in check_plugin
+    self.driver.by_id(&apos;关闭&apos;).click()
+Element.py:39: in by_id
+    element = driver.find_element_by_id(id)
+/usr/local/lib/python2.7/site-packages/selenium-3.0.0b2-py2.7.egg/selenium/webdriver/remote/webdriver.py:269: in find_element_by_id
+    return self.find_element(by=By.ID, value=id_)
+/usr/local/lib/python2.7/site-packages/selenium-3.0.0b2-py2.7.egg/selenium/webdriver/remote/webdriver.py:752: in find_element
+    &apos;value&apos;: value})[&apos;value&apos;]
+/usr/local/lib/python2.7/site-packages/selenium-3.0.0b2-py2.7.egg/selenium/webdriver/remote/webdriver.py:236: in execute
+    self.error_handler.check_response(response)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;appium.webdriver.errorhandler.MobileErrorHandler object at 0x108c1f1d0&gt;
+response = {&apos;status&apos;: 500, &apos;value&apos;: &apos;{&quot;status&quot;:7,&quot;value&quot;:{&quot;message&quot;:&quot;An element could not be located on the page using the given search parameters.&quot;},&quot;sessionId&quot;:&quot;067b1487-aad6-4edb-af36-0733e09503a4&quot;}&apos;}
+
+&gt;   ???
+E   NoSuchElementException: Message: An element could not be located on the page using the given search parameters.
+
+build/bdist.macosx-10.11-x86_64/egg/appium/webdriver/errorhandler.py:29: NoSuchElementException</failure><system-err>2016-10-14 11:50:12,452 : Anydoor.py[line:275] [ DEBUG ] 遍历插件,插件ID: PA01100000000_02_PAZB
+2016-10-14 11:50:12,453 : appOperate.py[line:150] [ DEBUG ] 开始检查插件: PA01100000000_02_PAZB
+2016-10-14 11:50:12,453 : appOperate.py[line:283] [ DEBUG ] 开始轮询元素: PA01100000000_02_PAZB
+2016-10-14 11:50:12,453 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:50:15,698 : appOperate.py[line:291] [ DEBUG ] 界面存在此元素: PA01100000000_02_PAZB
+2016-10-14 11:50:15,698 : appOperate.py[line:154] [ DEBUG ] 找到插件:PA01100000000_02_PAZB ,准备点击
+2016-10-14 11:50:16,742 : Element.py[line:40] [ DEBUG ] 查找id: PA01100000000_02_PAZB
+2016-10-14 11:50:17,831 : appOperate.py[line:185] [ ERROR ] Message: An unknown server-side error occurred while processing the command. Original error: elementId 121 could not be tapped
+
+2016-10-14 11:50:17,832 : appOperate.py[line:188] [ DEBUG ] 关闭H5页面!
+</system-err></testcase><testcase classname="Anydoor.Anydoor_UI" file="Anydoor.py" line="277" name="test_E1" time="26.9913620949"><failure message="AssertionError: 插件: PA00500000000_02_1GPZH 断言失败">self = &lt;src.Anydoor.Anydoor_UI testMethod=test_E1&gt;
+
+    def test_E1(self):
+        &apos;&apos;&apos;用例名称: 不存在的插件ID,测试用例失败专用 &apos;&apos;&apos;
+        pluginId = &apos;PA00500000000_02_1GPZH&apos;
+        logger.debug(&apos;遍历插件,插件ID: %s&apos; % pluginId)
+&gt;       self.assertTrue(self.appOperate.check_plugin(pluginId, &apos;专家观点&apos;), &apos;插件: %s 断言失败&apos; % pluginId)
+E       AssertionError: 插件: PA00500000000_02_1GPZH 断言失败
+
+Anydoor.py:282: AssertionError</failure><system-err>2016-10-14 11:50:21,813 : Anydoor.py[line:281] [ DEBUG ] 遍历插件,插件ID: PA00500000000_02_1GPZH
+2016-10-14 11:50:21,814 : appOperate.py[line:150] [ DEBUG ] 开始检查插件: PA00500000000_02_1GPZH
+2016-10-14 11:50:21,814 : appOperate.py[line:283] [ DEBUG ] 开始轮询元素: PA00500000000_02_1GPZH
+2016-10-14 11:50:21,814 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:50:25,634 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:50:29,657 : appOperate.py[line:288] [ WARNING ] 轮询超时,未找到元素: PA00500000000_02_1GPZH
+2016-10-14 11:50:29,658 : appOperate.py[line:283] [ DEBUG ] 开始轮询元素: PA00500000000_02_1GPZH
+2016-10-14 11:50:29,658 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:50:33,835 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:50:37,771 : appOperate.py[line:288] [ WARNING ] 轮询超时,未找到元素: PA00500000000_02_1GPZH
+2016-10-14 11:50:37,771 : appOperate.py[line:157] [ DEBUG ] 没找到插件:PA00500000000_02_1GPZH ,准备滑动
+2016-10-14 11:50:37,771 : Element.py[line:89] [ DEBUG ] 获取当前窗口大小
+2016-10-14 11:50:38,780 : Element.py[line:143] [ DEBUG ] 向左滑动,滑动起始坐标: (256,454),偏移量(-128,0)
+2016-10-14 11:50:41,242 : Element.py[line:178] [ DEBUG ] 隐式等待 3 秒
+2016-10-14 11:50:45,162 : appOperate.py[line:185] [ ERROR ] Message: An element could not be located on the page using the given search parameters.
+
+2016-10-14 11:50:45,163 : appOperate.py[line:188] [ DEBUG ] 关闭H5页面!
+2016-10-14 11:50:45,163 : Element.py[line:178] [ DEBUG ] 隐式等待 3 秒
+2016-10-14 11:50:48,802 : appOperate.py[line:216] [ WARNING ] Message: An element could not be located on the page using the given search parameters.
+
+</system-err></testcase><testcase classname="Anydoor.Anydoor_UI" file="Anydoor.py" line="283" name="test_E2" time="100.992965937"><failure message="AssertionError: 插件: PA00500000000_02_GPZH 断言失败">self = &lt;src.Anydoor.Anydoor_UI testMethod=test_E2&gt;
+
+    def test_E2(self):
+        &apos;&apos;&apos;用例名称: 存在的插件ID,不存在的断言,测试用例失败专用 &apos;&apos;&apos;
+        pluginId = &apos;PA00500000000_02_GPZH&apos;
+        logger.debug(&apos;遍历插件,插件ID: %s&apos; % pluginId)
+&gt;       self.assertTrue(self.appOperate.check_plugin(pluginId, &apos;专家2观点&apos;), &apos;插件: %s 断言失败&apos; % pluginId)
+E       AssertionError: 插件: PA00500000000_02_GPZH 断言失败
+
+Anydoor.py:288: AssertionError</failure><system-err>2016-10-14 11:50:48,816 : Anydoor.py[line:287] [ DEBUG ] 遍历插件,插件ID: PA00500000000_02_GPZH
+2016-10-14 11:50:48,817 : appOperate.py[line:150] [ DEBUG ] 开始检查插件: PA00500000000_02_GPZH
+2016-10-14 11:50:48,817 : appOperate.py[line:283] [ DEBUG ] 开始轮询元素: PA00500000000_02_GPZH
+2016-10-14 11:50:48,817 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:50:51,973 : appOperate.py[line:291] [ DEBUG ] 界面存在此元素: PA00500000000_02_GPZH
+2016-10-14 11:50:51,974 : appOperate.py[line:154] [ DEBUG ] 找到插件:PA00500000000_02_GPZH ,准备点击
+2016-10-14 11:50:53,165 : Element.py[line:40] [ DEBUG ] 查找id: PA00500000000_02_GPZH
+2016-10-14 11:50:57,315 : Element.py[line:178] [ DEBUG ] 隐式等待 20 秒
+2016-10-14 11:50:57,319 : appOperate.py[line:176] [ DEBUG ] 判断插件页面,是否包含: 专家2观点
+2016-10-14 11:50:57,320 : appOperate.py[line:283] [ DEBUG ] 开始轮询元素: 专家2观点
+2016-10-14 11:50:57,320 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:50:59,585 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:51:01,885 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:51:04,185 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:51:06,339 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:51:08,852 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:51:10,957 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:51:13,256 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:51:15,559 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:51:17,845 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:51:20,140 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:51:22,422 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:51:24,728 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:51:27,024 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:51:29,322 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:51:31,755 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:51:33,907 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:51:36,203 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:51:38,496 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:51:40,804 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:51:43,140 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:51:45,387 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:51:47,666 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:51:49,983 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:51:52,270 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:51:54,428 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:51:56,888 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:51:59,153 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:52:01,440 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:52:03,630 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:52:05,921 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:52:08,361 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:52:10,637 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:52:12,807 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:52:15,113 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:52:17,414 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:52:19,742 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:52:22,003 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:52:24,292 : Element.py[line:182] [ DEBUG ] 获取 page_source
+2016-10-14 11:52:26,586 : appOperate.py[line:288] [ WARNING ] 轮询超时,未找到元素: 专家2观点
+2016-10-14 11:52:26,586 : appOperate.py[line:181] [ ERROR ] 插件页面中不包含 专家2观点,返回False
+2016-10-14 11:52:26,587 : appOperate.py[line:188] [ DEBUG ] 关闭H5页面!
+2016-10-14 11:52:26,587 : Element.py[line:178] [ DEBUG ] 隐式等待 3 秒
+2016-10-14 11:52:27,607 : Element.py[line:40] [ DEBUG ] 查找id: closeButton
+2016-10-14 11:52:28,689 : Element.py[line:40] [ DEBUG ] 查找id: closeButton
+</system-err></testcase></testsuite>

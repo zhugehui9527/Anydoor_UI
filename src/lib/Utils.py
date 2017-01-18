@@ -13,11 +13,13 @@ class Utils:
 	def __init__(self):
 		pass
 	
-	def cmd_subprocess(self ,cmd):
+	@staticmethod
+	def cmd_subprocess(cmd):
 		'''执行shell命令'''
 		return subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 	
-	def cmd_output(self,cmd):
+	@staticmethod
+	def cmd_output(cmd):
 		return subprocess.check_output(cmd)
 	
 	
@@ -30,11 +32,15 @@ class cmd_tt(threading.Thread):
 		threading.Thread.__init__(self)
 		self.cmd = cmd
 
-	def cmd_system(self):
+	def run(self):
 		os.system(self.cmd)
 		
-	def cmd_Popen(self):
-		os.popen(self.cmd)
+	# def cmd_Popen(self):
+	# 	os.popen(self.cmd)
 		
 if __name__ == '__main__':
-	pass
+	cmd = 'appium -v'
+	t=Utils.cmd_subprocess(cmd).communicate()
+	for i in  t:
+		print i
+		

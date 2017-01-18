@@ -10,6 +10,8 @@ class operate_api(object):
 	sendkeys = 'sendkeys'
 	swipe2left = 'swipe2left'
 	swipe2right = 'swipe2right'
+	swipe2up = 'swipe2up'
+	swipe2down = 'swipe2down'
 	assertTrue = 'assertTrue'
 	assertTrueCheckPlugin = 'assertTrueCheckPlugin'
 	assertFalse = 'assertFalse'
@@ -47,19 +49,22 @@ class element_by(object):
 
 
 class public(object):
-	time2wait = 20
+	time2wait = 40
 	element_sheet = u'元素表'
 	public_case_sheet =u'公共案例库'
 	case_sheet = u'Sheet1'
 	
 	
 class desired_caps:
+	appium ='appium'
+	ip = 'ip'
+	port = 'port'
 	deviceName = 'deviceName'
 	bundleId = 'bundleId'
 	platformName = 'platformName'
 	platformVersion = 'platformVersion'
-	package = 'package'
-	activity= 'activity'
+	appPackage = 'appPackage'
+	appActivity= 'appActivity'
 	autoAcceptAlerts = 'autoAcceptAlerts'
 	noReset = 'noReset'
 	automationName = 'automationName'
@@ -67,6 +72,10 @@ class desired_caps:
 	resetKeyboard = 'resetKeyboard'
 	autoWebview = 'autoWebview'
 	app = 'app'
+	WaitForAppScript = 'WaitForAppScript'
+	clearSystemFiles = 'clearSystemFiles'
+	udid = 'udid'
+	
 	
 	
 '''

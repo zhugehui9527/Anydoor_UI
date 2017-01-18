@@ -49,10 +49,12 @@ class Cp(object):
         lines = self.cmd("ps -A | grep appium|awk '{print $1}'").stdout.readline()
         lines_list.append(lines)
         if len(lines_list) !=0:
-            print "appium 相关进程列表 = %s " %lines_list
+            print "appium 相关进程列表 = %s " % lines_list
             # logger.debug('appium 相关进程列表 = %s ' % lines_list)
             for line in lines_list:
                 self.cmd('kill -9 %s' % line)
+                print 'kill -9 %s' % line
+                self.cmd('killall node')
                 print 'CleanProcess:Darwin:kill appium'
                 # logger.debug('CleanProcess:Darwin:kill appium')
 

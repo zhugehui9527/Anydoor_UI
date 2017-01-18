@@ -8,7 +8,7 @@
 from conf.Run_conf import read_config
 from src.ExcelOperate import FindElementBy
 from src.Public.Common import public
-from src.Public.Global import L,D
+from src.Public.Global import L,S
 from src.lib import ExcelRW
 
 # logger = L.logger
@@ -16,14 +16,14 @@ from src.lib import ExcelRW
 #ReadElement->FindElementBy->Element-
 #元素和方法封装
 class ReadElement(object):
-    def __init__(self):
-        self.platformName = read_config('appium', 'platformName')
+    def __init__(self,driver):
+        self.platformName = S.device['platformName']
         self.xls_file_path = read_config('testcase', 'xls_case_path')
         self.xlsEngine = ExcelRW.XlsEngine(self.xls_file_path)
         self.xlsEngine.open() # 打开excel
         # self.element_name_list = self.xlsEngine.readcol(element_by_excel.element_sheet_name,1) #读取元素表第一列
         self.element_list = self.xlsEngine.readsheet(public.element_sheet)
-        # self.driver = driver
+        self.driver = driver
         
     def find_element(self,element_list=[]):
         '''
@@ -46,7 +46,7 @@ class ReadElement(object):
             operate_index = element_list[3] #索引
         else:
             L.logger.warning('暂不支持的平台')
-        elementEngine = FindElementBy.FindElementBy(str(operate_type), str(operate_value), str(operate_index))
+        elementEngine = FindElementBy.FindElementBy(self.driver,str(operate_type), str(operate_value), str(operate_index))
         find_element = elementEngine.get_excel_eleObject()
         return find_element
     

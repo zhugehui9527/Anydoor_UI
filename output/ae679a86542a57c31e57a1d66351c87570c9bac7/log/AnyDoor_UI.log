@@ -1,0 +1,251 @@
+2017-01-17 17:09:29,524 : RunExcel.py[line:122] [ WARNING ] 测试用例:login_1000 ,执行开始
+2017-01-17 17:09:29,525 : RunExcel.py[line:56] [ DEBUG ] callPublicCase 执行中
+2017-01-17 17:09:29,525 : RunExcel.py[line:84] [ DEBUG ] 公共案例库中存在此方法: SwipeToClickPersonalCenter
+2017-01-17 17:09:29,526 : RunExcel.py[line:89] [ DEBUG ] android 独有操作
+2017-01-17 17:09:29,526 : RunExcel.py[line:66] [ DEBUG ] android 独有操作
+2017-01-17 17:09:29,526 : RunExcel.py[line:66] [ DEBUG ] android 独有操作
+2017-01-17 17:09:29,526 : ReadApi.py[line:27] [ DEBUG ] case_list :[u'', 4.0, u'\u5411\u53f3\u6ed1\u52a8', u'swipe2right', u'', u'', u'', u'']
+2017-01-17 17:09:29,527 : ReadApi.py[line:50] [ DEBUG ] callApi执行中
+2017-01-17 17:09:29,527 : ReadApi.py[line:73] [ DEBUG ] Action_Keyword 操作:[ swipe2right ]
+2017-01-17 17:09:30,104 : ReadApi.py[line:33] [ ERROR ] Message: Session does not exist
+
+2017-01-17 17:09:30,105 : ReadApi.py[line:27] [ DEBUG ] case_list :[u'', 5.0, u'\u7b49\u5f85\u6587\u672c\u663e\u793a\uff08\u4e2a\u4eba\u4e2d\u5fc3\uff09', u'waitFortext', u'', u'', u'\u4e2a\u4eba\u4e2d\u5fc3', u'30']
+2017-01-17 17:09:30,105 : ReadApi.py[line:50] [ DEBUG ] callApi执行中
+2017-01-17 17:09:30,106 : ReadApi.py[line:73] [ DEBUG ] Action_Keyword 操作:[ waitFortext ]
+2017-01-17 17:09:30,106 : appOperate.py[line:348] [ DEBUG ] 开始轮询元素: 个人中心
+2017-01-17 17:09:30,106 : Element.py[line:337] [ DEBUG ] 获取 page_source
+2017-01-17 17:09:30,124 : ReadApi.py[line:33] [ ERROR ] Message: Session does not exist
+
+2017-01-17 17:09:30,125 : ReadApi.py[line:27] [ DEBUG ] case_list :[u'', 6.0, u'\u70b9\u51fb\u5de6\u5c4f\u4e2a\u4eba\u4e2d\u5fc3', u'click', u'', u'\u4e2a\u4eba\u4e2d\u5fc3', u'', u'']
+2017-01-17 17:09:30,125 : ReadApi.py[line:50] [ DEBUG ] callApi执行中
+2017-01-17 17:09:30,125 : ReadApi.py[line:73] [ DEBUG ] Action_Keyword 操作:[ click ]
+2017-01-17 17:09:30,126 : ReadElement.py[line:65] [ DEBUG ] 元素表中存在此元素: 个人中心
+2017-01-17 17:09:30,126 : ReadElement.py[line:34] [ DEBUG ] element_list : [u'\u4e2a\u4eba\u4e2d\u5fc3', u'xpath', u"//android.widget.TextView[@text='\u4e2a\u4eba\u4e2d\u5fc3']", u'', u'id', u'\u4e2a\u4eba\u4e2d\u5fc3', u'', u'', u'']
+2017-01-17 17:09:30,126 : ReadElement.py[line:39] [ DEBUG ] operate_type: id
+2017-01-17 17:09:30,126 : ReadElement.py[line:40] [ DEBUG ] operate_value: 个人中心
+2017-01-17 17:09:30,127 : ReadElement.py[line:41] [ DEBUG ] operate_index: 
+2017-01-17 17:09:30,127 : FindElementBy.py[line:30] [ DEBUG ] 调用查找元素方法: find_element,查找方式: id ,查找元素值: 个人中心 
+2017-01-17 17:10:12,872 : Element.py[line:43] [ WARNING ] <src.lib.Element.Element instance at 0x10808db48> 查找超时,未找到元素 : ('id', '\xe4\xb8\xaa\xe4\xba\xba\xe4\xb8\xad\xe5\xbf\x83')
+2017-01-17 17:10:12,873 : Element.py[line:89] [ DEBUG ] 查找id: 个人中心
+2017-01-17 17:10:12,874 : appOperate.py[line:375] [ DEBUG ] 点击左屏个人中心
+2017-01-17 17:10:12,874 : ReadApi.py[line:33] [ ERROR ] 'NoneType' object has no attribute 'click'
+2017-01-17 17:10:12,875 : ReadApi.py[line:27] [ DEBUG ] case_list :[u'', 7.0, u'\u5ef6\u8fdf\u7b49\u5f85', u'sleep', u'', u'', u'', u'5']
+2017-01-17 17:10:12,875 : ReadApi.py[line:50] [ DEBUG ] callApi执行中
+2017-01-17 17:10:12,875 : ReadApi.py[line:73] [ DEBUG ] Action_Keyword 操作:[ sleep ]
+2017-01-17 17:10:17,877 : RunExcel.py[line:130] [ DEBUG ] 公共案例库执行记录: [u'SwipeToClickPersonalCenter', 'FAIL', 'FAIL', 'FAIL', 'PASS']
+2017-01-17 17:10:17,877 : RunExcel.py[line:138] [ DEBUG ] ========================================================================================================================
+2017-01-17 17:10:17,878 : RunExcel.py[line:139] [ DEBUG ] 当前用例:login_1000 ,执行结果: FAIL
+2017-01-17 17:10:17,878 : RunExcel.py[line:140] [ DEBUG ] ========================================================================================================================
+2017-01-17 17:10:17,878 : RunExcel.py[line:179] [ WARNING ] 测试用例:login_1000 ,执行结束
+2017-01-17 17:10:17,879 : RunExcel.py[line:180] [ WARNING ] 用例执行总结果: [[u'login_1000', 'FAIL', 48.354, False]]
+2017-01-17 17:10:17,879 : Retry.py[line:19] [ DEBUG ] 重跑次数: 1
+2017-01-17 17:10:17,879 : Retry.py[line:20] [ DEBUG ] 重跑开关: True
+2017-01-17 17:10:17,880 : Retry.py[line:22] [ DEBUG ] 调用函数: function
+2017-01-17 17:10:17,880 : Retry.py[line:28] [ DEBUG ] 当前用例名称: login_1000 ,当前执行结果: FAIL
+2017-01-17 17:10:17,880 : Retry.py[line:30] [ DEBUG ] 失败重跑第 【 1 】 次执行中
+2017-01-17 17:10:17,880 : RunExcel.py[line:122] [ WARNING ] 测试用例:login_1000 ,执行开始
+2017-01-17 17:10:17,880 : RunExcel.py[line:56] [ DEBUG ] callPublicCase 执行中
+2017-01-17 17:10:17,880 : RunExcel.py[line:84] [ DEBUG ] 公共案例库中存在此方法: SwipeToClickPersonalCenter
+2017-01-17 17:10:17,881 : RunExcel.py[line:89] [ DEBUG ] android 独有操作
+2017-01-17 17:10:17,881 : RunExcel.py[line:66] [ DEBUG ] android 独有操作
+2017-01-17 17:10:17,881 : RunExcel.py[line:66] [ DEBUG ] android 独有操作
+2017-01-17 17:10:17,881 : ReadApi.py[line:27] [ DEBUG ] case_list :[u'', 4.0, u'\u5411\u53f3\u6ed1\u52a8', u'swipe2right', u'', u'', u'', u'']
+2017-01-17 17:10:17,881 : ReadApi.py[line:50] [ DEBUG ] callApi执行中
+2017-01-17 17:10:17,881 : ReadApi.py[line:73] [ DEBUG ] Action_Keyword 操作:[ swipe2right ]
+2017-01-17 17:10:17,950 : ReadApi.py[line:33] [ ERROR ] Message: Session does not exist
+
+2017-01-17 17:10:17,950 : ReadApi.py[line:27] [ DEBUG ] case_list :[u'', 5.0, u'\u7b49\u5f85\u6587\u672c\u663e\u793a\uff08\u4e2a\u4eba\u4e2d\u5fc3\uff09', u'waitFortext', u'', u'', u'\u4e2a\u4eba\u4e2d\u5fc3', u'30']
+2017-01-17 17:10:17,951 : ReadApi.py[line:50] [ DEBUG ] callApi执行中
+2017-01-17 17:10:17,951 : ReadApi.py[line:73] [ DEBUG ] Action_Keyword 操作:[ waitFortext ]
+2017-01-17 17:10:17,951 : appOperate.py[line:348] [ DEBUG ] 开始轮询元素: 个人中心
+2017-01-17 17:10:17,952 : Element.py[line:337] [ DEBUG ] 获取 page_source
+2017-01-17 17:10:17,972 : ReadApi.py[line:33] [ ERROR ] Message: Session does not exist
+
+2017-01-17 17:10:17,972 : ReadApi.py[line:27] [ DEBUG ] case_list :[u'', 6.0, u'\u70b9\u51fb\u5de6\u5c4f\u4e2a\u4eba\u4e2d\u5fc3', u'click', u'', u'\u4e2a\u4eba\u4e2d\u5fc3', u'', u'']
+2017-01-17 17:10:17,973 : ReadApi.py[line:50] [ DEBUG ] callApi执行中
+2017-01-17 17:10:17,973 : ReadApi.py[line:73] [ DEBUG ] Action_Keyword 操作:[ click ]
+2017-01-17 17:10:17,973 : ReadElement.py[line:65] [ DEBUG ] 元素表中存在此元素: 个人中心
+2017-01-17 17:10:17,973 : ReadElement.py[line:34] [ DEBUG ] element_list : [u'\u4e2a\u4eba\u4e2d\u5fc3', u'xpath', u"//android.widget.TextView[@text='\u4e2a\u4eba\u4e2d\u5fc3']", u'', u'id', u'\u4e2a\u4eba\u4e2d\u5fc3', u'', u'', u'']
+2017-01-17 17:10:17,973 : ReadElement.py[line:39] [ DEBUG ] operate_type: id
+2017-01-17 17:10:17,974 : ReadElement.py[line:40] [ DEBUG ] operate_value: 个人中心
+2017-01-17 17:10:17,974 : ReadElement.py[line:41] [ DEBUG ] operate_index: 
+2017-01-17 17:10:17,974 : FindElementBy.py[line:30] [ DEBUG ] 调用查找元素方法: find_element,查找方式: id ,查找元素值: 个人中心 
+2017-01-17 17:10:58,884 : Element.py[line:43] [ WARNING ] <src.lib.Element.Element instance at 0x108848290> 查找超时,未找到元素 : ('id', '\xe4\xb8\xaa\xe4\xba\xba\xe4\xb8\xad\xe5\xbf\x83')
+2017-01-17 17:10:58,885 : Element.py[line:89] [ DEBUG ] 查找id: 个人中心
+2017-01-17 17:10:58,885 : appOperate.py[line:375] [ DEBUG ] 点击左屏个人中心
+2017-01-17 17:10:58,885 : ReadApi.py[line:33] [ ERROR ] 'NoneType' object has no attribute 'click'
+2017-01-17 17:10:58,886 : ReadApi.py[line:27] [ DEBUG ] case_list :[u'', 7.0, u'\u5ef6\u8fdf\u7b49\u5f85', u'sleep', u'', u'', u'', u'5']
+2017-01-17 17:10:58,886 : ReadApi.py[line:50] [ DEBUG ] callApi执行中
+2017-01-17 17:10:58,886 : ReadApi.py[line:73] [ DEBUG ] Action_Keyword 操作:[ sleep ]
+2017-01-17 17:11:03,887 : RunExcel.py[line:130] [ DEBUG ] 公共案例库执行记录: [u'SwipeToClickPersonalCenter', 'FAIL', 'FAIL', 'FAIL', 'PASS']
+2017-01-17 17:11:03,887 : RunExcel.py[line:138] [ DEBUG ] ========================================================================================================================
+2017-01-17 17:11:03,888 : RunExcel.py[line:139] [ DEBUG ] 当前用例:login_1000 ,执行结果: FAIL
+2017-01-17 17:11:03,888 : RunExcel.py[line:140] [ DEBUG ] ========================================================================================================================
+2017-01-17 17:11:03,888 : RunExcel.py[line:179] [ WARNING ] 测试用例:login_1000 ,执行结束
+2017-01-17 17:11:03,888 : RunExcel.py[line:180] [ WARNING ] 用例执行总结果: [[u'login_1000', 'FAIL', 46.008, False]]
+2017-01-17 17:11:03,889 : Retry.py[line:34] [ DEBUG ] 失败重跑执行用例: login_1000 ,执行结果:FAIL
+2017-01-17 17:11:03,995 : RunExcel.py[line:122] [ WARNING ] 测试用例:login_1001 ,执行开始
+2017-01-17 17:11:03,995 : RunExcel.py[line:56] [ DEBUG ] callPublicCase 执行中
+2017-01-17 17:11:03,995 : RunExcel.py[line:84] [ DEBUG ] 公共案例库中存在此方法: loginyztByH5
+2017-01-17 17:11:03,995 : ReadApi.py[line:27] [ DEBUG ] case_list :[u'loginyztByH5', 1.0, u'\u7b49\u5f85\u6587\u672c\u663e\u793a\uff08\u4e00\u8d26\u901a\u767b\u5f55\uff09', u'waitFortext', u'', u'', u'\u4e00\u8d26\u901a\u767b\u5f55', u'30']
+2017-01-17 17:11:03,996 : ReadApi.py[line:50] [ DEBUG ] callApi执行中
+2017-01-17 17:11:03,996 : ReadApi.py[line:73] [ DEBUG ] Action_Keyword 操作:[ waitFortext ]
+2017-01-17 17:11:03,996 : appOperate.py[line:348] [ DEBUG ] 开始轮询元素: 一账通登录
+2017-01-17 17:11:03,996 : Element.py[line:337] [ DEBUG ] 获取 page_source
+2017-01-17 17:11:23,021 : ReadApi.py[line:33] [ ERROR ] Message: Session does not exist
+
+2017-01-17 17:11:23,022 : ReadApi.py[line:27] [ DEBUG ] case_list :[u'', 2.0, u'\u8f93\u5165\u8d26\u53f7', u'sendkeys', u'', u'H5\u4e00\u8d26\u901a\u767b\u9646\u9875\u9762\u8d26\u53f7', u'', u'18602753065']
+2017-01-17 17:11:23,023 : ReadApi.py[line:50] [ DEBUG ] callApi执行中
+2017-01-17 17:11:23,023 : ReadApi.py[line:73] [ DEBUG ] Action_Keyword 操作:[ sendkeys ]
+2017-01-17 17:11:23,024 : ReadElement.py[line:65] [ DEBUG ] 元素表中存在此元素: H5一账通登陆页面账号
+2017-01-17 17:11:23,024 : ReadElement.py[line:34] [ DEBUG ] element_list : [u'H5\u4e00\u8d26\u901a\u767b\u9646\u9875\u9762\u8d26\u53f7', u'id', u'user-id-input', u'', u'xpath', u"//*[@value='\u4e00\u8d26\u901a\u53f7/\u624b\u673a\u53f7/\u8eab\u4efd\u8bc1\u53f7/\u90ae\u7bb1']", u'', u'', u'']
+2017-01-17 17:11:23,024 : ReadElement.py[line:39] [ DEBUG ] operate_type: xpath
+2017-01-17 17:11:23,025 : ReadElement.py[line:40] [ DEBUG ] operate_value: //*[@value='一账通号/手机号/身份证号/邮箱']
+2017-01-17 17:11:23,025 : ReadElement.py[line:41] [ DEBUG ] operate_index: 
+2017-01-17 17:11:23,025 : FindElementBy.py[line:30] [ DEBUG ] 调用查找元素方法: find_element,查找方式: xpath ,查找元素值: //*[@value='一账通号/手机号/身份证号/邮箱'] 
+2017-01-17 17:12:49,852 : Element.py[line:43] [ WARNING ] <src.lib.Element.Element instance at 0x10807e7e8> 查找超时,未找到元素 : ('xpath', "//*[@value='\xe4\xb8\x80\xe8\xb4\xa6\xe9\x80\x9a\xe5\x8f\xb7/\xe6\x89\x8b\xe6\x9c\xba\xe5\x8f\xb7/\xe8\xba\xab\xe4\xbb\xbd\xe8\xaf\x81\xe5\x8f\xb7/\xe9\x82\xae\xe7\xae\xb1']")
+2017-01-17 17:12:49,853 : Element.py[line:128] [ DEBUG ] 查找 xpath: //*[@value='一账通号/手机号/身份证号/邮箱']
+2017-01-17 17:12:49,853 : appOperate.py[line:379] [ DEBUG ] 输入内容: 18602753065
+2017-01-17 17:12:49,853 : ReadApi.py[line:33] [ ERROR ] 'NoneType' object has no attribute 'send_keys'
+2017-01-17 17:12:49,853 : ReadApi.py[line:27] [ DEBUG ] case_list :[u'', 3.0, u'\u8f93\u5165\u5bc6\u7801', u'sendkeys', u'', u'H5\u4e00\u8d26\u901a\u767b\u9646\u9875\u9762\u5bc6\u7801', u'', u'qweqwe123']
+2017-01-17 17:12:49,854 : ReadApi.py[line:50] [ DEBUG ] callApi执行中
+2017-01-17 17:12:49,854 : ReadApi.py[line:73] [ DEBUG ] Action_Keyword 操作:[ sendkeys ]
+2017-01-17 17:12:49,854 : ReadElement.py[line:65] [ DEBUG ] 元素表中存在此元素: H5一账通登陆页面密码
+2017-01-17 17:12:49,855 : ReadElement.py[line:34] [ DEBUG ] element_list : [u'H5\u4e00\u8d26\u901a\u767b\u9646\u9875\u9762\u5bc6\u7801', u'id', u'user-psd-input', u'', u'xpath', u"//*[@value='\u5bc6\u7801']", u'', u'', u'']
+2017-01-17 17:12:49,855 : ReadElement.py[line:39] [ DEBUG ] operate_type: xpath
+2017-01-17 17:12:49,855 : ReadElement.py[line:40] [ DEBUG ] operate_value: //*[@value='密码']
+2017-01-17 17:12:49,855 : ReadElement.py[line:41] [ DEBUG ] operate_index: 
+2017-01-17 17:12:49,856 : FindElementBy.py[line:30] [ DEBUG ] 调用查找元素方法: find_element,查找方式: xpath ,查找元素值: //*[@value='密码'] 
+2017-01-17 17:13:30,875 : Element.py[line:43] [ WARNING ] <src.lib.Element.Element instance at 0x109240950> 查找超时,未找到元素 : ('xpath', "//*[@value='\xe5\xaf\x86\xe7\xa0\x81']")
+2017-01-17 17:13:30,877 : Element.py[line:128] [ DEBUG ] 查找 xpath: //*[@value='密码']
+2017-01-17 17:13:30,877 : appOperate.py[line:379] [ DEBUG ] 输入内容: qweqwe123
+2017-01-17 17:13:30,878 : ReadApi.py[line:33] [ ERROR ] 'NoneType' object has no attribute 'send_keys'
+2017-01-17 17:13:30,878 : ReadApi.py[line:27] [ DEBUG ] case_list :[u'', 4.0, u'\u6536\u8d77\u952e\u76d8', u'click', u'ios', u'\u767b\u5f55\u754c\u9762\u5b8c\u6210\u6309\u94ae', u'', u'']
+2017-01-17 17:13:30,878 : ReadApi.py[line:50] [ DEBUG ] callApi执行中
+2017-01-17 17:13:30,878 : ReadApi.py[line:73] [ DEBUG ] Action_Keyword 操作:[ click ]
+2017-01-17 17:13:30,879 : ReadElement.py[line:65] [ DEBUG ] 元素表中存在此元素: 登录界面完成按钮
+2017-01-17 17:13:30,879 : ReadElement.py[line:34] [ DEBUG ] element_list : [u'\u767b\u5f55\u754c\u9762\u5b8c\u6210\u6309\u94ae', u'', u'', u'', u'id', u'\u5b8c\u6210', u'', u'', u'']
+2017-01-17 17:13:30,879 : ReadElement.py[line:39] [ DEBUG ] operate_type: id
+2017-01-17 17:13:30,879 : ReadElement.py[line:40] [ DEBUG ] operate_value: 完成
+2017-01-17 17:13:30,880 : ReadElement.py[line:41] [ DEBUG ] operate_index: 
+2017-01-17 17:13:30,880 : FindElementBy.py[line:30] [ DEBUG ] 调用查找元素方法: find_element,查找方式: id ,查找元素值: 完成 
+2017-01-17 17:14:11,147 : Element.py[line:43] [ WARNING ] <src.lib.Element.Element instance at 0x10807e7e8> 查找超时,未找到元素 : ('id', '\xe5\xae\x8c\xe6\x88\x90')
+2017-01-17 17:14:11,149 : Element.py[line:89] [ DEBUG ] 查找id: 完成
+2017-01-17 17:14:11,149 : appOperate.py[line:375] [ DEBUG ] 收起键盘
+2017-01-17 17:14:11,149 : ReadApi.py[line:33] [ ERROR ] 'NoneType' object has no attribute 'click'
+2017-01-17 17:14:11,149 : ReadApi.py[line:27] [ DEBUG ] case_list :[u'', 5.0, u'\u70b9\u51fb\u767b\u5f55\u6309\u94ae', u'click', u'', u'H5\u4e00\u8d26\u901a\u767b\u9646\u9875\u9762\u767b\u9646\u6309\u94ae', u'', u'']
+2017-01-17 17:14:11,150 : ReadApi.py[line:50] [ DEBUG ] callApi执行中
+2017-01-17 17:14:11,150 : ReadApi.py[line:73] [ DEBUG ] Action_Keyword 操作:[ click ]
+2017-01-17 17:14:11,150 : ReadElement.py[line:65] [ DEBUG ] 元素表中存在此元素: H5一账通登陆页面登陆按钮
+2017-01-17 17:14:11,150 : ReadElement.py[line:34] [ DEBUG ] element_list : [u'H5\u4e00\u8d26\u901a\u767b\u9646\u9875\u9762\u767b\u9646\u6309\u94ae', u'id', u'login-button', u'', u'id', u'\u767b \u5f55', u'', u'', u'']
+2017-01-17 17:14:11,150 : ReadElement.py[line:39] [ DEBUG ] operate_type: id
+2017-01-17 17:14:11,150 : ReadElement.py[line:40] [ DEBUG ] operate_value: 登 录
+2017-01-17 17:14:11,151 : ReadElement.py[line:41] [ DEBUG ] operate_index: 
+2017-01-17 17:14:11,151 : FindElementBy.py[line:30] [ DEBUG ] 调用查找元素方法: find_element,查找方式: id ,查找元素值: 登 录 
+2017-01-17 17:14:51,658 : Element.py[line:43] [ WARNING ] <src.lib.Element.Element instance at 0x108853ef0> 查找超时,未找到元素 : ('id', '\xe7\x99\xbb \xe5\xbd\x95')
+2017-01-17 17:14:51,660 : Element.py[line:89] [ DEBUG ] 查找id: 登 录
+2017-01-17 17:14:51,661 : appOperate.py[line:375] [ DEBUG ] 点击登录按钮
+2017-01-17 17:14:51,661 : ReadApi.py[line:33] [ ERROR ] 'NoneType' object has no attribute 'click'
+2017-01-17 17:14:51,661 : ReadApi.py[line:27] [ DEBUG ] case_list :[u'', 6.0, u'\u5ef6\u8fdf\u7b49\u5f85', u'sleep', u'', u'', u'', u'20']
+2017-01-17 17:14:51,662 : ReadApi.py[line:50] [ DEBUG ] callApi执行中
+2017-01-17 17:14:51,662 : ReadApi.py[line:73] [ DEBUG ] Action_Keyword 操作:[ sleep ]
+2017-01-17 17:15:11,663 : ReadApi.py[line:27] [ DEBUG ] case_list :[u'', 7.0, u'\u65ad\u8a00\u7b49\u5f85\u6587\u672c\u663e\u793a\uff08\u6211\u7684\u8ba2\u5355\uff09', u'assertTrue', u'', u'', u'\u6211\u7684\u8ba2\u5355', u'30']
+2017-01-17 17:15:11,664 : ReadApi.py[line:50] [ DEBUG ] callApi执行中
+2017-01-17 17:15:11,664 : ReadApi.py[line:73] [ DEBUG ] Action_Keyword 操作:[ assertTrue ]
+2017-01-17 17:15:11,664 : appOperate.py[line:348] [ DEBUG ] 开始轮询元素: 我的订单
+2017-01-17 17:15:11,665 : Element.py[line:337] [ DEBUG ] 获取 page_source
+2017-01-17 17:15:11,679 : ReadApi.py[line:33] [ ERROR ] Message: Session does not exist
+
+2017-01-17 17:15:11,680 : ReadApi.py[line:27] [ DEBUG ] case_list :[u'', 8.0, u'\u5173\u95edH5', u'closeH5', u'', u'', u'', u'']
+2017-01-17 17:15:11,680 : ReadApi.py[line:50] [ DEBUG ] callApi执行中
+2017-01-17 17:15:11,680 : ReadApi.py[line:73] [ DEBUG ] Action_Keyword 操作:[ closeH5 ]
+2017-01-17 17:15:51,728 : Element.py[line:43] [ WARNING ] <src.lib.Element.Element instance at 0x108855a70> 查找超时,未找到元素 : ('id', 'closeButton')
+2017-01-17 17:15:51,728 : Element.py[line:89] [ DEBUG ] 查找id: closeButton
+2017-01-17 17:16:31,772 : Element.py[line:43] [ WARNING ] <src.lib.Element.Element instance at 0x108855a70> 查找超时,未找到元素 : ('id', '\xe5\x85\xb3\xe9\x97\xad')
+2017-01-17 17:16:31,772 : Element.py[line:89] [ DEBUG ] 查找id: 关闭
+2017-01-17 17:17:11,878 : Element.py[line:43] [ WARNING ] <src.lib.Element.Element instance at 0x108855a70> 查找超时,未找到元素 : ('id', '\xe8\xbf\x94\xe5\x9b\x9e')
+2017-01-17 17:17:11,879 : Element.py[line:89] [ DEBUG ] 查找id: 返回
+2017-01-17 17:17:51,922 : Element.py[line:43] [ WARNING ] <src.lib.Element.Element instance at 0x108855a70> 查找超时,未找到元素 : ('id', 'com nav ic back')
+2017-01-17 17:17:51,923 : Element.py[line:89] [ DEBUG ] 查找id: com nav ic back
+2017-01-17 17:17:51,923 : appOperate.py[line:264] [ WARNING ] 通过[ by id ]关闭H5失败
+2017-01-17 17:17:51,923 : ReadApi.py[line:27] [ DEBUG ] case_list :[u'', 9.0, u'\u5de6\u6ed1', u'swipe2left', u'', u'', u'', u'']
+2017-01-17 17:17:51,923 : ReadApi.py[line:50] [ DEBUG ] callApi执行中
+2017-01-17 17:17:51,924 : ReadApi.py[line:73] [ DEBUG ] Action_Keyword 操作:[ swipe2left ]
+2017-01-17 17:17:51,937 : ReadApi.py[line:33] [ ERROR ] Message: Session does not exist
+
+2017-01-17 17:17:51,937 : RunExcel.py[line:130] [ DEBUG ] 公共案例库执行记录: [u'loginyztByH5', 'FAIL', 'FAIL', 'FAIL', 'FAIL', 'FAIL', 'PASS', 'FAIL', 'PASS', 'FAIL']
+2017-01-17 17:17:51,937 : RunExcel.py[line:138] [ DEBUG ] ========================================================================================================================
+2017-01-17 17:17:51,937 : RunExcel.py[line:139] [ DEBUG ] 当前用例:login_1001 ,执行结果: FAIL
+2017-01-17 17:17:51,938 : RunExcel.py[line:140] [ DEBUG ] ========================================================================================================================
+2017-01-17 17:17:51,938 : RunExcel.py[line:179] [ WARNING ] 测试用例:login_1001 ,执行结束
+2017-01-17 17:17:51,938 : RunExcel.py[line:180] [ WARNING ] 用例执行总结果: [[u'login_1000', 'FAIL', 46.008, False], [u'login_1001', 'FAIL', 407.943, False]]
+2017-01-17 17:17:51,938 : Retry.py[line:19] [ DEBUG ] 重跑次数: 1
+2017-01-17 17:17:51,938 : Retry.py[line:20] [ DEBUG ] 重跑开关: True
+2017-01-17 17:17:51,938 : Retry.py[line:22] [ DEBUG ] 调用函数: function
+2017-01-17 17:17:51,938 : Retry.py[line:28] [ DEBUG ] 当前用例名称: login_1001 ,当前执行结果: FAIL
+2017-01-17 17:17:51,939 : Retry.py[line:30] [ DEBUG ] 失败重跑第 【 1 】 次执行中
+2017-01-17 17:17:51,939 : RunExcel.py[line:122] [ WARNING ] 测试用例:login_1001 ,执行开始
+2017-01-17 17:17:51,939 : RunExcel.py[line:56] [ DEBUG ] callPublicCase 执行中
+2017-01-17 17:17:51,939 : RunExcel.py[line:84] [ DEBUG ] 公共案例库中存在此方法: loginyztByH5
+2017-01-17 17:17:51,939 : ReadApi.py[line:27] [ DEBUG ] case_list :[u'loginyztByH5', 1.0, u'\u7b49\u5f85\u6587\u672c\u663e\u793a\uff08\u4e00\u8d26\u901a\u767b\u5f55\uff09', u'waitFortext', u'', u'', u'\u4e00\u8d26\u901a\u767b\u5f55', u'30']
+2017-01-17 17:17:51,939 : ReadApi.py[line:50] [ DEBUG ] callApi执行中
+2017-01-17 17:17:51,940 : ReadApi.py[line:73] [ DEBUG ] Action_Keyword 操作:[ waitFortext ]
+2017-01-17 17:17:51,940 : appOperate.py[line:348] [ DEBUG ] 开始轮询元素: 一账通登录
+2017-01-17 17:17:51,940 : Element.py[line:337] [ DEBUG ] 获取 page_source
+2017-01-17 17:17:51,948 : ReadApi.py[line:33] [ ERROR ] Message: Session does not exist
+
+2017-01-17 17:17:51,948 : ReadApi.py[line:27] [ DEBUG ] case_list :[u'', 2.0, u'\u8f93\u5165\u8d26\u53f7', u'sendkeys', u'', u'H5\u4e00\u8d26\u901a\u767b\u9646\u9875\u9762\u8d26\u53f7', u'', u'18602753065']
+2017-01-17 17:17:51,949 : ReadApi.py[line:50] [ DEBUG ] callApi执行中
+2017-01-17 17:17:51,949 : ReadApi.py[line:73] [ DEBUG ] Action_Keyword 操作:[ sendkeys ]
+2017-01-17 17:17:51,949 : ReadElement.py[line:65] [ DEBUG ] 元素表中存在此元素: H5一账通登陆页面账号
+2017-01-17 17:17:51,949 : ReadElement.py[line:34] [ DEBUG ] element_list : [u'H5\u4e00\u8d26\u901a\u767b\u9646\u9875\u9762\u8d26\u53f7', u'id', u'user-id-input', u'', u'xpath', u"//*[@value='\u4e00\u8d26\u901a\u53f7/\u624b\u673a\u53f7/\u8eab\u4efd\u8bc1\u53f7/\u90ae\u7bb1']", u'', u'', u'']
+2017-01-17 17:17:51,949 : ReadElement.py[line:39] [ DEBUG ] operate_type: xpath
+2017-01-17 17:17:51,950 : ReadElement.py[line:40] [ DEBUG ] operate_value: //*[@value='一账通号/手机号/身份证号/邮箱']
+2017-01-17 17:17:51,950 : ReadElement.py[line:41] [ DEBUG ] operate_index: 
+2017-01-17 17:17:51,950 : FindElementBy.py[line:30] [ DEBUG ] 调用查找元素方法: find_element,查找方式: xpath ,查找元素值: //*[@value='一账通号/手机号/身份证号/邮箱'] 
+2017-01-17 17:18:14,247 : Element.py[line:43] [ WARNING ] <src.lib.Element.Element instance at 0x108855e60> 查找超时,未找到元素 : ('xpath', "//*[@value='\xe4\xb8\x80\xe8\xb4\xa6\xe9\x80\x9a\xe5\x8f\xb7/\xe6\x89\x8b\xe6\x9c\xba\xe5\x8f\xb7/\xe8\xba\xab\xe4\xbb\xbd\xe8\xaf\x81\xe5\x8f\xb7/\xe9\x82\xae\xe7\xae\xb1']")
+2017-01-17 17:18:14,250 : Element.py[line:128] [ DEBUG ] 查找 xpath: //*[@value='一账通号/手机号/身份证号/邮箱']
+2017-01-17 17:18:14,251 : appOperate.py[line:379] [ DEBUG ] 输入内容: 18602753065
+2017-01-17 17:18:14,251 : ReadApi.py[line:33] [ ERROR ] 'NoneType' object has no attribute 'send_keys'
+2017-01-17 17:18:14,251 : ReadApi.py[line:27] [ DEBUG ] case_list :[u'', 3.0, u'\u8f93\u5165\u5bc6\u7801', u'sendkeys', u'', u'H5\u4e00\u8d26\u901a\u767b\u9646\u9875\u9762\u5bc6\u7801', u'', u'qweqwe123']
+2017-01-17 17:18:14,252 : ReadApi.py[line:50] [ DEBUG ] callApi执行中
+2017-01-17 17:18:14,252 : ReadApi.py[line:73] [ DEBUG ] Action_Keyword 操作:[ sendkeys ]
+2017-01-17 17:18:14,252 : ReadElement.py[line:65] [ DEBUG ] 元素表中存在此元素: H5一账通登陆页面密码
+2017-01-17 17:18:14,252 : ReadElement.py[line:34] [ DEBUG ] element_list : [u'H5\u4e00\u8d26\u901a\u767b\u9646\u9875\u9762\u5bc6\u7801', u'id', u'user-psd-input', u'', u'xpath', u"//*[@value='\u5bc6\u7801']", u'', u'', u'']
+2017-01-17 17:18:14,253 : ReadElement.py[line:39] [ DEBUG ] operate_type: xpath
+2017-01-17 17:18:14,253 : ReadElement.py[line:40] [ DEBUG ] operate_value: //*[@value='密码']
+2017-01-17 17:18:14,253 : ReadElement.py[line:41] [ DEBUG ] operate_index: 
+2017-01-17 17:18:14,254 : FindElementBy.py[line:30] [ DEBUG ] 调用查找元素方法: find_element,查找方式: xpath ,查找元素值: //*[@value='密码'] 
+2017-01-17 17:18:14,264 : Element.py[line:43] [ WARNING ] <src.lib.Element.Element instance at 0x1086dde60> 查找超时,未找到元素 : ('xpath', "//*[@value='\xe5\xaf\x86\xe7\xa0\x81']")
+2017-01-17 17:18:14,265 : Element.py[line:128] [ DEBUG ] 查找 xpath: //*[@value='密码']
+2017-01-17 17:18:14,268 : appOperate.py[line:379] [ DEBUG ] 输入内容: qweqwe123
+2017-01-17 17:18:14,268 : ReadApi.py[line:33] [ ERROR ] 'NoneType' object has no attribute 'send_keys'
+2017-01-17 17:18:14,269 : ReadApi.py[line:27] [ DEBUG ] case_list :[u'', 4.0, u'\u6536\u8d77\u952e\u76d8', u'click', u'ios', u'\u767b\u5f55\u754c\u9762\u5b8c\u6210\u6309\u94ae', u'', u'']
+2017-01-17 17:18:14,269 : ReadApi.py[line:50] [ DEBUG ] callApi执行中
+2017-01-17 17:18:14,270 : ReadApi.py[line:73] [ DEBUG ] Action_Keyword 操作:[ click ]
+2017-01-17 17:18:14,270 : ReadElement.py[line:65] [ DEBUG ] 元素表中存在此元素: 登录界面完成按钮
+2017-01-17 17:18:14,272 : ReadElement.py[line:34] [ DEBUG ] element_list : [u'\u767b\u5f55\u754c\u9762\u5b8c\u6210\u6309\u94ae', u'', u'', u'', u'id', u'\u5b8c\u6210', u'', u'', u'']
+2017-01-17 17:18:14,273 : ReadElement.py[line:39] [ DEBUG ] operate_type: id
+2017-01-17 17:18:14,274 : ReadElement.py[line:40] [ DEBUG ] operate_value: 完成
+2017-01-17 17:18:14,275 : ReadElement.py[line:41] [ DEBUG ] operate_index: 
+2017-01-17 17:18:14,275 : FindElementBy.py[line:30] [ DEBUG ] 调用查找元素方法: find_element,查找方式: id ,查找元素值: 完成 
+2017-01-17 17:18:14,282 : Element.py[line:43] [ WARNING ] <src.lib.Element.Element instance at 0x10826b710> 查找超时,未找到元素 : ('id', '\xe5\xae\x8c\xe6\x88\x90')
+2017-01-17 17:18:14,283 : Element.py[line:89] [ DEBUG ] 查找id: 完成
+2017-01-17 17:18:14,283 : appOperate.py[line:375] [ DEBUG ] 收起键盘
+2017-01-17 17:18:14,284 : ReadApi.py[line:33] [ ERROR ] 'NoneType' object has no attribute 'click'
+2017-01-17 17:18:14,284 : ReadApi.py[line:27] [ DEBUG ] case_list :[u'', 5.0, u'\u70b9\u51fb\u767b\u5f55\u6309\u94ae', u'click', u'', u'H5\u4e00\u8d26\u901a\u767b\u9646\u9875\u9762\u767b\u9646\u6309\u94ae', u'', u'']
+2017-01-17 17:18:14,285 : ReadApi.py[line:50] [ DEBUG ] callApi执行中
+2017-01-17 17:18:14,286 : ReadApi.py[line:73] [ DEBUG ] Action_Keyword 操作:[ click ]
+2017-01-17 17:18:14,286 : ReadElement.py[line:65] [ DEBUG ] 元素表中存在此元素: H5一账通登陆页面登陆按钮
+2017-01-17 17:18:14,286 : ReadElement.py[line:34] [ DEBUG ] element_list : [u'H5\u4e00\u8d26\u901a\u767b\u9646\u9875\u9762\u767b\u9646\u6309\u94ae', u'id', u'login-button', u'', u'id', u'\u767b \u5f55', u'', u'', u'']
+2017-01-17 17:18:14,287 : ReadElement.py[line:39] [ DEBUG ] operate_type: id
+2017-01-17 17:18:14,287 : ReadElement.py[line:40] [ DEBUG ] operate_value: 登 录
+2017-01-17 17:18:14,288 : ReadElement.py[line:41] [ DEBUG ] operate_index: 
+2017-01-17 17:18:14,290 : FindElementBy.py[line:30] [ DEBUG ] 调用查找元素方法: find_element,查找方式: id ,查找元素值: 登 录 
+2017-01-17 17:18:14,295 : Element.py[line:43] [ WARNING ] <src.lib.Element.Element instance at 0x108082a70> 查找超时,未找到元素 : ('id', '\xe7\x99\xbb \xe5\xbd\x95')
+2017-01-17 17:18:14,296 : Element.py[line:89] [ DEBUG ] 查找id: 登 录
+2017-01-17 17:18:14,296 : appOperate.py[line:375] [ DEBUG ] 点击登录按钮
+2017-01-17 17:18:14,297 : ReadApi.py[line:33] [ ERROR ] 'NoneType' object has no attribute 'click'
+2017-01-17 17:18:14,297 : ReadApi.py[line:27] [ DEBUG ] case_list :[u'', 6.0, u'\u5ef6\u8fdf\u7b49\u5f85', u'sleep', u'', u'', u'', u'20']
+2017-01-17 17:18:14,298 : ReadApi.py[line:50] [ DEBUG ] callApi执行中
+2017-01-17 17:18:14,298 : ReadApi.py[line:73] [ DEBUG ] Action_Keyword 操作:[ sleep ]

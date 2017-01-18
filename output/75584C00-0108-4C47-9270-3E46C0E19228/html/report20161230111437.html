@@ -1,0 +1,1234 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"><head><title>Test Report Page</title>
+<link href="https://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+<script src="https://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js" type="text/javascript"></script>
+<script src="https://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js" type="text/javascript"></script>
+</head>
+<body><h1 align="middle">测试报告</h1>
+<h3 align="left">Environment</h3>
+<table borderColor="#504F4F" class="table" border="1" width="90%" cellspacing="0" cellpa dding="1"><tr border-top="0"><td bgcolor="#E6E6FA" align="middle">报告生成时间</td>
+<td bgcolor="#E6E6FA" align="middle">Platform</td>
+<td bgcolor="#E6E6FA" align="middle">Python</td>
+<td bgcolor="#E6E6FA" align="middle">Appium</td>
+
+</tr>
+<tr><td align="middle">2016-12-30 11:14:37</td>
+<td align="middle">Darwin-16.3.0-x86_64-i386-64bit</td>
+<td align="middle">2.7.11</td>
+<td align="middle">1.6.3
+</td>
+
+</tr>
+</table>
+<h3 align="left">Summary</h3>
+<table borderColor="#504F4F" class="table" border="1" width="90%" cellspacing="0" cellpa dding="1"><tr><td bgcolor="#E6E6FA" align="middle">测试总耗时</td>
+<td bgcolor="#E6E6FA" align="middle">测试用例总数</td>
+<td bgcolor="#E6E6FA" align="middle">成功用例数</td>
+<td bgcolor="#E6E6FA" align="middle">失败用例数</td>
+<td bgcolor="#E6E6FA" align="middle">报错用例数</td>
+<td bgcolor="#E6E6FA" align="middle">重跑用例数</td>
+
+</tr>
+<tr><td align="middle">00:00:00</td>
+<td align="middle">7</td>
+<td align="middle">7</td>
+<td align="middle">0</td>
+<td align="middle">0</td>
+<td align="middle">0</td>
+
+</tr>
+</table>
+<h3 align="left">Results</h3>
+<table borderColor="#504F4F" class="table" border="1" width="90%" cellspacing="0" cellpa dding="1"><tr><td bgcolor="#E6E6FA" align="middle">用例名称</td>
+<td bgcolor="#E6E6FA" align="middle">运行时间(s)</td>
+<td bgcolor="#E6E6FA" align="middle">运行日志</td>
+<td bgcolor="#E6E6FA" align="middle">测试结果</td>
+
+</tr>
+<tr bgcolor="#70DBDB"><td align="middle">登录_1000</td>
+<td align="middle">12.406</td>
+<td align="middle"><div style="margin-bottom: 0px;" id="accordion" class="panel-group"><div style="background-color: #70DBDB;"><a aria-expanded="false" class="collapsed" align="middle" href="#0" data-toggle="collapse" data-parent="#accordion">日志详情</a>
+<div align="left" style="height: 0px;" aria-expanded="false" id="0" class="panel-collapse collapse"><br>2016-12-30 10:53:36,474 : RunExcel.py[line:113] [ DEBUG ] 测试用例:登录_1000 ,执行开始
+<br>2016-12-30 10:53:36,474 : RunExcel.py[line:56] [ DEBUG ] callPublicCase 执行中
+<br>2016-12-30 10:53:36,474 : RunExcel.py[line:82] [ DEBUG ] 公共案例库中存在此方法: SwipeToClickPersonalCenter
+<br>2016-12-30 10:53:36,474 : ReadApi.py[line:27] [ DEBUG ] case_list :[u'SwipeToClickPersonalCenter', 1.0, u'\u5411\u53f3\u6ed1\u52a8', u'swipe2right', u'', u'', u'', u'']
+<br>2016-12-30 10:53:36,475 : ReadApi.py[line:50] [ DEBUG ] callApi执行中
+<br>2016-12-30 10:53:36,475 : ReadApi.py[line:71] [ DEBUG ] Action_Keyword 操作:[ swipe2right ]
+<br>2016-12-30 10:53:36,475 : Element.py[line:145] [ DEBUG ] 获取当前窗口大小
+<br>2016-12-30 10:53:36,610 : Element.py[line:185] [ DEBUG ] 向右滑动,起始滑动坐标: (64,454),坐标偏移量(192,0)
+<br>2016-12-30 10:53:40,082 : ReadApi.py[line:27] [ DEBUG ] case_list :[u'', 2.0, u'\u7b49\u5f85\u6587\u672c\u663e\u793a\uff08\u4e2a\u4eba\u4e2d\u5fc3\uff09', u'waitFortext', u'', u'', u'\u4e2a\u4eba\u4e2d\u5fc3', u'30']
+<br>2016-12-30 10:53:40,083 : ReadApi.py[line:50] [ DEBUG ] callApi执行中
+<br>2016-12-30 10:53:40,083 : ReadApi.py[line:71] [ DEBUG ] Action_Keyword 操作:[ waitFortext ]
+<br>2016-12-30 10:53:40,083 : appOperate.py[line:349] [ DEBUG ] 开始轮询元素: 个人中心
+<br>2016-12-30 10:53:40,083 : Element.py[line:238] [ DEBUG ] 获取 page_source
+<br>2016-12-30 10:53:43,517 : appOperate.py[line:358] [ DEBUG ] 界面存在此元素:[ 个人中心 ]
+<br>2016-12-30 10:53:43,517 : ReadApi.py[line:27] [ DEBUG ] case_list :[u'', 3.0, u'\u70b9\u51fb\u5de6\u5c4f\u4e2a\u4eba\u4e2d\u5fc3', u'click', u'', u'\u4e2a\u4eba\u4e2d\u5fc3', u'', u'']
+<br>2016-12-30 10:53:43,517 : ReadApi.py[line:50] [ DEBUG ] callApi执行中
+<br>2016-12-30 10:53:43,517 : ReadApi.py[line:71] [ DEBUG ] Action_Keyword 操作:[ click ]
+<br>2016-12-30 10:53:43,517 : ReadElement.py[line:65] [ DEBUG ] 元素表中存在此元素: 个人中心
+<br>2016-12-30 10:53:43,518 : ReadElement.py[line:34] [ DEBUG ] element_list : [u'\u4e2a\u4eba\u4e2d\u5fc3', u'xpath', u"//android.widget.TextView[@text='\u4e2a\u4eba\u4e2d\u5fc3']", u'', u'id', u'\u4e2a\u4eba\u4e2d\u5fc3', u'']
+<br>2016-12-30 10:53:43,518 : ReadElement.py[line:39] [ DEBUG ] operate_type: id
+<br>2016-12-30 10:53:43,518 : ReadElement.py[line:40] [ DEBUG ] operate_value: 个人中心
+<br>2016-12-30 10:53:43,518 : ReadElement.py[line:41] [ DEBUG ] operate_index: 
+<br>2016-12-30 10:53:44,050 : Element.py[line:59] [ DEBUG ] 查找id: 个人中心
+<br>2016-12-30 10:53:44,050 : appOperate.py[line:376] [ DEBUG ] 点击左屏个人中心
+<br>2016-12-30 10:53:45,532 : ReadApi.py[line:27] [ DEBUG ] case_list :[u'', 4.0, u'\u5ef6\u8fdf\u7b49\u5f85', u'sleep', u'', u'', u'', u'5']
+<br>2016-12-30 10:53:45,533 : ReadApi.py[line:50] [ DEBUG ] callApi执行中
+<br>2016-12-30 10:53:45,533 : ReadApi.py[line:71] [ DEBUG ] Action_Keyword 操作:[ sleep ]
+<br>2016-12-30 10:53:50,537 : RunExcel.py[line:121] [ DEBUG ] 公共案例库执行记录: [u'SwipeToClickPersonalCenter', 'PASS', 'PASS', 'PASS', 'PASS']
+<br>2016-12-30 10:53:50,537 : RunExcel.py[line:129] [ DEBUG ] ========================================================================================================================
+<br>2016-12-30 10:53:50,537 : RunExcel.py[line:130] [ DEBUG ] 当前用例:登录_1000 ,执行结果: PASS
+<br>2016-12-30 10:53:50,537 : RunExcel.py[line:131] [ DEBUG ] ========================================================================================================================
+<br>2016-12-30 10:53:50,538 : RunExcel.py[line:166] [ DEBUG ] 测试用例:登录_1000 ,执行结束
+</div>
+
+</div>
+</div>
+</td>
+<td align="middle">PASS</td>
+
+</tr>
+<tr bgcolor="#70DBDB"><td align="middle">登录_1001</td>
+<td align="middle">51.286</td>
+<td align="middle"><div style="margin-bottom: 0px;" id="accordion" class="panel-group"><div style="background-color: #70DBDB;"><a aria-expanded="false" class="collapsed" align="middle" href="#1" data-toggle="collapse" data-parent="#accordion">日志详情</a>
+<div align="left" style="height: 0px;" aria-expanded="false" id="1" class="panel-collapse collapse"><br>2016-12-30 10:53:50,621 : RunExcel.py[line:113] [ DEBUG ] 测试用例:登录_1001 ,执行开始
+<br>2016-12-30 10:53:50,621 : RunExcel.py[line:56] [ DEBUG ] callPublicCase 执行中
+<br>2016-12-30 10:53:50,622 : RunExcel.py[line:82] [ DEBUG ] 公共案例库中存在此方法: loginyztByH5
+<br>2016-12-30 10:53:50,622 : ReadApi.py[line:27] [ DEBUG ] case_list :[u'loginyztByH5', 1.0, u'\u7b49\u5f85\u6587\u672c\u663e\u793a\uff08\u4e00\u8d26\u901a\u767b\u5f55\uff09', u'waitFortext', u'', u'', u'\u4e00\u8d26\u901a\u767b\u5f55', u'30']
+<br>2016-12-30 10:53:50,622 : ReadApi.py[line:50] [ DEBUG ] callApi执行中
+<br>2016-12-30 10:53:50,622 : ReadApi.py[line:71] [ DEBUG ] Action_Keyword 操作:[ waitFortext ]
+<br>2016-12-30 10:53:50,622 : appOperate.py[line:349] [ DEBUG ] 开始轮询元素: 一账通登录
+<br>2016-12-30 10:53:50,622 : Element.py[line:238] [ DEBUG ] 获取 page_source
+<br>2016-12-30 10:53:52,373 : appOperate.py[line:358] [ DEBUG ] 界面存在此元素:[ 一账通登录 ]
+<br>2016-12-30 10:53:52,374 : ReadApi.py[line:27] [ DEBUG ] case_list :[u'', 2.0, u'\u8f93\u5165\u8d26\u53f7', u'sendkeys', u'', u'H5\u4e00\u8d26\u901a\u767b\u9646\u9875\u9762\u8d26\u53f7', u'', u'18602753065']
+<br>2016-12-30 10:53:52,375 : ReadApi.py[line:50] [ DEBUG ] callApi执行中
+<br>2016-12-30 10:53:52,377 : ReadApi.py[line:71] [ DEBUG ] Action_Keyword 操作:[ sendkeys ]
+<br>2016-12-30 10:53:52,377 : ReadElement.py[line:65] [ DEBUG ] 元素表中存在此元素: H5一账通登陆页面账号
+<br>2016-12-30 10:53:52,378 : ReadElement.py[line:34] [ DEBUG ] element_list : [u'H5\u4e00\u8d26\u901a\u767b\u9646\u9875\u9762\u8d26\u53f7', u'classname', u'android.widget.EditText', u'', u'xpath', u"//*[@value='\u4e00\u8d26\u901a\u53f7/\u624b\u673a\u53f7/\u8eab\u4efd\u8bc1\u53f7/\u90ae\u7bb1']", u'']
+<br>2016-12-30 10:53:52,378 : ReadElement.py[line:39] [ DEBUG ] operate_type: xpath
+<br>2016-12-30 10:53:52,378 : ReadElement.py[line:40] [ DEBUG ] operate_value: //*[@value='一账通号/手机号/身份证号/邮箱']
+<br>2016-12-30 10:53:52,380 : ReadElement.py[line:41] [ DEBUG ] operate_index: 
+<br>2016-12-30 10:53:54,066 : Element.py[line:90] [ DEBUG ] 查找 xpath: //*[@value='一账通号/手机号/身份证号/邮箱']
+<br>2016-12-30 10:53:54,067 : appOperate.py[line:380] [ DEBUG ] 输入内容: 18602753065
+<br>2016-12-30 10:53:59,914 : ReadApi.py[line:27] [ DEBUG ] case_list :[u'', 3.0, u'\u8f93\u5165\u5bc6\u7801', u'sendkeys', u'', u'H5\u4e00\u8d26\u901a\u767b\u9646\u9875\u9762\u5bc6\u7801', u'', u'qweqwe123']
+<br>2016-12-30 10:53:59,914 : ReadApi.py[line:50] [ DEBUG ] callApi执行中
+<br>2016-12-30 10:53:59,914 : ReadApi.py[line:71] [ DEBUG ] Action_Keyword 操作:[ sendkeys ]
+<br>2016-12-30 10:53:59,915 : ReadElement.py[line:65] [ DEBUG ] 元素表中存在此元素: H5一账通登陆页面密码
+<br>2016-12-30 10:53:59,915 : ReadElement.py[line:34] [ DEBUG ] element_list : [u'H5\u4e00\u8d26\u901a\u767b\u9646\u9875\u9762\u5bc6\u7801', u'classname', u'android.widget.EditText', u'', u'xpath', u"//*[@value='\u5bc6\u7801']", u'']
+<br>2016-12-30 10:53:59,915 : ReadElement.py[line:39] [ DEBUG ] operate_type: xpath
+<br>2016-12-30 10:53:59,915 : ReadElement.py[line:40] [ DEBUG ] operate_value: //*[@value='密码']
+<br>2016-12-30 10:53:59,915 : ReadElement.py[line:41] [ DEBUG ] operate_index: 
+<br>2016-12-30 10:54:06,821 : Element.py[line:90] [ DEBUG ] 查找 xpath: //*[@value='密码']
+<br>2016-12-30 10:54:06,821 : appOperate.py[line:380] [ DEBUG ] 输入内容: qweqwe123
+<br>2016-12-30 10:54:11,235 : ReadApi.py[line:27] [ DEBUG ] case_list :[u'', 4.0, u'\u6536\u8d77\u952e\u76d8', u'click', u'', u'\u767b\u5f55\u754c\u9762\u5b8c\u6210\u6309\u94ae', u'', u'']
+<br>2016-12-30 10:54:11,236 : ReadApi.py[line:50] [ DEBUG ] callApi执行中
+<br>2016-12-30 10:54:11,236 : ReadApi.py[line:71] [ DEBUG ] Action_Keyword 操作:[ click ]
+<br>2016-12-30 10:54:11,237 : ReadElement.py[line:65] [ DEBUG ] 元素表中存在此元素: 登录界面完成按钮
+<br>2016-12-30 10:54:11,237 : ReadElement.py[line:34] [ DEBUG ] element_list : [u'\u767b\u5f55\u754c\u9762\u5b8c\u6210\u6309\u94ae', u'', u'', u'', u'id', u'\u5b8c\u6210', u'']
+<br>2016-12-30 10:54:11,237 : ReadElement.py[line:39] [ DEBUG ] operate_type: id
+<br>2016-12-30 10:54:11,237 : ReadElement.py[line:40] [ DEBUG ] operate_value: 完成
+<br>2016-12-30 10:54:11,237 : ReadElement.py[line:41] [ DEBUG ] operate_index: 
+<br>2016-12-30 10:54:12,209 : Element.py[line:59] [ DEBUG ] 查找id: 完成
+<br>2016-12-30 10:54:12,209 : appOperate.py[line:376] [ DEBUG ] 收起键盘
+<br>2016-12-30 10:54:13,968 : ReadApi.py[line:27] [ DEBUG ] case_list :[u'', 5.0, u'\u70b9\u51fb\u767b\u5f55\u6309\u94ae', u'click', u'', u'H5\u4e00\u8d26\u901a\u767b\u9646\u9875\u9762\u767b\u9646\u6309\u94ae', u'', u'']
+<br>2016-12-30 10:54:13,969 : ReadApi.py[line:50] [ DEBUG ] callApi执行中
+<br>2016-12-30 10:54:13,969 : ReadApi.py[line:71] [ DEBUG ] Action_Keyword 操作:[ click ]
+<br>2016-12-30 10:54:13,969 : ReadElement.py[line:65] [ DEBUG ] 元素表中存在此元素: H5一账通登陆页面登陆按钮
+<br>2016-12-30 10:54:13,969 : ReadElement.py[line:34] [ DEBUG ] element_list : [u'H5\u4e00\u8d26\u901a\u767b\u9646\u9875\u9762\u767b\u9646\u6309\u94ae', u'id', u'\u767b \u5f55 Link', u'', u'id', u'\u767b \u5f55', u'']
+<br>2016-12-30 10:54:13,969 : ReadElement.py[line:39] [ DEBUG ] operate_type: id
+<br>2016-12-30 10:54:13,969 : ReadElement.py[line:40] [ DEBUG ] operate_value: 登 录
+<br>2016-12-30 10:54:13,969 : ReadElement.py[line:41] [ DEBUG ] operate_index: 
+<br>2016-12-30 10:54:14,729 : Element.py[line:59] [ DEBUG ] 查找id: 登 录
+<br>2016-12-30 10:54:14,729 : appOperate.py[line:376] [ DEBUG ] 点击登录按钮
+<br>2016-12-30 10:54:16,215 : ReadApi.py[line:27] [ DEBUG ] case_list :[u'', 6.0, u'\u5ef6\u8fdf\u7b49\u5f85', u'sleep', u'', u'', u'', u'20']
+<br>2016-12-30 10:54:16,215 : ReadApi.py[line:50] [ DEBUG ] callApi执行中
+<br>2016-12-30 10:54:16,215 : ReadApi.py[line:71] [ DEBUG ] Action_Keyword 操作:[ sleep ]
+<br>2016-12-30 10:54:36,221 : ReadApi.py[line:27] [ DEBUG ] case_list :[u'', 7.0, u'\u65ad\u8a00\u7b49\u5f85\u6587\u672c\u663e\u793a\uff08\u6211\u7684\u8ba2\u5355\uff09', u'assertTrue', u'', u'', u'\u6211\u7684\u8ba2\u5355', u'30']
+<br>2016-12-30 10:54:36,221 : ReadApi.py[line:50] [ DEBUG ] callApi执行中
+<br>2016-12-30 10:54:36,221 : ReadApi.py[line:71] [ DEBUG ] Action_Keyword 操作:[ assertTrue ]
+<br>2016-12-30 10:54:36,221 : appOperate.py[line:349] [ DEBUG ] 开始轮询元素: 我的订单
+<br>2016-12-30 10:54:36,221 : Element.py[line:238] [ DEBUG ] 获取 page_source
+<br>2016-12-30 10:54:38,610 : appOperate.py[line:358] [ DEBUG ] 界面存在此元素:[ 我的订单 ]
+<br>2016-12-30 10:54:38,610 : ReadApi.py[line:27] [ DEBUG ] case_list :[u'', 8.0, u'\u5173\u95edH5', u'closeH5', u'', u'', u'', u'']
+<br>2016-12-30 10:54:38,610 : ReadApi.py[line:50] [ DEBUG ] callApi执行中
+<br>2016-12-30 10:54:38,610 : ReadApi.py[line:71] [ DEBUG ] Action_Keyword 操作:[ closeH5 ]
+<br>2016-12-30 10:54:38,611 : Element.py[line:234] [ DEBUG ] 隐式等待 3 秒
+<br>2016-12-30 10:54:39,231 : Element.py[line:59] [ DEBUG ] 查找id: closeButton
+<br>2016-12-30 10:54:39,830 : Element.py[line:59] [ DEBUG ] 查找id: closeButton
+<br>2016-12-30 10:54:41,293 : ReadApi.py[line:27] [ DEBUG ] case_list :[u'', 9.0, u'\u5de6\u6ed1', u'swipe2left', u'', u'', u'', u'']
+<br>2016-12-30 10:54:41,293 : ReadApi.py[line:50] [ DEBUG ] callApi执行中
+<br>2016-12-30 10:54:41,293 : ReadApi.py[line:71] [ DEBUG ] Action_Keyword 操作:[ swipe2left ]
+<br>2016-12-30 10:54:41,293 : Element.py[line:145] [ DEBUG ] 获取当前窗口大小
+<br>2016-12-30 10:54:41,451 : Element.py[line:199] [ DEBUG ] 向左滑动,滑动起始坐标: (256,454),偏移量(-192,0)
+<br>2016-12-30 10:54:44,379 : RunExcel.py[line:121] [ DEBUG ] 公共案例库执行记录: [u'loginyztByH5', 'PASS', 'PASS', 'PASS', 'PASS', 'PASS', 'PASS', 'PASS', 'PASS', 'PASS']
+<br>2016-12-30 10:54:44,379 : RunExcel.py[line:129] [ DEBUG ] ========================================================================================================================
+<br>2016-12-30 10:54:44,379 : RunExcel.py[line:130] [ DEBUG ] 当前用例:登录_1001 ,执行结果: PASS
+<br>2016-12-30 10:54:44,379 : RunExcel.py[line:131] [ DEBUG ] ========================================================================================================================
+<br>2016-12-30 10:54:44,380 : RunExcel.py[line:166] [ DEBUG ] 测试用例:登录_1001 ,执行结束
+</div>
+
+</div>
+</div>
+</td>
+<td align="middle">PASS</td>
+
+</tr>
+<tr bgcolor="#70DBDB"><td align="middle">获取插件列表</td>
+<td align="middle">0.305</td>
+<td align="middle"><div style="margin-bottom: 0px;" id="accordion" class="panel-group"><div style="background-color: #70DBDB;"><a aria-expanded="false" class="collapsed" align="middle" href="#2" data-toggle="collapse" data-parent="#accordion">日志详情</a>
+<div align="left" style="height: 0px;" aria-expanded="false" id="2" class="panel-collapse collapse"><br>2016-12-30 10:54:44,487 : RunExcel.py[line:113] [ DEBUG ] 测试用例:获取插件列表 ,执行开始
+<br>2016-12-30 10:54:44,487 : ReadApi.py[line:27] [ DEBUG ] case_list :[u'\u83b7\u53d6\u63d2\u4ef6\u5217\u8868', 1.0, u'\u83b7\u53d6\u63d2\u4ef6\u5217\u8868', u'getPluginList', u'', u'', u'', u'']
+<br>2016-12-30 10:54:44,487 : ReadApi.py[line:50] [ DEBUG ] callApi执行中
+<br>2016-12-30 10:54:44,487 : ReadApi.py[line:71] [ DEBUG ] Action_Keyword 操作:[ getPluginList ]
+<br>2016-12-30 10:54:44,488 : appOperate.py[line:287] [ DEBUG ] 开始获取插件列表。。。
+<br>2016-12-30 10:54:44,768 : appOperate.py[line:290] [ DEBUG ] 当前插件总数: 40
+<br>2016-12-30 10:54:44,769 : appOperate.py[line:291] [ DEBUG ] 当前插件列表: 
+<br>2016-12-30 10:54:44,769 : appOperate.py[line:295] [ DEBUG ] 平安地图---PA01100000000_02_PAZB---H
+<br>2016-12-30 10:54:44,769 : appOperate.py[line:295] [ DEBUG ] 模拟炒股---PA01100000000_02_WLC---H
+<br>2016-12-30 10:54:44,769 : appOperate.py[line:295] [ DEBUG ] 个人中心---PA01100000000_02_GRZX---Y
+<br>2016-12-30 10:54:44,769 : appOperate.py[line:295] [ DEBUG ] 看直播---PA00500000000_02_GSZB---N
+<br>2016-12-30 10:54:44,770 : appOperate.py[line:295] [ DEBUG ] 活动集合---PA01100000000_02_HDJHY---H
+<br>2016-12-30 10:54:44,770 : appOperate.py[line:295] [ DEBUG ] 找网点---PA01100000001_02_WDCX---N
+<br>2016-12-30 10:54:44,770 : appOperate.py[line:295] [ DEBUG ] 十元电影---PA01100000001_02_XYK---H
+<br>2016-12-30 10:54:44,770 : appOperate.py[line:295] [ DEBUG ] 买航意险---PA01100000000_02_YYG---N
+<br>2016-12-30 10:54:44,771 : appOperate.py[line:295] [ DEBUG ] 房按揭---PA03300000000_02_AJDK---Y
+<br>2016-12-30 10:54:44,771 : appOperate.py[line:295] [ DEBUG ] 在线投资---PA02500000000_02_TZLC---N
+<br>2016-12-30 10:54:44,771 : appOperate.py[line:295] [ DEBUG ] 1220---PA02100000001_02_JF---Y
+<br>2016-12-30 10:54:44,771 : appOperate.py[line:295] [ DEBUG ] 平安好贷---PA01200000000_02_XYD---N
+<br>2016-12-30 10:54:44,771 : appOperate.py[line:295] [ DEBUG ] 应急钱包---PA02100000000_02_YJQB---N
+<br>2016-12-30 10:54:44,771 : appOperate.py[line:295] [ DEBUG ] 爆款理财---PA02100000000_02_KY---N
+<br>2016-12-30 10:54:44,771 : appOperate.py[line:295] [ DEBUG ] 活期盈---PA02100000000_02_HQY---H
+<br>2016-12-30 10:54:44,771 : appOperate.py[line:295] [ DEBUG ] 查号码---PA00800000000_02_PACX---N
+<br>2016-12-30 10:54:44,771 : appOperate.py[line:295] [ DEBUG ] 财富宝---PA00400000000_02_CFBXZZC---H
+<br>2016-12-30 10:54:44,771 : appOperate.py[line:295] [ DEBUG ] 精品特卖---PA01100000000_02_RYG---H
+<br>2016-12-30 10:54:44,771 : appOperate.py[line:295] [ DEBUG ] 融e贷---PA00500000000_02_RED---N
+<br>2016-12-30 10:54:44,771 : appOperate.py[line:295] [ DEBUG ] 资产查询---PA01100000000_02_ZCCX---Y
+<br>2016-12-30 10:54:44,772 : appOperate.py[line:295] [ DEBUG ] 意见反馈---PA01100000000_02_YHFK---N
+<br>2016-12-30 10:54:44,772 : appOperate.py[line:295] [ DEBUG ] 网点地图---PA01100000003_02_WDCX---N
+<br>2016-12-30 10:54:44,772 : appOperate.py[line:295] [ DEBUG ] 薪易通---SZDBK00000000_02_XYT---N
+<br>2016-12-30 10:54:44,772 : appOperate.py[line:295] [ DEBUG ] 我的资产---PA02100000000_02_WDZC---Y
+<br>2016-12-30 10:54:44,772 : appOperate.py[line:295] [ DEBUG ] 平安易贷 ---PA02100000000_02_PAYD---N
+<br>2016-12-30 10:54:44,772 : appOperate.py[line:295] [ DEBUG ] 平安游戏---PA02700000000_02_PAYX---Y
+<br>2016-12-30 10:54:44,772 : appOperate.py[line:295] [ DEBUG ] 电影票---PA02100000000_02_DYP---H
+<br>2016-12-30 10:54:44,772 : appOperate.py[line:295] [ DEBUG ] 车估值---PA02100000000_02_CGZ---Y
+<br>2016-12-30 10:54:44,772 : appOperate.py[line:295] [ DEBUG ] 财经快讯---PA02100000000_02_CJKX---N
+<br>2016-12-30 10:54:44,772 : appOperate.py[line:295] [ DEBUG ] 买保尊宝---PA02500000000_02_BZB---Y
+<br>2016-12-30 10:54:44,772 : appOperate.py[line:295] [ DEBUG ] 大麦若叶---PA02100000000_02_AJGCS---N
+<br>2016-12-30 10:54:44,773 : appOperate.py[line:295] [ DEBUG ] 潘多拉---PA02100000000_02_CS3---N
+<br>2016-12-30 10:54:44,773 : appOperate.py[line:295] [ DEBUG ] 平安易贷---PA02100000000_02_XEDK---N
+<br>2016-12-30 10:54:44,773 : appOperate.py[line:295] [ DEBUG ] 签到个人---PA02100000000_02_HDCS---N
+<br>2016-12-30 10:54:44,773 : appOperate.py[line:295] [ DEBUG ] 保险超市---PA01100000000_02_BXCS---H
+<br>2016-12-30 10:54:44,773 : appOperate.py[line:295] [ DEBUG ] 消息中心---PA01100000000_02_XXZX_F---H
+<br>2016-12-30 10:54:44,773 : appOperate.py[line:295] [ DEBUG ] 财神送礼---PA01100000000_02_LHBLC---H
+<br>2016-12-30 10:54:44,773 : appOperate.py[line:295] [ DEBUG ] 蜂蜜---PA02100000001_02_HDCS---N
+<br>2016-12-30 10:54:44,773 : appOperate.py[line:295] [ DEBUG ] 领流量---PA02100000000_02_KXJ1---N
+<br>2016-12-30 10:54:44,773 : appOperate.py[line:295] [ DEBUG ] 股票组合---PA00500000000_02_GPZH---N
+<br>2016-12-30 10:54:44,774 : RunExcel.py[line:144] [ DEBUG ] ========================================================================================================================
+<br>2016-12-30 10:54:44,774 : RunExcel.py[line:146] [ DEBUG ] 当前用例:获取插件列表 ,执行结果: PASS
+<br>2016-12-30 10:54:44,774 : RunExcel.py[line:147] [ DEBUG ] ========================================================================================================================
+<br>2016-12-30 10:54:44,774 : RunExcel.py[line:166] [ DEBUG ] 测试用例:获取插件列表 ,执行结束
+</div>
+
+</div>
+</div>
+</td>
+<td align="middle">PASS</td>
+
+</tr>
+<tr bgcolor="#70DBDB"><td align="middle">检查插件:PA01100000000_02_PAZB</td>
+<td align="middle">18.908</td>
+<td align="middle"><div style="margin-bottom: 0px;" id="accordion" class="panel-group"><div style="background-color: #70DBDB;"><a aria-expanded="false" class="collapsed" align="middle" href="#3" data-toggle="collapse" data-parent="#accordion">日志详情</a>
+<div align="left" style="height: 0px;" aria-expanded="false" id="3" class="panel-collapse collapse"><br>2016-12-30 10:54:44,879 : RunExcel.py[line:113] [ DEBUG ] 测试用例:检查插件:PA01100000000_02_PAZB ,执行开始
+<br>2016-12-30 10:54:44,879 : ReadApi.py[line:27] [ DEBUG ] case_list :[u'\u68c0\u67e5\u63d2\u4ef6:PA01100000000_02_PAZB', 1.0, u'\u68c0\u67e5\u63d2\u4ef6', u'assertTrueCheckPlugin', u'', u'', u'PA01100000000_02_PAZB', u'\u52a0\u6cb9\u7ad9']
+<br>2016-12-30 10:54:44,879 : ReadApi.py[line:50] [ DEBUG ] callApi执行中
+<br>2016-12-30 10:54:44,880 : ReadApi.py[line:71] [ DEBUG ] Action_Keyword 操作:[ assertTrueCheckPlugin ]
+<br>2016-12-30 10:54:44,880 : appOperate.py[line:176] [ DEBUG ] 开始检查插件: PA01100000000_02_PAZB
+<br>2016-12-30 10:54:44,880 : appOperate.py[line:349] [ DEBUG ] 开始轮询元素: PA01100000000_02_PAZB
+<br>2016-12-30 10:54:44,880 : Element.py[line:238] [ DEBUG ] 获取 page_source
+<br>2016-12-30 10:54:48,048 : appOperate.py[line:358] [ DEBUG ] 界面存在此元素:[ PA01100000000_02_PAZB ]
+<br>2016-12-30 10:54:48,048 : appOperate.py[line:178] [ DEBUG ] 找到插件:PA01100000000_02_PAZB ,准备点击
+<br>2016-12-30 10:54:48,814 : Element.py[line:59] [ DEBUG ] 查找id: PA01100000000_02_PAZB
+<br>2016-12-30 10:54:49,408 : appOperate.py[line:182] [ DEBUG ] 当前插件是否显示: True
+<br>2016-12-30 10:54:50,257 : Element.py[line:59] [ DEBUG ] 查找id: PA01100000000_02_PAZB
+<br>2016-12-30 10:54:51,283 : Element.py[line:59] [ DEBUG ] 查找id: PA01100000000_02_PAZB
+<br>2016-12-30 10:54:59,682 : Element.py[line:234] [ DEBUG ] 隐式等待 10 秒
+<br>2016-12-30 10:54:59,707 : appOperate.py[line:219] [ DEBUG ] 判断插件页面,是否包含: 加油站
+<br>2016-12-30 10:54:59,707 : appOperate.py[line:349] [ DEBUG ] 开始轮询元素: 加油站
+<br>2016-12-30 10:54:59,707 : Element.py[line:238] [ DEBUG ] 获取 page_source
+<br>2016-12-30 10:55:05,593 : Element.py[line:238] [ DEBUG ] 获取 page_source
+<br>2016-12-30 10:55:10,142 : Element.py[line:238] [ DEBUG ] 获取 page_source
+<br>2016-12-30 10:55:14,488 : Element.py[line:238] [ DEBUG ] 获取 page_source
+<br>2016-12-30 10:55:19,899 : Element.py[line:238] [ DEBUG ] 获取 page_source
+<br>2016-12-30 10:55:24,378 : Element.py[line:238] [ DEBUG ] 获取 page_source
+<br>2016-12-30 10:55:28,871 : Element.py[line:238] [ DEBUG ] 获取 page_source
+<br>2016-12-30 10:55:34,030 : Element.py[line:238] [ DEBUG ] 获取 page_source
+<br>2016-12-30 10:55:38,626 : Element.py[line:238] [ DEBUG ] 获取 page_source
+<br>2016-12-30 10:55:42,853 : Element.py[line:238] [ DEBUG ] 获取 page_source
+<br>2016-12-30 10:55:48,094 : Element.py[line:238] [ DEBUG ] 获取 page_source
+<br>2016-12-30 10:55:52,795 : Element.py[line:238] [ DEBUG ] 获取 page_source
+<br>2016-12-30 10:55:57,685 : Element.py[line:238] [ DEBUG ] 获取 page_source
+<br>2016-12-30 10:56:02,387 : Element.py[line:238] [ DEBUG ] 获取 page_source
+<br>2016-12-30 10:56:07,418 : Element.py[line:238] [ DEBUG ] 获取 page_source
+<br>2016-12-30 10:56:11,516 : appOperate.py[line:354] [ WARNING ] 轮询超时,未找到元素:[ 加油站 ]
+<br>2016-12-30 10:56:11,516 : Element.py[line:238] [ DEBUG ] 获取 page_source
+<br>2016-12-30 10:56:15,599 : appOperate.py[line:355] [ WARNING ] 轮询超时,pageSource: <xmp><?xml version="1.0" encoding="UTF-8"?>
+<br><AppiumAUT>
+<br>    <XCUIElementTypeApplication name="任意门" label="任意门" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0" x="0" y="0" width="320" height="568">
+<br>        <XCUIElementTypeWindow name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0" x="0" y="0" width="320" height="568">
+<br>            <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0" x="0" y="0" width="320" height="568">
+<br>                <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0" x="0" y="0" width="320" height="568">
+<br>                    <XCUIElementTypeTable name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0" x="-8" y="-9" width="276" height="586">
+<br>                        <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/0" x="-8" y="-9" width="276" height="101">
+<br>                            <XCUIElementTypeStaticText name="测试功能点" label="测试功能点" value="测试功能点" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/0/0" x="5" y="-9" width="275" height="63">
+<br>                            </XCUIElementTypeStaticText>
+<br>                            <XCUIElementTypeStaticText name="本栏主要模拟sdk部分功能供测试人员验证" label="本栏主要模拟sdk部分功能供测试人员验证" value="本栏主要模拟sdk部分功能供测试人员验证" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/0/1" x="5" y="54" width="275" height="25">
+<br>                            </XCUIElementTypeStaticText>
+<br>                        </XCUIElementTypeOther>
+<br>                        <XCUIElementTypeCell name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/1" x="-8" y="91" width="276" height="51">
+<br>                            <XCUIElementTypeStaticText name="测试页面" label="测试页面" value="测试页面" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/1/0" x="11" y="91" width="238" height="51">
+<br>                            </XCUIElementTypeStaticText>
+<br>                        </XCUIElementTypeCell>
+<br>                        <XCUIElementTypeCell name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/2" x="-8" y="141" width="276" height="51">
+<br>                            <XCUIElementTypeStaticText name="回到主屏" label="回到主屏" value="回到主屏" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/2/0" x="11" y="141" width="238" height="51">
+<br>                            </XCUIElementTypeStaticText>
+<br>                        </XCUIElementTypeCell>
+<br>                        <XCUIElementTypeCell name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/3" x="-8" y="191" width="276" height="51">
+<br>                            <XCUIElementTypeStaticText name="拉取消息接口" label="拉取消息接口" value="拉取消息接口" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/3/0" x="11" y="191" width="238" height="51">
+<br>                            </XCUIElementTypeStaticText>
+<br>                        </XCUIElementTypeCell>
+<br>                        <XCUIElementTypeCell name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/4" x="-8" y="241" width="276" height="51">
+<br>                            <XCUIElementTypeStaticText name="清空全部消息数据" label="清空全部消息数据" value="清空全部消息数据" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/4/0" x="11" y="241" width="238" height="51">
+<br>                            </XCUIElementTypeStaticText>
+<br>                        </XCUIElementTypeCell>
+<br>                        <XCUIElementTypeCell name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/5" x="-8" y="291" width="276" height="51">
+<br>                            <XCUIElementTypeStaticText name="切换长登陆状态" label="切换长登陆状态" value="切换长登陆状态" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/5/0" x="11" y="291" width="238" height="51">
+<br>                            </XCUIElementTypeStaticText>
+<br>                        </XCUIElementTypeCell>
+<br>                        <XCUIElementTypeCell name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/6" x="-8" y="341" width="276" height="51">
+<br>                            <XCUIElementTypeStaticText name="获取宿主显示插件" label="获取宿主显示插件" value="获取宿主显示插件" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/6/0" x="11" y="341" width="238" height="51">
+<br>                            </XCUIElementTypeStaticText>
+<br>                        </XCUIElementTypeCell>
+<br>                        <XCUIElementTypeCell name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/7" x="-8" y="391" width="276" height="51">
+<br>                            <XCUIElementTypeStaticText name="查看埋点记录" label="查看埋点记录" value="查看埋点记录" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/7/0" x="11" y="391" width="238" height="51">
+<br>                            </XCUIElementTypeStaticText>
+<br>                        </XCUIElementTypeCell>
+<br>                        <XCUIElementTypeCell name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/8" x="-8" y="441" width="276" height="51">
+<br>                            <XCUIElementTypeStaticText name="删除埋点记录" label="删除埋点记录" value="删除埋点记录" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/8/0" x="11" y="441" width="238" height="51">
+<br>                            </XCUIElementTypeStaticText>
+<br>                        </XCUIElementTypeCell>
+<br>                        <XCUIElementTypeCell name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/9" x="-8" y="491" width="276" height="51">
+<br>                            <XCUIElementTypeStaticText name="清除曝光数据" label="清除曝光数据" value="清除曝光数据" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/9/0" x="11" y="491" width="238" height="51">
+<br>                            </XCUIElementTypeStaticText>
+<br>                        </XCUIElementTypeCell>
+<br>                        <XCUIElementTypeCell name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/10" x="-8" y="541" width="276" height="51">
+<br>                            <XCUIElementTypeStaticText name="超时测试" label="超时测试" value="超时测试" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/10/0" x="11" y="541" width="238" height="51">
+<br>                            </XCUIElementTypeStaticText>
+<br>                        </XCUIElementTypeCell>
+<br>                        <XCUIElementTypeCell name="" label="" value="" dom="" enabled="true" valid="true" visible="false" hint="" path="/0/0/0/0/0/11" x="-8" y="591" width="276" height="51">
+<br>                            <XCUIElementTypeStaticText name="测试Loading" label="测试Loading" value="测试Loading" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/11/0" x="0" y="0" width="190" height="40">
+<br>                            </XCUIElementTypeStaticText>
+<br>                        </XCUIElementTypeCell>
+<br>                        <XCUIElementTypeCell name="" label="" value="" dom="" enabled="true" valid="true" visible="false" hint="" path="/0/0/0/0/0/12" x="-8" y="641" width="276" height="51">
+<br>                            <XCUIElementTypeStaticText name="Q2主屏动画拉取" label="Q2主屏动画拉取" value="Q2主屏动画拉取" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/12/0" x="0" y="0" width="190" height="40">
+<br>                            </XCUIElementTypeStaticText>
+<br>                        </XCUIElementTypeCell>
+<br>                    </XCUIElementTypeTable>
+<br>                </XCUIElementTypeOther>
+<br>            </XCUIElementTypeOther>
+<br>            <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/1" x="0" y="0" width="320" height="568">
+<br>                <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/1/0" x="0" y="0" width="320" height="568">
+<br>                    <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/1/0/0" x="0" y="0" width="320" height="568">
+<br>                        <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/1/0/0/0" x="0" y="0" width="320" height="568">
+<br>                            <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/1/0/0/0/0" x="0" y="0" width="320" height="568">
+<br>                                <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/1/0/0/0/0/0" x="0" y="0" width="320" height="568">
+<br>                                    <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/1/0/0/0/0/0/0" x="0" y="0" width="320" height="568">
+<br>                                        <XCUIElementTypeMap name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/1/0/0/0/0/0/0/0" x="0" y="0" width="320" height="568">
+<br>                                            <XCUIElementTypeOther name="Zhongshan Park-Cruise Marina" label="Zhongshan Park-Cruise Marina" value="" dom="" enabled="true" valid="true" visible="false" hint="" path="/0/0/1/0/0/0/0/0/0/0/0" x="60500" y="-506945" width="31" height="31">
+<br>                                            </XCUIElementTypeOther>
+<br>                                            <XCUIElementTypeOther name="Tian&apos;anmen" label="Tian&apos;anmen" value="" dom="" enabled="true" valid="true" visible="false" hint="" path="/0/0/1/0/0/0/0/0/0/0/1" x="60605" y="-506815" width="31" height="31">
+<br>                                            </XCUIElementTypeOther>
+<br>                                            <XCUIElementTypeOther name="National Museum of China" label="National Museum of China" value="" dom="" enabled="true" valid="true" visible="false" hint="" path="/0/0/1/0/0/0/0/0/0/0/2" x="60702" y="-506709" width="31" height="31">
+<br>                                            </XCUIElementTypeOther>
+<br>                                            <XCUIElementTypeOther name="The Great Hall of the People" label="The Great Hall of the People" value="" dom="" enabled="true" valid="true" visible="false" hint="" path="/0/0/1/0/0/0/0/0/0/0/3" x="60515" y="-506696" width="31" height="31">
+<br>                                            </XCUIElementTypeOther>
+<br>                                            <XCUIElementTypeOther name="National Centre for the Performing Arts" label="National Centre for the Performing Arts" value="" dom="" enabled="true" valid="true" visible="false" hint="" path="/0/0/1/0/0/0/0/0/0/0/4" x="60414" y="-506691" width="31" height="31">
+<br>                                            </XCUIElementTypeOther>
+<br>                                            <XCUIElementTypeOther name="Zhonghuarenmingongheguo Zuigao People Court" label="Zhonghuarenmingongheguo Zuigao People Court" value="" dom="" enabled="true" valid="true" visible="false" hint="" path="/0/0/1/0/0/0/0/0/0/0/5" x="60798" y="-506634" width="31" height="31">
+<br>                                            </XCUIElementTypeOther>
+<br>                                        </XCUIElementTypeMap>
+<br>                                        <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/1/0/0/0/0/0/0/1" x="0" y="0" width="320" height="568">
+<br>                                            <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/1/0/0/0/0/0/0/1/0" x="139" y="272" width="42" height="44">
+<br>                                            </XCUIElementTypeOther>
+<br>                                        </XCUIElementTypeOther>
+<br>                                    </XCUIElementTypeOther>
+<br>                                    <XCUIElementTypeLink name="法律信息" label="法律信息" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/1/0/0/0/0/0/1" x="11" y="548" width="41" height="11">
+<br>                                    </XCUIElementTypeLink>
+<br>                                </XCUIElementTypeOther>
+<br>                                <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/1/0/0/0/0/1" x="10" y="26" width="300" height="43">
+<br>                                    <XCUIElementTypeButton name="com nav ic back" label="com nav ic back" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/1/0/0/0/0/1/0" x="18" y="26" width="31" height="43">
+<br>                                    </XCUIElementTypeButton>
+<br>                                    <XCUIElementTypeTextField name="" label="" value="搜索" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/1/0/0/0/0/1/1" x="60" y="26" width="250" height="43">
+<br>                                    </XCUIElementTypeTextField>
+<br>                                </XCUIElementTypeOther>
+<br>                                <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/1/0/0/0/0/2" x="262" y="454" width="42" height="42">
+<br>                                    <XCUIElementTypeButton name="Home location" label="Home location" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/1/0/0/0/0/2/0" x="262" y="454" width="42" height="42">
+<br>                                    </XCUIElementTypeButton>
+<br>                                </XCUIElementTypeOther>
+<br>                                <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/1/0/0/0/0/3" x="0" y="508" width="320" height="60">
+<br>                                    <XCUIElementTypeButton name="map ic house" label="map ic house" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/1/0/0/0/0/3/0" x="16" y="499" width="54" height="55">
+<br>                                    </XCUIElementTypeButton>
+<br>                                    <XCUIElementTypeButton name="map ic love" label="map ic love" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/1/0/0/0/0/3/1" x="16" y="499" width="54" height="55">
+<br>                                    </XCUIElementTypeButton>
+<br>                                    <XCUIElementTypeButton name="map ic car" label="map ic car" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/1/0/0/0/0/3/2" x="16" y="499" width="54" height="55">
+<br>                                    </XCUIElementTypeButton>
+<br>                                    <XCUIElementTypeCollectionView name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/1/0/0/0/0/3/3" x="69" y="508" width="251" height="60">
+<br>                                        <XCUIElementTypeCell name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/1/0/0/0/0/3/3/0" x="69" y="506" width="63" height="64">
+<br>                                            <XCUIElementTypeStaticText name="修理厂" label="修理厂" value="修理厂" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/1/0/0/0/0/3/3/0/0" x="69" y="544" width="63" height="14">
+<br>                                            </XCUIElementTypeStaticText>
+<br>                                        </XCUIElementTypeCell>
+<br>                                        <XCUIElementTypeCell name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/1/0/0/0/0/3/3/1" x="131" y="506" width="64" height="64">
+<br>                                            <XCUIElementTypeStaticText name="加油站" label="加油站" value="加油站" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/1/0/0/0/0/3/3/1/0" x="131" y="544" width="64" height="14">
+<br>                                            </XCUIElementTypeStaticText>
+<br>                                        </XCUIElementTypeCell>
+<br>                                        <XCUIElementTypeCell name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/1/0/0/0/0/3/3/2" x="194" y="506" width="64" height="64">
+<br>                                            <XCUIElementTypeStaticText name="积分商城" label="积分商城" value="积分商城" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/1/0/0/0/0/3/3/2/0" x="194" y="544" width="64" height="14">
+<br>                                            </XCUIElementTypeStaticText>
+<br>                                        </XCUIElementTypeCell>
+<br>                                        <XCUIElementTypeCell name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/1/0/0/0/0/3/3/3" x="257" y="506" width="64" height="64">
+<br>                                            <XCUIElementTypeStaticText name="车险门店" label="车险门店" value="车险门店" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/1/0/0/0/0/3/3/3/0" x="257" y="544" width="64" height="14">
+<br>                                            </XCUIElementTypeStaticText>
+<br>                                        </XCUIElementTypeCell>
+<br>                                    </XCUIElementTypeCollectionView>
+<br>                                </XCUIElementTypeOther>
+<br>                            </XCUIElementTypeOther>
+<br>                        </XCUIElementTypeOther>
+<br>                    </XCUIElementTypeOther>
+<br>                </XCUIElementTypeOther>
+<br>            </XCUIElementTypeOther>
+<br>        </XCUIElementTypeWindow>
+<br>        <XCUIElementTypeWindow name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/1" x="0" y="0" width="320" height="568">
+<br>            <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/1/0" x="0" y="0" width="320" height="568">
+<br>            </XCUIElementTypeOther>
+<br>        </XCUIElementTypeWindow>
+<br>        <XCUIElementTypeWindow name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/2" x="0" y="0" width="320" height="568">
+<br>            <XCUIElementTypeStatusBar name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/2/0" x="0" y="0" width="320" height="20">
+<br>                <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/2/0/0" x="0" y="0" width="320" height="20">
+<br>                </XCUIElementTypeOther>
+<br>                <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/2/0/1" x="0" y="0" width="320" height="20">
+<br>                    <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/2/0/1/0" x="6" y="0" width="39" height="20">
+<br>                    </XCUIElementTypeOther>
+<br>                    <XCUIElementTypeOther name="3 格 Wi-Fi 信号（共 3 格）" label="3 格 Wi-Fi 信号（共 3 格）" value="SSID" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/2/0/1/1" x="50" y="0" width="13" height="20">
+<br>                    </XCUIElementTypeOther>
+<br>                    <XCUIElementTypeOther name="10:56 AM" label="10:56 AM" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/2/0/1/2" x="134" y="0" width="57" height="20">
+<br>                    </XCUIElementTypeOther>
+<br>                    <XCUIElementTypeOther name="StandardLocationTrackingOn" label="位置跟踪已打开" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/2/0/1/3" x="267" y="0" width="9" height="20">
+<br>                    </XCUIElementTypeOther>
+<br>                    <XCUIElementTypeOther name="电池电量：-100%" label="电池电量：-100%" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/2/0/1/4" x="282" y="0" width="33" height="20">
+<br>                    </XCUIElementTypeOther>
+<br>                </XCUIElementTypeOther>
+<br>            </XCUIElementTypeStatusBar>
+<br>        </XCUIElementTypeWindow>
+<br>    </XCUIElementTypeApplication>
+<br></AppiumAUT></xmp> 
+<br>2016-12-30 10:56:15,601 : appOperate.py[line:224] [ ERROR ] 插件页面中不包含 加油站,返回False
+<br>2016-12-30 10:56:15,602 : appOperate.py[line:236] [ DEBUG ] 关闭H5页面!
+<br>2016-12-30 10:56:18,788 : Element.py[line:90] [ DEBUG ] 查找 xpath: //XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeButton[1]
+<br>2016-12-30 10:56:20,188 : ReadApi.py[line:33] [ ERROR ] 检查插件
+<br>2016-12-30 10:56:20,189 : RunExcel.py[line:144] [ DEBUG ] ========================================================================================================================
+<br>2016-12-30 10:56:20,189 : RunExcel.py[line:146] [ DEBUG ] 当前用例:检查插件:PA01100000000_02_PAZB ,执行结果: FAIL
+<br>2016-12-30 10:56:20,189 : RunExcel.py[line:147] [ DEBUG ] ========================================================================================================================
+<br>2016-12-30 10:56:20,189 : RunExcel.py[line:166] [ DEBUG ] 测试用例:检查插件:PA01100000000_02_PAZB ,执行结束
+<br>2016-12-30 10:56:20,189 : RunExcel.py[line:167] [ DEBUG ] 用例执行总结果: [[u'\u767b\u5f55_1000', 'PASS', 14.063, False], [u'\u767b\u5f55_1001', 'PASS', 53.758, False], [u'\u83b7\u53d6\u63d2\u4ef6\u5217\u8868', 'PASS', 0.287, False], [u'\u68c0\u67e5\u63d2\u4ef6:PA01100000000_02_PAZB', 'FAIL', 95.309, False]]
+<br>2016-12-30 10:56:20,189 : Retry.py[line:21] [ DEBUG ] 调用函数: function
+<br>2016-12-30 10:56:20,189 : Retry.py[line:26] [ DEBUG ] 当前用例名称: 检查插件:PA01100000000_02_PAZB ,当前执行结果: FAIL
+<br>2016-12-30 10:56:20,189 : Retry.py[line:28] [ DEBUG ] 失败重跑第 【 1 】 次执行中
+<br>2016-12-30 10:56:20,189 : RunExcel.py[line:113] [ DEBUG ] 测试用例:检查插件:PA01100000000_02_PAZB ,执行开始
+<br>2016-12-30 10:56:20,189 : ReadApi.py[line:27] [ DEBUG ] case_list :[u'\u68c0\u67e5\u63d2\u4ef6:PA01100000000_02_PAZB', 1.0, u'\u68c0\u67e5\u63d2\u4ef6', u'assertTrueCheckPlugin', u'', u'', u'PA01100000000_02_PAZB', u'\u52a0\u6cb9\u7ad9']
+<br>2016-12-30 10:56:20,189 : ReadApi.py[line:50] [ DEBUG ] callApi执行中
+<br>2016-12-30 10:56:20,189 : ReadApi.py[line:71] [ DEBUG ] Action_Keyword 操作:[ assertTrueCheckPlugin ]
+<br>2016-12-30 10:56:20,190 : appOperate.py[line:176] [ DEBUG ] 开始检查插件: PA01100000000_02_PAZB
+<br>2016-12-30 10:56:20,190 : appOperate.py[line:349] [ DEBUG ] 开始轮询元素: PA01100000000_02_PAZB
+<br>2016-12-30 10:56:20,190 : Element.py[line:238] [ DEBUG ] 获取 page_source
+<br>2016-12-30 10:56:25,209 : appOperate.py[line:358] [ DEBUG ] 界面存在此元素:[ PA01100000000_02_PAZB ]
+<br>2016-12-30 10:56:25,209 : appOperate.py[line:178] [ DEBUG ] 找到插件:PA01100000000_02_PAZB ,准备点击
+<br>2016-12-30 10:56:26,048 : Element.py[line:59] [ DEBUG ] 查找id: PA01100000000_02_PAZB
+<br>2016-12-30 10:56:26,767 : appOperate.py[line:182] [ DEBUG ] 当前插件是否显示: True
+<br>2016-12-30 10:56:27,944 : Element.py[line:59] [ DEBUG ] 查找id: PA01100000000_02_PAZB
+<br>2016-12-30 10:56:30,330 : Element.py[line:59] [ DEBUG ] 查找id: PA01100000000_02_PAZB
+<br>2016-12-30 10:56:39,257 : Element.py[line:234] [ DEBUG ] 隐式等待 10 秒
+<br>2016-12-30 10:56:39,265 : appOperate.py[line:219] [ DEBUG ] 判断插件页面,是否包含: 加油站
+<br>2016-12-30 10:56:39,266 : appOperate.py[line:349] [ DEBUG ] 开始轮询元素: 加油站
+<br>2016-12-30 10:56:39,266 : Element.py[line:238] [ DEBUG ] 获取 page_source
+<br>2016-12-30 10:56:41,386 : appOperate.py[line:358] [ DEBUG ] 界面存在此元素:[ 加油站 ]
+<br>2016-12-30 10:56:41,386 : appOperate.py[line:221] [ DEBUG ] 插件页面中包含 加油站,返回True
+<br>2016-12-30 10:56:41,386 : appOperate.py[line:236] [ DEBUG ] 关闭H5页面!
+<br>2016-12-30 10:56:43,583 : Element.py[line:90] [ DEBUG ] 查找 xpath: //XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeButton[1]
+<br>2016-12-30 10:56:44,797 : RunExcel.py[line:144] [ DEBUG ] ========================================================================================================================
+<br>2016-12-30 10:56:44,798 : RunExcel.py[line:146] [ DEBUG ] 当前用例:检查插件:PA01100000000_02_PAZB ,执行结果: PASS
+<br>2016-12-30 10:56:44,798 : RunExcel.py[line:147] [ DEBUG ] ========================================================================================================================
+<br>2016-12-30 10:56:44,798 : RunExcel.py[line:166] [ DEBUG ] 测试用例:检查插件:PA01100000000_02_PAZB ,执行结束
+</div>
+
+</div>
+</div>
+</td>
+<td align="middle">PASS</td>
+
+</tr>
+<tr bgcolor="#70DBDB"><td align="middle">检查插件:PA02100000001_02_JF</td>
+<td align="middle">52.174</td>
+<td align="middle"><div style="margin-bottom: 0px;" id="accordion" class="panel-group"><div style="background-color: #70DBDB;"><a aria-expanded="false" class="collapsed" align="middle" href="#4" data-toggle="collapse" data-parent="#accordion">日志详情</a>
+<div align="left" style="height: 0px;" aria-expanded="false" id="4" class="panel-collapse collapse"><br>2016-12-30 10:56:44,875 : RunExcel.py[line:113] [ DEBUG ] 测试用例:检查插件:PA02100000001_02_JF ,执行开始
+<br>2016-12-30 10:56:44,875 : ReadApi.py[line:27] [ DEBUG ] case_list :[u'\u68c0\u67e5\u63d2\u4ef6:PA02100000001_02_JF', 1.0, u'\u68c0\u67e5\u63d2\u4ef6', u'assertTrueCheckPlugin', u'', u'', u'PA02100000001_02_JF', u'\u53ef\u7528\u79ef\u5206']
+<br>2016-12-30 10:56:44,875 : ReadApi.py[line:50] [ DEBUG ] callApi执行中
+<br>2016-12-30 10:56:44,875 : ReadApi.py[line:71] [ DEBUG ] Action_Keyword 操作:[ assertTrueCheckPlugin ]
+<br>2016-12-30 10:56:44,875 : appOperate.py[line:176] [ DEBUG ] 开始检查插件: PA02100000001_02_JF
+<br>2016-12-30 10:56:44,876 : appOperate.py[line:349] [ DEBUG ] 开始轮询元素: PA02100000001_02_JF
+<br>2016-12-30 10:56:44,876 : Element.py[line:238] [ DEBUG ] 获取 page_source
+<br>2016-12-30 10:56:51,892 : appOperate.py[line:354] [ WARNING ] 轮询超时,未找到元素:[ PA02100000001_02_JF ]
+<br>2016-12-30 10:56:51,892 : Element.py[line:238] [ DEBUG ] 获取 page_source
+<br>2016-12-30 10:56:54,401 : appOperate.py[line:355] [ WARNING ] 轮询超时,pageSource: <xmp><?xml version="1.0" encoding="UTF-8"?>
+<br><AppiumAUT>
+<br>    <XCUIElementTypeApplication name="任意门" label="任意门" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0" x="0" y="0" width="320" height="568">
+<br>        <XCUIElementTypeWindow name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0" x="0" y="0" width="320" height="568">
+<br>            <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0" x="0" y="0" width="320" height="568">
+<br>                <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0" x="0" y="0" width="320" height="568">
+<br>                    <XCUIElementTypeTable name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0" x="-8" y="-9" width="276" height="586">
+<br>                        <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/0" x="-8" y="-9" width="276" height="101">
+<br>                            <XCUIElementTypeStaticText name="测试功能点" label="测试功能点" value="测试功能点" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/0/0" x="5" y="-9" width="275" height="63">
+<br>                            </XCUIElementTypeStaticText>
+<br>                            <XCUIElementTypeStaticText name="本栏主要模拟sdk部分功能供测试人员验证" label="本栏主要模拟sdk部分功能供测试人员验证" value="本栏主要模拟sdk部分功能供测试人员验证" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/0/1" x="5" y="54" width="275" height="25">
+<br>                            </XCUIElementTypeStaticText>
+<br>                        </XCUIElementTypeOther>
+<br>                        <XCUIElementTypeCell name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/1" x="-8" y="91" width="276" height="51">
+<br>                            <XCUIElementTypeStaticText name="测试页面" label="测试页面" value="测试页面" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/1/0" x="11" y="91" width="238" height="51">
+<br>                            </XCUIElementTypeStaticText>
+<br>                        </XCUIElementTypeCell>
+<br>                        <XCUIElementTypeCell name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/2" x="-8" y="141" width="276" height="51">
+<br>                            <XCUIElementTypeStaticText name="回到主屏" label="回到主屏" value="回到主屏" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/2/0" x="11" y="141" width="238" height="51">
+<br>                            </XCUIElementTypeStaticText>
+<br>                        </XCUIElementTypeCell>
+<br>                        <XCUIElementTypeCell name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/3" x="-8" y="191" width="276" height="51">
+<br>                            <XCUIElementTypeStaticText name="拉取消息接口" label="拉取消息接口" value="拉取消息接口" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/3/0" x="11" y="191" width="238" height="51">
+<br>                            </XCUIElementTypeStaticText>
+<br>                        </XCUIElementTypeCell>
+<br>                        <XCUIElementTypeCell name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/4" x="-8" y="241" width="276" height="51">
+<br>                            <XCUIElementTypeStaticText name="清空全部消息数据" label="清空全部消息数据" value="清空全部消息数据" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/4/0" x="11" y="241" width="238" height="51">
+<br>                            </XCUIElementTypeStaticText>
+<br>                        </XCUIElementTypeCell>
+<br>                        <XCUIElementTypeCell name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/5" x="-8" y="291" width="276" height="51">
+<br>                            <XCUIElementTypeStaticText name="切换长登陆状态" label="切换长登陆状态" value="切换长登陆状态" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/5/0" x="11" y="291" width="238" height="51">
+<br>                            </XCUIElementTypeStaticText>
+<br>                        </XCUIElementTypeCell>
+<br>                        <XCUIElementTypeCell name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/6" x="-8" y="341" width="276" height="51">
+<br>                            <XCUIElementTypeStaticText name="获取宿主显示插件" label="获取宿主显示插件" value="获取宿主显示插件" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/6/0" x="11" y="341" width="238" height="51">
+<br>                            </XCUIElementTypeStaticText>
+<br>                        </XCUIElementTypeCell>
+<br>                        <XCUIElementTypeCell name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/7" x="-8" y="391" width="276" height="51">
+<br>                            <XCUIElementTypeStaticText name="查看埋点记录" label="查看埋点记录" value="查看埋点记录" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/7/0" x="11" y="391" width="238" height="51">
+<br>                            </XCUIElementTypeStaticText>
+<br>                        </XCUIElementTypeCell>
+<br>                        <XCUIElementTypeCell name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/8" x="-8" y="441" width="276" height="51">
+<br>                            <XCUIElementTypeStaticText name="删除埋点记录" label="删除埋点记录" value="删除埋点记录" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/8/0" x="11" y="441" width="238" height="51">
+<br>                            </XCUIElementTypeStaticText>
+<br>                        </XCUIElementTypeCell>
+<br>                        <XCUIElementTypeCell name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/9" x="-8" y="491" width="276" height="51">
+<br>                            <XCUIElementTypeStaticText name="清除曝光数据" label="清除曝光数据" value="清除曝光数据" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/9/0" x="11" y="491" width="238" height="51">
+<br>                            </XCUIElementTypeStaticText>
+<br>                        </XCUIElementTypeCell>
+<br>                        <XCUIElementTypeCell name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/10" x="-8" y="541" width="276" height="51">
+<br>                            <XCUIElementTypeStaticText name="超时测试" label="超时测试" value="超时测试" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/10/0" x="11" y="541" width="238" height="51">
+<br>                            </XCUIElementTypeStaticText>
+<br>                        </XCUIElementTypeCell>
+<br>                        <XCUIElementTypeCell name="" label="" value="" dom="" enabled="true" valid="true" visible="false" hint="" path="/0/0/0/0/0/11" x="-8" y="591" width="276" height="51">
+<br>                            <XCUIElementTypeStaticText name="测试Loading" label="测试Loading" value="测试Loading" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/11/0" x="0" y="0" width="190" height="40">
+<br>                            </XCUIElementTypeStaticText>
+<br>                        </XCUIElementTypeCell>
+<br>                        <XCUIElementTypeCell name="" label="" value="" dom="" enabled="true" valid="true" visible="false" hint="" path="/0/0/0/0/0/12" x="-8" y="641" width="276" height="51">
+<br>                            <XCUIElementTypeStaticText name="Q2主屏动画拉取" label="Q2主屏动画拉取" value="Q2主屏动画拉取" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/12/0" x="0" y="0" width="190" height="40">
+<br>                            </XCUIElementTypeStaticText>
+<br>                        </XCUIElementTypeCell>
+<br>                    </XCUIElementTypeTable>
+<br>                </XCUIElementTypeOther>
+<br>                <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1" x="0" y="0" width="320" height="568">
+<br>                    <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0" x="0" y="0" width="320" height="568">
+<br>                        <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0" x="0" y="0" width="320" height="568">
+<br>                            <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0" x="0" y="0" width="320" height="568">
+<br>                                <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/0" x="0" y="0" width="320" height="514">
+<br>                                    <XCUIElementTypeScrollView name="mainScro" label="mainScro" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/0/0" x="0" y="0" width="320" height="514">
+<br>                                        <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/0/0/0" x="0" y="0" width="320" height="514">
+<br>                                            <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/0/0/0/0" x="0" y="243" width="320" height="271">
+<br>                                                <XCUIElementTypeScrollView name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/0/0/0/0/0" x="0" y="243" width="320" height="271">
+<br>                                                    <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/0/0/0/0/0/0" x="0" y="430" width="320" height="84">
+<br>                                                        <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/0/0/0/0/0/0/0" x="0" y="243" width="320" height="271">
+<br>                                                        </XCUIElementTypeOther>
+<br>                                                        <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/0/0/0/0/0/0/1" x="0" y="430" width="84" height="84">
+<br>                                                            <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/0/0/0/0/0/0/1/0" x="0" y="430" width="84" height="84">
+<br>                                                                <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/0/0/0/0/0/0/1/0/0" x="0" y="430" width="84" height="84">
+<br>                                                                    <XCUIElementTypeImage name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/0/0/0/0/0/0/1/0/0/0" x="0" y="430" width="84" height="84">
+<br>                                                                    </XCUIElementTypeImage>
+<br>                                                                    <XCUIElementTypeButton name="PA01100000000_02_PAZB" label="PA01100000000_02_PAZB" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/0/0/0/0/0/0/1/0/0/1" x="0" y="430" width="84" height="84">
+<br>                                                                    </XCUIElementTypeButton>
+<br>                                                                    <XCUIElementTypeStaticText name="平安地图" label="平安地图" value="平安地图" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/0/0/0/0/0/0/1/0/0/2" x="7" y="441" width="85" height="17">
+<br>                                                                    </XCUIElementTypeStaticText>
+<br>                                                                    <XCUIElementTypeStaticText name="平安在你身边" label="平安在你身边" value="平安在你身边" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/0/0/0/0/0/0/1/0/0/3" x="7" y="465" width="85" height="10">
+<br>                                                                    </XCUIElementTypeStaticText>
+<br>                                                                </XCUIElementTypeOther>
+<br>                                                            </XCUIElementTypeOther>
+<br>                                                        </XCUIElementTypeOther>
+<br>                                                        <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/0/0/0/0/0/0/2" x="85" y="430" width="85" height="84">
+<br>                                                            <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/0/0/0/0/0/0/2/0" x="85" y="430" width="85" height="84">
+<br>                                                                <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/0/0/0/0/0/0/2/0/0" x="85" y="430" width="85" height="84">
+<br>                                                                    <XCUIElementTypeImage name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/0/0/0/0/0/0/2/0/0/0" x="85" y="430" width="85" height="84">
+<br>                                                                    </XCUIElementTypeImage>
+<br>                                                                    <XCUIElementTypeButton name="PA01100000000_02_WLC" label="PA01100000000_02_WLC" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/0/0/0/0/0/0/2/0/0/1" x="85" y="430" width="85" height="84">
+<br>                                                                    </XCUIElementTypeButton>
+<br>                                                                    <XCUIElementTypeStaticText name="模拟炒股" label="模拟炒股" value="模拟炒股" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/0/0/0/0/0/0/2/0/0/2" x="93" y="441" width="85" height="17">
+<br>                                                                    </XCUIElementTypeStaticText>
+<br>                                                                    <XCUIElementTypeStaticText name="0风险高收益" label="0风险高收益" value="0风险高收益" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/0/0/0/0/0/0/2/0/0/3" x="93" y="465" width="85" height="10">
+<br>                                                                    </XCUIElementTypeStaticText>
+<br>                                                                </XCUIElementTypeOther>
+<br>                                                            </XCUIElementTypeOther>
+<br>                                                        </XCUIElementTypeOther>
+<br>                                                        <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/0/0/0/0/0/0/3" x="170" y="430" width="85" height="84">
+<br>                                                            <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/0/0/0/0/0/0/3/0" x="170" y="430" width="85" height="84">
+<br>                                                                <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/0/0/0/0/0/0/3/0/0" x="170" y="430" width="85" height="84">
+<br>                                                                    <XCUIElementTypeImage name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/0/0/0/0/0/0/3/0/0/0" x="170" y="430" width="85" height="84">
+<br>                                                                    </XCUIElementTypeImage>
+<br>                                                                    <XCUIElementTypeButton name="PA00500000000_02_GSZB" label="PA00500000000_02_GSZB" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/0/0/0/0/0/0/3/0/0/1" x="170" y="430" width="85" height="84">
+<br>                                                                    </XCUIElementTypeButton>
+<br>                                                                    <XCUIElementTypeStaticText name="看直播" label="看直播" value="看直播" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/0/0/0/0/0/0/3/0/0/2" x="178" y="441" width="85" height="17">
+<br>                                                                    </XCUIElementTypeStaticText>
+<br>                                                                    <XCUIElementTypeStaticText name="专家谈股市" label="专家谈股市" value="专家谈股市" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/0/0/0/0/0/0/3/0/0/3" x="178" y="465" width="85" height="10">
+<br>                                                                    </XCUIElementTypeStaticText>
+<br>                                                                </XCUIElementTypeOther>
+<br>                                                            </XCUIElementTypeOther>
+<br>                                                        </XCUIElementTypeOther>
+<br>                                                        <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/0/0/0/0/0/0/4" x="256" y="430" width="85" height="84">
+<br>                                                            <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/0/0/0/0/0/0/4/0" x="256" y="430" width="85" height="84">
+<br>                                                                <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/0/0/0/0/0/0/4/0/0" x="256" y="430" width="85" height="84">
+<br>                                                                    <XCUIElementTypeImage name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/0/0/0/0/0/0/4/0/0/0" x="256" y="430" width="85" height="84">
+<br>                                                                    </XCUIElementTypeImage>
+<br>                                                                    <XCUIElementTypeButton name="PA01100000000_02_HDJHY" label="PA01100000000_02_HDJHY" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/0/0/0/0/0/0/4/0/0/1" x="256" y="430" width="85" height="84">
+<br>                                                                    </XCUIElementTypeButton>
+<br>                                                                    <XCUIElementTypeStaticText name="活动集合" label="活动集合" value="活动集合" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/0/0/0/0/0/0/4/0/0/2" x="263" y="441" width="85" height="17">
+<br>                                                                    </XCUIElementTypeStaticText>
+<br>                                                                    <XCUIElementTypeStaticText name="汇聚热门活动" label="汇聚热门活动" value="汇聚热门活动" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/0/0/0/0/0/0/4/0/0/3" x="263" y="465" width="85" height="10">
+<br>                                                                    </XCUIElementTypeStaticText>
+<br>                                                                </XCUIElementTypeOther>
+<br>                                                            </XCUIElementTypeOther>
+<br>                                                        </XCUIElementTypeOther>
+<br>                                                    </XCUIElementTypeOther>
+<br>                                                </XCUIElementTypeScrollView>
+<br>                                            </XCUIElementTypeOther>
+<br>                                        </XCUIElementTypeOther>
+<br>                                        <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/0/0/1" x="-27" y="430" width="50" height="84">
+<br>                                            <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/0/0/1/0" x="-62" y="430" width="85" height="84">
+<br>                                            </XCUIElementTypeOther>
+<br>                                            <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="false" hint="" path="/0/0/0/1/0/0/0/0/0/1/1" x="-27" y="430" width="8" height="84">
+<br>                                            </XCUIElementTypeOther>
+<br>                                        </XCUIElementTypeOther>
+<br>                                        <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/0/0/2" x="-27" y="430" width="28" height="84">
+<br>                                        </XCUIElementTypeOther>
+<br>                                    </XCUIElementTypeScrollView>
+<br>                                </XCUIElementTypeOther>
+<br>                                <XCUIElementTypeImage name="background.jpg" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/1" x="0" y="0" width="320" height="568">
+<br>                                </XCUIElementTypeImage>
+<br>                                <XCUIElementTypeScrollView name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/2" x="0" y="0" width="320" height="568">
+<br>                                    <XCUIElementTypeImage name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/2/0" x="0" y="0" width="320" height="800">
+<br>                                    </XCUIElementTypeImage>
+<br>                                </XCUIElementTypeScrollView>
+<br>                                <XCUIElementTypeButton name="无用户" label="无用户" value="" dom="" enabled="false" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/3" x="10" y="86" width="68" height="40">
+<br>                                </XCUIElementTypeButton>
+<br>                                <XCUIElementTypeButton name="非一账通" label="非一账通" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/4" x="87" y="86" width="68" height="40">
+<br>                                </XCUIElementTypeButton>
+<br>                                <XCUIElementTypeButton name="一账通" label="一账通" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/5" x="165" y="86" width="68" height="40">
+<br>                                </XCUIElementTypeButton>
+<br>                                <XCUIElementTypeButton name="F项目" label="F项目" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/6" x="242" y="86" width="68" height="40">
+<br>                                </XCUIElementTypeButton>
+<br>                                <XCUIElementTypeButton name="宿主登陆" label="宿主登陆" value="" dom="" enabled="false" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/7" x="10" y="136" width="145" height="40">
+<br>                                </XCUIElementTypeButton>
+<br>                                <XCUIElementTypeButton name="宿主退出" label="宿主退出" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/8" x="165" y="136" width="145" height="40">
+<br>                                </XCUIElementTypeButton>
+<br>                                <XCUIElementTypeStaticText name="其他测试功能点请长按我向右滑动" label="其他测试功能点请长按我向右滑动" value="其他测试功能点请长按我向右滑动" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/9" x="10" y="284" width="300" height="40">
+<br>                                </XCUIElementTypeStaticText>
+<br>                            </XCUIElementTypeOther>
+<br>                        </XCUIElementTypeOther>
+<br>                    </XCUIElementTypeOther>
+<br>                </XCUIElementTypeOther>
+<br>            </XCUIElementTypeOther>
+<br>        </XCUIElementTypeWindow>
+<br>        <XCUIElementTypeWindow name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/1" x="0" y="0" width="320" height="568">
+<br>            <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/1/0" x="0" y="0" width="320" height="568">
+<br>            </XCUIElementTypeOther>
+<br>        </XCUIElementTypeWindow>
+<br>        <XCUIElementTypeWindow name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/2" x="0" y="0" width="320" height="568">
+<br>            <XCUIElementTypeStatusBar name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/2/0" x="0" y="0" width="320" height="20">
+<br>                <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/2/0/0" x="0" y="0" width="320" height="20">
+<br>                </XCUIElementTypeOther>
+<br>                <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/2/0/1" x="0" y="0" width="320" height="20">
+<br>                    <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/2/0/1/0" x="6" y="0" width="39" height="20">
+<br>                    </XCUIElementTypeOther>
+<br>                    <XCUIElementTypeOther name="3 格 Wi-Fi 信号（共 3 格）" label="3 格 Wi-Fi 信号（共 3 格）" value="SSID" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/2/0/1/1" x="50" y="0" width="13" height="20">
+<br>                    </XCUIElementTypeOther>
+<br>                    <XCUIElementTypeOther name="10:56 AM" label="10:56 AM" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/2/0/1/2" x="134" y="0" width="57" height="20">
+<br>                    </XCUIElementTypeOther>
+<br>                    <XCUIElementTypeOther name="StandardLocationTrackingOn" label="位置跟踪已打开" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/2/0/1/3" x="267" y="0" width="9" height="20">
+<br>                    </XCUIElementTypeOther>
+<br>                    <XCUIElementTypeOther name="电池电量：-100%" label="电池电量：-100%" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/2/0/1/4" x="282" y="0" width="33" height="20">
+<br>                    </XCUIElementTypeOther>
+<br>                </XCUIElementTypeOther>
+<br>            </XCUIElementTypeStatusBar>
+<br>        </XCUIElementTypeWindow>
+<br>    </XCUIElementTypeApplication>
+<br></AppiumAUT></xmp> 
+<br>2016-12-30 10:56:54,401 : Element.py[line:145] [ DEBUG ] 获取当前窗口大小
+<br>2016-12-30 10:56:54,558 : Element.py[line:199] [ DEBUG ] 向左滑动,滑动起始坐标: (256,454),偏移量(-192,0)
+<br>2016-12-30 10:56:57,546 : Element.py[line:234] [ DEBUG ] 隐式等待 3 秒
+<br>2016-12-30 10:56:57,552 : appOperate.py[line:349] [ DEBUG ] 开始轮询元素: PA02100000001_02_JF
+<br>2016-12-30 10:56:57,553 : Element.py[line:238] [ DEBUG ] 获取 page_source
+<br>2016-12-30 10:57:24,289 : appOperate.py[line:358] [ DEBUG ] 界面存在此元素:[ PA02100000001_02_JF ]
+<br>2016-12-30 10:57:24,290 : appOperate.py[line:197] [ DEBUG ] 找到插件:PA02100000001_02_JF ,准备点击
+<br>2016-12-30 10:57:26,277 : Element.py[line:59] [ DEBUG ] 查找id: PA02100000001_02_JF
+<br>2016-12-30 10:57:27,631 : appOperate.py[line:201] [ DEBUG ] 当前插件是否显示: True
+<br>2016-12-30 10:57:29,315 : Element.py[line:59] [ DEBUG ] 查找id: PA02100000001_02_JF
+<br>2016-12-30 10:57:32,879 : Element.py[line:59] [ DEBUG ] 查找id: PA02100000001_02_JF
+<br>2016-12-30 10:57:43,160 : Element.py[line:234] [ DEBUG ] 隐式等待 10 秒
+<br>2016-12-30 10:57:43,166 : appOperate.py[line:219] [ DEBUG ] 判断插件页面,是否包含: 可用积分
+<br>2016-12-30 10:57:43,166 : appOperate.py[line:349] [ DEBUG ] 开始轮询元素: 可用积分
+<br>2016-12-30 10:57:43,166 : Element.py[line:238] [ DEBUG ] 获取 page_source
+<br>2016-12-30 10:57:45,641 : appOperate.py[line:358] [ DEBUG ] 界面存在此元素:[ 可用积分 ]
+<br>2016-12-30 10:57:45,642 : appOperate.py[line:221] [ DEBUG ] 插件页面中包含 可用积分,返回True
+<br>2016-12-30 10:57:45,642 : appOperate.py[line:236] [ DEBUG ] 关闭H5页面!
+<br>2016-12-30 10:57:45,642 : Element.py[line:234] [ DEBUG ] 隐式等待 3 秒
+<br>2016-12-30 10:57:46,337 : Element.py[line:59] [ DEBUG ] 查找id: closeButton
+<br>2016-12-30 10:57:47,193 : Element.py[line:59] [ DEBUG ] 查找id: closeButton
+<br>2016-12-30 10:57:48,489 : RunExcel.py[line:144] [ DEBUG ] ========================================================================================================================
+<br>2016-12-30 10:57:48,489 : RunExcel.py[line:146] [ DEBUG ] 当前用例:检查插件:PA02100000001_02_JF ,执行结果: PASS
+<br>2016-12-30 10:57:48,489 : RunExcel.py[line:147] [ DEBUG ] ========================================================================================================================
+<br>2016-12-30 10:57:48,490 : RunExcel.py[line:166] [ DEBUG ] 测试用例:检查插件:PA02100000001_02_JF ,执行结束
+</div>
+
+</div>
+</div>
+</td>
+<td align="middle">PASS</td>
+
+</tr>
+<tr bgcolor="#70DBDB"><td align="middle">检查插件:PA02100000000_02_DYP</td>
+<td align="middle">80.879</td>
+<td align="middle"><div style="margin-bottom: 0px;" id="accordion" class="panel-group"><div style="background-color: #70DBDB;"><a aria-expanded="false" class="collapsed" align="middle" href="#5" data-toggle="collapse" data-parent="#accordion">日志详情</a>
+<div align="left" style="height: 0px;" aria-expanded="false" id="5" class="panel-collapse collapse"><br>2016-12-30 10:57:48,566 : RunExcel.py[line:113] [ DEBUG ] 测试用例:检查插件:PA02100000000_02_DYP ,执行开始
+<br>2016-12-30 10:57:48,567 : ReadApi.py[line:27] [ DEBUG ] case_list :[u'\u68c0\u67e5\u63d2\u4ef6:PA02100000000_02_DYP', 1.0, u'\u68c0\u67e5\u63d2\u4ef6', u'assertTrueCheckPlugin', u'', u'', u'PA02100000000_02_DYP', u'\u7535\u5f71']
+<br>2016-12-30 10:57:48,567 : ReadApi.py[line:50] [ DEBUG ] callApi执行中
+<br>2016-12-30 10:57:48,567 : ReadApi.py[line:71] [ DEBUG ] Action_Keyword 操作:[ assertTrueCheckPlugin ]
+<br>2016-12-30 10:57:48,567 : appOperate.py[line:176] [ DEBUG ] 开始检查插件: PA02100000000_02_DYP
+<br>2016-12-30 10:57:48,567 : appOperate.py[line:349] [ DEBUG ] 开始轮询元素: PA02100000000_02_DYP
+<br>2016-12-30 10:57:48,567 : Element.py[line:238] [ DEBUG ] 获取 page_source
+<br>2016-12-30 10:58:20,791 : appOperate.py[line:358] [ DEBUG ] 界面存在此元素:[ PA02100000000_02_DYP ]
+<br>2016-12-30 10:58:20,793 : appOperate.py[line:178] [ DEBUG ] 找到插件:PA02100000000_02_DYP ,准备点击
+<br>2016-12-30 10:58:22,566 : Element.py[line:59] [ DEBUG ] 查找id: PA02100000000_02_DYP
+<br>2016-12-30 10:58:23,749 : appOperate.py[line:182] [ DEBUG ] 当前插件是否显示: False
+<br>2016-12-30 10:58:25,248 : Element.py[line:59] [ DEBUG ] 查找id: PA02100000000_02_DYP
+<br>2016-12-30 10:58:27,803 : Element.py[line:59] [ DEBUG ] 查找id: PA02100000000_02_DYP
+<br>2016-12-30 10:58:28,962 : appOperate.py[line:184] [ DEBUG ] 当前插件是否显示: False
+<br>2016-12-30 10:58:28,962 : appOperate.py[line:185] [ DEBUG ] 插件未显示,左滑
+<br>2016-12-30 10:58:28,962 : Element.py[line:145] [ DEBUG ] 获取当前窗口大小
+<br>2016-12-30 10:58:29,539 : Element.py[line:199] [ DEBUG ] 向左滑动,滑动起始坐标: (256,454),偏移量(-192,0)
+<br>2016-12-30 10:58:33,306 : Element.py[line:234] [ DEBUG ] 隐式等待 3 秒
+<br>2016-12-30 10:58:34,788 : Element.py[line:59] [ DEBUG ] 查找id: PA02100000000_02_DYP
+<br>2016-12-30 10:58:38,495 : Element.py[line:59] [ DEBUG ] 查找id: PA02100000000_02_DYP
+<br>2016-12-30 10:58:39,841 : appOperate.py[line:184] [ DEBUG ] 当前插件是否显示: False
+<br>2016-12-30 10:58:39,841 : appOperate.py[line:185] [ DEBUG ] 插件未显示,左滑
+<br>2016-12-30 10:58:39,841 : Element.py[line:145] [ DEBUG ] 获取当前窗口大小
+<br>2016-12-30 10:58:40,657 : Element.py[line:199] [ DEBUG ] 向左滑动,滑动起始坐标: (256,454),偏移量(-192,0)
+<br>2016-12-30 10:58:44,668 : Element.py[line:234] [ DEBUG ] 隐式等待 3 秒
+<br>2016-12-30 10:58:46,565 : Element.py[line:59] [ DEBUG ] 查找id: PA02100000000_02_DYP
+<br>2016-12-30 10:58:49,789 : Element.py[line:59] [ DEBUG ] 查找id: PA02100000000_02_DYP
+<br>2016-12-30 10:58:59,515 : Element.py[line:234] [ DEBUG ] 隐式等待 10 秒
+<br>2016-12-30 10:58:59,522 : appOperate.py[line:219] [ DEBUG ] 判断插件页面,是否包含: 电影
+<br>2016-12-30 10:58:59,522 : appOperate.py[line:349] [ DEBUG ] 开始轮询元素: 电影
+<br>2016-12-30 10:58:59,523 : Element.py[line:238] [ DEBUG ] 获取 page_source
+<br>2016-12-30 10:59:06,533 : appOperate.py[line:358] [ DEBUG ] 界面存在此元素:[ 电影 ]
+<br>2016-12-30 10:59:06,533 : appOperate.py[line:221] [ DEBUG ] 插件页面中包含 电影,返回True
+<br>2016-12-30 10:59:06,533 : appOperate.py[line:236] [ DEBUG ] 关闭H5页面!
+<br>2016-12-30 10:59:06,533 : Element.py[line:234] [ DEBUG ] 隐式等待 3 秒
+<br>2016-12-30 10:59:07,936 : Element.py[line:59] [ DEBUG ] 查找id: closeButton
+<br>2016-12-30 10:59:09,088 : Element.py[line:59] [ DEBUG ] 查找id: closeButton
+<br>2016-12-30 10:59:11,207 : RunExcel.py[line:144] [ DEBUG ] ========================================================================================================================
+<br>2016-12-30 10:59:11,208 : RunExcel.py[line:146] [ DEBUG ] 当前用例:检查插件:PA02100000000_02_DYP ,执行结果: PASS
+<br>2016-12-30 10:59:11,208 : RunExcel.py[line:147] [ DEBUG ] ========================================================================================================================
+<br>2016-12-30 10:59:11,208 : RunExcel.py[line:166] [ DEBUG ] 测试用例:检查插件:PA02100000000_02_DYP ,执行结束
+</div>
+
+</div>
+</div>
+</td>
+<td align="middle">PASS</td>
+
+</tr>
+<tr bgcolor="#70DBDB"><td align="middle">检查插件:PA02100000000_02_KY</td>
+<td align="middle">55.758</td>
+<td align="middle"><div style="margin-bottom: 0px;" id="accordion" class="panel-group"><div style="background-color: #70DBDB;"><a aria-expanded="false" class="collapsed" align="middle" href="#6" data-toggle="collapse" data-parent="#accordion">日志详情</a>
+<div align="left" style="height: 0px;" aria-expanded="false" id="6" class="panel-collapse collapse"><br>2016-12-30 10:59:11,281 : RunExcel.py[line:113] [ DEBUG ] 测试用例:检查插件:PA02100000000_02_KY ,执行开始
+<br>2016-12-30 10:59:11,281 : ReadApi.py[line:27] [ DEBUG ] case_list :[u'\u68c0\u67e5\u63d2\u4ef6:PA02100000000_02_KY', 1.0, u'\u68c0\u67e5\u63d2\u4ef6', u'assertTrueCheckPlugin', u'', u'', u'PA02100000000_02_KY', u'5\u3001\u6b64\u6d3b\u52a8\u4e0e\u82f9\u679c\u516c\u53f8\u65e0\u5173\u3002']
+<br>2016-12-30 10:59:11,281 : ReadApi.py[line:50] [ DEBUG ] callApi执行中
+<br>2016-12-30 10:59:11,282 : ReadApi.py[line:71] [ DEBUG ] Action_Keyword 操作:[ assertTrueCheckPlugin ]
+<br>2016-12-30 10:59:11,282 : appOperate.py[line:176] [ DEBUG ] 开始检查插件: PA02100000000_02_KY
+<br>2016-12-30 10:59:11,282 : appOperate.py[line:349] [ DEBUG ] 开始轮询元素: PA02100000000_02_KY
+<br>2016-12-30 10:59:11,282 : Element.py[line:238] [ DEBUG ] 获取 page_source
+<br>2016-12-30 10:59:45,820 : appOperate.py[line:358] [ DEBUG ] 界面存在此元素:[ PA02100000000_02_KY ]
+<br>2016-12-30 10:59:45,821 : appOperate.py[line:178] [ DEBUG ] 找到插件:PA02100000000_02_KY ,准备点击
+<br>2016-12-30 10:59:48,295 : Element.py[line:59] [ DEBUG ] 查找id: PA02100000000_02_KY
+<br>2016-12-30 10:59:49,427 : appOperate.py[line:182] [ DEBUG ] 当前插件是否显示: False
+<br>2016-12-30 10:59:50,829 : Element.py[line:59] [ DEBUG ] 查找id: PA02100000000_02_KY
+<br>2016-12-30 10:59:53,347 : Element.py[line:59] [ DEBUG ] 查找id: PA02100000000_02_KY
+<br>2016-12-30 10:59:54,519 : appOperate.py[line:184] [ DEBUG ] 当前插件是否显示: False
+<br>2016-12-30 10:59:54,519 : appOperate.py[line:185] [ DEBUG ] 插件未显示,左滑
+<br>2016-12-30 10:59:54,519 : Element.py[line:145] [ DEBUG ] 获取当前窗口大小
+<br>2016-12-30 10:59:55,082 : Element.py[line:199] [ DEBUG ] 向左滑动,滑动起始坐标: (256,454),偏移量(-192,0)
+<br>2016-12-30 10:59:59,069 : Element.py[line:234] [ DEBUG ] 隐式等待 3 秒
+<br>2016-12-30 11:00:01,306 : Element.py[line:59] [ DEBUG ] 查找id: PA02100000000_02_KY
+<br>2016-12-30 11:00:04,532 : Element.py[line:59] [ DEBUG ] 查找id: PA02100000000_02_KY
+<br>2016-12-30 11:00:06,066 : appOperate.py[line:184] [ DEBUG ] 当前插件是否显示: False
+<br>2016-12-30 11:00:06,066 : appOperate.py[line:185] [ DEBUG ] 插件未显示,左滑
+<br>2016-12-30 11:00:06,066 : Element.py[line:145] [ DEBUG ] 获取当前窗口大小
+<br>2016-12-30 11:00:06,662 : Element.py[line:199] [ DEBUG ] 向左滑动,滑动起始坐标: (256,454),偏移量(-192,0)
+<br>2016-12-30 11:00:11,419 : Element.py[line:234] [ DEBUG ] 隐式等待 3 秒
+<br>2016-12-30 11:00:13,891 : Element.py[line:59] [ DEBUG ] 查找id: PA02100000000_02_KY
+<br>2016-12-30 11:00:16,788 : Element.py[line:59] [ DEBUG ] 查找id: PA02100000000_02_KY
+<br>2016-12-30 11:00:18,339 : appOperate.py[line:184] [ DEBUG ] 当前插件是否显示: False
+<br>2016-12-30 11:00:18,339 : appOperate.py[line:185] [ DEBUG ] 插件未显示,左滑
+<br>2016-12-30 11:00:18,339 : Element.py[line:145] [ DEBUG ] 获取当前窗口大小
+<br>2016-12-30 11:00:18,844 : Element.py[line:199] [ DEBUG ] 向左滑动,滑动起始坐标: (256,454),偏移量(-192,0)
+<br>2016-12-30 11:00:24,164 : Element.py[line:234] [ DEBUG ] 隐式等待 3 秒
+<br>2016-12-30 11:00:25,959 : Element.py[line:59] [ DEBUG ] 查找id: PA02100000000_02_KY
+<br>2016-12-30 11:00:28,971 : Element.py[line:59] [ DEBUG ] 查找id: PA02100000000_02_KY
+<br>2016-12-30 11:00:30,755 : appOperate.py[line:184] [ DEBUG ] 当前插件是否显示: False
+<br>2016-12-30 11:00:30,756 : appOperate.py[line:185] [ DEBUG ] 插件未显示,左滑
+<br>2016-12-30 11:00:30,756 : Element.py[line:145] [ DEBUG ] 获取当前窗口大小
+<br>2016-12-30 11:00:31,551 : Element.py[line:199] [ DEBUG ] 向左滑动,滑动起始坐标: (256,454),偏移量(-192,0)
+<br>2016-12-30 11:00:36,113 : Element.py[line:234] [ DEBUG ] 隐式等待 3 秒
+<br>2016-12-30 11:00:37,968 : Element.py[line:59] [ DEBUG ] 查找id: PA02100000000_02_KY
+<br>2016-12-30 11:00:39,549 : Element.py[line:145] [ DEBUG ] 获取当前窗口大小
+<br>2016-12-30 11:00:40,131 : Element.py[line:185] [ DEBUG ] 向右滑动,起始滑动坐标: (64,454),坐标偏移量(192,0)
+<br>2016-12-30 11:00:45,663 : Element.py[line:234] [ DEBUG ] 隐式等待 3 秒
+<br>2016-12-30 11:00:45,666 : Element.py[line:145] [ DEBUG ] 获取当前窗口大小
+<br>2016-12-30 11:00:46,509 : Element.py[line:185] [ DEBUG ] 向右滑动,起始滑动坐标: (64,454),坐标偏移量(192,0)
+<br>2016-12-30 11:00:50,381 : Element.py[line:234] [ DEBUG ] 隐式等待 3 秒
+<br>2016-12-30 11:00:50,385 : Element.py[line:145] [ DEBUG ] 获取当前窗口大小
+<br>2016-12-30 11:00:50,994 : Element.py[line:185] [ DEBUG ] 向右滑动,起始滑动坐标: (64,454),坐标偏移量(192,0)
+<br>2016-12-30 11:00:55,663 : Element.py[line:234] [ DEBUG ] 隐式等待 3 秒
+<br>2016-12-30 11:00:55,667 : Element.py[line:145] [ DEBUG ] 获取当前窗口大小
+<br>2016-12-30 11:00:56,214 : Element.py[line:185] [ DEBUG ] 向右滑动,起始滑动坐标: (64,454),坐标偏移量(192,0)
+<br>2016-12-30 11:01:00,116 : Element.py[line:234] [ DEBUG ] 隐式等待 3 秒
+<br>2016-12-30 11:01:00,119 : Element.py[line:145] [ DEBUG ] 获取当前窗口大小
+<br>2016-12-30 11:01:00,800 : Element.py[line:185] [ DEBUG ] 向右滑动,起始滑动坐标: (64,454),坐标偏移量(192,0)
+<br>2016-12-30 11:01:05,417 : Element.py[line:234] [ DEBUG ] 隐式等待 3 秒
+<br>2016-12-30 11:01:08,745 : appOperate.py[line:229] [ ERROR ] Message: An element could not be located on the page using the given search parameters.
+<br>
+<br>2016-12-30 11:01:08,745 : appOperate.py[line:236] [ DEBUG ] 关闭H5页面!
+<br>2016-12-30 11:01:08,745 : Element.py[line:234] [ DEBUG ] 隐式等待 3 秒
+<br>2016-12-30 11:01:15,923 : ReadApi.py[line:33] [ ERROR ] Message: An element could not be located on the page using the given search parameters.
+<br>
+<br>2016-12-30 11:01:15,924 : RunExcel.py[line:144] [ DEBUG ] ========================================================================================================================
+<br>2016-12-30 11:01:15,924 : RunExcel.py[line:146] [ DEBUG ] 当前用例:检查插件:PA02100000000_02_KY ,执行结果: FAIL
+<br>2016-12-30 11:01:15,924 : RunExcel.py[line:147] [ DEBUG ] ========================================================================================================================
+<br>2016-12-30 11:01:15,924 : RunExcel.py[line:166] [ DEBUG ] 测试用例:检查插件:PA02100000000_02_KY ,执行结束
+<br>2016-12-30 11:01:15,924 : RunExcel.py[line:167] [ DEBUG ] 用例执行总结果: [[u'\u767b\u5f55_1000', 'PASS', 14.063, False], [u'\u767b\u5f55_1001', 'PASS', 53.758, False], [u'\u83b7\u53d6\u63d2\u4ef6\u5217\u8868', 'PASS', 0.287, False], [u'\u68c0\u67e5\u63d2\u4ef6:PA01100000000_02_PAZB', 'PASS', 24.609, False], [u'\u68c0\u67e5\u63d2\u4ef6:PA02100000001_02_JF', 'PASS', 63.614, False], [u'\u68c0\u67e5\u63d2\u4ef6:PA02100000000_02_DYP', 'PASS', 82.641, False], [u'\u68c0\u67e5\u63d2\u4ef6:PA02100000000_02_KY', 'FAIL', 124.642, False]]
+<br>2016-12-30 11:01:15,924 : Retry.py[line:21] [ DEBUG ] 调用函数: function
+<br>2016-12-30 11:01:15,924 : Retry.py[line:26] [ DEBUG ] 当前用例名称: 检查插件:PA02100000000_02_KY ,当前执行结果: FAIL
+<br>2016-12-30 11:01:15,924 : Retry.py[line:28] [ DEBUG ] 失败重跑第 【 1 】 次执行中
+<br>2016-12-30 11:01:15,924 : RunExcel.py[line:113] [ DEBUG ] 测试用例:检查插件:PA02100000000_02_KY ,执行开始
+<br>2016-12-30 11:01:15,924 : ReadApi.py[line:27] [ DEBUG ] case_list :[u'\u68c0\u67e5\u63d2\u4ef6:PA02100000000_02_KY', 1.0, u'\u68c0\u67e5\u63d2\u4ef6', u'assertTrueCheckPlugin', u'', u'', u'PA02100000000_02_KY', u'5\u3001\u6b64\u6d3b\u52a8\u4e0e\u82f9\u679c\u516c\u53f8\u65e0\u5173\u3002']
+<br>2016-12-30 11:01:15,924 : ReadApi.py[line:50] [ DEBUG ] callApi执行中
+<br>2016-12-30 11:01:15,924 : ReadApi.py[line:71] [ DEBUG ] Action_Keyword 操作:[ assertTrueCheckPlugin ]
+<br>2016-12-30 11:01:15,924 : appOperate.py[line:176] [ DEBUG ] 开始检查插件: PA02100000000_02_KY
+<br>2016-12-30 11:01:15,925 : appOperate.py[line:349] [ DEBUG ] 开始轮询元素: PA02100000000_02_KY
+<br>2016-12-30 11:01:15,925 : Element.py[line:238] [ DEBUG ] 获取 page_source
+<br>2016-12-30 11:01:20,694 : appOperate.py[line:354] [ WARNING ] 轮询超时,未找到元素:[ PA02100000000_02_KY ]
+<br>2016-12-30 11:01:20,694 : Element.py[line:238] [ DEBUG ] 获取 page_source
+<br>2016-12-30 11:01:24,338 : appOperate.py[line:355] [ WARNING ] 轮询超时,pageSource: <xmp><?xml version="1.0" encoding="UTF-8"?>
+<br><AppiumAUT>
+<br>    <XCUIElementTypeApplication name="任意门" label="任意门" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0" x="0" y="0" width="320" height="568">
+<br>        <XCUIElementTypeWindow name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0" x="0" y="0" width="320" height="568">
+<br>            <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0" x="0" y="0" width="320" height="568">
+<br>                <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0" x="0" y="0" width="320" height="568">
+<br>                    <XCUIElementTypeTable name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0" x="-8" y="-9" width="276" height="586">
+<br>                        <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/0" x="-8" y="-9" width="276" height="101">
+<br>                            <XCUIElementTypeStaticText name="测试功能点" label="测试功能点" value="测试功能点" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/0/0" x="5" y="-9" width="275" height="63">
+<br>                            </XCUIElementTypeStaticText>
+<br>                            <XCUIElementTypeStaticText name="本栏主要模拟sdk部分功能供测试人员验证" label="本栏主要模拟sdk部分功能供测试人员验证" value="本栏主要模拟sdk部分功能供测试人员验证" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/0/1" x="5" y="54" width="275" height="25">
+<br>                            </XCUIElementTypeStaticText>
+<br>                        </XCUIElementTypeOther>
+<br>                        <XCUIElementTypeCell name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/1" x="-8" y="91" width="276" height="51">
+<br>                            <XCUIElementTypeStaticText name="测试页面" label="测试页面" value="测试页面" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/1/0" x="11" y="91" width="238" height="51">
+<br>                            </XCUIElementTypeStaticText>
+<br>                        </XCUIElementTypeCell>
+<br>                        <XCUIElementTypeCell name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/2" x="-8" y="141" width="276" height="51">
+<br>                            <XCUIElementTypeStaticText name="回到主屏" label="回到主屏" value="回到主屏" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/2/0" x="11" y="141" width="238" height="51">
+<br>                            </XCUIElementTypeStaticText>
+<br>                        </XCUIElementTypeCell>
+<br>                        <XCUIElementTypeCell name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/3" x="-8" y="191" width="276" height="51">
+<br>                            <XCUIElementTypeStaticText name="拉取消息接口" label="拉取消息接口" value="拉取消息接口" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/3/0" x="11" y="191" width="238" height="51">
+<br>                            </XCUIElementTypeStaticText>
+<br>                        </XCUIElementTypeCell>
+<br>                        <XCUIElementTypeCell name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/4" x="-8" y="241" width="276" height="51">
+<br>                            <XCUIElementTypeStaticText name="清空全部消息数据" label="清空全部消息数据" value="清空全部消息数据" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/4/0" x="11" y="241" width="238" height="51">
+<br>                            </XCUIElementTypeStaticText>
+<br>                        </XCUIElementTypeCell>
+<br>                        <XCUIElementTypeCell name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/5" x="-8" y="291" width="276" height="51">
+<br>                            <XCUIElementTypeStaticText name="切换长登陆状态" label="切换长登陆状态" value="切换长登陆状态" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/5/0" x="11" y="291" width="238" height="51">
+<br>                            </XCUIElementTypeStaticText>
+<br>                        </XCUIElementTypeCell>
+<br>                        <XCUIElementTypeCell name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/6" x="-8" y="341" width="276" height="51">
+<br>                            <XCUIElementTypeStaticText name="获取宿主显示插件" label="获取宿主显示插件" value="获取宿主显示插件" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/6/0" x="11" y="341" width="238" height="51">
+<br>                            </XCUIElementTypeStaticText>
+<br>                        </XCUIElementTypeCell>
+<br>                        <XCUIElementTypeCell name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/7" x="-8" y="391" width="276" height="51">
+<br>                            <XCUIElementTypeStaticText name="查看埋点记录" label="查看埋点记录" value="查看埋点记录" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/7/0" x="11" y="391" width="238" height="51">
+<br>                            </XCUIElementTypeStaticText>
+<br>                        </XCUIElementTypeCell>
+<br>                        <XCUIElementTypeCell name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/8" x="-8" y="441" width="276" height="51">
+<br>                            <XCUIElementTypeStaticText name="删除埋点记录" label="删除埋点记录" value="删除埋点记录" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/8/0" x="11" y="441" width="238" height="51">
+<br>                            </XCUIElementTypeStaticText>
+<br>                        </XCUIElementTypeCell>
+<br>                        <XCUIElementTypeCell name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/9" x="-8" y="491" width="276" height="51">
+<br>                            <XCUIElementTypeStaticText name="清除曝光数据" label="清除曝光数据" value="清除曝光数据" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/9/0" x="11" y="491" width="238" height="51">
+<br>                            </XCUIElementTypeStaticText>
+<br>                        </XCUIElementTypeCell>
+<br>                        <XCUIElementTypeCell name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/10" x="-8" y="541" width="276" height="51">
+<br>                            <XCUIElementTypeStaticText name="超时测试" label="超时测试" value="超时测试" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/10/0" x="11" y="541" width="238" height="51">
+<br>                            </XCUIElementTypeStaticText>
+<br>                        </XCUIElementTypeCell>
+<br>                        <XCUIElementTypeCell name="" label="" value="" dom="" enabled="true" valid="true" visible="false" hint="" path="/0/0/0/0/0/11" x="-8" y="591" width="276" height="51">
+<br>                            <XCUIElementTypeStaticText name="测试Loading" label="测试Loading" value="测试Loading" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/11/0" x="0" y="0" width="190" height="40">
+<br>                            </XCUIElementTypeStaticText>
+<br>                        </XCUIElementTypeCell>
+<br>                        <XCUIElementTypeCell name="" label="" value="" dom="" enabled="true" valid="true" visible="false" hint="" path="/0/0/0/0/0/12" x="-8" y="641" width="276" height="51">
+<br>                            <XCUIElementTypeStaticText name="Q2主屏动画拉取" label="Q2主屏动画拉取" value="Q2主屏动画拉取" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/12/0" x="0" y="0" width="190" height="40">
+<br>                            </XCUIElementTypeStaticText>
+<br>                        </XCUIElementTypeCell>
+<br>                    </XCUIElementTypeTable>
+<br>                </XCUIElementTypeOther>
+<br>                <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1" x="0" y="0" width="320" height="568">
+<br>                    <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0" x="0" y="0" width="320" height="568">
+<br>                        <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0" x="0" y="0" width="320" height="568">
+<br>                            <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0" x="0" y="0" width="320" height="568">
+<br>                                <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/0" x="0" y="0" width="320" height="514">
+<br>                                    <XCUIElementTypeScrollView name="mainScro" label="mainScro" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/0/0" x="0" y="0" width="320" height="514">
+<br>                                        <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/0/0/0" x="0" y="0" width="320" height="514">
+<br>                                            <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/0/0/0/0" x="0" y="243" width="320" height="271">
+<br>                                                <XCUIElementTypeScrollView name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/0/0/0/0/0" x="0" y="243" width="320" height="271">
+<br>                                                    <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/0/0/0/0/0/0" x="0" y="430" width="320" height="84">
+<br>                                                        <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/0/0/0/0/0/0/0" x="0" y="243" width="320" height="271">
+<br>                                                        </XCUIElementTypeOther>
+<br>                                                        <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/0/0/0/0/0/0/1" x="0" y="430" width="84" height="84">
+<br>                                                            <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/0/0/0/0/0/0/1/0" x="0" y="430" width="84" height="84">
+<br>                                                                <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/0/0/0/0/0/0/1/0/0" x="0" y="430" width="84" height="84">
+<br>                                                                    <XCUIElementTypeImage name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/0/0/0/0/0/0/1/0/0/0" x="0" y="430" width="84" height="84">
+<br>                                                                    </XCUIElementTypeImage>
+<br>                                                                    <XCUIElementTypeButton name="PA01100000000_02_PAZB" label="PA01100000000_02_PAZB" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/0/0/0/0/0/0/1/0/0/1" x="0" y="430" width="84" height="84">
+<br>                                                                    </XCUIElementTypeButton>
+<br>                                                                    <XCUIElementTypeStaticText name="平安地图" label="平安地图" value="平安地图" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/0/0/0/0/0/0/1/0/0/2" x="7" y="441" width="85" height="17">
+<br>                                                                    </XCUIElementTypeStaticText>
+<br>                                                                    <XCUIElementTypeStaticText name="平安在你身边" label="平安在你身边" value="平安在你身边" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/0/0/0/0/0/0/1/0/0/3" x="7" y="465" width="85" height="10">
+<br>                                                                    </XCUIElementTypeStaticText>
+<br>                                                                </XCUIElementTypeOther>
+<br>                                                            </XCUIElementTypeOther>
+<br>                                                        </XCUIElementTypeOther>
+<br>                                                        <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/0/0/0/0/0/0/2" x="85" y="430" width="85" height="84">
+<br>                                                            <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/0/0/0/0/0/0/2/0" x="85" y="430" width="85" height="84">
+<br>                                                                <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/0/0/0/0/0/0/2/0/0" x="85" y="430" width="85" height="84">
+<br>                                                                    <XCUIElementTypeImage name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/0/0/0/0/0/0/2/0/0/0" x="85" y="430" width="85" height="84">
+<br>                                                                    </XCUIElementTypeImage>
+<br>                                                                    <XCUIElementTypeButton name="PA01100000000_02_WLC" label="PA01100000000_02_WLC" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/0/0/0/0/0/0/2/0/0/1" x="85" y="430" width="85" height="84">
+<br>                                                                    </XCUIElementTypeButton>
+<br>                                                                    <XCUIElementTypeStaticText name="模拟炒股" label="模拟炒股" value="模拟炒股" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/0/0/0/0/0/0/2/0/0/2" x="93" y="441" width="85" height="17">
+<br>                                                                    </XCUIElementTypeStaticText>
+<br>                                                                    <XCUIElementTypeStaticText name="0风险高收益" label="0风险高收益" value="0风险高收益" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/0/0/0/0/0/0/2/0/0/3" x="93" y="465" width="85" height="10">
+<br>                                                                    </XCUIElementTypeStaticText>
+<br>                                                                </XCUIElementTypeOther>
+<br>                                                            </XCUIElementTypeOther>
+<br>                                                        </XCUIElementTypeOther>
+<br>                                                        <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/0/0/0/0/0/0/3" x="170" y="430" width="85" height="84">
+<br>                                                            <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/0/0/0/0/0/0/3/0" x="170" y="430" width="85" height="84">
+<br>                                                                <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/0/0/0/0/0/0/3/0/0" x="170" y="430" width="85" height="84">
+<br>                                                                    <XCUIElementTypeImage name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/0/0/0/0/0/0/3/0/0/0" x="170" y="430" width="85" height="84">
+<br>                                                                    </XCUIElementTypeImage>
+<br>                                                                    <XCUIElementTypeButton name="PA00500000000_02_GSZB" label="PA00500000000_02_GSZB" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/0/0/0/0/0/0/3/0/0/1" x="170" y="430" width="85" height="84">
+<br>                                                                    </XCUIElementTypeButton>
+<br>                                                                    <XCUIElementTypeStaticText name="看直播" label="看直播" value="看直播" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/0/0/0/0/0/0/3/0/0/2" x="178" y="441" width="85" height="17">
+<br>                                                                    </XCUIElementTypeStaticText>
+<br>                                                                    <XCUIElementTypeStaticText name="专家谈股市" label="专家谈股市" value="专家谈股市" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/0/0/0/0/0/0/3/0/0/3" x="178" y="465" width="85" height="10">
+<br>                                                                    </XCUIElementTypeStaticText>
+<br>                                                                </XCUIElementTypeOther>
+<br>                                                            </XCUIElementTypeOther>
+<br>                                                        </XCUIElementTypeOther>
+<br>                                                        <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/0/0/0/0/0/0/4" x="256" y="430" width="85" height="84">
+<br>                                                            <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/0/0/0/0/0/0/4/0" x="256" y="430" width="85" height="84">
+<br>                                                                <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/0/0/0/0/0/0/4/0/0" x="256" y="430" width="85" height="84">
+<br>                                                                    <XCUIElementTypeImage name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/0/0/0/0/0/0/4/0/0/0" x="256" y="430" width="85" height="84">
+<br>                                                                    </XCUIElementTypeImage>
+<br>                                                                    <XCUIElementTypeButton name="PA01100000000_02_HDJHY" label="PA01100000000_02_HDJHY" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/0/0/0/0/0/0/4/0/0/1" x="256" y="430" width="85" height="84">
+<br>                                                                    </XCUIElementTypeButton>
+<br>                                                                    <XCUIElementTypeStaticText name="活动集合" label="活动集合" value="活动集合" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/0/0/0/0/0/0/4/0/0/2" x="263" y="441" width="85" height="17">
+<br>                                                                    </XCUIElementTypeStaticText>
+<br>                                                                    <XCUIElementTypeStaticText name="汇聚热门活动" label="汇聚热门活动" value="汇聚热门活动" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/0/0/0/0/0/0/4/0/0/3" x="263" y="465" width="85" height="10">
+<br>                                                                    </XCUIElementTypeStaticText>
+<br>                                                                </XCUIElementTypeOther>
+<br>                                                            </XCUIElementTypeOther>
+<br>                                                        </XCUIElementTypeOther>
+<br>                                                    </XCUIElementTypeOther>
+<br>                                                </XCUIElementTypeScrollView>
+<br>                                            </XCUIElementTypeOther>
+<br>                                        </XCUIElementTypeOther>
+<br>                                        <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/0/0/1" x="-27" y="430" width="50" height="84">
+<br>                                            <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/0/0/1/0" x="-62" y="430" width="85" height="84">
+<br>                                            </XCUIElementTypeOther>
+<br>                                            <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="false" hint="" path="/0/0/0/1/0/0/0/0/0/1/1" x="-27" y="430" width="8" height="84">
+<br>                                            </XCUIElementTypeOther>
+<br>                                        </XCUIElementTypeOther>
+<br>                                        <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/0/0/2" x="-27" y="430" width="28" height="84">
+<br>                                        </XCUIElementTypeOther>
+<br>                                    </XCUIElementTypeScrollView>
+<br>                                </XCUIElementTypeOther>
+<br>                                <XCUIElementTypeImage name="background.jpg" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/1" x="0" y="0" width="320" height="568">
+<br>                                </XCUIElementTypeImage>
+<br>                                <XCUIElementTypeScrollView name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/2" x="0" y="0" width="320" height="568">
+<br>                                    <XCUIElementTypeImage name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/2/0" x="0" y="0" width="320" height="800">
+<br>                                    </XCUIElementTypeImage>
+<br>                                </XCUIElementTypeScrollView>
+<br>                                <XCUIElementTypeButton name="无用户" label="无用户" value="" dom="" enabled="false" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/3" x="10" y="86" width="68" height="40">
+<br>                                </XCUIElementTypeButton>
+<br>                                <XCUIElementTypeButton name="非一账通" label="非一账通" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/4" x="87" y="86" width="68" height="40">
+<br>                                </XCUIElementTypeButton>
+<br>                                <XCUIElementTypeButton name="一账通" label="一账通" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/5" x="165" y="86" width="68" height="40">
+<br>                                </XCUIElementTypeButton>
+<br>                                <XCUIElementTypeButton name="F项目" label="F项目" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/6" x="242" y="86" width="68" height="40">
+<br>                                </XCUIElementTypeButton>
+<br>                                <XCUIElementTypeButton name="宿主登陆" label="宿主登陆" value="" dom="" enabled="false" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/7" x="10" y="136" width="145" height="40">
+<br>                                </XCUIElementTypeButton>
+<br>                                <XCUIElementTypeButton name="宿主退出" label="宿主退出" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/8" x="165" y="136" width="145" height="40">
+<br>                                </XCUIElementTypeButton>
+<br>                                <XCUIElementTypeStaticText name="其他测试功能点请长按我向右滑动" label="其他测试功能点请长按我向右滑动" value="其他测试功能点请长按我向右滑动" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/1/0/0/0/9" x="10" y="284" width="300" height="40">
+<br>                                </XCUIElementTypeStaticText>
+<br>                            </XCUIElementTypeOther>
+<br>                        </XCUIElementTypeOther>
+<br>                    </XCUIElementTypeOther>
+<br>                </XCUIElementTypeOther>
+<br>            </XCUIElementTypeOther>
+<br>        </XCUIElementTypeWindow>
+<br>        <XCUIElementTypeWindow name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/1" x="0" y="0" width="320" height="568">
+<br>            <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/1/0" x="0" y="0" width="320" height="568">
+<br>            </XCUIElementTypeOther>
+<br>        </XCUIElementTypeWindow>
+<br>        <XCUIElementTypeWindow name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/2" x="0" y="0" width="320" height="568">
+<br>            <XCUIElementTypeStatusBar name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/2/0" x="0" y="0" width="320" height="20">
+<br>                <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/2/0/0" x="0" y="0" width="320" height="20">
+<br>                </XCUIElementTypeOther>
+<br>                <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/2/0/1" x="0" y="0" width="320" height="20">
+<br>                    <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/2/0/1/0" x="6" y="0" width="39" height="20">
+<br>                    </XCUIElementTypeOther>
+<br>                    <XCUIElementTypeOther name="3 格 Wi-Fi 信号（共 3 格）" label="3 格 Wi-Fi 信号（共 3 格）" value="SSID" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/2/0/1/1" x="50" y="0" width="13" height="20">
+<br>                    </XCUIElementTypeOther>
+<br>                    <XCUIElementTypeOther name="11:01 AM" label="11:01 AM" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/2/0/1/2" x="136" y="0" width="53" height="20">
+<br>                    </XCUIElementTypeOther>
+<br>                    <XCUIElementTypeOther name="StandardLocationTrackingOn" label="位置跟踪已打开" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/2/0/1/3" x="267" y="0" width="9" height="20">
+<br>                    </XCUIElementTypeOther>
+<br>                    <XCUIElementTypeOther name="电池电量：-100%" label="电池电量：-100%" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/2/0/1/4" x="282" y="0" width="33" height="20">
+<br>                    </XCUIElementTypeOther>
+<br>                </XCUIElementTypeOther>
+<br>            </XCUIElementTypeStatusBar>
+<br>        </XCUIElementTypeWindow>
+<br>    </XCUIElementTypeApplication>
+<br></AppiumAUT></xmp> 
+<br>2016-12-30 11:01:24,338 : Element.py[line:145] [ DEBUG ] 获取当前窗口大小
+<br>2016-12-30 11:01:24,499 : Element.py[line:199] [ DEBUG ] 向左滑动,滑动起始坐标: (256,454),偏移量(-192,0)
+<br>2016-12-30 11:01:27,714 : Element.py[line:234] [ DEBUG ] 隐式等待 3 秒
+<br>2016-12-30 11:01:27,718 : appOperate.py[line:349] [ DEBUG ] 开始轮询元素: PA02100000000_02_KY
+<br>2016-12-30 11:01:27,719 : Element.py[line:238] [ DEBUG ] 获取 page_source
+<br>2016-12-30 11:01:56,329 : appOperate.py[line:358] [ DEBUG ] 界面存在此元素:[ PA02100000000_02_KY ]
+<br>2016-12-30 11:01:56,329 : appOperate.py[line:197] [ DEBUG ] 找到插件:PA02100000000_02_KY ,准备点击
+<br>2016-12-30 11:01:57,705 : Element.py[line:59] [ DEBUG ] 查找id: PA02100000000_02_KY
+<br>2016-12-30 11:01:58,835 : appOperate.py[line:201] [ DEBUG ] 当前插件是否显示: True
+<br>2016-12-30 11:02:00,454 : Element.py[line:59] [ DEBUG ] 查找id: PA02100000000_02_KY
+<br>2016-12-30 11:02:02,998 : Element.py[line:59] [ DEBUG ] 查找id: PA02100000000_02_KY
+<br>2016-12-30 11:02:12,636 : Element.py[line:234] [ DEBUG ] 隐式等待 10 秒
+<br>2016-12-30 11:02:12,651 : appOperate.py[line:219] [ DEBUG ] 判断插件页面,是否包含: 5、此活动与苹果公司无关。
+<br>2016-12-30 11:02:12,651 : appOperate.py[line:349] [ DEBUG ] 开始轮询元素: 5、此活动与苹果公司无关。
+<br>2016-12-30 11:02:12,652 : Element.py[line:238] [ DEBUG ] 获取 page_source
+<br>2016-12-30 11:02:16,346 : Element.py[line:238] [ DEBUG ] 获取 page_source
+<br>2016-12-30 11:02:19,776 : Element.py[line:238] [ DEBUG ] 获取 page_source
+<br>2016-12-30 11:02:23,308 : Element.py[line:238] [ DEBUG ] 获取 page_source
+<br>2016-12-30 11:02:26,952 : Element.py[line:238] [ DEBUG ] 获取 page_source
+<br>2016-12-30 11:02:30,747 : Element.py[line:238] [ DEBUG ] 获取 page_source
+<br>2016-12-30 11:02:34,465 : Element.py[line:238] [ DEBUG ] 获取 page_source
+<br>2016-12-30 11:02:39,286 : Element.py[line:238] [ DEBUG ] 获取 page_source
+<br>2016-12-30 11:02:43,077 : Element.py[line:238] [ DEBUG ] 获取 page_source
+<br>2016-12-30 11:02:46,967 : Element.py[line:238] [ DEBUG ] 获取 page_source
+<br>2016-12-30 11:02:50,768 : Element.py[line:238] [ DEBUG ] 获取 page_source
+<br>2016-12-30 11:02:54,378 : Element.py[line:238] [ DEBUG ] 获取 page_source
+<br>2016-12-30 11:02:57,994 : Element.py[line:238] [ DEBUG ] 获取 page_source
+<br>2016-12-30 11:03:01,584 : Element.py[line:238] [ DEBUG ] 获取 page_source
+<br>2016-12-30 11:03:05,176 : Element.py[line:238] [ DEBUG ] 获取 page_source
+<br>2016-12-30 11:03:08,946 : appOperate.py[line:354] [ WARNING ] 轮询超时,未找到元素:[ 5、此活动与苹果公司无关。 ]
+<br>2016-12-30 11:03:08,947 : Element.py[line:238] [ DEBUG ] 获取 page_source
+<br>2016-12-30 11:03:10,563 : appOperate.py[line:355] [ WARNING ] 轮询超时,pageSource: <xmp><?xml version="1.0" encoding="UTF-8"?>
+<br><AppiumAUT>
+<br>    <XCUIElementTypeApplication name="任意门" label="任意门" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0" x="0" y="0" width="320" height="568">
+<br>        <XCUIElementTypeWindow name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0" x="0" y="0" width="320" height="568">
+<br>            <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0" x="0" y="0" width="320" height="568">
+<br>                <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0" x="0" y="0" width="320" height="568">
+<br>                    <XCUIElementTypeTable name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0" x="-8" y="-9" width="276" height="586">
+<br>                        <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/0" x="-8" y="-9" width="276" height="101">
+<br>                            <XCUIElementTypeStaticText name="测试功能点" label="测试功能点" value="测试功能点" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/0/0" x="5" y="-9" width="275" height="63">
+<br>                            </XCUIElementTypeStaticText>
+<br>                            <XCUIElementTypeStaticText name="本栏主要模拟sdk部分功能供测试人员验证" label="本栏主要模拟sdk部分功能供测试人员验证" value="本栏主要模拟sdk部分功能供测试人员验证" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/0/1" x="5" y="54" width="275" height="25">
+<br>                            </XCUIElementTypeStaticText>
+<br>                        </XCUIElementTypeOther>
+<br>                        <XCUIElementTypeCell name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/1" x="-8" y="91" width="276" height="51">
+<br>                            <XCUIElementTypeStaticText name="测试页面" label="测试页面" value="测试页面" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/1/0" x="11" y="91" width="238" height="51">
+<br>                            </XCUIElementTypeStaticText>
+<br>                        </XCUIElementTypeCell>
+<br>                        <XCUIElementTypeCell name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/2" x="-8" y="141" width="276" height="51">
+<br>                            <XCUIElementTypeStaticText name="回到主屏" label="回到主屏" value="回到主屏" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/2/0" x="11" y="141" width="238" height="51">
+<br>                            </XCUIElementTypeStaticText>
+<br>                        </XCUIElementTypeCell>
+<br>                        <XCUIElementTypeCell name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/3" x="-8" y="191" width="276" height="51">
+<br>                            <XCUIElementTypeStaticText name="拉取消息接口" label="拉取消息接口" value="拉取消息接口" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/3/0" x="11" y="191" width="238" height="51">
+<br>                            </XCUIElementTypeStaticText>
+<br>                        </XCUIElementTypeCell>
+<br>                        <XCUIElementTypeCell name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/4" x="-8" y="241" width="276" height="51">
+<br>                            <XCUIElementTypeStaticText name="清空全部消息数据" label="清空全部消息数据" value="清空全部消息数据" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/4/0" x="11" y="241" width="238" height="51">
+<br>                            </XCUIElementTypeStaticText>
+<br>                        </XCUIElementTypeCell>
+<br>                        <XCUIElementTypeCell name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/5" x="-8" y="291" width="276" height="51">
+<br>                            <XCUIElementTypeStaticText name="切换长登陆状态" label="切换长登陆状态" value="切换长登陆状态" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/5/0" x="11" y="291" width="238" height="51">
+<br>                            </XCUIElementTypeStaticText>
+<br>                        </XCUIElementTypeCell>
+<br>                        <XCUIElementTypeCell name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/6" x="-8" y="341" width="276" height="51">
+<br>                            <XCUIElementTypeStaticText name="获取宿主显示插件" label="获取宿主显示插件" value="获取宿主显示插件" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/6/0" x="11" y="341" width="238" height="51">
+<br>                            </XCUIElementTypeStaticText>
+<br>                        </XCUIElementTypeCell>
+<br>                        <XCUIElementTypeCell name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/7" x="-8" y="391" width="276" height="51">
+<br>                            <XCUIElementTypeStaticText name="查看埋点记录" label="查看埋点记录" value="查看埋点记录" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/7/0" x="11" y="391" width="238" height="51">
+<br>                            </XCUIElementTypeStaticText>
+<br>                        </XCUIElementTypeCell>
+<br>                        <XCUIElementTypeCell name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/8" x="-8" y="441" width="276" height="51">
+<br>                            <XCUIElementTypeStaticText name="删除埋点记录" label="删除埋点记录" value="删除埋点记录" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/8/0" x="11" y="441" width="238" height="51">
+<br>                            </XCUIElementTypeStaticText>
+<br>                        </XCUIElementTypeCell>
+<br>                        <XCUIElementTypeCell name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/9" x="-8" y="491" width="276" height="51">
+<br>                            <XCUIElementTypeStaticText name="清除曝光数据" label="清除曝光数据" value="清除曝光数据" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/9/0" x="11" y="491" width="238" height="51">
+<br>                            </XCUIElementTypeStaticText>
+<br>                        </XCUIElementTypeCell>
+<br>                        <XCUIElementTypeCell name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/10" x="-8" y="541" width="276" height="51">
+<br>                            <XCUIElementTypeStaticText name="超时测试" label="超时测试" value="超时测试" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/10/0" x="11" y="541" width="238" height="51">
+<br>                            </XCUIElementTypeStaticText>
+<br>                        </XCUIElementTypeCell>
+<br>                        <XCUIElementTypeCell name="" label="" value="" dom="" enabled="true" valid="true" visible="false" hint="" path="/0/0/0/0/0/11" x="-8" y="591" width="276" height="51">
+<br>                            <XCUIElementTypeStaticText name="测试Loading" label="测试Loading" value="测试Loading" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/11/0" x="0" y="0" width="190" height="40">
+<br>                            </XCUIElementTypeStaticText>
+<br>                        </XCUIElementTypeCell>
+<br>                        <XCUIElementTypeCell name="" label="" value="" dom="" enabled="true" valid="true" visible="false" hint="" path="/0/0/0/0/0/12" x="-8" y="641" width="276" height="51">
+<br>                            <XCUIElementTypeStaticText name="Q2主屏动画拉取" label="Q2主屏动画拉取" value="Q2主屏动画拉取" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/0/0/0/12/0" x="0" y="0" width="190" height="40">
+<br>                            </XCUIElementTypeStaticText>
+<br>                        </XCUIElementTypeCell>
+<br>                    </XCUIElementTypeTable>
+<br>                </XCUIElementTypeOther>
+<br>            </XCUIElementTypeOther>
+<br>            <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/1" x="0" y="0" width="320" height="568">
+<br>                <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/1/0" x="0" y="0" width="320" height="568">
+<br>                    <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/1/0/0" x="0" y="18" width="320" height="2">
+<br>                    </XCUIElementTypeOther>
+<br>                    <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/1/0/1" x="0" y="20" width="320" height="548">
+<br>                        <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/1/0/1/0" x="0" y="20" width="320" height="548">
+<br>                            <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/1/0/1/0/0" x="0" y="20" width="320" height="548">
+<br>                                <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/1/0/1/0/0/0" x="0" y="20" width="320" height="1414">
+<br>                                    <XCUIElementTypeOther name="收益5%-6%，明星产品，稳健首选！" label="收益5%-6%，明星产品，稳健首选！" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/1/0/1/0/0/0/0" x="0" y="20" width="320" height="1414">
+<br>                                        <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/1/0/1/0/0/0/0/0" x="0" y="20" width="320" height="369">
+<br>                                            <XCUIElementTypeLink name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/1/0/1/0/0/0/0/0/0" x="0" y="20" width="320" height="369">
+<br>                                                <XCUIElementTypeImage name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/1/0/1/0/0/0/0/0/0/0" x="0" y="20" width="320" height="369">
+<br>                                                </XCUIElementTypeImage>
+<br>                                            </XCUIElementTypeLink>
+<br>                                        </XCUIElementTypeOther>
+<br>                                        <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/1/0/1/0/0/0/0/1" x="0" y="389" width="320" height="156">
+<br>                                            <XCUIElementTypeLink name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/1/0/1/0/0/0/0/1/0" x="0" y="389" width="320" height="156">
+<br>                                                <XCUIElementTypeImage name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/1/0/1/0/0/0/0/1/0/0" x="0" y="389" width="320" height="156">
+<br>                                                </XCUIElementTypeImage>
+<br>                                            </XCUIElementTypeLink>
+<br>                                        </XCUIElementTypeOther>
+<br>                                        <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/1/0/1/0/0/0/0/2" x="0" y="545" width="320" height="358">
+<br>                                            <XCUIElementTypeLink name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/1/0/1/0/0/0/0/2/0" x="0" y="545" width="320" height="358">
+<br>                                                <XCUIElementTypeImage name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/1/0/1/0/0/0/0/2/0/0" x="0" y="545" width="320" height="358">
+<br>                                                </XCUIElementTypeImage>
+<br>                                            </XCUIElementTypeLink>
+<br>                                        </XCUIElementTypeOther>
+<br>                                        <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="false" hint="" path="/0/0/1/0/1/0/0/0/0/3" x="0" y="903" width="320" height="321">
+<br>                                            <XCUIElementTypeLink name="" label="" value="" dom="" enabled="true" valid="true" visible="false" hint="" path="/0/0/1/0/1/0/0/0/0/3/0" x="0" y="903" width="320" height="321">
+<br>                                                <XCUIElementTypeImage name="" label="" value="" dom="" enabled="true" valid="true" visible="false" hint="" path="/0/0/1/0/1/0/0/0/0/3/0/0" x="0" y="903" width="320" height="321">
+<br>                                                </XCUIElementTypeImage>
+<br>                                            </XCUIElementTypeLink>
+<br>                                        </XCUIElementTypeOther>
+<br>                                        <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="false" hint="" path="/0/0/1/0/1/0/0/0/0/4" x="0" y="1224" width="320" height="210">
+<br>                                            <XCUIElementTypeLink name="" label="" value="" dom="" enabled="true" valid="true" visible="false" hint="" path="/0/0/1/0/1/0/0/0/0/4/0" x="0" y="1224" width="320" height="210">
+<br>                                                <XCUIElementTypeImage name="" label="" value="" dom="" enabled="true" valid="true" visible="false" hint="" path="/0/0/1/0/1/0/0/0/0/4/0/0" x="0" y="1224" width="320" height="210">
+<br>                                                </XCUIElementTypeImage>
+<br>                                            </XCUIElementTypeLink>
+<br>                                        </XCUIElementTypeOther>
+<br>                                    </XCUIElementTypeOther>
+<br>                                </XCUIElementTypeOther>
+<br>                            </XCUIElementTypeOther>
+<br>                        </XCUIElementTypeOther>
+<br>                    </XCUIElementTypeOther>
+<br>                    <XCUIElementTypeButton name="closeButton" label="closeButton" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/0/1/0/2" x="271" y="23" width="44" height="44">
+<br>                    </XCUIElementTypeButton>
+<br>                </XCUIElementTypeOther>
+<br>            </XCUIElementTypeOther>
+<br>        </XCUIElementTypeWindow>
+<br>        <XCUIElementTypeWindow name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/1" x="0" y="0" width="320" height="568">
+<br>            <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/1/0" x="0" y="0" width="320" height="568">
+<br>            </XCUIElementTypeOther>
+<br>        </XCUIElementTypeWindow>
+<br>        <XCUIElementTypeWindow name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/2" x="0" y="0" width="320" height="568">
+<br>            <XCUIElementTypeStatusBar name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/2/0" x="0" y="0" width="320" height="20">
+<br>                <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/2/0/0" x="0" y="0" width="320" height="20">
+<br>                </XCUIElementTypeOther>
+<br>                <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/2/0/1" x="0" y="0" width="320" height="20">
+<br>                    <XCUIElementTypeOther name="" label="" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/2/0/1/0" x="6" y="0" width="39" height="20">
+<br>                    </XCUIElementTypeOther>
+<br>                    <XCUIElementTypeOther name="3 格 Wi-Fi 信号（共 3 格）" label="3 格 Wi-Fi 信号（共 3 格）" value="SSID" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/2/0/1/1" x="50" y="0" width="13" height="20">
+<br>                    </XCUIElementTypeOther>
+<br>                    <XCUIElementTypeOther name="11:03 AM" label="11:03 AM" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/2/0/1/2" x="135" y="0" width="55" height="20">
+<br>                    </XCUIElementTypeOther>
+<br>                    <XCUIElementTypeOther name="StandardLocationTrackingOn" label="位置跟踪已打开" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/2/0/1/3" x="267" y="0" width="9" height="20">
+<br>                    </XCUIElementTypeOther>
+<br>                    <XCUIElementTypeOther name="电池电量：-100%" label="电池电量：-100%" value="" dom="" enabled="true" valid="true" visible="true" hint="" path="/0/2/0/1/4" x="282" y="0" width="33" height="20">
+<br>                    </XCUIElementTypeOther>
+<br>                </XCUIElementTypeOther>
+<br>            </XCUIElementTypeStatusBar>
+<br>        </XCUIElementTypeWindow>
+<br>    </XCUIElementTypeApplication>
+<br></AppiumAUT></xmp> 
+<br>2016-12-30 11:03:10,564 : appOperate.py[line:224] [ ERROR ] 插件页面中不包含 5、此活动与苹果公司无关。,返回False
+<br>2016-12-30 11:03:10,564 : appOperate.py[line:236] [ DEBUG ] 关闭H5页面!
+<br>2016-12-30 11:03:10,564 : Element.py[line:234] [ DEBUG ] 隐式等待 3 秒
+<br>2016-12-30 11:03:11,113 : Element.py[line:59] [ DEBUG ] 查找id: closeButton
+<br>2016-12-30 11:03:11,762 : Element.py[line:59] [ DEBUG ] 查找id: closeButton
+<br>2016-12-30 11:03:13,141 : ReadApi.py[line:33] [ ERROR ] 检查插件
+<br>2016-12-30 11:03:13,141 : RunExcel.py[line:144] [ DEBUG ] ========================================================================================================================
+<br>2016-12-30 11:03:13,142 : RunExcel.py[line:146] [ DEBUG ] 当前用例:检查插件:PA02100000000_02_KY ,执行结果: FAIL
+<br>2016-12-30 11:03:13,142 : RunExcel.py[line:147] [ DEBUG ] ========================================================================================================================
+<br>2016-12-30 11:03:13,142 : RunExcel.py[line:166] [ DEBUG ] 测试用例:检查插件:PA02100000000_02_KY ,执行结束
+</div>
+
+</div>
+</div>
+</td>
+<td align="middle">PASS</td>
+
+</tr>
+</table>
+</body>
+</html>

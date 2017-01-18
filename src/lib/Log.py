@@ -36,53 +36,69 @@ PATH = lambda p: os.path.abspath(
 # 		return MyLog.log
 device = S.device
 udid = device['udid']
+# udid = '0316032597351f04'
 class LogSignleton(object):
-	def __init__(self):
-		'''单例模式'''
-		pass
+	def __init__(self,device):
+		# self.udid = device['udid']
+		# print '*'*80
+		# print '* [', __name__, '::', LogSignleton.__init__.__name__, '] :', ' udid = ', udid
+		self.log_filename = (read_config('logger','log_file')).format(udid)
+		self.max_bytes_each = int(read_config('logger', 'max_bytes_each'))
+		self.backup_count = int(read_config('logger', 'backup_count'))
+		self.format = read_config('logger', 'format')
+		self.log_level_in_console = int(read_config('logger', 'log_level_in_console'))
+		self.log_level_in_logfile = int(read_config('logger', 'log_level_in_logfile'))
+		self.logger_name = read_config('logger', 'logger_name')
+		self.console_log_on = int(read_config('logger', 'console_log_on'))
+		self.logfile_log_on = int(read_config('logger', 'logfile_log_on'))
+		self.handles_mode = int(read_config('logger', 'handles_mode'))
+		self.rw_mode = str(read_config('logger', 'rw_mode'))
+		self.logger = logging.getLogger(self.log_filename)
+		self.__config_logger()
 
-	def __new__(cls):
+	# def __new__(cls):
+	# 	'''单例模式'''
+	# 	# mutex = threading.Lock()
+	# 	# mutex.acquire() #上锁,防止多线程下出问题
+	# 	if not hasattr(cls,'instance'):
+	# 		cls.instance = super(LogSignleton,cls).__new__(cls)
+	# 		cls.instance.udid = S.device['udid']
+	# 		cls.instance.log_filename = (read_config('logger','log_file')).format(cls.instance.udid)
+	# 		# if cls.instance.log_filename is not None: # 判断是否为目录
+	# 		# 	try:
+	# 		# 		# 返回的是文件名,不包括前面的路径
+	# 		# 		filename = os.path.basename(cls.instance.log_filename)
+	# 		# 		# 返回的是目录名,不包括文件名
+	# 		# 		filepath = os.path.dirname(cls.instance.log_filename)
+	# 		# 		print filepath
+	# 		# 		# splitext:分离文件名和后缀 split:分离文件路径和文件
+	# 		# 		parent_path, ext = os.path.splitext(filename)
+	# 		# 		# 定义时间显示格式
+	# 		# 		tm = time.strftime('%Y%m%d%H%M%S', time.localtime())
+	# 		# 		# 重新组装日志文件名
+	# 		# 		filename = parent_path + '_' + tm + ext
+	# 		# 		cls.instance.log_filename = filepath + '/' + filename
+	# 		# 	except Exception:
+	# 		# 		raise
+	# 		cls.instance.max_bytes_each = int(read_config('logger','max_bytes_each'))
+	# 		cls.instance.backup_count = int(read_config('logger','backup_count'))
+	# 		cls.instance.format = read_config('logger','format')
+	# 		cls.instance.log_level_in_console = int(read_config('logger','log_level_in_console'))
+	# 		cls.instance.log_level_in_logfile = int(read_config('logger','log_level_in_logfile'))
+	# 		cls.instance.logger_name = read_config('logger','logger_name')
+	# 		cls.instance.console_log_on = int(read_config('logger','console_log_on'))
+	# 		cls.instance.logfile_log_on = int(read_config('logger','logfile_log_on'))
+	# 		cls.instance.handles_mode = int(read_config('logger','handles_mode'))
+	# 		cls.instance.rw_mode = str(read_config('logger','rw_mode'))
+	# 		cls.instance.logger = logging.getLogger(cls.instance.logger_name)
+	# 		cls.instance.__config_logger()
+	# 	# mutex.release() #释放锁
+	# 	return cls.instance
 
-		mutex = threading.Lock()
-		mutex.acquire() #上锁,防止多线程下出问题
-		if not hasattr(cls,'instance'):
-			cls.instance = super(LogSignleton,cls).__new__(cls)
-			# cls.instance.log_filename = read_config('logger','log_file')
-			
-			cls.instance.log_filename = (read_config('logger','log_file')).format(udid)
-			# if cls.instance.log_filename is not None: # 判断是否为目录
-			# 	try:
-			# 		# 返回的是文件名,不包括前面的路径
-			# 		filename = os.path.basename(cls.instance.log_filename)
-			# 		# 返回的是目录名,不包括文件名
-			# 		filepath = os.path.dirname(cls.instance.log_filename)
-			# 		print filepath
-			# 		# splitext:分离文件名和后缀 split:分离文件路径和文件
-			# 		parent_path, ext = os.path.splitext(filename)
-			# 		# 定义时间显示格式
-			# 		tm = time.strftime('%Y%m%d%H%M%S', time.localtime())
-			# 		# 重新组装日志文件名
-			# 		filename = parent_path + '_' + tm + ext
-			# 		cls.instance.log_filename = filepath + '/' + filename
-			# 	except Exception:
-			# 		raise
-			cls.instance.max_bytes_each = int(read_config('logger','max_bytes_each'))
-			cls.instance.backup_count = int(read_config('logger','backup_count'))
-			cls.instance.format = read_config('logger','format')
-			cls.instance.log_level_in_console = int(read_config('logger','log_level_in_console'))
-			cls.instance.log_level_in_logfile = int(read_config('logger','log_level_in_logfile'))
-			cls.instance.logger_name = read_config('logger','logger_name')
-			cls.instance.console_log_on = int(read_config('logger','console_log_on'))
-			cls.instance.logfile_log_on = int(read_config('logger','logfile_log_on'))
-			cls.instance.handles_mode = int(read_config('logger','handles_mode'))
-			cls.instance.rw_mode = str(read_config('logger','rw_mode'))
-			cls.instance.logger = logging.getLogger(cls.instance.logger_name)
-			cls.instance.__config_logger()
-		mutex.release() #释放锁
-		return cls.instance
-
-	def get_logger(self):
-		return logging.getLogger(self.logger_name)
+	# def get_logger(self):
+	# 	self.logger =  logging.getLogger(self.logger_name)
+		
+		# return self.logger
 
 	def __config_logger(self):
 		fmt = self.format.replace('|','%')
@@ -170,8 +186,8 @@ class LogSignleton(object):
 		#
 		# def get_log_path(self):
 		# 	return self.log_file
-	@classmethod
-	def get_filter_log(cls,casename, start_filter='', end_fileter=''):
+	@staticmethod
+	def get_filter_log(casename, start_filter='', end_fileter=''):
 		'''
 		:desc:过滤日志,通过指定的日志路径logpath,开始过滤关键字:start_filter,结束关键字:end_fileter,过滤出日志并重新写入
 			到以测试用例名称:casename 命名的日志路径中
@@ -246,8 +262,8 @@ class LogSignleton(object):
 
 
 if __name__ == '__main__':
-
-	LogSignleton.get_filter_log('登录_1000','测试用例:登录_1000 ,执行开始','测试用例:登录_1000 ,执行结束')
+	pass
+	# LogSignleton.get_filter_log('登录_1000','测试用例:登录_1000 ,执行开始','测试用例:登录_1000 ,执行结束')
 
 	
 	

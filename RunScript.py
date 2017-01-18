@@ -28,7 +28,3 @@ def run_pytest():
 	# from src.lib.Utils import Utils
 	# utils = Utils()
 	# utils.cmd_subprocess(cmd1)
-
-
-# if __name__ == '__main__':
-# 	run_pytest()

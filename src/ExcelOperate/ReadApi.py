@@ -8,20 +8,20 @@
 import time
 import unittest
 from ReadElement import ReadElement
-from conf.Run_conf import read_config
+# from conf.Run_conf import read_config
 from src.Public.Common import operate_api
 from src.Public.Common import resultClass
 from src.Public.appOperate import AppOperate
 from src.lib.Element import Element
+from src.Public.Global import L,S
 
-from src.Public.Global import L
 # logger = L.logger
 class ReadApi(unittest.TestCase):
-	def __init__(self):
-		self.platformName = read_config('appium', 'platformName')
-		self.appOperate = AppOperate()
-		self.wd = Element()
-		self.readElement = ReadElement()
+	def __init__(self,driver):
+		self.platformName = S.device['platformName']
+		self.appOperate = AppOperate(driver)
+		self.wd = Element(driver)
+		self.readElement = ReadElement(driver)
 		
 	def readApiList(self,case_list=[]): #case_list是一维数组
 		L.logger.debug('case_list :%s' % case_list)
@@ -57,6 +57,8 @@ class ReadApi(unittest.TestCase):
 		            operate_api.click:lambda :self.appOperate.click(self.readElement.find_element(self.readElement.read_element_text(case_list[5])),case_list[2]),
 		            operate_api.swipe2left:lambda :self.wd.swipe_left(),
 		            operate_api.swipe2right:lambda :self.wd.swipe_right(),
+					operate_api.swipe2up: lambda: self.wd.swipe_up(),
+					operate_api.swipe2down: lambda: self.wd.swipe_down(),
 		            operate_api.hidekeyboard:lambda :self.wd.hide_keyboard(case_list[7]),
 		            operate_api.waitFortext:lambda :self.appOperate.wait_for_text(int(case_list[7]),case_list[6]),
 		            operate_api.sleep:lambda :time.sleep(int(case_list[7])),

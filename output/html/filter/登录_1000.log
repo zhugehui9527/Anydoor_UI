@@ -1,0 +1,33 @@
+<br>2016-12-29 09:49:54,325 : RunExcel.py[line:112] [ DEBUG ] 测试用例:登录_1000 ,执行开始
+<br>2016-12-29 09:49:54,326 : RunExcel.py[line:55] [ DEBUG ] callPublicCase 执行中
+<br>2016-12-29 09:49:54,327 : RunExcel.py[line:81] [ DEBUG ] 公共案例库中存在此方法: SwipeToClickPersonalCenter
+<br>2016-12-29 09:49:54,327 : ReadApi.py[line:34] [ DEBUG ] case_list :[u'SwipeToClickPersonalCenter', 1.0, u'\u5411\u53f3\u6ed1\u52a8', u'swipe2right', u'', u'', u'', u'']
+<br>2016-12-29 09:49:54,327 : ReadApi.py[line:57] [ DEBUG ] callApi执行中
+<br>2016-12-29 09:49:54,327 : ReadApi.py[line:78] [ DEBUG ] Action_Keyword 操作:[ swipe2right ]
+<br>2016-12-29 09:49:54,327 : Element.py[line:145] [ DEBUG ] 获取当前窗口大小
+<br>2016-12-29 09:49:54,500 : Element.py[line:185] [ DEBUG ] 向右滑动,起始滑动坐标: (64,454),坐标偏移量(192,0)
+<br>2016-12-29 09:49:57,236 : ReadApi.py[line:34] [ DEBUG ] case_list :[u'', 2.0, u'\u7b49\u5f85\u6587\u672c\u663e\u793a\uff08\u4e2a\u4eba\u4e2d\u5fc3\uff09', u'waitFortext', u'', u'', u'\u4e2a\u4eba\u4e2d\u5fc3', u'30']
+<br>2016-12-29 09:49:57,237 : ReadApi.py[line:57] [ DEBUG ] callApi执行中
+<br>2016-12-29 09:49:57,237 : ReadApi.py[line:78] [ DEBUG ] Action_Keyword 操作:[ waitFortext ]
+<br>2016-12-29 09:49:57,237 : appOperate.py[line:349] [ DEBUG ] 开始轮询元素: 个人中心
+<br>2016-12-29 09:49:57,237 : Element.py[line:238] [ DEBUG ] 获取 page_source
+<br>2016-12-29 09:49:59,564 : appOperate.py[line:358] [ DEBUG ] 界面存在此元素:[ 个人中心 ]
+<br>2016-12-29 09:49:59,564 : ReadApi.py[line:34] [ DEBUG ] case_list :[u'', 3.0, u'\u70b9\u51fb\u5de6\u5c4f\u4e2a\u4eba\u4e2d\u5fc3', u'click', u'', u'\u4e2a\u4eba\u4e2d\u5fc3', u'', u'']
+<br>2016-12-29 09:49:59,564 : ReadApi.py[line:57] [ DEBUG ] callApi执行中
+<br>2016-12-29 09:49:59,564 : ReadApi.py[line:78] [ DEBUG ] Action_Keyword 操作:[ click ]
+<br>2016-12-29 09:49:59,564 : ReadElement.py[line:65] [ DEBUG ] 元素表中存在此元素: 个人中心
+<br>2016-12-29 09:49:59,564 : ReadElement.py[line:34] [ DEBUG ] element_list : [u'\u4e2a\u4eba\u4e2d\u5fc3', u'xpath', u"//android.widget.TextView[@text='\u4e2a\u4eba\u4e2d\u5fc3']", u'', u'id', u'\u4e2a\u4eba\u4e2d\u5fc3', u'']
+<br>2016-12-29 09:49:59,564 : ReadElement.py[line:39] [ DEBUG ] operate_type: id
+<br>2016-12-29 09:49:59,564 : ReadElement.py[line:40] [ DEBUG ] operate_value: 个人中心
+<br>2016-12-29 09:49:59,565 : ReadElement.py[line:41] [ DEBUG ] operate_index: 
+<br>2016-12-29 09:49:59,565 : FindElementBy.py[line:30] [ DEBUG ] 调用查找元素方法: find_element
+<br>2016-12-29 09:50:00,224 : Element.py[line:59] [ DEBUG ] 查找id: 个人中心
+<br>2016-12-29 09:50:00,224 : appOperate.py[line:376] [ DEBUG ] 点击左屏个人中心
+<br>2016-12-29 09:50:01,430 : ReadApi.py[line:34] [ DEBUG ] case_list :[u'', 4.0, u'\u5ef6\u8fdf\u7b49\u5f85', u'sleep', u'', u'', u'', u'5']
+<br>2016-12-29 09:50:01,430 : ReadApi.py[line:57] [ DEBUG ] callApi执行中
+<br>2016-12-29 09:50:01,430 : ReadApi.py[line:78] [ DEBUG ] Action_Keyword 操作:[ sleep ]
+<br>2016-12-29 09:50:06,434 : RunExcel.py[line:120] [ DEBUG ] 公共案例库执行记录: [u'SwipeToClickPersonalCenter', 'PASS', 'PASS', 'PASS', 'PASS']
+<br>2016-12-29 09:50:06,435 : RunExcel.py[line:128] [ DEBUG ] ========================================================================================================================
+<br>2016-12-29 09:50:06,435 : RunExcel.py[line:129] [ DEBUG ] 当前用例:登录_1000 ,执行结果: PASS
+<br>2016-12-29 09:50:06,436 : RunExcel.py[line:130] [ DEBUG ] ========================================================================================================================
+<br>2016-12-29 09:50:06,436 : RunExcel.py[line:165] [ DEBUG ] 测试用例:登录_1000 ,执行结束

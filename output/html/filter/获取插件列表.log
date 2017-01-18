@@ -1,0 +1,55 @@
+<br>2016-12-29 09:50:57,223 : RunExcel.py[line:112] [ DEBUG ] 测试用例:获取插件列表 ,执行开始
+<br>2016-12-29 09:50:57,224 : ReadApi.py[line:34] [ DEBUG ] case_list :[u'\u83b7\u53d6\u63d2\u4ef6\u5217\u8868', 1.0, u'\u83b7\u53d6\u63d2\u4ef6\u5217\u8868', u'getPluginList', u'', u'', u'', u'']
+<br>2016-12-29 09:50:57,224 : ReadApi.py[line:57] [ DEBUG ] callApi执行中
+<br>2016-12-29 09:50:57,224 : ReadApi.py[line:78] [ DEBUG ] Action_Keyword 操作:[ getPluginList ]
+<br>2016-12-29 09:50:57,224 : appOperate.py[line:287] [ DEBUG ] 开始获取插件列表。。。
+<br>2016-12-29 09:50:57,460 : appOperate.py[line:290] [ DEBUG ] 当前插件总数: 44
+<br>2016-12-29 09:50:57,460 : appOperate.py[line:291] [ DEBUG ] 当前插件列表: 
+<br>2016-12-29 09:50:57,460 : appOperate.py[line:295] [ DEBUG ] 平安地图---PA01100000000_02_PAZB---H
+<br>2016-12-29 09:50:57,460 : appOperate.py[line:295] [ DEBUG ] 模拟炒股---PA01100000000_02_WLC---H
+<br>2016-12-29 09:50:57,460 : appOperate.py[line:295] [ DEBUG ] 个人中心---PA01100000000_02_GRZX---Y
+<br>2016-12-29 09:50:57,460 : appOperate.py[line:295] [ DEBUG ] 看直播---PA00500000000_02_GSZB---N
+<br>2016-12-29 09:50:57,461 : appOperate.py[line:295] [ DEBUG ] 活动集合---PA01100000000_02_HDJHY---H
+<br>2016-12-29 09:50:57,461 : appOperate.py[line:295] [ DEBUG ] 找网点---PA01100000001_02_WDCX---N
+<br>2016-12-29 09:50:57,461 : appOperate.py[line:295] [ DEBUG ] 十元电影---PA01100000001_02_XYK---H
+<br>2016-12-29 09:50:57,461 : appOperate.py[line:295] [ DEBUG ] 买航意险---PA01100000000_02_YYG---N
+<br>2016-12-29 09:50:57,461 : appOperate.py[line:295] [ DEBUG ] 房按揭---PA03300000000_02_AJDK---Y
+<br>2016-12-29 09:50:57,461 : appOperate.py[line:295] [ DEBUG ] 在线投资---PA02500000000_02_TZLC---N
+<br>2016-12-29 09:50:57,461 : appOperate.py[line:295] [ DEBUG ] 1220---PA02100000001_02_JF---Y
+<br>2016-12-29 09:50:57,461 : appOperate.py[line:295] [ DEBUG ] 平安好贷---PA01200000000_02_XYD---N
+<br>2016-12-29 09:50:57,461 : appOperate.py[line:295] [ DEBUG ] 应急钱包---PA02100000000_02_YJQB---N
+<br>2016-12-29 09:50:57,461 : appOperate.py[line:295] [ DEBUG ] 爆款理财---PA02100000000_02_KY---N
+<br>2016-12-29 09:50:57,461 : appOperate.py[line:295] [ DEBUG ] 活期盈---PA02100000000_02_HQY---H
+<br>2016-12-29 09:50:57,462 : appOperate.py[line:295] [ DEBUG ] 查号码---PA00800000000_02_PACX---N
+<br>2016-12-29 09:50:57,462 : appOperate.py[line:295] [ DEBUG ] 财富宝---PA00400000000_02_CFBXZZC---H
+<br>2016-12-29 09:50:57,462 : appOperate.py[line:295] [ DEBUG ] 精品特卖---PA01100000000_02_RYG---H
+<br>2016-12-29 09:50:57,462 : appOperate.py[line:295] [ DEBUG ] 融e贷---PA00500000000_02_RED---N
+<br>2016-12-29 09:50:57,462 : appOperate.py[line:295] [ DEBUG ] 资产查询---PA01100000000_02_ZCCX---Y
+<br>2016-12-29 09:50:57,462 : appOperate.py[line:295] [ DEBUG ] 意见反馈---PA01100000000_02_YHFK---N
+<br>2016-12-29 09:50:57,462 : appOperate.py[line:295] [ DEBUG ] 财富礼包---PA02100000000_02_JNHPS---N
+<br>2016-12-29 09:50:57,462 : appOperate.py[line:295] [ DEBUG ] 网点地图---PA01100000003_02_WDCX---N
+<br>2016-12-29 09:50:57,462 : appOperate.py[line:295] [ DEBUG ] 薪易通---SZDBK00000000_02_XYT---N
+<br>2016-12-29 09:50:57,463 : appOperate.py[line:295] [ DEBUG ] 我的资产---PA02100000000_02_WDZC---Y
+<br>2016-12-29 09:50:57,463 : appOperate.py[line:295] [ DEBUG ] 平安易贷 ---PA02100000000_02_PAYD---N
+<br>2016-12-29 09:50:57,463 : appOperate.py[line:295] [ DEBUG ] 平安游戏---PA02700000000_02_PAYX---Y
+<br>2016-12-29 09:50:57,463 : appOperate.py[line:295] [ DEBUG ] 电影票---PA02100000000_02_DYP---H
+<br>2016-12-29 09:50:57,463 : appOperate.py[line:295] [ DEBUG ] 房估值---PA02100000000_02_FGZ---Y
+<br>2016-12-29 09:50:57,463 : appOperate.py[line:295] [ DEBUG ] 车估值---PA02100000000_02_CGZ---Y
+<br>2016-12-29 09:50:57,463 : appOperate.py[line:295] [ DEBUG ] 财经快讯---PA02100000000_02_CJKX---N
+<br>2016-12-29 09:50:57,463 : appOperate.py[line:295] [ DEBUG ] 买保尊宝---PA02500000000_02_BZB---Y
+<br>2016-12-29 09:50:57,463 : appOperate.py[line:295] [ DEBUG ] 大麦若叶---PA02100000000_02_AJGCS---N
+<br>2016-12-29 09:50:57,463 : appOperate.py[line:295] [ DEBUG ] 潘多拉---PA02100000000_02_CS3---N
+<br>2016-12-29 09:50:57,463 : appOperate.py[line:295] [ DEBUG ] 平安易贷---PA02100000000_02_XEDK---N
+<br>2016-12-29 09:50:57,463 : appOperate.py[line:295] [ DEBUG ] 亲子礼包---PA02100000000_02_JNHRS---N
+<br>2016-12-29 09:50:57,463 : appOperate.py[line:295] [ DEBUG ] 签到个人---PA02100000000_02_HDCS---N
+<br>2016-12-29 09:50:57,463 : appOperate.py[line:295] [ DEBUG ] 领话费---PA02100000000_02_JNHJK---N
+<br>2016-12-29 09:50:57,463 : appOperate.py[line:295] [ DEBUG ] 保险超市---PA01100000000_02_BXCS---H
+<br>2016-12-29 09:50:57,464 : appOperate.py[line:295] [ DEBUG ] 消息中心---PA01100000000_02_XXZX_F---H
+<br>2016-12-29 09:50:57,464 : appOperate.py[line:295] [ DEBUG ] 财神送礼---PA01100000000_02_LHBLC---H
+<br>2016-12-29 09:50:57,464 : appOperate.py[line:295] [ DEBUG ] 蜂蜜---PA02100000001_02_HDCS---N
+<br>2016-12-29 09:50:57,464 : appOperate.py[line:295] [ DEBUG ] 领流量---PA02100000000_02_KXJ1---N
+<br>2016-12-29 09:50:57,464 : appOperate.py[line:295] [ DEBUG ] 股票组合---PA00500000000_02_GPZH---N
+<br>2016-12-29 09:50:57,464 : RunExcel.py[line:143] [ DEBUG ] ========================================================================================================================
+<br>2016-12-29 09:50:57,464 : RunExcel.py[line:145] [ DEBUG ] 当前用例:获取插件列表 ,执行结果: PASS
+<br>2016-12-29 09:50:57,464 : RunExcel.py[line:146] [ DEBUG ] ========================================================================================================================
+<br>2016-12-29 09:50:57,464 : RunExcel.py[line:165] [ DEBUG ] 测试用例:获取插件列表 ,执行结束

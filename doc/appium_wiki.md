@@ -9,10 +9,12 @@
 * 开源地址:[点我](https://github.com/appium/appium)
 
 ### 安装方法
-
+#### mac与Linux安装方法
 * 1: npm install -g cnpm --registry=https://registry.npm.taobao.org
 
 * 2: cnpm install -g appium --no-cache
+#### mac比较全的安装方法
+* mac 安装文档:[点我](https://testerhome.com/topics/6962)
 
 ### WebDriverAgent(wda)
 

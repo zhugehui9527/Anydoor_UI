@@ -1,15 +1,15 @@
 # -*- coding:utf-8 -*-
 #######################################################
-# filename:self.driver.py
+# filename:self.Driver.py
 # author:Jeff
 # date:2016-09-21
 # function:对日志进行操作处理
 #######################################################
-import sys
+import sys,time
 import unittest
 import pytest
 from conf.Run_conf import read_config
-from src.Public.Global import L
+from src.Public.Global import L,D
 from src.Public.appOperate import AppOperate
 from src.lib.Element import Element
 
@@ -24,8 +24,9 @@ class Anydoor_UI(unittest.TestCase):
 		setup class
 		:return:
 		'''
-		cls.driver = Element()
-		cls.appOperate = AppOperate()
+		driver = D.driver
+		cls.driver = Element(driver)
+		cls.appOperate = AppOperate(driver)
 		cls.username = read_config('login', 'login_username')
 		cls.password = read_config('login', 'login_password')
 		L.logger.debug('测试用例即将执行,初始化工作')
@@ -35,34 +36,41 @@ class Anydoor_UI(unittest.TestCase):
 		teardown class
 		:return:
 		'''
-		# cls.driver.close_app()
+		cls.driver.close_app()
 		cls.driver.quit()
 		L.logger.debug('测试用例执行完成,退出服务')
 	
-	# """
+	
 	def test_A1(self):
 		'''用例名称:宿主一账通H5登录'''
-		L.logger.debug('向右滑动,进入个人中心')
-		self.driver.swipe_right()
-		L.logger.debug('H5页面进行账密登录')
-		# L.logger.debug('账户: %s' % self.username)
-		# L.logger.debug('密码: %s' % self.password)
+		
 		self.appOperate.loginByH5(self.username, self.password)
+		time.sleep(3)
 		loginResult = self.appOperate.wait_for_text(30, '我的订单')
 		self.appOperate.closeH5()
+		time.sleep(3)
 		self.driver.swipe_left()
 		self.assertTrue(loginResult, '登陆成功')
 	
 	def test_A2(self):
 		'''用例名称:获取插件列表'''
 		self.appOperate.getPluginList()
+		time.sleep(3)
 	
+	
+	# def test_B1(self):
+	# 	'''用例名称: 检查插件,插件名称: 买航意险,插件ID: PA01100000000_02_YYG,插件断言: 立即投保 '''
+	# 	pluginId = 'PA01100000000_02_YYG'
+	# 	L.logger.debug('遍历插件,插件ID: %s' % pluginId)
+	# 	self.assertTrue(self.appOperate.check_plugin(pluginId, '1元GO'), '插件: %s 断言失败' % pluginId)
+	
+
 	def test_A3(self):
 		'''用例名称: 检查插件,插件名称: 平安地图,插件ID: PA01100000000_02_PAZB ,插件断言: 加油站 '''
 		pluginId = 'PA01100000000_02_PAZB'
 		L.logger.debug('遍历插件,插件ID: %s' % pluginId)
 		self.assertTrue(self.appOperate.check_plugin(pluginId, '加油站'), '插件: %s 断言失败' % pluginId)  # 进行断言
-	
+	"""
 	def test_A4(self):
 		'''用例名称: 检查插件,插件名称: 模拟炒股,插件ID: PA01100000000_02_WLC ,插件断言: 值得买 '''
 		pluginId = 'PA01100000000_02_WLC'

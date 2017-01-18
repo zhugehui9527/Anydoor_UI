@@ -1,0 +1,25 @@
+<br>2016-12-29 09:50:57,526 : RunExcel.py[line:112] [ DEBUG ] 测试用例:检查插件:PA01100000000_02_PAZB ,执行开始
+<br>2016-12-29 09:50:57,526 : ReadApi.py[line:34] [ DEBUG ] case_list :[u'\u68c0\u67e5\u63d2\u4ef6:PA01100000000_02_PAZB', 1.0, u'\u68c0\u67e5\u63d2\u4ef6', u'assertTrueCheckPlugin', u'', u'', u'PA01100000000_02_PAZB', u'\u52a0\u6cb9\u7ad9']
+<br>2016-12-29 09:50:57,526 : ReadApi.py[line:57] [ DEBUG ] callApi执行中
+<br>2016-12-29 09:50:57,526 : ReadApi.py[line:78] [ DEBUG ] Action_Keyword 操作:[ assertTrueCheckPlugin ]
+<br>2016-12-29 09:50:57,526 : appOperate.py[line:176] [ DEBUG ] 开始检查插件: PA01100000000_02_PAZB
+<br>2016-12-29 09:50:57,526 : appOperate.py[line:349] [ DEBUG ] 开始轮询元素: PA01100000000_02_PAZB
+<br>2016-12-29 09:50:57,526 : Element.py[line:238] [ DEBUG ] 获取 page_source
+<br>2016-12-29 09:51:00,104 : appOperate.py[line:358] [ DEBUG ] 界面存在此元素:[ PA01100000000_02_PAZB ]
+<br>2016-12-29 09:51:00,104 : appOperate.py[line:178] [ DEBUG ] 找到插件:PA01100000000_02_PAZB ,准备点击
+<br>2016-12-29 09:51:00,643 : Element.py[line:59] [ DEBUG ] 查找id: PA01100000000_02_PAZB
+<br>2016-12-29 09:51:01,126 : appOperate.py[line:182] [ DEBUG ] 当前插件是否显示: True
+<br>2016-12-29 09:51:01,677 : Element.py[line:59] [ DEBUG ] 查找id: PA01100000000_02_PAZB
+<br>2016-12-29 09:51:02,676 : Element.py[line:59] [ DEBUG ] 查找id: PA01100000000_02_PAZB
+<br>2016-12-29 09:51:10,989 : Element.py[line:234] [ DEBUG ] 隐式等待 10 秒
+<br>2016-12-29 09:51:11,002 : appOperate.py[line:219] [ DEBUG ] 判断插件页面,是否包含: 加油站
+<br>2016-12-29 09:51:11,002 : appOperate.py[line:349] [ DEBUG ] 开始轮询元素: 加油站
+<br>2016-12-29 09:51:11,002 : Element.py[line:238] [ DEBUG ] 获取 page_source
+<br>2016-12-29 09:51:15,771 : appOperate.py[line:358] [ DEBUG ] 界面存在此元素:[ 加油站 ]
+<br>2016-12-29 09:51:15,771 : appOperate.py[line:221] [ DEBUG ] 插件页面中包含 加油站,返回True
+<br>2016-12-29 09:51:15,772 : appOperate.py[line:236] [ DEBUG ] 关闭H5页面!
+<br>2016-12-29 09:51:19,746 : Element.py[line:90] [ DEBUG ] 查找 xpath: //XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeButton[1]
+<br>2016-12-29 09:51:21,181 : RunExcel.py[line:143] [ DEBUG ] ========================================================================================================================
+<br>2016-12-29 09:51:21,181 : RunExcel.py[line:145] [ DEBUG ] 当前用例:检查插件:PA01100000000_02_PAZB ,执行结果: PASS
+<br>2016-12-29 09:51:21,182 : RunExcel.py[line:146] [ DEBUG ] ========================================================================================================================
+<br>2016-12-29 09:51:21,182 : RunExcel.py[line:165] [ DEBUG ] 测试用例:检查插件:PA01100000000_02_PAZB ,执行结束

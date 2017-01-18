@@ -1,0 +1,28 @@
+2016-12-15 17:11:59,903 : RunExcel.py[line:117] [ DEBUG ] 测试用例:检查插件:PA01100000000_02_WLC ,执行开始
+<br>2016-12-15 17:11:59,903 : ReadApi.py[line:34] [ DEBUG ] case_list :[u'\u68c0\u67e5\u63d2\u4ef6:PA01100000000_02_WLC', 1.0, u'\u68c0\u67e5\u63d2\u4ef6', u'assertTrueCheckPlugin', u'', u'', u'PA01100000000_02_WLC', u'\u503c\u5f97\u4e70']
+<br>2016-12-15 17:11:59,903 : ReadApi.py[line:57] [ DEBUG ] callApi执行中
+<br>2016-12-15 17:11:59,903 : ReadApi.py[line:78] [ DEBUG ] Action_Keyword 操作:[ assertTrueCheckPlugin ]
+<br>2016-12-15 17:11:59,904 : appOperate.py[line:180] [ DEBUG ] 开始检查插件: PA01100000000_02_WLC
+<br>2016-12-15 17:11:59,904 : appOperate.py[line:353] [ DEBUG ] 开始轮询元素: PA01100000000_02_WLC
+<br>2016-12-15 17:11:59,904 : Element.py[line:231] [ DEBUG ] 获取 page_source
+<br>2016-12-15 17:13:05,256 : appOperate.py[line:362] [ DEBUG ] 界面存在此元素:[ PA01100000000_02_WLC ]
+<br>2016-12-15 17:13:05,258 : appOperate.py[line:182] [ DEBUG ] 找到插件:PA01100000000_02_WLC ,准备点击
+<br>2016-12-15 17:13:05,701 : Element.py[line:52] [ DEBUG ] 查找id: PA01100000000_02_WLC
+<br>2016-12-15 17:13:06,081 : appOperate.py[line:186] [ DEBUG ] 当前插件是否显示: True
+<br>2016-12-15 17:13:06,859 : Element.py[line:52] [ DEBUG ] 查找id: PA01100000000_02_WLC
+<br>2016-12-15 17:13:07,573 : Element.py[line:52] [ DEBUG ] 查找id: PA01100000000_02_WLC
+<br>2016-12-15 17:13:15,823 : Element.py[line:227] [ DEBUG ] 隐式等待 10 秒
+<br>2016-12-15 17:13:15,828 : appOperate.py[line:223] [ DEBUG ] 判断插件页面,是否包含: 值得买
+<br>2016-12-15 17:13:15,828 : appOperate.py[line:353] [ DEBUG ] 开始轮询元素: 值得买
+<br>2016-12-15 17:13:15,829 : Element.py[line:231] [ DEBUG ] 获取 page_source
+<br>2016-12-15 17:13:20,021 : appOperate.py[line:362] [ DEBUG ] 界面存在此元素:[ 值得买 ]
+<br>2016-12-15 17:13:20,022 : appOperate.py[line:225] [ DEBUG ] 插件页面中包含 值得买,返回True
+<br>2016-12-15 17:13:20,022 : appOperate.py[line:240] [ DEBUG ] 关闭H5页面!
+<br>2016-12-15 17:13:20,022 : Element.py[line:227] [ DEBUG ] 隐式等待 3 秒
+<br>2016-12-15 17:13:22,480 : Element.py[line:52] [ DEBUG ] 查找id: closeButton
+<br>2016-12-15 17:13:24,195 : Element.py[line:52] [ DEBUG ] 查找id: closeButton
+<br>2016-12-15 17:13:27,179 : RunExcel.py[line:149] [ DEBUG ] ========================================================================================================================
+<br>2016-12-15 17:13:27,179 : RunExcel.py[line:151] [ DEBUG ] 当前用例:检查插件:PA01100000000_02_WLC ,执行结果: PASS
+<br>2016-12-15 17:13:27,179 : RunExcel.py[line:152] [ DEBUG ] ========================================================================================================================
+<br>2016-12-15 17:13:27,179 : RunExcel.py[line:168] [ DEBUG ] 测试用例:检查插件:PA01100000000_02_WLC ,执行结束
+<br>
