@@ -41,7 +41,7 @@ class Element:
             return self.driver.find_element(*loc)
         except:
             L.logger.warning('%s 查找超时,未找到元素 : %s' % (self,loc))
-            return
+            return False
 
     # 重新封装find_elements
     def find_elements(self, loc, wait=pc.time2wait):
@@ -60,11 +60,11 @@ class Element:
             return
         
     def find_element_orign(self,by,value):
-        L.logger.debug('查找元素: %s, %s' % (by,value))
+        L.logger.info('查找元素: %s, %s' % (by,value))
         return self.driver.find_element(by,value)
     
     def find_elements_orign(self,loc):
-        L.logger.debug('查找元素: %s' % loc)
+        L.logger.info('查找元素: %s' % loc)
         return self.driver.find_elements(*loc)
 
     def element_by(self,by_type,by_value,by_index):
@@ -86,7 +86,7 @@ class Element:
         '''
         # element = self.driver.find_element_by_id(id)
         element = self.find_element((By.ID,id))
-        L.logger.debug('查找id: %s' % id)
+        L.logger.info('查找id: %s' % id)
         return element
 
 
@@ -98,7 +98,7 @@ class Element:
         '''
         # elements = self.driver.find_elements_by_id(id)
         elements = self.find_elements((By.ID,id))
-        L.logger.debug('查找 id: %s' % id)
+        L.logger.info('查找 id: %s' % id)
         return elements
 
 
@@ -106,7 +106,7 @@ class Element:
         '''by_Id 在1.5.x版本以上取代了by_name,所以请不要再使用by_name'''
         # element = self.driver.find_element_by_name(name)
         element = self.find_element((By.NAME,name))
-        L.logger.debug('查找 name: %s' % name)
+        L.logger.info('查找 name: %s' % name)
         return element
 
 
@@ -114,7 +114,7 @@ class Element:
         '''by_Id 在1.5.x版本以上取代了by_name,所以请不要再使用by_name'''
         # elements = self.driver.find_elements_by_name(names)
         elements = self.find_elements((By.NAME,names))
-        L.logger.debug('查找 names: %s' % names)
+        L.logger.info('查找 names: %s' % names)
         return elements
 
     def by_xpath(self,xpath):
@@ -125,7 +125,7 @@ class Element:
         '''
         # element = self.driver.find_element_by_xpath(xpath)
         element = self.find_element((By.XPATH,xpath))
-        L.logger.debug('查找 xpath: %s' % xpath)
+        L.logger.info('查找 xpath: %s' % xpath)
         return element
 
     def by_xpaths(self,xpath):
@@ -136,7 +136,7 @@ class Element:
         '''
         # elements = self.driver.find_elements_by_xpath(xpath)
         elements = self.find_elements((By.XPATH,xpath))
-        L.logger.debug('查找 xpath: %s' % xpath)
+        L.logger.info('查找 xpath: %s' % xpath)
         return elements
 
     def by_classname(self,classname):
@@ -147,7 +147,7 @@ class Element:
         '''
         # element = self.driver.find_element_by_class_name(classname)
         element = self.find_element((By.CLASS_NAME,classname))
-        L.logger.debug('查找 classname: %s' % classname)
+        L.logger.info('查找 classname: %s' % classname)
         return element
 
     def by_classnames(self,classname):
@@ -158,7 +158,7 @@ class Element:
         '''
         # elements = self.driver.find_elements_by_class_name(classname)
         elements = self.find_elements((By.CLASS_NAME,classname))
-        L.logger.debug('查找 classname: %s' % classname)
+        L.logger.info('查找 classname: %s' % classname)
         return elements
 
     def click(self,element_object):
@@ -167,7 +167,7 @@ class Element:
         :param element_object:
         :return:
         '''
-        L.logger.debug('click 点击操作')
+        L.logger.info('click 点击操作')
         element_object.click()
 
     def quit(self):
@@ -175,7 +175,7 @@ class Element:
         退出服务
         :return:
         '''
-        L.logger.debug('driver quit!')
+        L.logger.info('driver quit!')
         return self.driver.quit()
 
     def get_current_url(self):
@@ -184,7 +184,7 @@ class Element:
         :return:
         '''
         url = self.driver.current_url()
-        L.logger.debug('获取当前URL: %s' % url)
+        L.logger.info('获取当前URL: %s' % url)
         return url
     
     def screenshot_as_base64(self):
@@ -195,7 +195,7 @@ class Element:
             driver.screenshot_as_base64()
         :return:
         '''
-        L.logger.debug('截图保存为base64格式')
+        L.logger.info('截图保存为base64格式')
         return self.driver.get_screenshot_as_base64()
 
     def screenshot_as_file(self,filepath):
@@ -204,7 +204,7 @@ class Element:
         :param filepath:保存截图的文件路径
         :return:
         '''
-        L.logger.debug('截屏')
+        L.logger.info('截屏')
         return self.driver.get_screenshot_as_file(filepath)
 
     def get_size(self):
@@ -213,7 +213,7 @@ class Element:
         :return:
         '''
         el = self.driver.get_window_size()
-        L.logger.debug('获取当前窗口大小: %s' % el)
+        L.logger.info('获取当前窗口大小: %s' % el)
         return el
 
 
@@ -227,10 +227,10 @@ class Element:
             width = size.get('width')
             height = size.get('height')
             if str(S.device[Dc.platformName]).lower() == 'ios':
-                L.logger.debug('向上滑动,起始滑动坐标: (%s,%s),坐标偏移量(%s,%s)' % (width / 2, height * 3/4, 0, height * (-1)/4))
+                L.logger.info('向上滑动,起始滑动坐标: (%s,%s),坐标偏移量(%s,%s)' % (width / 2, height * 3/4, 0, height * (-1)/4))
                 self.driver.swipe(width / 2, height * 3/4, 0, (-1)/4*height, 1000)
             else:
-                L.logger.debug('向上滑动,起始滑动坐标: (%s,%s),终点坐标(%s,%s)' % (width / 2, height * 3 / 4, width / 2,  height * 1 /4))
+                L.logger.info('向上滑动,起始滑动坐标: (%s,%s),终点坐标(%s,%s)' % (width / 2, height * 3 / 4, width / 2,  height * 1 /4))
                 self.driver.swipe(width * 4/ 8, height * 7 / 8, width * 4/ 8, height * 1 / 8, 1000)
             time.sleep(1)
         except:
@@ -247,10 +247,10 @@ class Element:
             width = size.get('width')
             height = size.get('height')
             if str(S.device[Dc.platformName]).lower() == 'ios':
-                L.logger.debug('向下滑动,起始滑动坐标: (%s,%s),坐标偏移量(%s,%s)' % (width / 2, height * 1/4, 0, height * 3/4))
+                L.logger.info('向下滑动,起始滑动坐标: (%s,%s),坐标偏移量(%s,%s)' % (width / 2, height * 1/4, 0, height * 3/4))
                 self.driver.swipe(width / 2, height * 1/4, 0, (-3)/4 * height , 1000)
             else:
-                L.logger.debug('向下滑动,起始滑动坐标: (%s,%s),终点坐标(%s,%s)' % (width / 2, height * 1 / 4, width / 2, height * 3 / 4))
+                L.logger.info('向下滑动,起始滑动坐标: (%s,%s),终点坐标(%s,%s)' % (width / 2, height * 1 / 4, width / 2, height * 3 / 4))
                 self.driver.swipe(width / 2, height * 1 / 4, width /2, 3 / 4 * height, 1000)
             time.sleep(1)
         except:
@@ -267,10 +267,10 @@ class Element:
             width = size.get('width')
             height = size.get('height')
             if str(S.device[Dc.platformName]).lower() == 'ios':
-                L.logger.debug('向右滑动,起始滑动坐标: (%s,%s),坐标偏移量(%s,%s)' % (width * 1 / 10, height * 9 / 10, width * 3 / 5,0))
+                L.logger.info('向右滑动,起始滑动坐标: (%s,%s),坐标偏移量(%s,%s)' % (width * 1 / 10, height * 9 / 10, width * 3 / 5,0))
                 self.driver.swipe(width * 1/10, height * 9/10, width * 3/5, 0,1000)
             else:
-                L.logger.debug('向右滑动,起始滑动坐标: (%s,%s),终点坐标(%s,%s)' % (width / 10, height * 9 / 10, width * 6/ 10, height * 9 / 10))
+                L.logger.info('向右滑动,起始滑动坐标: (%s,%s),终点坐标(%s,%s)' % (width / 10, height * 9 / 10, width * 6/ 10, height * 9 / 10))
                 self.driver.swipe(width / 10, height * 9 / 10, width * 6/ 10, height * 9 / 10, 1000)
             time.sleep(1)
         
@@ -290,10 +290,10 @@ class Element:
             width = size.get('width')
             height = size.get('height')
             if str(S.device[Dc.platformName]).lower() == 'ios':
-                L.logger.debug('向左滑动,起始滑动坐标: (%s,%s),坐标偏移量(%s,%s)' % (width * 9 / 10, height * 9 / 10, width * (-3) / 5,0))
+                L.logger.info('向左滑动,起始滑动坐标: (%s,%s),坐标偏移量(%s,%s)' % (width * 9 / 10, height * 9 / 10, width * (-3) / 5,0))
                 self.driver.swipe(width * 9 / 10, height * 9 / 10, width * (-3) / 5,0,1000)
             else:
-                L.logger.debug('向左滑动,起始滑动坐标: (%s,%s),终点坐标(%s,%s)' % (width * 7 / 10, height * 9 / 10, width / 10, height * 9 / 10))
+                L.logger.info('向左滑动,起始滑动坐标: (%s,%s),终点坐标(%s,%s)' % (width * 7 / 10, height * 9 / 10, width / 10, height * 9 / 10))
                 self.driver.swipe(width * 7 / 10, height * 9 / 10, width / 10, height * 9 / 10, 1000)
             time.sleep(1)
 
@@ -307,72 +307,72 @@ class Element:
         '''
         try:
             self.driver.tap(position, duration)
-            L.logger.debug('点按tap')
+            L.logger.info('点按tap')
         except:
             raise
 
     def back(self):
-        L.logger.debug('Android设备点按back键')
+        L.logger.info('Android设备点按back键')
         return self.driver.keyevent(4)
 
     def swith_h5(self):
         try:
-            L.logger.debug('切换到h5')
+            L.logger.info('切换到h5')
             self.driver.execute(MobileCommand.SWITCH_TO_CONTEXT,{'name':'com.pingan.rympush'})
         except:
             L.logger.error('切换到h5异常')
 
     def swith_app(self):
         try:
-            L.logger.debug('切换到NATIVE_APP')
+            L.logger.info('切换到NATIVE_APP')
             self.driver.execute(MobileCommand.SWITCH_TO_CONTEXT, {'name': 'NATIVE_APP'})
         except:
             L.logger.error('切换到app异常')
 
     def implicitly_wait(self,second):
-        L.logger.debug('隐式等待 %s 秒' % second)
+        L.logger.info('隐式等待 %s 秒' % second)
         return self.driver.implicitly_wait(second)
 
     def page_source(self):
-        L.logger.debug('获取 page_source')
+        L.logger.info('获取 page_source')
         return self.driver.page_source
 
     def load_page_timeout(self,second):
-        L.logger.debug('页面加载等待,超时时间 %s 秒' % second)
+        L.logger.info('页面加载等待,超时时间 %s 秒' % second)
         return self.driver.set_page_load_timeout(second)
 
     def context(self):
         context = self.driver.context()
-        L.logger.debug('获取当前上下文 context: %s' % context)
+        L.logger.info('获取当前上下文 context: %s' % context)
         return context
 
     def contexts(self):
         contexts = self.driver.contexts()
-        L.logger.debug('获取当前上下文 contexts %s ' % contexts)
+        L.logger.info('获取当前上下文 contexts %s ' % contexts)
         return contexts
 
     def current_context(self):
         current_context = self.driver.current_context()
-        L.logger.debug('获取当前页面上下文 current_context : %s' % current_context)
+        L.logger.info('获取当前页面上下文 current_context : %s' % current_context)
         return current_context
 
 
     def device_time(self):
         device_time = self.driver.device_time()
-        L.logger.debug('获取设备时间 device_time : %s ' % device_time)
+        L.logger.info('获取设备时间 device_time : %s ' % device_time)
         return device_time
     
     def close_app(self):
-        L.logger.debug('关闭App')
+        L.logger.info('关闭App')
         return self.driver.close_app()
 
     def send_keys(self,element,text):
-        L.logger.debug('元素:%s,发送内容:%s' % (element,text))
+        L.logger.info('元素:%s,发送内容:%s' % (element,text))
         return element.send_keys(text)
 
 
     def keyevent(self,keycode):
-        L.logger.debug('键盘事件,输入keycode:%s' % keycode)
+        L.logger.info('键盘事件,输入keycode:%s' % keycode)
         '''收起键盘,sendKeyEvent(4)
         for Android
         附录 keycode
@@ -469,7 +469,7 @@ class Element:
 
     def hide_keyboard(self,key_name=None,key=None,strategy=None):
         ''' for Android'''
-        L.logger.debug('隐藏键盘')
+        L.logger.info('隐藏键盘')
         return self.driver.hide_keyboard(key_name,key,strategy)
 
 

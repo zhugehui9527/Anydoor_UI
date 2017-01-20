@@ -48,7 +48,7 @@ class ReadApi(unittest.TestCase):
 		:return:
 		'''
 		L.logger.debug('callApi执行中')
-		
+		# 所有支持的api
 		api_dict = {
 					operate_api.assertTrueCheckPlugin:lambda :self.assertTrue(self.appOperate.check_plugin(case_list[6],case_list[7]),case_list[2]),
 					operate_api.assertTrue:lambda :self.assertTrue(self.appOperate.wait_for_text(int(case_list[7]),case_list[6]),case_list[2]),
@@ -73,7 +73,7 @@ class ReadApi(unittest.TestCase):
 			L.logger.debug('Action_Keyword 操作:[ %s ]' % case_list[3])
 			return api_dict[case_list[3]]()  #返回api对应的操作对象
 		else:
-			L.logger.warning('请检查Action_Keyword中的api是否输入正确!')
+			L.logger.error('请检查Action_Keyword中的api是否输入正确!')
 			# raise
 			
 	

@@ -37,14 +37,6 @@ class RunExcelCase(unittest.TestCase):
 		self.sheetCaseList = self.xlsEngine.readsheet(public.case_sheet)
 		self.caselist = caselist
 	
-	# @classmethod
-	# def setup_class(cls):
-	# 	cls.driver = D.driver
-	#
-	# @classmethod
-	# def teardown_class(cls):
-	# 	cls.driver.quit()
-	
 	def callPublicCase(self, casename):
 		'''
 		:description:判断casename是否在公共案例库中,如有则执行公共案例库

@@ -11,8 +11,6 @@ from src.Public.Common import public
 from src.Public.Global import L,S
 from src.lib import ExcelRW
 
-# logger = L.logger
-# driver = D.driver
 #ReadElement->FindElementBy->Element-
 #元素和方法封装
 class ReadElement(object):
@@ -21,7 +19,6 @@ class ReadElement(object):
         self.xls_file_path = read_config('testcase', 'xls_case_path')
         self.xlsEngine = ExcelRW.XlsEngine(self.xls_file_path)
         self.xlsEngine.open() # 打开excel
-        # self.element_name_list = self.xlsEngine.readcol(element_by_excel.element_sheet_name,1) #读取元素表第一列
         self.element_list = self.xlsEngine.readsheet(public.element_sheet)
         self.driver = driver
         
@@ -59,8 +56,6 @@ class ReadElement(object):
         '''
         # L.logger.debug('元素表: %s' % self.element_list)
         for row_list in self.element_list[1:]:
-            # L.logger.debug('元素表中每一行的元素列表为: %s' % row_list)
-            # L.logger.debug('元素表中第一列元素为: %s' % row_list[0])
             if element_text == row_list[0]:
                 L.logger.debug('元素表中存在此元素: %s' % element_text)
                 return row_list

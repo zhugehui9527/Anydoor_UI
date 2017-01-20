@@ -8,7 +8,11 @@
 import unittest
 from src.lib.Element import Element
 from conf.Run_conf import read_config
+
 class AssertExcel(unittest.TestCase):
+    '''
+    预留断言类,目前暂未使用,断言API已经封装在excel支持的api中
+    '''
     def __init__(self,driver):
         super(AssertExcel,self).__init__()
         self.driver = Element(driver)

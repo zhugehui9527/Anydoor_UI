@@ -11,6 +11,7 @@ class GetDevices:
 	
 	def get_device(self):
 		'''
+		连上usb线后自动获取设备列表
 		:return:
 		'''
 		# 存储设备信息
@@ -84,8 +85,8 @@ class GetDevices:
 					device.append(Android)
 		else:
 			pass
-		
-		print time.ctime(), ' [', __name__, '::', GetDevices.get_device.__name__, '] :', ' device =  ', device
+		print '*'*80
+		print time.ctime(), ' [', __name__, '::', GetDevices.get_device.__name__, '] :', ' \n device =  ', device
 		return device
 	
 	def __is_using(self):

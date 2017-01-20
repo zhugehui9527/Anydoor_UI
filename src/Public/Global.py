@@ -21,7 +21,7 @@ class L:
 		if logger:
 			cls.logger = logger
 		else:
-			print '[ error ] logger is null'
+			print time.ctime(), ' [', __name__, '::',L.set_logger.__name__, '[ error ] logger is null'
 		
 class S:
 	device = None

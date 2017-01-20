@@ -1,47 +1,26 @@
 # -*- coding:utf-8 -*-
 #######################################################
-# filename:Driver.py
+# filename:Log.py
 # author:Jeff
 # date:2016-09-21
 # function:对日志进行操作处理
 #######################################################
-# from src.Global import *
-# from src.Public.Public import *
+
 from conf.Run_conf import read_config
 from logging.handlers import RotatingFileHandler
 from logging.handlers import TimedRotatingFileHandler
 from src.Public.Global import S
 import logging, time
-import threading,sys
 import os
 PATH = lambda p: os.path.abspath(
     os.path.join(os.path.dirname(__file__), p)
 )
-# conf_path = '/Users/zengyuanchen/Documents/Project/Anydoor_UI/conf/monitor.ini'
-# class MyLog(object):
-# 	'''This class is used to get log'''
-# 	log = None
-# 	mutex = threading.Lock()
-#
-# 	def __init__(self):
-# 		pass
-#
-# 	@staticmethod
-# 	def get_logger():
-# 		if MyLog.log is None:
-# 			MyLog.mutex.acquire()
-# 			MyLog.log = LogSignleton(conf_path)
-# 			MyLog.mutex.release()
-#
-# 		return MyLog.log
+
 device = S.device
 udid = device['udid']
-# udid = '0316032597351f04'
+
 class LogSignleton(object):
-	def __init__(self,device):
-		# self.udid = device['udid']
-		# print '*'*80
-		# print '* [', __name__, '::', LogSignleton.__init__.__name__, '] :', ' udid = ', udid
+	def __init__(self):
 		self.log_filename = (read_config('logger','log_file')).format(udid)
 		self.max_bytes_each = int(read_config('logger', 'max_bytes_each'))
 		self.backup_count = int(read_config('logger', 'backup_count'))
@@ -55,50 +34,6 @@ class LogSignleton(object):
 		self.rw_mode = str(read_config('logger', 'rw_mode'))
 		self.logger = logging.getLogger(self.log_filename)
 		self.__config_logger()
-
-	# def __new__(cls):
-	# 	'''单例模式'''
-	# 	# mutex = threading.Lock()
-	# 	# mutex.acquire() #上锁,防止多线程下出问题
-	# 	if not hasattr(cls,'instance'):
-	# 		cls.instance = super(LogSignleton,cls).__new__(cls)
-	# 		cls.instance.udid = S.device['udid']
-	# 		cls.instance.log_filename = (read_config('logger','log_file')).format(cls.instance.udid)
-	# 		# if cls.instance.log_filename is not None: # 判断是否为目录
-	# 		# 	try:
-	# 		# 		# 返回的是文件名,不包括前面的路径
-	# 		# 		filename = os.path.basename(cls.instance.log_filename)
-	# 		# 		# 返回的是目录名,不包括文件名
-	# 		# 		filepath = os.path.dirname(cls.instance.log_filename)
-	# 		# 		print filepath
-	# 		# 		# splitext:分离文件名和后缀 split:分离文件路径和文件
-	# 		# 		parent_path, ext = os.path.splitext(filename)
-	# 		# 		# 定义时间显示格式
-	# 		# 		tm = time.strftime('%Y%m%d%H%M%S', time.localtime())
-	# 		# 		# 重新组装日志文件名
-	# 		# 		filename = parent_path + '_' + tm + ext
-	# 		# 		cls.instance.log_filename = filepath + '/' + filename
-	# 		# 	except Exception:
-	# 		# 		raise
-	# 		cls.instance.max_bytes_each = int(read_config('logger','max_bytes_each'))
-	# 		cls.instance.backup_count = int(read_config('logger','backup_count'))
-	# 		cls.instance.format = read_config('logger','format')
-	# 		cls.instance.log_level_in_console = int(read_config('logger','log_level_in_console'))
-	# 		cls.instance.log_level_in_logfile = int(read_config('logger','log_level_in_logfile'))
-	# 		cls.instance.logger_name = read_config('logger','logger_name')
-	# 		cls.instance.console_log_on = int(read_config('logger','console_log_on'))
-	# 		cls.instance.logfile_log_on = int(read_config('logger','logfile_log_on'))
-	# 		cls.instance.handles_mode = int(read_config('logger','handles_mode'))
-	# 		cls.instance.rw_mode = str(read_config('logger','rw_mode'))
-	# 		cls.instance.logger = logging.getLogger(cls.instance.logger_name)
-	# 		cls.instance.__config_logger()
-	# 	# mutex.release() #释放锁
-	# 	return cls.instance
-
-	# def get_logger(self):
-	# 	self.logger =  logging.getLogger(self.logger_name)
-		
-		# return self.logger
 
 	def __config_logger(self):
 		fmt = self.format.replace('|','%')
@@ -207,7 +142,7 @@ class LogSignleton(object):
 				log_text = f.read()#读取整个log内容
 				f.seek(0,0)#光标返回到行首
 				kw_count = log_text.count(start_filter)
-				print '过滤关键字: %s,包含个数 : %s' % (start_filter,str(kw_count))
+				print time.ctime(), ' [', __name__, '::', LogSignleton.get_filter_log.__name__, '] :', '过滤关键字: %s,包含个数 : %s' % (start_filter,str(kw_count))
 				if kw_count > 0:
 					for x in range(kw_count):
 						for line in f:
@@ -232,32 +167,7 @@ class LogSignleton(object):
 									break
 			f.close()
 		s.close()
-	
-	# return log_fileter_path
 
-#
-# class MyLog(object):
-# 	"""
-#     This class is used to get log
-#     lock log
-#     """
-#
-# 	log = None
-# 	mutex = threading.Lock()
-#
-# 	def __init__(self):
-# 		pass
-#
-# 	@staticmethod
-# 	def get_log():
-# 		if MyLog.log is None:
-# 			MyLog.mutex.acquire()
-# 			# logpath = Log().get_log_path()
-# 			MyLog.log = None
-# 			MyLog.mutex.release()
-#
-# 		return MyLog.log
-		
 	
 
 

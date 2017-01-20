@@ -10,22 +10,20 @@ import os
 import re
 import sys
 import time
-
 import requests
 
 from conf.Run_conf import read_config
 from src.Public.Global import L,S
 from src.Public.Common import desired_caps as Dc
+from src.Public.Common import platform as pf
 from src.lib.Element import Element
 from selenium.webdriver.common.by import By
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
-# logger = L.logger
 class AppOperate (object):
 	def __init__(self,driver):
-		# super(AppOperate,self).__init__()
 		iOS_UserName = "//*[@value='一账通号/手机号/身份证号/邮箱']"
 		iOS_PassWord = "//*[@value='密码']"
 		Andr_UserName = "user-id-input"
@@ -38,14 +36,15 @@ class AppOperate (object):
 		self.Andr_PassWord = Andr_PassWord
 		self.driver = Element(driver)
 		self.pluginList =[]
-
+		
+	
 	def loginByHost(self):
 		'''
 		一账通登陆
 		:return:True
 		'''
 		try:
-			if self.platformName.lower() == 'ios':
+			if self.platformName.lower() == pf.ios:
 				self.driver.by_id("一账通").click()
 				time.sleep(3)
 				self.driver.by_id("宿主登陆").click()
@@ -58,7 +57,7 @@ class AppOperate (object):
 				time.sleep(3)
 			else:
 				# TODO 待添加Android
-				L.logger.debug('待添加Android')
+				L.logger.info('待添加Android')
 
 		except Exception as e:
 			L.logger.warning(e)
@@ -69,7 +68,7 @@ class AppOperate (object):
 		:return: True
 		'''
 		try:
-			if str(S.device[Dc.platformName]) == 'ios':
+			if str(S.device[Dc.platformName]) == pf.ios:
 				self.driver.by_id("无用户").click()
 			else:
 				self.driver.by_id('rb_no_user').click()
@@ -77,11 +76,11 @@ class AppOperate (object):
 		except Exception as e:
 			L.logger.warning(e)
 			return False
-
+		
 	#支持iOS和Android
 	def loginByH5(self,userName,passWord):
 
-		if self.platformName.lower() == 'ios':
+		if self.platformName.lower() == pf.ios:
 			try:
 				self.driver.swipe_right()  # 右滑动
 				time.sleep(3)
@@ -89,13 +88,13 @@ class AppOperate (object):
 				time.sleep(3)
 				self.driver.by_xpath(self.iOS_UserName).send_keys(userName)
 				time.sleep(3)
-				L.logger.debug('输入账号: %s' % userName)
+				L.logger.info('输入账号: %s' % userName)
 				# 收起键盘
 				self.driver.by_id('完成').click()
 				time.sleep(3)
 				self.driver.by_xpath(self.iOS_PassWord).send_keys(passWord)
 				time.sleep(3)
-				L.logger.debug('输入密码: %s' % passWord)
+				L.logger.info('输入密码: %s' % passWord)
 				# 收起键盘
 				self.driver.by_id('完成').click()
 				time.sleep(3)
@@ -105,7 +104,7 @@ class AppOperate (object):
 			except IOError as e:
 				raise L.logger.error(e)
 
-		elif self.platformName.lower() =='android':
+		elif self.platformName.lower() ==pf.android:
 			try:
 				self.driver.swipe_up() # 向上滑动
 				# self.driver.implicitly_wait(3)
@@ -138,15 +137,27 @@ class AppOperate (object):
 		else:
 			L.logger.error('请在配置文件中添加正确的platformName!!')
 		
-			
 	
 	def pluginNum_contain(self,contain):
 		pageSource = self.driver.page_source()
 		contain_list = re.findall(contain,pageSource)
 		contain_count = contain_list.count(contain)
-		L.logger.debug('包含: %s 的个数是: %d' % (contain,contain_count))
+		L.logger.info('包含: %s 的个数是: %d' % (contain,contain_count))
 		return contain_count
 	
+	def find_element_by_plugin(self,pluginId):
+		'''
+		通过插件id 查找元素对象
+		:param pluginId:
+		:return:
+		'''
+		
+		if self.platformName.lower() == pf.ios:
+			return self.driver.find_element((By.ID, pluginId),10)
+		else:
+			ele_xpath = "//android.view.ViewGroup[contains(@content-desc,'{}')]".format(pluginId)
+			return self.driver.find_element((By.XPATH, ele_xpath),10)
+		
 	def check_plugin(self, pluginId, expectResult):
 		'''
 		对插件进行校验
@@ -154,80 +165,43 @@ class AppOperate (object):
 		:param expectResult:
 		:return:True
 		'''
-		ele_xpath = "//android.view.ViewGroup[contains(@content-desc,'{}')]".format(pluginId)
-		# element_dict = {
-		# 	'ios': lambda : self.driver.find_element_orign((By.ID,pluginId)),
-		# 	'android': lambda : self.driver.find_element_orign((By.XPATH,ele_xpath))
-		# }
-		# if element_dict.has_key(self.platformName.lower()):
-		# 	# 如果element_dict 有key值 self.platformName,则将该key的value赋值给ele
-		# 	ele = element_dict[self.platformName.lower()]()
-		# else:
-		# 	L.logger.warning('element_dict 字典中不包含key值: %s' % self.platformName.lower())
-			
-		L.logger.debug('开始检查插件: %s' % pluginId)
-		if self.wait_for_text(3,pluginId):
-			L.logger.debug('找到插件:%s ,准备点击' % pluginId)
-			i=4
-			j=5
-			if self.platformName.lower() == 'ios':
-				ele = self.driver.find_element_orign(By.ID,pluginId)
-			else:
-				ele = self.driver.find_element_orign(By.XPATH,ele_xpath)
-			L.logger.debug('当前插件是否显示: %s' % ele.is_displayed())
-			while (not (ele.is_displayed()) and i>0):
-				# L.logger.debug('当前插件是否显示: %s' % ele.is_displayed())
-				L.logger.debug('插件未显示,左滑')
+		
+		L.logger.info('开始检查插件: %s' % pluginId)
+		# 对插件第一个页面进行判断
+		i = 5  # 左滑动次数
+		j = 5  # 右滑动次数
+		
+		try:
+			while (not (self.find_element_by_plugin(pluginId)) and i > 0):
+				L.logger.info('插件未显示,左滑')
 				self.driver.swipe_left()
-				i=i-1
+				i = i - 1
+			else:
+				try:
+					L.logger.info('找到插件: %s ,准备点击打开' % pluginId)
+					self.find_element_by_plugin(pluginId).click()
+					L.logger.info('判断插件页面,是否包含: %s' % expectResult)
+					if self.wait_for_text(30, expectResult):
+						L.logger.info('插件页面中包含 %s,返回True' % expectResult)
+						return True
+					else:
+						L.logger.error('插件页面中不包含 %s,返回False' % expectResult)
+						return False
+				except Exception as e:
+					L.logger.error(e)
+					return False
+				finally:
+					self.closeH5_byPluginId(pluginId)
+		finally:
+			# 向右滑动
 			while(i==0 and j>0):
 				self.driver.swipe_right()
 				j=j-1
-		else:
-			self.driver.swipe_left()
-			if self.wait_for_text(3,pluginId):
-				L.logger.debug('找到插件:%s ,准备点击' % pluginId)
-				i = 5
-				j = 3
-				if self.platformName.lower() == 'ios':
-					ele2 = self.driver.find_element_orign(By.ID, pluginId)
-				else:
-					ele2 = self.driver.find_element_orign(By.XPATH, ele_xpath)
-				L.logger.debug('当前插件是否显示: %s' % ele2.is_displayed())
-				while (not (ele2.is_displayed()) and i > 0):
-					# L.logger.debug('当前插件是否显示: %s' % ele.is_displayed())
-					L.logger.debug('插件未显示,左滑')
-					self.driver.swipe_left()
-					i = i - 1
-				while (i == 0 and j > 0):
-					self.driver.swipe_right()
-					j = j - 1
-			else:
-				L.logger.debug('未找到插件:%s ,准备右滑' % pluginId)
-				self.driver.swipe_right()
-				
-		if self.platformName.lower() == 'ios':
-			ele3 = self.driver.find_element_orign(By.ID, pluginId)
-		else:
-			ele3 = self.driver.find_element_orign(By.XPATH, ele_xpath)
-		try:
-			self.driver.click(ele3)
-			L.logger.debug('判断插件页面,是否包含: %s' % expectResult)
-			if self.wait_for_text(30,expectResult):
-				L.logger.debug('插件页面中包含 %s,返回True' % expectResult)
-				return True
-			else:
-				L.logger.error('插件页面中不包含 %s,返回False' % expectResult)
-				return False
-		except Exception as e:
-			L.logger.error(e)
-			return False
-		finally:
-			self.closeH5_byPluginId(pluginId)
+				L.logger.info('右滑动恢复左边查找')
 			
 			
 	def closeH5_byPluginId(self,pluginId):
-		L.logger.debug('关闭H5页面!')
+		L.logger.info('关闭H5页面!')
 		if  pluginId == 'PA01100000000_02_PAZB':
 			try:
 				self.driver.by_xpath('//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeButton[1]').click()
@@ -251,7 +225,7 @@ class AppOperate (object):
 		'''
 		
 		try:
-			if self.platformName.lower() == 'ios':
+			if self.platformName.lower() == pf.ios:
 				if self.driver.by_id('closeButton'):
 					self.driver.by_id('closeButton').click()
 				elif self.driver.by_id('关闭'):
@@ -279,22 +253,25 @@ class AppOperate (object):
 				else:
 					L.logger.warning('暂不支持的关闭方式,xpah关闭H5失败')
 		
-
+	
 	def getPluginList(self):
+		pluginInfoList = []
 		try:
-			L.logger.debug('开始获取插件列表。。。')
+			L.logger.info('开始获取插件列表。。。')
 			response = requests.get(self.pluginURL)
 			response_dict = json.loads(response.text)
-			L.logger.debug('当前插件总数: %d', len(response_dict['body']['data']))
-			L.logger.debug('当前插件列表: ')
+			L.logger.info('当前插件总数: %d', len(response_dict['body']['data']))
+			L.logger.info('当前插件列表: ')
 			for pluginInfo in response_dict['body']['data']:
 				self.pluginList = pluginInfo
-				L.logger.debug('%s---%s---%s' % (
+				L.logger.info('%s---%s---%s' % (
 				pluginInfo['title'], pluginInfo['pluginUid'], pluginInfo['needLogin']))
-
+				pluginInfoList.append(pluginInfo['pluginUid'])
 		except Exception as e:
 			L.logger.warning(e)
-			raise e
+			# raise e
+		finally:
+			return pluginInfoList
 
 	def isAlert(self):
 		'''
@@ -306,7 +283,7 @@ class AppOperate (object):
 			# if self.wait_for_text(10,'“https://mobilesdk.pingan.com.cn”想使用您当前的位置'):
 				self.driver.by_id('好').click()
 			else:
-				L.logger.debug('没找到Alert弹窗')
+				L.logger.info('没找到Alert弹窗')
 		except Exception as e:
 			L.logger.error(e)
 
@@ -342,10 +319,7 @@ class AppOperate (object):
 		:return:True
 		'''
 		i = 1
-		# self.driver.load_page_timeout(int(time_second))
-		# pageSource = self.driver.page_source()
-		# L.logger.debug("打印出来pageSource : %s" % pageSource)
-		L.logger.debug("开始轮询元素: %s" % text)
+		L.logger.info("开始轮询元素: %s" % text)
 		while str(text) not in str(self.driver.page_source()):
 			time.sleep(2)
 			i +=2
@@ -354,7 +328,7 @@ class AppOperate (object):
 				L.logger.warning('轮询超时,pageSource: <xmp>%s</xmp> ' % self.driver.page_source())
 				return False
 		else:
-			L.logger.debug('界面存在此元素:[ %s ]' % text)
+			L.logger.info('界面存在此元素:[ %s ]' % text)
 			return True
 	
 	
@@ -372,24 +346,25 @@ class AppOperate (object):
 		return self.driver.screenshot_as_file(filepath)
 	
 	def click(self,element_object,msg=None):
-		L.logger.debug(msg)
+		L.logger.info(msg)
 		return element_object.click()
 	
 	def sendKeys(self,element_object,sendtext):
-		L.logger.debug('输入内容: %s' % sendtext)
+		L.logger.info('输入内容: %s' % sendtext)
 		# self.click(element_object,'click')
 		# self.clear(element_object,'clear')
 		return element_object.send_keys(sendtext)
 	
 	def clear(self,element_object,msg=None):
-		L.logger.debug(msg)
+		L.logger.info(msg)
 		return element_object.clear()
 	
 	
 if __name__ == '__main__':
-	appOperates = AppOperate()
-	appOperates.getPluginList()
-	appOperates.get_screen_shot()
+
+	appOperates = AppOperate(driver)
+	print appOperates.getPluginList()
+	# appOperates.get_screen_shot()
 	# appOperates.loginByH5('18589091413','Solution123')
 	# ss = appOperates.wait_for_text(30,'我的资产')
 	# print ss

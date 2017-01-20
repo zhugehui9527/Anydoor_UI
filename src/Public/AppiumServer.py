@@ -29,7 +29,7 @@ class AppiumServer(object):
 				cmd_str = 'appium -a {} -p {} -U {}'.format(self.serverIp,Port,device['udid'])
 				print '*' * 80
 				print time.ctime(),' [', __name__, '::', self.start_server.__name__, '] :','*  启动appium命令: ' + cmd_str
-				print '*' * 80
+				# print '*' * 80
 				U.cmd_subprocess(cmd_str) # 启动appium服务
 				# U.cmd_output(cmd_str)
 				# import os
@@ -74,9 +74,3 @@ class AppiumServer(object):
 			if response:
 				response.close()
 	
-	
-
-
-if __name__ == '__main__':
-	print '*' * 40
-	print '*' * 40

@@ -7,6 +7,7 @@ __author__ = 'Jeff'
 """
 import platform
 import subprocess
+import time
 #
 # from src.Public.Global import L
 # logger = L.logger
@@ -46,16 +47,20 @@ class Cp(object):
         #     self.cmd('kill -9 %s' % line.strip())
         #     logger.debug('CleanProcess:Darwin:kill logcat')
         lines_list = []
-        lines = self.cmd("ps -A | grep appium|awk '{print $1}'").stdout.readline()
+        lines = self.cmd("ps -A | grep appium|awk '{print $1}'").stdout.readlines()
+        print 'lines = ',lines
         lines_list.append(lines)
+        print lines_list
+            
         if len(lines_list) !=0:
             print "appium 相关进程列表 = %s " % lines_list
             # logger.debug('appium 相关进程列表 = %s ' % lines_list)
             for line in lines_list:
+                # print 'kill -9 %s' % line
+                time.sleep(1)
                 self.cmd('kill -9 %s' % line)
-                print 'kill -9 %s' % line
-                self.cmd('killall node')
                 print 'CleanProcess:Darwin:kill appium'
+                self.cmd('killall node')
                 # logger.debug('CleanProcess:Darwin:kill appium')
 
     def __linux_all(self):
@@ -110,4 +115,5 @@ class Cp(object):
 if __name__ == '__main__':
     c = Cp()
     # c.clean_process(4723, 'T7G0215A14000220')
-    c.clean_process_all()
+    # c.clean_process_all()
+    # c.darwin_all()

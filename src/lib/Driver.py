@@ -9,6 +9,8 @@ import time
 from appium import webdriver
 from conf.Run_conf import read_config
 from src.Public.Common import desired_caps as dc
+from src.Public.Common import platform as pf
+from src.Public.Global import L
 
 class Driver(object):
     def __init__(self,device,port):
@@ -36,7 +38,7 @@ class Driver(object):
             self.device[dc.autoAcceptAlerts] = self.autoAcceptAlerts
             # print time.ctime(), ' [', __name__, '::', Driver.init.__name__, '] :', ' platformName =  ', self.platformName
             
-            if self.platformName.lower() == 'android':
+            if self.platformName.lower() == pf.android:
                 self.device[dc.unicodeKeyboard] = self.unicodeKeyboard
                 self.device[dc.resetKeyboard] = self.resetKeyboard
                 self.device[dc.appPackage] = self.appPackage
@@ -44,20 +46,22 @@ class Driver(object):
                 self.device[dc.app] =self.app
                 # self.device[dc.autoWebview] = self.autoWebview
     
-            elif self.platformName.lower() == 'ios':
+            elif self.platformName.lower() == pf.ios:
                 # self.device[dc.platformVersion] = self.platformVersion
                 self.device[dc.bundleId] = self.bundleId
                 self.device[dc.automationName] = self.automationName
             else:
-                print '暂不支持的driver设置'
+                # print time.ctime(), ' [', __name__, '::', Driver.init.__name__, '] :', '暂不支持的driver设置'
+                L.logger.warning('暂不支持的driver设置')
         except Exception as e:
+            L.logger.error(e)
             raise e
         else:
-            print '初始化成功'
-        
-       
+            L.logger.info('初始化成功!')
+            # print time.ctime(), ' [', __name__, '::', Driver.init.__name__, '] :', ' 初始化成功!'
         
     def getDriver(self):
+        L.logger.info('启动并获取driver对象')
         self.driver = webdriver.Remote(self.url, self.device)
         return self.driver
 

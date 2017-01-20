@@ -21,8 +21,7 @@ class Utils:
 	@staticmethod
 	def cmd_output(cmd):
 		return subprocess.check_output(cmd)
-	
-	
+
 			
 class cmd_tt(threading.Thread):
 	'''

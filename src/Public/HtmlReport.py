@@ -93,6 +93,7 @@ class HtmlReport(object):
         css_url = 'https://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css'
         js1_url = 'https://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js'
         js2_url = 'https://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js'
+        # 如果联网则调用网上连接css与js,否则调用本地css与js
         if self.get_url_res(css_url)== 200:
             page.addCSS(css_url)
         else:
@@ -174,7 +175,7 @@ class HtmlReport(object):
             except Exception as e:
                 print e
             else:
-                print '日志过滤完毕!'
+                print time.ctime(), ' [', __name__, '::', HtmlReport.generate_html.__name__, '] :', '日志过滤完毕!'
             if 'PASS' == testresult:
                 tab << pyh.tr(pyh.td(testcase_name.encode('gbk', 'ignore'), align='middle') +
                               pyh.td(testcase_duration.encode('gbk', 'ignore'), align='middle') +

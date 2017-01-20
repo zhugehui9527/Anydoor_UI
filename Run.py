@@ -8,16 +8,13 @@
 import unittest,autoinstall
 from conf.Run_conf import read_config
 from multiprocessing import Pool
-# from pathos import multiprocessing as mp
-import threading,os,thread
-# from RunScript import run_pytest
 from src.Public.AppiumServer import AppiumServer
 from src.Public.GetDevices import GetDevices
 from src.lib import ExcelRW
 from src.Public.Common import public
 from src.Public.Global import D,S,L
 from src.lib.Driver import Driver
-import time
+import time,os
 
 # from src.lib.Utils import utils
 xls_file_path = read_config('testcase', 'xls_case_path')
@@ -35,6 +32,7 @@ def run_mode():
 		# print '*' * 80
 		print time.ctime(),' [',__name__,'::',run_mode.__name__,'] :',' 运行 Excel 测试用例 '
 		print '*' * 80
+		L.logger.info(' 运行 Excel 测试用例 ')
 		#驱动测试
 		runner = unittest.TextTestRunner()
 		__Run_Case(runner)
@@ -43,6 +41,7 @@ def run_mode():
 		# print '*' * 80
 		print time.ctime(),' [', __name__, '::', run_mode.__name__, '] :', ' 运行 Script 测试用例 '
 		print '*' * 80
+		L.logger.info(' 运行 Script 测试用例 ')
 		import RunScript
 		RunScript.run_pytest()
 	else:
@@ -79,7 +78,8 @@ def __Run_Case(runner):
 	:return:
 	'''
 	# print time.ctime(), ' [', __name__, '::', __Run_Case.__name__, '] :', ' 开始进行用例遍历 '
-	print '*' * 80
+	# print '*' * 80
+	L.logger.debug(' 循环遍历测试用例 ')
 	# 循环遍历测试用例列表
 	for case_list in case_sheet1[1:]:
 		#判断是否是独有操作,如果不是对应平台的独有操作就跳过循环
@@ -94,40 +94,29 @@ def __Run_Case(runner):
 	RunExcel.get_html_report()
 
 def Run_one(device,port):
-	print 'Run task %s (%s) at %s' % (str(port), os.getpid(), time.ctime())
+	# print 'Run task %s (%s) at %s' % (str(port), os.getpid(), time.ctime())
 	S.set_device(device)
 	
 	from src.lib.Log import LogSignleton
-	logsignleton = LogSignleton(device)
+	logsignleton = LogSignleton()
 	logger = logsignleton.logger
 	L.set_logger(logger)
-	print '*' * 80
+	# print '*' * 80
 	# print time.ctime(),' [', __name__, '::', Run_one.__name__, '] :', ' logger =  ', logger
 	
 	# 启动appium 服务
 	A = AppiumServer()
 	A.start_server(device, port)
 	
-	print '*' * 80
+	# print '*' * 80
 	# print time.ctime(), ' [', __name__, '::', Run_one.__name__, '] :', ' device =  ', device
 	# 实例化Dirver
 	Dr = Driver(device, port)
 	Dr.init()  # 初始化driver
 	driver = Dr.getDriver()
 	D.set_driver(driver)
-	print '*' * 80
+	# print '*' * 80
 	# print time.ctime(),' [', __name__, '::', Run_one.__name__, '] :', ' driver =  ', driver
-
-	# # 生成runner
-	# runner = unittest.TextTestRunner()
-	# # 循环遍历测试用例列表
-	# for case_list in case_sheet1[1:]:
-	# 	test_suite = __get_test_suite(case_list)
-	# 	runner.run(test_suite)
-	#
-	# # 生成测试报告
-	# RunExcel.get_html_report()
-	
 	run_mode() # 运行模式
 
 if __name__ == '__main__':
@@ -135,21 +124,29 @@ if __name__ == '__main__':
 	devices = G.get_device()
 	count = len(devices)
 	ports = G.get_port(count)
-	print '设备数: ',count,' 端口列表: ',ports
-	print 'Run task pid: (%s) at: %s' % ( os.getpid(), time.ctime())
-	print '*'*80
+	print '*' * 80
+	print time.ctime(), ' [', __name__, '] :', '设备数: ',count,' 端口列表: ',ports
+	print '*' * 80
+	print time.ctime(), ' [', __name__, '] :', 'Run task pid: (%s) at: %s' % ( os.getpid(), time.ctime())
+	print '*' * 80
 	p = Pool(processes=count) # set the processes max number 3
 	
 	# 多线程并发
 	for i in range(count):
 		result = p.apply_async(Run_one,(devices[i],ports[i],))
 	
-	p.close()
-	p.join()
+	p.close() # 关闭进程,不再添加新的进程
+	p.join() # 进程等待执行完毕
 	if result.successful():
-		print '并发执行成功'
+		print '*' * 80
+		if count > 1:
+			print time.ctime(), ' [', __name__, '] :', '多设备并发执行成功'
+		else:
+			print time.ctime(), ' [', __name__, '] :', '单设备执行成功'
 	clean_process()
-	print 'All finished'
+	print '*' * 80
+	print time.ctime(), ' [', __name__, '] :', '所有代码执行完毕!'
+	# exit()
 	
 	
 	
