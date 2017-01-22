@@ -6,7 +6,7 @@
 # function:对测试用例进行操作处理
 #######################################################
 import sys,time
-import pytest
+import pytest,unittest
 from conf.Run_conf import read_config
 from src.Public.Global import L,D,S
 from src.Public.appOperate import AppOperate
@@ -41,45 +41,64 @@ def test_pluginlist():
 	getPluginList = appOperate.getPluginList()
 	assert getPluginList
 	
+def isIOS():
+	'''判断运行该用例的是否是IOS平台,是返回True,否则返回False;
+	用于判断是否需要跳过当前插件检查用例(因为iOS和Android插件列表有差异性)。
+	'''
+	PlatformName_lower = S.device['platformName'].lower()
+	if PlatformName_lower != pf.ios:
+		return True
+	else:
+		return False
 	
-# 插件ID 和 断言
-checkPluginInfo = [('PA01100000000_02_PAZB', u'加油站'),
+# Ac = AssertClass()
+# 调用isIOS方法利用pytest判断不是iOS平台则跳过
+skipifNotiOS = pytest.mark.skipif('isIOS()')
+# 插件ID 和 断言,注意跳过skipifNotiOS后面有两个括号
+checkPluginInfo = [skipifNotiOS(('PA01100000000_02_PAZB', u'加油站')),
                    ('PA01100000000_02_WLC', u'值得买'),
-                   ('PA00500000000_02_GSZB', u'热 门'),
-                   ('PA01100000000_02_HDJHY', u'本活动的最终解释权归平安科技所有'),
-                   ('PA01100000001_02_WDCX','ATM'),
-                   ('PA01100000001_02_XYK',u'我的信用卡'),
-                   ('PA01100000000_02_YYG',u'1元GO'),
-                   ('PA03300000000_02_AJDK',u'试算一下'),
-                   ('PA02500000000_02_TZLC',u'任意门'),
-                   ('PA02100000001_02_JF', u'可用积分'),
-                   ('PA01200000000_02_XYD', u'马上贷款'),
-                   ('PA02100000000_02_YJQB', u'获取动态码'),
-                   ('PA02100000000_02_KY', '5-6%'),
-                   ('PA02100000000_02_HQY', u'获取验证码'),
-                   ('PA00800000000_02_PACX', u'使馆信息'),
-                   ('PA00400000000_02_CFBXZZC', u'温馨提示'),
-                   ('PA01100000000_02_RYG', u'个人中心'),
-                   ('PA00500000000_02_RED', u'申请条件'),
-                   ('PA01100000000_02_ZCCX', u'资产提醒'),
-                   ('PA01100000000_02_YHFK', u'建议反馈'),
-                   ('PA01100000003_02_WDCX', u'ATM'),
-                   ('SZDBK00000000_02_XYT', u'个人信息'),
-                   ('PA02100000000_02_WDZC', u'资产提醒'),
-                   ('PA02100000000_02_PAYD', u'小额消费贷款'),
-                   ('PA02700000000_02_PAYX', u'欢乐游戏'),
-                   ('PA02100000000_02_CGZ', u'添加车'),
-                   ('PA02100000000_02_CJKX', u'财经快讯'),
-                   ('PA02500000000_02_BZB', u'热销基金'),
-                   ('PA02100000000_02_XEDK', u'小额消费贷款'),
-                   ('PA01100000000_02_LHBLC', u'投资须谨慎，以上产品不保证收益'),
-                   ('PA00500000000_02_GPZH', u'股市有风险，投资需谨慎')
+                   skipifNotiOS(('PA00500000000_02_GSZB', u'热 门')),
+                   ('PA01100000000_02_HDJHY', u'活动集合页'),
+					('PA00800000000_02_PACX', u'使馆信息'),
+                   # ('PA01100000001_02_WDCX','ATM'),
+                   # ('PA01100000001_02_XYK',u'我的信用卡'),
+                   # ('PA01100000000_02_YYG',u'1元GO'),
+                   # ('PA03300000000_02_AJDK',u'试算一下'),
+                   # ('PA02500000000_02_TZLC',u'任意门'),
+                   # ('PA02100000001_02_JF', u'可用积分'),
+                   # ('PA01200000000_02_XYD', u'马上贷款'),
+                   # ('PA02100000000_02_YJQB', u'获取动态码'),
+                   # ('PA02100000000_02_KY', '5-6%'),
+                   # ('PA02100000000_02_HQY', u'获取验证码'),
+                   # ('PA00800000000_02_PACX', u'使馆信息'),
+                   # ('PA00400000000_02_CFBXZZC', u'温馨提示'),
+                   # ('PA01100000000_02_RYG', u'个人中心'),
+                   # ('PA00500000000_02_RED', u'申请条件'),
+                   # ('PA01100000000_02_ZCCX', u'资产提醒'),
+                   # ('PA01100000000_02_YHFK', u'建议反馈'),
+                   # ('PA01100000003_02_WDCX', u'ATM'),
+                   # ('SZDBK00000000_02_XYT', u'个人信息'),
+                   # ('PA02100000000_02_WDZC', u'资产提醒'),
+                   # ('PA02100000000_02_PAYD', u'小额消费贷款'),
+                   # ('PA02700000000_02_PAYX', u'欢乐游戏'),
+                   # ('PA02100000000_02_CGZ', u'添加车'),
+                   # ('PA02100000000_02_CJKX', u'财经快讯'),
+                   # ('PA02500000000_02_BZB', u'热销基金'),
+                   # ('PA02100000000_02_XEDK', u'小额消费贷款'),
+                   # ('PA01100000000_02_LHBLC', u'投资须谨慎，以上产品不保证收益'),
+                   skipifNotiOS(('PA00500000000_02_GPZH', u'股市有风险，投资需谨慎'))
                    ]
 
 # @pytest.mark.skipif(S.device['platformName'].lower() != pf.ios)
 @pytest.mark.parametrize("pluginID,pluginAssert",checkPluginInfo)
 def test_checkplugin(pluginID,pluginAssert):
-	'''用例名称: 检查插件:{},断言:{}'''.format(pluginID,pluginAssert)
+	'''
+	对插件进行检查
+	:param pluginID:插件ID
+	:param pluginAssert:插件断言
+	:return:
+	'''
 	L.logger.debug('遍历检查插件,插件ID: %s' % pluginID)
 	assert appOperate.check_plugin(pluginID,pluginAssert)
+	# Ac.assertTrue(appOperate.check_plugin(pluginID,pluginAssert),'检查插件断言')
 	

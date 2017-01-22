@@ -1,20 +1,20 @@
 # -*- coding:utf-8 -*-
 #######################################################
-#filename:Run_TestCase.py
+#filename:Assert.py
 #author:Jeff
 #date:2016-09-21
-#function:对运行用例进行操作处理
+#function:对运行用例进行断言
 #######################################################
 import unittest
 from src.lib.Element import Element
 from conf.Run_conf import read_config
 
-class AssertExcel(unittest.TestCase):
+class AssertClass(unittest.TestCase):
     '''
     预留断言类,目前暂未使用,断言API已经封装在excel支持的api中
     '''
     def __init__(self,driver):
-        super(AssertExcel,self).__init__()
+        super(AssertClass,self).__init__()
         self.driver = Element(driver)
         self.screenshot_path =read_config('screenshot','screen_shot_path')
         self.screen_shot_isTrue = bool(read_config('testcase', 'screen_shot_isTrue'))
@@ -33,6 +33,9 @@ class AssertExcel(unittest.TestCase):
             if not expr:
                 self.driver.screenshot_as_file(self.screenshot_path)
         return self.assertFalse(expr, msg=msg1)
+    
+    def _assertTrue(self,expr,msg=None):
+        return self.assertTrue(expr,msg=msg)
     
 
 if __name__ == "__main__":

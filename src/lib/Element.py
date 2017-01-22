@@ -19,7 +19,6 @@ from src.Public.Common import desired_caps as Dc
 from src.Public.Common import public as pc
 from src.Public.Global import L,S
 
-
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
@@ -41,7 +40,7 @@ class Element:
             return self.driver.find_element(*loc)
         except:
             L.logger.warning('%s 查找超时,未找到元素 : %s' % (self,loc))
-            return False
+        
 
     # 重新封装find_elements
     def find_elements(self, loc, wait=pc.time2wait):
@@ -57,7 +56,7 @@ class Element:
             return self.driver.find_elements(*loc)
         except:
             L.logger.warning('%s 查找超时,未找到元素 : %s' % (self, loc))
-            return
+            # return
         
     def find_element_orign(self,by,value):
         L.logger.info('查找元素: %s, %s' % (by,value))

@@ -173,7 +173,7 @@ class AppOperate (object):
 		
 		try:
 			while (not (self.find_element_by_plugin(pluginId)) and i > 0):
-				L.logger.info('插件未显示,左滑')
+				L.logger.info('插件%s 未显示,左滑' % pluginId)
 				self.driver.swipe_left()
 				i = i - 1
 			else:
@@ -201,20 +201,24 @@ class AppOperate (object):
 			
 			
 	def closeH5_byPluginId(self,pluginId):
+		'''通过插件ID来判断关闭H5的方式(iOS 有某几个插件关闭H5比较特别)'''
 		L.logger.info('关闭H5页面!')
-		if  pluginId == 'PA01100000000_02_PAZB':
-			try:
-				self.driver.by_xpath('//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeButton[1]').click()
-			except:
-				self.driver.by_xpath("//*[@name='com nav ic back']").click()
-		elif pluginId == 'PA02700000000_02_PAYX':
-			self.driver.by_xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeButton[1]").click()
-			self.driver.implicitly_wait(5)
-			self.driver.by_xpath("//*[@name='关闭']").click()
-		elif pluginId == 'PA02100000000_02_CJKX':
-			self.driver.by_xpath('//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeButton[1]').click()
-		# elif pluginId == 'PA01100000000_02_RYG':
-		# 	self.driver.by_xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeButton[1]").click()
+		if self.platformName.lower() == pf.ios:
+			if  pluginId == 'PA01100000000_02_PAZB':
+				try:
+					self.driver.by_xpath('//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeButton[1]').click()
+				except:
+					self.driver.by_xpath("//*[@name='com nav ic back']").click()
+			elif pluginId == 'PA02700000000_02_PAYX':
+				self.driver.by_xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeButton[1]").click()
+				self.driver.implicitly_wait(5)
+				self.driver.by_xpath("//*[@name='关闭']").click()
+			elif pluginId == 'PA02100000000_02_CJKX':
+				self.driver.by_xpath('//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeButton[1]').click()
+			# elif pluginId == 'PA01100000000_02_RYG':
+			# 	self.driver.by_xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeButton[1]").click()
+			else:
+				self.closeH5()
 		else:
 			self.closeH5()
 			
@@ -223,9 +227,9 @@ class AppOperate (object):
 		关闭H5界面
 		:return: True
 		'''
-		
-		try:
-			if self.platformName.lower() == pf.ios:
+		# ios 关闭H5
+		if self.platformName.lower() == pf.ios:
+			try:
 				if self.driver.by_id('closeButton'):
 					self.driver.by_id('closeButton').click()
 				elif self.driver.by_id('关闭'):
@@ -236,23 +240,31 @@ class AppOperate (object):
 					self.driver.by_id('com nav ic back').click()
 				else:
 					L.logger.warning('通过[ by id ]关闭H5失败')
+			
+			except:
+					if self.driver.by_xpath("//*[@name='closeButton']"):
+						self.driver.by_xpath("//*[@name='closeButton']").click()
+					elif self.driver.by_xpath("//*[@name='关闭']"):
+						self.driver.by_xpath("//*[@name='关闭']").click()
+					elif self.driver.by_xpath("//*[@name='返回']"):
+						self.driver.by_xpath("//*[@name='返回']").click()
+					elif self.driver.by_xpath("//*[@name='com nav ic back']"):
+						self.driver.by_xpath("//*[@name='com nav ic back']").click()
+					else:
+						L.logger.warning('暂不支持的关闭方式,xpah关闭H5失败')
+
+		else:
+			# Android 关闭H5
+			el = self.driver.by_id('com.paic.example.simpleapp:array/user_system')
+			if el:
+				el.click()
+			elif self.driver.by_id('back'):
+				self.click(self.driver.by_id('back'),'点击返回id: back')
+			elif self.driver.by_id('quit'):
+				self.click(self.driver.by_id('quit'), '点击返回id: quit')
 			else:
-				# Android 关闭H5
-				el = self.driver.by_id('com.paic.example.simpleapp:array/user_system')
-				if el:
-					el.click()
-		except:
-				if self.driver.by_xpath("//*[@name='closeButton']"):
-					self.driver.by_xpath("//*[@name='closeButton']").click()
-				elif self.driver.by_xpath("//*[@name='关闭']"):
-					self.driver.by_xpath("//*[@name='关闭']").click()
-				elif self.driver.by_xpath("//*[@name='返回']"):
-					self.driver.by_xpath("//*[@name='返回']").click()
-				elif self.driver.by_xpath("//*[@name='com nav ic back']"):
-					self.driver.by_xpath("//*[@name='com nav ic back']").click()
-				else:
-					L.logger.warning('暂不支持的关闭方式,xpah关闭H5失败')
-		
+				pass
+				
 	
 	def getPluginList(self):
 		pluginInfoList = []
@@ -362,10 +374,4 @@ class AppOperate (object):
 	
 if __name__ == '__main__':
 
-	appOperates = AppOperate(driver)
-	print appOperates.getPluginList()
-	# appOperates.get_screen_shot()
-	# appOperates.loginByH5('18589091413','Solution123')
-	# ss = appOperates.wait_for_text(30,'我的资产')
-	# print ss
-	# assert ss
+	pass
