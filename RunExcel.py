@@ -151,14 +151,17 @@ class RunExcelCase(unittest.TestCase):
 				
 		case_cost_time = time.time() - case_start_time
 		case_cost_time =round(case_cost_time,3)
-		retry_flag = False
+		retry_flag = 'FALSE'
 		case_list.append(case_cost_time)
 		case_list.append(retry_flag)
 		# 判断result列表最后一个元素是否是当前的测试用例,如果是当前用例则更新原用例的结果,如果不是,则添加新结果
 		if result:
 			if result[-1][0] == case_list[0]:
-				result[-1][1]=case_list[1] # 更新结果
+				result[-1][1]= case_list[1] # 更新结果
 				result[-1][2] = case_list[2] # 更新时间
+				if resultStutas.success not in case_list:
+					retry_flag = 'TRUE'
+					result[-1][3] = retry_flag
 			else:
 				result.append(case_list)
 		else:

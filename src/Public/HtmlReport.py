@@ -57,6 +57,7 @@ class HtmlReport(object):
         self.success_num = len([x for x in testcase_result if x[1] in [resultStutas.success]])
         self.fail_num = len([x for x in testcase_result if x[1] in [resultStutas.fail]])
         self.error_num = len([x for x in testcase_result if x[1] in [resultStutas.error]])
+        self.rerun_num = len([x for x in testcase_result if x[1] in [resultStutas.rerun]])
 
     # 设置测试总耗时
     def set_run_time(self, seconds):
@@ -144,7 +145,7 @@ class HtmlReport(object):
                        pyh.td(str(self.success_num), align='middle') +
                        pyh.td(str(self.fail_num), align='middle') +
                        pyh.td(str(self.error_num), align='middle')+
-                       pyh.td(str(self.error_num), align='middle'))
+                       pyh.td(str(self.fail_num), align='middle'))
         
         page << pyh.h3('Results', align='left')  # 标题居左
         

@@ -1,1 +1,4 @@
-{}
+{
+  "TestCase/Scripts/Anydoor.py::test_checkplugin[PA00800000000_02_PAC1X-\\u4f7f\\u9986\\u4fe1\\u606f]": true, 
+  "TestCase/Scripts/Anydoor.py::test_checkplugin[PA00800000000_02_PACX-\\u4f7fs\\u9986\\u4fe1\\u606f]": true
+}

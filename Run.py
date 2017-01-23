@@ -120,30 +120,33 @@ def Run_one(device,port):
 	run_mode() # 运行模式
 
 if __name__ == '__main__':
-	G = GetDevices()
-	devices = G.get_device()
-	count = len(devices)
-	ports = G.get_port(count)
-	print '*' * 80
-	print time.ctime(), ' [', __name__, '] :', '设备数: ',count,' 端口列表: ',ports
-	print '*' * 80
-	print time.ctime(), ' [', __name__, '] :', 'Run task pid: (%s) at: %s' % ( os.getpid(), time.ctime())
-	print '*' * 80
-	p = Pool(processes=count) # set the processes max number 3
-	
-	# 多线程并发
-	for i in range(count):
-		result = p.apply_async(Run_one,(devices[i],ports[i],))
-	
-	p.close() # 关闭进程,不再添加新的进程
-	p.join() # 进程等待执行完毕
-	if result.successful():
+	try:
+		G = GetDevices()
+		devices = G.get_device()
+		count = len(devices)
+		ports = G.get_port(count)
 		print '*' * 80
-		if count > 1:
-			print time.ctime(), ' [', __name__, '] :', '多设备并发执行成功'
-		else:
-			print time.ctime(), ' [', __name__, '] :', '单设备执行成功'
-	clean_process()
+		print time.ctime(), ' [', __name__, '] :', '设备数: ',count,' 端口列表: ',ports
+		print '*' * 80
+		print time.ctime(), ' [', __name__, '] :', 'Run task pid: (%s) at: %s' % ( os.getpid(), time.ctime())
+		print '*' * 80
+		p = Pool(processes=count) # set the processes max number 3
+		
+		# 多线程并发
+		for i in range(count):
+			result = p.apply_async(Run_one,(devices[i],ports[i],))
+		
+		p.close() # 关闭进程,不再添加新的进程
+		p.join() # 进程等待执行完毕
+		if result.successful():
+			print '*' * 80
+			if count > 1:
+				print time.ctime(), ' [', __name__, '] :', '多设备并发执行成功'
+			else:
+				print time.ctime(), ' [', __name__, '] :', '单设备执行成功'
+		clean_process()
+	except Exception as e:
+		raise e
 	print '*' * 80
 	print time.ctime(), ' [', __name__, '] :', '所有代码执行完毕!'
 	# exit()

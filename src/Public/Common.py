@@ -29,6 +29,7 @@ class resultStutas(object):
 	success = 'PASS'
 	fail = 'FAIL'
 	error = 'ERROR'
+	rerun = 'TRUE'
 	successCode = 1
 	failCode = 0
 	errorCode = -1
