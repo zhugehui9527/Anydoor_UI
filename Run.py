@@ -17,7 +17,9 @@ from src.lib.Driver import Driver
 import time,os
 
 # from src.lib.Utils import utils
-xls_file_path = read_config('testcase', 'xls_case_path')
+xls_file_path = os.path.abspath('./TestCase/Excel/TestCase.xlsx')
+print '*' * 80
+print time.ctime(),' [',__name__,'::','用例路径: ',xls_file_path
 xlsEngine = ExcelRW.XlsEngine(xls_file_path)
 xlsEngine.open()  # 打开excel
 case_sheet1 = xlsEngine.readsheet(public.case_sheet)
@@ -149,7 +151,4 @@ if __name__ == '__main__':
 		raise e
 	print '*' * 80
 	print time.ctime(), ' [', __name__, '] :', '所有代码执行完毕!'
-	# exit()
-	
-	
 	

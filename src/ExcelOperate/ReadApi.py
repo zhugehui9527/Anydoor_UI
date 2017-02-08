@@ -5,23 +5,44 @@
 #date:2016-11
 #function:读取api相关功能和封装
 #######################################################
-import time
-import unittest
+import time,unittest,os
 from ReadElement import ReadElement
-# from conf.Run_conf import read_config
+from conf.Run_conf import read_config
 from src.Public.Common import operate_api
-from src.Public.Common import resultClass
 from src.Public.appOperate import AppOperate
 from src.lib.Element import Element
 from src.Public.Global import L,S
+import sys
+sys.path.append("../../")
 
-# logger = L.logger
 class ReadApi(unittest.TestCase):
 	def __init__(self,driver):
 		self.platformName = S.device['platformName']
 		self.appOperate = AppOperate(driver)
 		self.wd = Element(driver)
 		self.readElement = ReadElement(driver)
+		self.screen_shot_isTrue = bool(read_config('screenshot','screen_shot_isTrue'))
+		self.screen_shot_path = os.path.abspath('./output/{}/screen/{}.png')
+	
+	def screen_shot(self,case):
+		'''
+		截图方法由截图开关控制
+		:return:
+		'''
+		try:
+			# timestamp = time.mktime(time.localtime())
+			# 截图路径
+			if case[0]:
+				screen_shot_path = self.screen_shot_path.format(S.device['udid'],case[0])
+			else:
+				screen_shot_path = self.screen_shot_path.format(S.device['udid'], case[1])
+			if self.screen_shot_isTrue:
+				L.logger.debug('截图开关已打开,截图保存路径: %s' % screen_shot_path)
+				self.wd.screenshot_as_file(screen_shot_path)
+			else:
+				pass
+		except Exception as e:
+			L.logger.error(e)
 		
 	def readApiList(self,case_list=[]): #case_list是一维数组
 		L.logger.debug('case_list :%s' % case_list)
@@ -31,15 +52,9 @@ class ReadApi(unittest.TestCase):
 				return True
 			except Exception as e:
 				L.logger.error(e)
+				# API调用失败截图
+				self.screen_shot(case_list)
 				return False
-
-	@staticmethod
-	def get_error_trace():
-		return resultClass.trace
-	
-	@staticmethod
-	def get_img_base64():
-		return resultClass.img_base64
 	
 	def callApi(self,case_list):
 		'''
@@ -76,8 +91,6 @@ class ReadApi(unittest.TestCase):
 			L.logger.error('请检查Action_Keyword中的api是否输入正确!')
 			# raise
 			
-	
-	
 if __name__ == '__main__':
 	pass
 	# readapi = ReadApi()

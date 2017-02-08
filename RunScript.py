@@ -1,14 +1,15 @@
 # -*- coding:utf-8 -*-
-from conf.Run_conf import read_config
+# from conf.Run_conf import read_config
 import pytest,os
 
 def run_pytest():
-	project_path = read_config('testcase','project_path')
-	case_path = project_path + '/TestCase/Scripts/Anydoor.py'
+	# project_path = read_config('testcase','project_path')
+	case_path =  os.path.abspath('./TestCase/Scripts/Anydoor.py')
+	# print 'case_path = ',case_path
 	from src.Public.Global import S
 	udid = S.device['udid']
-	report_path = project_path + '/output/{}/html/report.html'.format(udid)
-	xml_path = project_path + '/output/{}/html/report.xml'.format(udid)
+	report_path = os.path.abspath('./output/{}/html/report.html'.format(udid))
+	xml_path =  os.path.abspath('./output/{}/html/report.xml'.format(udid))
 	# 命令拼接,注意每一个参数之间加空格
 	# cmd1 = 'py.test '+ case_path +' --html='+ report_path +' --rerun 1' + ' --self-contained-html'
 	cmd2 = '-q ' + case_path + ' --html=' + report_path + ' --rerun 1' + ' --self-contained-html' + ' --junitxml=' + xml_path

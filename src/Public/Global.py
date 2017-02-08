@@ -6,6 +6,9 @@
 #function:处理全局文件变量
 #######################################################
 import os,time
+import sys
+sys.path.append("../../")
+
 class D:
 	driver = None
 	@classmethod
@@ -25,18 +28,18 @@ class L:
 		
 class S:
 	device = None
-	from conf.Run_conf import read_config
-	project_path = read_config('testcase','project_path')
+	# from conf.Run_conf import read_config
+	# project_path = read_config('testcase','project_path')
 	
 	@classmethod
 	def set_device(cls,device):
 		if device:
 			cls.device = device
-			device_dir = cls.project_path +'/output/'+ cls.device['udid']
+			device_dir = os.path.abspath('./output/'+ cls.device['udid'])
 			# print '* [', __name__, '::', S.set_device.__name__, '] :', ' device_dir = ',device_dir
-			log_dir = device_dir + '/log'
-			report_dir = device_dir + '/html/filter'
-			screen_dir = device_dir + '/screen'
+			log_dir = os.path.abspath(device_dir + '/log')
+			report_dir = os.path.abspath(device_dir + '/html/filter')
+			screen_dir = os.path.abspath(device_dir + '/screen')
 			cls.mkdirs(log_dir)
 			cls.mkdirs(report_dir)
 			cls.mkdirs(screen_dir)

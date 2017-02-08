@@ -1,0 +1,935 @@
+2017-01-24 13:46:13,790 : Driver.py[line:60] [ INFO ] 初始化成功!
+2017-01-24 13:46:13,791 : Driver.py[line:64] [ INFO ] 启动并获取driver对象
+2017-01-24 13:47:13,915 : Run.py[line:44] [ INFO ]  运行 Script 测试用例 
+2017-01-24 13:47:14,576 : Element.py[line:215] [ INFO ] 获取当前窗口大小: {u'width': 320, u'height': 568}
+2017-01-24 13:47:14,577 : Element.py[line:269] [ INFO ] 向右滑动,起始滑动坐标: (32,511),坐标偏移量(192,0)
+2017-01-24 13:47:25,470 : Element.py[line:88] [ INFO ] 查找id: 个人中心
+2017-01-24 13:47:38,222 : Element.py[line:127] [ INFO ] 查找 xpath: //*[@value='一账通号/手机号/身份证号/邮箱']
+2017-01-24 13:47:48,667 : appOperate.py[line:91] [ INFO ] 输入账号: 18602753065
+2017-01-24 13:47:53,560 : Element.py[line:88] [ INFO ] 查找id: 完成
+2017-01-24 13:48:07,620 : Element.py[line:127] [ INFO ] 查找 xpath: //*[@value='密码']
+2017-01-24 13:48:15,012 : appOperate.py[line:97] [ INFO ] 输入密码: qweqwe123
+2017-01-24 13:48:19,541 : Element.py[line:88] [ INFO ] 查找id: 完成
+2017-01-24 13:48:33,908 : Element.py[line:127] [ INFO ] 查找 xpath: //*[@value='登 录']
+2017-01-24 13:48:41,426 : appOperate.py[line:334] [ INFO ] 开始轮询元素: 我的订单
+2017-01-24 13:48:41,428 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 13:48:46,519 : appOperate.py[line:343] [ INFO ] 界面存在此元素:[ 我的订单 ]
+2017-01-24 13:48:49,378 : Element.py[line:88] [ INFO ] 查找id: closeButton
+2017-01-24 13:48:52,212 : Element.py[line:88] [ INFO ] 查找id: closeButton
+2017-01-24 13:48:57,412 : Element.py[line:215] [ INFO ] 获取当前窗口大小: {u'width': 320, u'height': 568}
+2017-01-24 13:48:57,412 : Element.py[line:292] [ INFO ] 向左滑动,起始滑动坐标: (288,511),坐标偏移量(-192,0)
+2017-01-24 13:49:04,689 : appOperate.py[line:272] [ INFO ] 开始获取插件列表。。。
+2017-01-24 13:49:04,843 : appOperate.py[line:275] [ INFO ] 当前插件总数: 40
+2017-01-24 13:49:04,844 : appOperate.py[line:276] [ INFO ] 当前插件列表: 
+2017-01-24 13:49:04,845 : appOperate.py[line:280] [ INFO ] 平安地图---PA01100000000_02_PAZB---H
+2017-01-24 13:49:04,847 : appOperate.py[line:280] [ INFO ] 模拟炒股---PA01100000000_02_WLC---H
+2017-01-24 13:49:04,848 : appOperate.py[line:280] [ INFO ] 个人中心---PA01100000000_02_GRZX---Y
+2017-01-24 13:49:04,848 : appOperate.py[line:280] [ INFO ] 看直播---PA00500000000_02_GSZB---N
+2017-01-24 13:49:04,849 : appOperate.py[line:280] [ INFO ] 活动集合---PA01100000000_02_HDJHY---H
+2017-01-24 13:49:04,849 : appOperate.py[line:280] [ INFO ] 找网点---PA01100000001_02_WDCX---N
+2017-01-24 13:49:04,849 : appOperate.py[line:280] [ INFO ] 十元电影---PA01100000001_02_XYK---H
+2017-01-24 13:49:04,850 : appOperate.py[line:280] [ INFO ] 买航意险---PA01100000000_02_YYG---N
+2017-01-24 13:49:04,850 : appOperate.py[line:280] [ INFO ] 房按揭---PA03300000000_02_AJDK---Y
+2017-01-24 13:49:04,850 : appOperate.py[line:280] [ INFO ] 在线投资---PA02500000000_02_TZLC---N
+2017-01-24 13:49:04,851 : appOperate.py[line:280] [ INFO ] 积分福利---PA02100000001_02_JF---Y
+2017-01-24 13:49:04,851 : appOperate.py[line:280] [ INFO ] 平安好贷---PA01200000000_02_XYD---N
+2017-01-24 13:49:04,851 : appOperate.py[line:280] [ INFO ] 年终狂欢---PA02100000000_02_YJQB---N
+2017-01-24 13:49:04,851 : appOperate.py[line:280] [ INFO ] 970元---PA02100000000_02_KY---N
+2017-01-24 13:49:04,852 : appOperate.py[line:280] [ INFO ] 活期盈---PA02100000000_02_HQY---H
+2017-01-24 13:49:04,852 : appOperate.py[line:280] [ INFO ] 查号码---PA00800000000_02_PACX---N
+2017-01-24 13:49:04,852 : appOperate.py[line:280] [ INFO ] 财富宝---PA00400000000_02_CFBXZZC---H
+2017-01-24 13:49:04,853 : appOperate.py[line:280] [ INFO ] 精品特卖---PA01100000000_02_RYG---H
+2017-01-24 13:49:04,853 : appOperate.py[line:280] [ INFO ] 融e贷---PA00500000000_02_RED---N
+2017-01-24 13:49:04,853 : appOperate.py[line:280] [ INFO ] 资产查询---PA01100000000_02_ZCCX---Y
+2017-01-24 13:49:04,853 : appOperate.py[line:280] [ INFO ] 意见反馈---PA01100000000_02_YHFK---N
+2017-01-24 13:49:04,854 : appOperate.py[line:280] [ INFO ] 网点地图---PA01100000003_02_WDCX---N
+2017-01-24 13:49:04,854 : appOperate.py[line:280] [ INFO ] 薪易通---SZDBK00000000_02_XYT---N
+2017-01-24 13:49:04,854 : appOperate.py[line:280] [ INFO ] 我的资产---PA02100000000_02_WDZC---Y
+2017-01-24 13:49:04,854 : appOperate.py[line:280] [ INFO ] 平安易贷 ---PA02100000000_02_PAYD---N
+2017-01-24 13:49:04,854 : appOperate.py[line:280] [ INFO ] 平安游戏---PA02700000000_02_PAYX---Y
+2017-01-24 13:49:04,855 : appOperate.py[line:280] [ INFO ] 电影票---PA02100000000_02_DYP---H
+2017-01-24 13:49:04,855 : appOperate.py[line:280] [ INFO ] 车估值---PA02100000000_02_CGZ---Y
+2017-01-24 13:49:04,855 : appOperate.py[line:280] [ INFO ] 财经快讯---PA02100000000_02_CJKX---N
+2017-01-24 13:49:04,855 : appOperate.py[line:280] [ INFO ] 辞旧赢薪---PA02100000000_02_CJYX---N
+2017-01-24 13:49:04,855 : appOperate.py[line:280] [ INFO ] 买保尊宝---PA02500000000_02_BZB---Y
+2017-01-24 13:49:04,855 : appOperate.py[line:280] [ INFO ] 大麦若叶---PA02100000000_02_AJGCS---N
+2017-01-24 13:49:04,856 : appOperate.py[line:280] [ INFO ] 潘多拉---PA02100000000_02_CS3---N
+2017-01-24 13:49:04,856 : appOperate.py[line:280] [ INFO ] 平安易贷---PA02100000000_02_XEDK---N
+2017-01-24 13:49:04,856 : appOperate.py[line:280] [ INFO ] 签到个人---PA02100000000_02_HDCS---N
+2017-01-24 13:49:04,856 : appOperate.py[line:280] [ INFO ] 保险超市---PA01100000000_02_BXCS---H
+2017-01-24 13:49:04,856 : appOperate.py[line:280] [ INFO ] 消息中心---PA01100000000_02_XXZX_F---H
+2017-01-24 13:49:04,856 : appOperate.py[line:280] [ INFO ] 财神送礼---PA01100000000_02_LHBLC---H
+2017-01-24 13:49:04,857 : appOperate.py[line:280] [ INFO ] 蜂蜜---PA02100000001_02_HDCS---N
+2017-01-24 13:49:04,857 : appOperate.py[line:280] [ INFO ] 股票组合---PA00500000000_02_GPZH---N
+2017-01-24 13:49:04,862 : Anydoor.py[line:103] [ DEBUG ] 遍历检查插件,插件ID: PA01100000000_02_PAZB
+2017-01-24 13:49:04,863 : appOperate.py[line:169] [ INFO ] 开始检查插件: PA01100000000_02_PAZB
+2017-01-24 13:49:07,752 : appOperate.py[line:181] [ INFO ] 找到插件: PA01100000000_02_PAZB ,准备点击打开
+2017-01-24 13:49:12,172 : appOperate.py[line:183] [ INFO ] 判断插件页面,是否包含: 加油站
+2017-01-24 13:49:12,173 : appOperate.py[line:334] [ INFO ] 开始轮询元素: 加油站
+2017-01-24 13:49:12,173 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 13:49:26,778 : appOperate.py[line:343] [ INFO ] 界面存在此元素:[ 加油站 ]
+2017-01-24 13:49:26,779 : appOperate.py[line:185] [ INFO ] 插件页面中包含 加油站,返回True
+2017-01-24 13:49:26,779 : appOperate.py[line:205] [ INFO ] 关闭H5页面!
+2017-01-24 13:49:38,876 : Element.py[line:127] [ INFO ] 查找 xpath: //XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeButton[1]
+2017-01-24 13:49:40,630 : Anydoor.py[line:103] [ DEBUG ] 遍历检查插件,插件ID: PA01100000000_02_WLC
+2017-01-24 13:49:40,632 : appOperate.py[line:169] [ INFO ] 开始检查插件: PA01100000000_02_WLC
+2017-01-24 13:49:44,227 : appOperate.py[line:181] [ INFO ] 找到插件: PA01100000000_02_WLC ,准备点击打开
+2017-01-24 13:49:49,494 : appOperate.py[line:183] [ INFO ] 判断插件页面,是否包含: 值得买
+2017-01-24 13:49:49,495 : appOperate.py[line:334] [ INFO ] 开始轮询元素: 值得买
+2017-01-24 13:49:49,496 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 13:49:58,573 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 13:50:35,791 : appOperate.py[line:343] [ INFO ] 界面存在此元素:[ 值得买 ]
+2017-01-24 13:50:35,792 : appOperate.py[line:185] [ INFO ] 插件页面中包含 值得买,返回True
+2017-01-24 13:50:35,792 : appOperate.py[line:205] [ INFO ] 关闭H5页面!
+2017-01-24 13:50:45,703 : Element.py[line:88] [ INFO ] 查找id: closeButton
+2017-01-24 13:50:55,112 : Element.py[line:88] [ INFO ] 查找id: closeButton
+2017-01-24 13:50:59,771 : Anydoor.py[line:103] [ DEBUG ] 遍历检查插件,插件ID: PA00500000000_02_GSZB
+2017-01-24 13:50:59,771 : appOperate.py[line:169] [ INFO ] 开始检查插件: PA00500000000_02_GSZB
+2017-01-24 13:51:03,045 : appOperate.py[line:181] [ INFO ] 找到插件: PA00500000000_02_GSZB ,准备点击打开
+2017-01-24 13:51:07,874 : appOperate.py[line:183] [ INFO ] 判断插件页面,是否包含: 热 门
+2017-01-24 13:51:07,875 : appOperate.py[line:334] [ INFO ] 开始轮询元素: 热 门
+2017-01-24 13:51:07,875 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 13:51:18,001 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 13:51:30,878 : appOperate.py[line:343] [ INFO ] 界面存在此元素:[ 热 门 ]
+2017-01-24 13:51:30,879 : appOperate.py[line:185] [ INFO ] 插件页面中包含 热 门,返回True
+2017-01-24 13:51:30,879 : appOperate.py[line:205] [ INFO ] 关闭H5页面!
+2017-01-24 13:51:36,831 : Element.py[line:88] [ INFO ] 查找id: closeButton
+2017-01-24 13:51:42,920 : Element.py[line:88] [ INFO ] 查找id: closeButton
+2017-01-24 13:51:46,119 : Anydoor.py[line:103] [ DEBUG ] 遍历检查插件,插件ID: PA01100000000_02_HDJHY
+2017-01-24 13:51:46,120 : appOperate.py[line:169] [ INFO ] 开始检查插件: PA01100000000_02_HDJHY
+2017-01-24 13:51:49,314 : appOperate.py[line:181] [ INFO ] 找到插件: PA01100000000_02_HDJHY ,准备点击打开
+2017-01-24 13:51:54,174 : appOperate.py[line:183] [ INFO ] 判断插件页面,是否包含: 活动集合页
+2017-01-24 13:51:54,175 : appOperate.py[line:334] [ INFO ] 开始轮询元素: 活动集合页
+2017-01-24 13:51:54,175 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 13:52:02,653 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 13:52:04,898 : appOperate.py[line:343] [ INFO ] 界面存在此元素:[ 活动集合页 ]
+2017-01-24 13:52:04,898 : appOperate.py[line:185] [ INFO ] 插件页面中包含 活动集合页,返回True
+2017-01-24 13:52:04,899 : appOperate.py[line:205] [ INFO ] 关闭H5页面!
+2017-01-24 13:52:07,209 : Element.py[line:88] [ INFO ] 查找id: closeButton
+2017-01-24 13:52:09,736 : Element.py[line:88] [ INFO ] 查找id: closeButton
+2017-01-24 13:52:11,211 : Anydoor.py[line:103] [ DEBUG ] 遍历检查插件,插件ID: PA00800000000_02_PACX
+2017-01-24 13:52:11,211 : appOperate.py[line:169] [ INFO ] 开始检查插件: PA00800000000_02_PACX
+2017-01-24 13:52:22,029 : Element.py[line:42] [ WARNING ] <src.lib.Element.Element instance at 0x103fd6a28> 查找超时,未找到元素 : ('id', 'PA00800000000_02_PACX')
+2017-01-24 13:52:22,030 : appOperate.py[line:176] [ INFO ] 插件PA00800000000_02_PACX 未显示,左滑
+2017-01-24 13:52:22,542 : Element.py[line:215] [ INFO ] 获取当前窗口大小: {u'width': 320, u'height': 568}
+2017-01-24 13:52:22,543 : Element.py[line:292] [ INFO ] 向左滑动,起始滑动坐标: (288,511),坐标偏移量(-192,0)
+2017-01-24 13:52:35,885 : appOperate.py[line:181] [ INFO ] 找到插件: PA00800000000_02_PACX ,准备点击打开
+2017-01-24 13:52:48,937 : appOperate.py[line:183] [ INFO ] 判断插件页面,是否包含: 使馆信息
+2017-01-24 13:52:48,939 : appOperate.py[line:334] [ INFO ] 开始轮询元素: 使馆信息
+2017-01-24 13:52:48,940 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 13:53:40,832 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 13:53:44,469 : appOperate.py[line:343] [ INFO ] 界面存在此元素:[ 使馆信息 ]
+2017-01-24 13:53:44,470 : appOperate.py[line:185] [ INFO ] 插件页面中包含 使馆信息,返回True
+2017-01-24 13:53:44,470 : appOperate.py[line:205] [ INFO ] 关闭H5页面!
+2017-01-24 13:53:47,129 : Element.py[line:88] [ INFO ] 查找id: closeButton
+2017-01-24 13:53:49,958 : Element.py[line:88] [ INFO ] 查找id: closeButton
+2017-01-24 13:53:51,650 : Anydoor.py[line:103] [ DEBUG ] 遍历检查插件,插件ID: PA00800000000_02_PAC1X
+2017-01-24 13:53:51,651 : appOperate.py[line:169] [ INFO ] 开始检查插件: PA00800000000_02_PAC1X
+2017-01-24 13:54:03,687 : Element.py[line:42] [ WARNING ] <src.lib.Element.Element instance at 0x103fd6a28> 查找超时,未找到元素 : ('id', 'PA00800000000_02_PAC1X')
+2017-01-24 13:54:03,688 : appOperate.py[line:176] [ INFO ] 插件PA00800000000_02_PAC1X 未显示,左滑
+2017-01-24 13:54:05,052 : Element.py[line:215] [ INFO ] 获取当前窗口大小: {u'width': 320, u'height': 568}
+2017-01-24 13:54:05,052 : Element.py[line:292] [ INFO ] 向左滑动,起始滑动坐标: (288,511),坐标偏移量(-192,0)
+2017-01-24 13:54:21,988 : Element.py[line:42] [ WARNING ] <src.lib.Element.Element instance at 0x103fd6a28> 查找超时,未找到元素 : ('id', 'PA00800000000_02_PAC1X')
+2017-01-24 13:54:21,988 : appOperate.py[line:176] [ INFO ] 插件PA00800000000_02_PAC1X 未显示,左滑
+2017-01-24 13:54:23,257 : Element.py[line:215] [ INFO ] 获取当前窗口大小: {u'width': 320, u'height': 568}
+2017-01-24 13:54:23,257 : Element.py[line:292] [ INFO ] 向左滑动,起始滑动坐标: (288,511),坐标偏移量(-192,0)
+2017-01-24 13:54:40,239 : Element.py[line:42] [ WARNING ] <src.lib.Element.Element instance at 0x103fd6a28> 查找超时,未找到元素 : ('id', 'PA00800000000_02_PAC1X')
+2017-01-24 13:54:40,239 : appOperate.py[line:176] [ INFO ] 插件PA00800000000_02_PAC1X 未显示,左滑
+2017-01-24 13:54:41,529 : Element.py[line:215] [ INFO ] 获取当前窗口大小: {u'width': 320, u'height': 568}
+2017-01-24 13:54:41,530 : Element.py[line:292] [ INFO ] 向左滑动,起始滑动坐标: (288,511),坐标偏移量(-192,0)
+2017-01-24 13:54:59,420 : Element.py[line:42] [ WARNING ] <src.lib.Element.Element instance at 0x103fd6a28> 查找超时,未找到元素 : ('id', 'PA00800000000_02_PAC1X')
+2017-01-24 13:54:59,420 : appOperate.py[line:176] [ INFO ] 插件PA00800000000_02_PAC1X 未显示,左滑
+2017-01-24 13:55:00,585 : Element.py[line:215] [ INFO ] 获取当前窗口大小: {u'width': 320, u'height': 568}
+2017-01-24 13:55:00,586 : Element.py[line:292] [ INFO ] 向左滑动,起始滑动坐标: (288,511),坐标偏移量(-192,0)
+2017-01-24 13:55:19,801 : Element.py[line:42] [ WARNING ] <src.lib.Element.Element instance at 0x103fd6a28> 查找超时,未找到元素 : ('id', 'PA00800000000_02_PAC1X')
+2017-01-24 13:55:19,802 : appOperate.py[line:176] [ INFO ] 插件PA00800000000_02_PAC1X 未显示,左滑
+2017-01-24 13:55:21,101 : Element.py[line:215] [ INFO ] 获取当前窗口大小: {u'width': 320, u'height': 568}
+2017-01-24 13:55:21,101 : Element.py[line:292] [ INFO ] 向左滑动,起始滑动坐标: (288,511),坐标偏移量(-192,0)
+2017-01-24 13:55:38,347 : Element.py[line:42] [ WARNING ] <src.lib.Element.Element instance at 0x103fd6a28> 查找超时,未找到元素 : ('id', 'PA00800000000_02_PAC1X')
+2017-01-24 13:55:38,347 : appOperate.py[line:181] [ INFO ] 找到插件: PA00800000000_02_PAC1X ,准备点击打开
+2017-01-24 13:55:48,720 : Element.py[line:42] [ WARNING ] <src.lib.Element.Element instance at 0x103fd6a28> 查找超时,未找到元素 : ('id', 'PA00800000000_02_PAC1X')
+2017-01-24 13:55:48,720 : appOperate.py[line:191] [ ERROR ] 'NoneType' object has no attribute 'click'
+2017-01-24 13:55:48,720 : appOperate.py[line:205] [ INFO ] 关闭H5页面!
+2017-01-24 13:55:59,154 : Element.py[line:42] [ WARNING ] <src.lib.Element.Element instance at 0x103fd6a28> 查找超时,未找到元素 : ('id', 'closeButton')
+2017-01-24 13:55:59,156 : Element.py[line:88] [ INFO ] 查找id: closeButton
+2017-01-24 13:56:09,507 : Element.py[line:42] [ WARNING ] <src.lib.Element.Element instance at 0x103fd6a28> 查找超时,未找到元素 : ('id', '\xe5\x85\xb3\xe9\x97\xad')
+2017-01-24 13:56:09,508 : Element.py[line:88] [ INFO ] 查找id: 关闭
+2017-01-24 13:56:19,723 : Element.py[line:42] [ WARNING ] <src.lib.Element.Element instance at 0x103fd6a28> 查找超时,未找到元素 : ('id', '\xe8\xbf\x94\xe5\x9b\x9e')
+2017-01-24 13:56:19,723 : Element.py[line:88] [ INFO ] 查找id: 返回
+2017-01-24 13:56:29,853 : Element.py[line:42] [ WARNING ] <src.lib.Element.Element instance at 0x103fd6a28> 查找超时,未找到元素 : ('id', 'com nav ic back')
+2017-01-24 13:56:29,853 : Element.py[line:88] [ INFO ] 查找id: com nav ic back
+2017-01-24 13:56:29,854 : appOperate.py[line:242] [ WARNING ] 通过[ by id ]关闭H5失败
+2017-01-24 13:56:31,146 : Element.py[line:215] [ INFO ] 获取当前窗口大小: {u'width': 320, u'height': 568}
+2017-01-24 13:56:31,146 : Element.py[line:269] [ INFO ] 向右滑动,起始滑动坐标: (32,511),坐标偏移量(192,0)
+2017-01-24 13:56:37,775 : appOperate.py[line:200] [ INFO ] 右滑动恢复左边查找
+2017-01-24 13:56:38,935 : Element.py[line:215] [ INFO ] 获取当前窗口大小: {u'width': 320, u'height': 568}
+2017-01-24 13:56:38,936 : Element.py[line:269] [ INFO ] 向右滑动,起始滑动坐标: (32,511),坐标偏移量(192,0)
+2017-01-24 13:56:45,646 : appOperate.py[line:200] [ INFO ] 右滑动恢复左边查找
+2017-01-24 13:56:46,922 : Element.py[line:215] [ INFO ] 获取当前窗口大小: {u'width': 320, u'height': 568}
+2017-01-24 13:56:46,922 : Element.py[line:269] [ INFO ] 向右滑动,起始滑动坐标: (32,511),坐标偏移量(192,0)
+2017-01-24 13:56:53,640 : appOperate.py[line:200] [ INFO ] 右滑动恢复左边查找
+2017-01-24 13:56:54,910 : Element.py[line:215] [ INFO ] 获取当前窗口大小: {u'width': 320, u'height': 568}
+2017-01-24 13:56:54,911 : Element.py[line:269] [ INFO ] 向右滑动,起始滑动坐标: (32,511),坐标偏移量(192,0)
+2017-01-24 13:57:01,670 : appOperate.py[line:200] [ INFO ] 右滑动恢复左边查找
+2017-01-24 13:57:02,968 : Element.py[line:215] [ INFO ] 获取当前窗口大小: {u'width': 320, u'height': 568}
+2017-01-24 13:57:02,968 : Element.py[line:269] [ INFO ] 向右滑动,起始滑动坐标: (32,511),坐标偏移量(192,0)
+2017-01-24 13:57:09,722 : appOperate.py[line:200] [ INFO ] 右滑动恢复左边查找
+2017-01-24 13:57:09,796 : Anydoor.py[line:103] [ DEBUG ] 遍历检查插件,插件ID: PA00800000000_02_PAC1X
+2017-01-24 13:57:09,797 : appOperate.py[line:169] [ INFO ] 开始检查插件: PA00800000000_02_PAC1X
+2017-01-24 13:57:20,035 : Element.py[line:42] [ WARNING ] <src.lib.Element.Element instance at 0x103fd6a28> 查找超时,未找到元素 : ('id', 'PA00800000000_02_PAC1X')
+2017-01-24 13:57:20,037 : appOperate.py[line:176] [ INFO ] 插件PA00800000000_02_PAC1X 未显示,左滑
+2017-01-24 13:57:20,577 : Element.py[line:215] [ INFO ] 获取当前窗口大小: {u'width': 320, u'height': 568}
+2017-01-24 13:57:20,577 : Element.py[line:292] [ INFO ] 向左滑动,起始滑动坐标: (288,511),坐标偏移量(-192,0)
+2017-01-24 13:57:36,170 : Element.py[line:42] [ WARNING ] <src.lib.Element.Element instance at 0x103fd6a28> 查找超时,未找到元素 : ('id', 'PA00800000000_02_PAC1X')
+2017-01-24 13:57:36,172 : appOperate.py[line:176] [ INFO ] 插件PA00800000000_02_PAC1X 未显示,左滑
+2017-01-24 13:57:37,801 : Element.py[line:215] [ INFO ] 获取当前窗口大小: {u'width': 320, u'height': 568}
+2017-01-24 13:57:37,802 : Element.py[line:292] [ INFO ] 向左滑动,起始滑动坐标: (288,511),坐标偏移量(-192,0)
+2017-01-24 13:57:56,183 : Element.py[line:42] [ WARNING ] <src.lib.Element.Element instance at 0x103fd6a28> 查找超时,未找到元素 : ('id', 'PA00800000000_02_PAC1X')
+2017-01-24 13:57:56,184 : appOperate.py[line:176] [ INFO ] 插件PA00800000000_02_PAC1X 未显示,左滑
+2017-01-24 13:57:57,589 : Element.py[line:215] [ INFO ] 获取当前窗口大小: {u'width': 320, u'height': 568}
+2017-01-24 13:57:57,589 : Element.py[line:292] [ INFO ] 向左滑动,起始滑动坐标: (288,511),坐标偏移量(-192,0)
+2017-01-24 13:58:15,780 : Element.py[line:42] [ WARNING ] <src.lib.Element.Element instance at 0x103fd6a28> 查找超时,未找到元素 : ('id', 'PA00800000000_02_PAC1X')
+2017-01-24 13:58:15,782 : appOperate.py[line:176] [ INFO ] 插件PA00800000000_02_PAC1X 未显示,左滑
+2017-01-24 13:58:17,188 : Element.py[line:215] [ INFO ] 获取当前窗口大小: {u'width': 320, u'height': 568}
+2017-01-24 13:58:17,189 : Element.py[line:292] [ INFO ] 向左滑动,起始滑动坐标: (288,511),坐标偏移量(-192,0)
+2017-01-24 13:58:35,650 : Element.py[line:42] [ WARNING ] <src.lib.Element.Element instance at 0x103fd6a28> 查找超时,未找到元素 : ('id', 'PA00800000000_02_PAC1X')
+2017-01-24 13:58:35,651 : appOperate.py[line:176] [ INFO ] 插件PA00800000000_02_PAC1X 未显示,左滑
+2017-01-24 13:58:37,330 : Element.py[line:215] [ INFO ] 获取当前窗口大小: {u'width': 320, u'height': 568}
+2017-01-24 13:58:37,331 : Element.py[line:292] [ INFO ] 向左滑动,起始滑动坐标: (288,511),坐标偏移量(-192,0)
+2017-01-24 13:58:57,103 : Element.py[line:42] [ WARNING ] <src.lib.Element.Element instance at 0x103fd6a28> 查找超时,未找到元素 : ('id', 'PA00800000000_02_PAC1X')
+2017-01-24 13:58:57,105 : appOperate.py[line:181] [ INFO ] 找到插件: PA00800000000_02_PAC1X ,准备点击打开
+2017-01-24 13:59:08,537 : Element.py[line:42] [ WARNING ] <src.lib.Element.Element instance at 0x103fd6a28> 查找超时,未找到元素 : ('id', 'PA00800000000_02_PAC1X')
+2017-01-24 13:59:08,538 : appOperate.py[line:191] [ ERROR ] 'NoneType' object has no attribute 'click'
+2017-01-24 13:59:08,538 : appOperate.py[line:205] [ INFO ] 关闭H5页面!
+2017-01-24 13:59:20,019 : Element.py[line:42] [ WARNING ] <src.lib.Element.Element instance at 0x103fd6a28> 查找超时,未找到元素 : ('id', 'closeButton')
+2017-01-24 13:59:20,019 : Element.py[line:88] [ INFO ] 查找id: closeButton
+2017-01-24 13:59:31,798 : Element.py[line:42] [ WARNING ] <src.lib.Element.Element instance at 0x103fd6a28> 查找超时,未找到元素 : ('id', '\xe5\x85\xb3\xe9\x97\xad')
+2017-01-24 13:59:31,801 : Element.py[line:88] [ INFO ] 查找id: 关闭
+2017-01-24 13:59:43,672 : Element.py[line:42] [ WARNING ] <src.lib.Element.Element instance at 0x103fd6a28> 查找超时,未找到元素 : ('id', '\xe8\xbf\x94\xe5\x9b\x9e')
+2017-01-24 13:59:43,673 : Element.py[line:88] [ INFO ] 查找id: 返回
+2017-01-24 13:59:55,630 : Element.py[line:42] [ WARNING ] <src.lib.Element.Element instance at 0x103fd6a28> 查找超时,未找到元素 : ('id', 'com nav ic back')
+2017-01-24 13:59:55,630 : Element.py[line:88] [ INFO ] 查找id: com nav ic back
+2017-01-24 13:59:55,631 : appOperate.py[line:242] [ WARNING ] 通过[ by id ]关闭H5失败
+2017-01-24 13:59:57,222 : Element.py[line:215] [ INFO ] 获取当前窗口大小: {u'width': 320, u'height': 568}
+2017-01-24 13:59:57,222 : Element.py[line:269] [ INFO ] 向右滑动,起始滑动坐标: (32,511),坐标偏移量(192,0)
+2017-01-24 14:00:04,904 : appOperate.py[line:200] [ INFO ] 右滑动恢复左边查找
+2017-01-24 14:00:06,436 : Element.py[line:215] [ INFO ] 获取当前窗口大小: {u'width': 320, u'height': 568}
+2017-01-24 14:00:06,437 : Element.py[line:269] [ INFO ] 向右滑动,起始滑动坐标: (32,511),坐标偏移量(192,0)
+2017-01-24 14:00:13,883 : appOperate.py[line:200] [ INFO ] 右滑动恢复左边查找
+2017-01-24 14:00:15,423 : Element.py[line:215] [ INFO ] 获取当前窗口大小: {u'width': 320, u'height': 568}
+2017-01-24 14:00:15,423 : Element.py[line:269] [ INFO ] 向右滑动,起始滑动坐标: (32,511),坐标偏移量(192,0)
+2017-01-24 14:00:23,014 : appOperate.py[line:200] [ INFO ] 右滑动恢复左边查找
+2017-01-24 14:00:24,670 : Element.py[line:215] [ INFO ] 获取当前窗口大小: {u'width': 320, u'height': 568}
+2017-01-24 14:00:24,670 : Element.py[line:269] [ INFO ] 向右滑动,起始滑动坐标: (32,511),坐标偏移量(192,0)
+2017-01-24 14:00:32,360 : appOperate.py[line:200] [ INFO ] 右滑动恢复左边查找
+2017-01-24 14:00:33,892 : Element.py[line:215] [ INFO ] 获取当前窗口大小: {u'width': 320, u'height': 568}
+2017-01-24 14:00:33,892 : Element.py[line:269] [ INFO ] 向右滑动,起始滑动坐标: (32,511),坐标偏移量(192,0)
+2017-01-24 14:00:41,617 : appOperate.py[line:200] [ INFO ] 右滑动恢复左边查找
+2017-01-24 14:00:41,627 : Anydoor.py[line:103] [ DEBUG ] 遍历检查插件,插件ID: PA00800000000_02_PACX
+2017-01-24 14:00:41,627 : appOperate.py[line:169] [ INFO ] 开始检查插件: PA00800000000_02_PACX
+2017-01-24 14:00:52,188 : Element.py[line:42] [ WARNING ] <src.lib.Element.Element instance at 0x103fd6a28> 查找超时,未找到元素 : ('id', 'PA00800000000_02_PACX')
+2017-01-24 14:00:52,188 : appOperate.py[line:176] [ INFO ] 插件PA00800000000_02_PACX 未显示,左滑
+2017-01-24 14:00:52,742 : Element.py[line:215] [ INFO ] 获取当前窗口大小: {u'width': 320, u'height': 568}
+2017-01-24 14:00:52,742 : Element.py[line:292] [ INFO ] 向左滑动,起始滑动坐标: (288,511),坐标偏移量(-192,0)
+2017-01-24 14:01:08,855 : appOperate.py[line:181] [ INFO ] 找到插件: PA00800000000_02_PACX ,准备点击打开
+2017-01-24 14:01:25,566 : appOperate.py[line:183] [ INFO ] 判断插件页面,是否包含: 使s馆信息
+2017-01-24 14:01:25,568 : appOperate.py[line:334] [ INFO ] 开始轮询元素: 使s馆信息
+2017-01-24 14:01:25,568 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 14:02:35,385 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 14:02:42,368 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 14:02:49,801 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 14:02:57,326 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 14:03:04,653 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 14:03:12,288 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 14:03:19,618 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 14:03:27,623 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 14:03:35,244 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 14:03:42,782 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 14:03:50,246 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 14:03:57,824 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 14:04:05,341 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 14:04:12,919 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 14:04:20,416 : appOperate.py[line:339] [ WARNING ] 轮询超时,未找到元素:[ 使s馆信息 ]
+2017-01-24 14:04:20,417 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 14:04:26,033 : appOperate.py[line:340] [ WARNING ] 轮询超时,pageSource: <xmp><?xml version="1.0" encoding="UTF-8"?><AppiumAUT><XCUIElementTypeApplication type="XCUIElementTypeApplication" name="任意门" label="任意门" visible="true" enabled="true" x="0" y="0" width="320" height="568">
+  <XCUIElementTypeWindow type="XCUIElementTypeWindow" visible="true" enabled="true" x="0" y="0" width="320" height="568">
+    <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="0" y="0" width="320" height="568">
+      <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="0" y="0" width="320" height="568">
+        <XCUIElementTypeTable type="XCUIElementTypeTable" visible="true" enabled="true" x="-8" y="-9" width="276" height="586">
+          <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="-8" y="-9" width="276" height="101">
+            <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="测试功能点" name="测试功能点" label="测试功能点" visible="true" enabled="true" x="5" y="-9" width="275" height="63"/>
+            <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="本栏主要模拟sdk部分功能供测试人员验证" name="本栏主要模拟sdk部分功能供测试人员验证" label="本栏主要模拟sdk部分功能供测试人员验证" visible="true" enabled="true" x="5" y="54" width="275" height="25"/>
+          </XCUIElementTypeOther>
+          <XCUIElementTypeCell type="XCUIElementTypeCell" visible="true" enabled="true" x="-8" y="91" width="276" height="51">
+            <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="测试页面" name="测试页面" label="测试页面" visible="true" enabled="true" x="11" y="91" width="238" height="51"/>
+          </XCUIElementTypeCell>
+          <XCUIElementTypeCell type="XCUIElementTypeCell" visible="true" enabled="true" x="-8" y="141" width="276" height="51">
+            <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="回到主屏" name="回到主屏" label="回到主屏" visible="true" enabled="true" x="11" y="141" width="238" height="51"/>
+          </XCUIElementTypeCell>
+          <XCUIElementTypeCell type="XCUIElementTypeCell" visible="true" enabled="true" x="-8" y="191" width="276" height="51">
+            <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="拉取消息接口" name="拉取消息接口" label="拉取消息接口" visible="true" enabled="true" x="11" y="191" width="238" height="51"/>
+          </XCUIElementTypeCell>
+          <XCUIElementTypeCell type="XCUIElementTypeCell" visible="true" enabled="true" x="-8" y="241" width="276" height="51">
+            <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="清空全部消息数据" name="清空全部消息数据" label="清空全部消息数据" visible="true" enabled="true" x="11" y="241" width="238" height="51"/>
+          </XCUIElementTypeCell>
+          <XCUIElementTypeCell type="XCUIElementTypeCell" visible="true" enabled="true" x="-8" y="291" width="276" height="51">
+            <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="切换长登陆状态" name="切换长登陆状态" label="切换长登陆状态" visible="true" enabled="true" x="11" y="291" width="238" height="51"/>
+          </XCUIElementTypeCell>
+          <XCUIElementTypeCell type="XCUIElementTypeCell" visible="true" enabled="true" x="-8" y="341" width="276" height="51">
+            <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="获取宿主显示插件" name="获取宿主显示插件" label="获取宿主显示插件" visible="true" enabled="true" x="11" y="341" width="238" height="51"/>
+          </XCUIElementTypeCell>
+          <XCUIElementTypeCell type="XCUIElementTypeCell" visible="true" enabled="true" x="-8" y="391" width="276" height="51">
+            <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="查看埋点记录" name="查看埋点记录" label="查看埋点记录" visible="true" enabled="true" x="11" y="391" width="238" height="51"/>
+          </XCUIElementTypeCell>
+          <XCUIElementTypeCell type="XCUIElementTypeCell" visible="true" enabled="true" x="-8" y="441" width="276" height="51">
+            <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="删除埋点记录" name="删除埋点记录" label="删除埋点记录" visible="true" enabled="true" x="11" y="441" width="238" height="51"/>
+          </XCUIElementTypeCell>
+          <XCUIElementTypeCell type="XCUIElementTypeCell" visible="true" enabled="true" x="-8" y="491" width="276" height="51">
+            <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="清除曝光数据" name="清除曝光数据" label="清除曝光数据" visible="true" enabled="true" x="11" y="491" width="238" height="51"/>
+          </XCUIElementTypeCell>
+          <XCUIElementTypeCell type="XCUIElementTypeCell" visible="true" enabled="true" x="-8" y="541" width="276" height="51">
+            <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="超时测试" name="超时测试" label="超时测试" visible="true" enabled="true" x="11" y="541" width="238" height="51"/>
+          </XCUIElementTypeCell>
+          <XCUIElementTypeCell type="XCUIElementTypeCell" visible="false" enabled="true" x="-8" y="591" width="276" height="51">
+            <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="测试Loading" name="测试Loading" label="测试Loading" visible="true" enabled="true" x="0" y="0" width="190" height="40"/>
+          </XCUIElementTypeCell>
+          <XCUIElementTypeCell type="XCUIElementTypeCell" visible="false" enabled="true" x="-8" y="641" width="276" height="51">
+            <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="Q2主屏动画拉取" name="Q2主屏动画拉取" label="Q2主屏动画拉取" visible="true" enabled="true" x="0" y="0" width="190" height="40"/>
+          </XCUIElementTypeCell>
+        </XCUIElementTypeTable>
+      </XCUIElementTypeOther>
+    </XCUIElementTypeOther>
+    <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="0" y="0" width="320" height="568">
+      <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="0" y="0" width="320" height="568">
+        <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="0" y="18" width="320" height="2"/>
+        <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="0" y="20" width="320" height="548">
+          <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="0" y="20" width="320" height="548">
+            <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="0" y="20" width="320" height="548">
+              <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="0" y="20" width="320" height="548">
+                <XCUIElementTypeOther type="XCUIElementTypeOther" name="平安保险" label="平安保险" visible="true" enabled="true" x="0" y="20" width="320" height="548">
+                  <XCUIElementTypeOther type="XCUIElementTypeOther" name="横幅" label="横幅" visible="true" enabled="true" x="0" y="20" width="320" height="44">
+                    <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="10" y="20" width="65" height="44">
+                      <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" visible="true" enabled="true" x="10" y="30" width="30" height="23"/>
+                    </XCUIElementTypeOther>
+                    <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="74" y="20" width="172" height="44">
+                      <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="救援服务" name="救援服务" label="救援服务" visible="true" enabled="true" x="120" y="30" width="81" height="23"/>
+                    </XCUIElementTypeOther>
+                    <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="245" y="20" width="66" height="44">
+                      <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" visible="true" enabled="true" x="280" y="30" width="31" height="23"/>
+                    </XCUIElementTypeOther>
+                  </XCUIElementTypeOther>
+                  <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="0" y="73" width="320" height="66">
+                    <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="247" y="78" width="67" height="35">
+                      <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="使馆信息" name="使馆信息" label="使馆信息" visible="true" enabled="true" x="252" y="87" width="57" height="18"/>
+                    </XCUIElementTypeOther>
+                    <XCUIElementTypeImage type="XCUIElementTypeImage" visible="true" enabled="true" x="138" y="73" width="43" height="55"/>
+                  </XCUIElementTypeOther>
+                  <XCUIElementTypeOther type="XCUIElementTypeOther" value="2" name="救援服务" label="救援服务" visible="true" enabled="true" x="0" y="138" width="320" height="32">
+                    <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="2" name="救援服务" label="救援服务" visible="true" enabled="true" x="118" y="142" width="84" height="25"/>
+                  </XCUIElementTypeOther>
+                  <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="25" y="175" width="270" height="55">
+                    <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="若你为平安赠送第三方救援服务的客户，可通过以下求助电话请求服务，或者您可以购买相关产品，获得免费救援服务" name="若你为平安赠送第三方救援服务的客户，可通过以下求助电话请求服务，或者您可以购买相关产品，获得免费救援服务" label="若你为平安赠送第三方救援服务的客户，可通过以下求助电话请求服务，或者您可以购买相关产品，获得免费救援服务" visible="true" enabled="true" x="25" y="176" width="261" height="52"/>
+                  </XCUIElementTypeOther>
+                  <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="0" y="248" width="320" height="294">
+                    <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="8" y="248" width="304" height="43">
+                      <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="海内外急难援助服务" name="海内外急难援助服务" label="海内外急难援助服务" visible="true" enabled="true" x="25" y="261" width="127" height="18"/>
+                    </XCUIElementTypeOther>
+                    <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="8" y="298" width="304" height="43">
+                      <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="意外医疗住院垫付服务" name="意外医疗住院垫付服务" label="意外医疗住院垫付服务" visible="true" enabled="true" x="25" y="311" width="141" height="18"/>
+                    </XCUIElementTypeOther>
+                    <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="8" y="348" width="304" height="44">
+                      <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="疾病零押金住院垫付服务" name="疾病零押金住院垫付服务" label="疾病零押金住院垫付服务" visible="true" enabled="true" x="25" y="361" width="155" height="18"/>
+                    </XCUIElementTypeOther>
+                    <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="8" y="398" width="304" height="44">
+                      <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="医疗服务" name="医疗服务" label="医疗服务" visible="true" enabled="true" x="25" y="411" width="57" height="18"/>
+                    </XCUIElementTypeOther>
+                    <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="8" y="448" width="304" height="44">
+                      <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="汽车意外道路救援服务" name="汽车意外道路救援服务" label="汽车意外道路救援服务" visible="true" enabled="true" x="25" y="462" width="141" height="18"/>
+                    </XCUIElementTypeOther>
+                    <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="8" y="498" width="304" height="44">
+                      <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="旅行前信息咨询和境外急难援助服务" name="旅行前信息咨询和境外急难援助服务" label="旅行前信息咨询和境外急难援助服务" visible="true" enabled="true" x="25" y="512" width="225" height="18"/>
+                    </XCUIElementTypeOther>
+                  </XCUIElementTypeOther>
+                  <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="0" y="549" width="320" height="19"/>
+                </XCUIElementTypeOther>
+              </XCUIElementTypeOther>
+            </XCUIElementTypeOther>
+          </XCUIElementTypeOther>
+        </XCUIElementTypeOther>
+        <XCUIElementTypeButton type="XCUIElementTypeButton" name="closeButton" label="closeButton" visible="true" enabled="true" x="271" y="23" width="44" height="44"/>
+      </XCUIElementTypeOther>
+    </XCUIElementTypeOther>
+  </XCUIElementTypeWindow>
+  <XCUIElementTypeWindow type="XCUIElementTypeWindow" visible="true" enabled="true" x="0" y="0" width="320" height="568">
+    <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="0" y="0" width="320" height="568"/>
+  </XCUIElementTypeWindow>
+  <XCUIElementTypeWindow type="XCUIElementTypeWindow" visible="true" enabled="true" x="0" y="0" width="320" height="568">
+    <XCUIElementTypeStatusBar type="XCUIElementTypeStatusBar" visible="true" enabled="true" x="0" y="0" width="320" height="20">
+      <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="0" y="0" width="320" height="20"/>
+      <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="0" y="0" width="320" height="20">
+        <XCUIElementTypeOther type="XCUIElementTypeOther" name="信号强度：3 格（共 5 格）" label="信号强度：3 格（共 5 格）" visible="true" enabled="true" x="6" y="0" width="35" height="20"/>
+        <XCUIElementTypeOther type="XCUIElementTypeOther" name="中国联通 网络" label="中国联通 网络" visible="true" enabled="true" x="44" y="0" width="50" height="20"/>
+        <XCUIElementTypeOther type="XCUIElementTypeOther" value="SSID" name="3 格无线局域网信号（共 3 格）" label="3 格无线局域网信号（共 3 格）" visible="true" enabled="true" x="99" y="0" width="13" height="20"/>
+        <XCUIElementTypeOther type="XCUIElementTypeOther" name="14:04" label="14:04" visible="true" enabled="true" x="145" y="0" width="34" height="20"/>
+        <XCUIElementTypeOther type="XCUIElementTypeOther" name="方向已锁定" label="方向已锁定" visible="true" enabled="true" x="233" y="0" width="12" height="20"/>
+        <XCUIElementTypeOther type="XCUIElementTypeOther" name="StandardLocationTrackingOn" label="位置跟踪已打开" visible="true" enabled="true" x="251" y="0" width="9" height="20"/>
+        <XCUIElementTypeOther type="XCUIElementTypeOther" name="闹钟" label="闹钟" visible="true" enabled="true" x="266" y="0" width="10" height="20"/>
+        <XCUIElementTypeOther type="XCUIElementTypeOther" name="电池电量：87%, 正在充电" label="电池电量：87%, 正在充电" visible="true" enabled="true" x="282" y="0" width="33" height="20"/>
+      </XCUIElementTypeOther>
+    </XCUIElementTypeStatusBar>
+  </XCUIElementTypeWindow>
+</XCUIElementTypeApplication></AppiumAUT></xmp> 
+2017-01-24 14:04:26,033 : appOperate.py[line:188] [ ERROR ] 插件页面中不包含 使s馆信息,返回False
+2017-01-24 14:04:26,033 : appOperate.py[line:205] [ INFO ] 关闭H5页面!
+2017-01-24 14:04:30,212 : Element.py[line:88] [ INFO ] 查找id: closeButton
+2017-01-24 14:04:34,432 : Element.py[line:88] [ INFO ] 查找id: closeButton
+2017-01-24 14:04:36,613 : Anydoor.py[line:103] [ DEBUG ] 遍历检查插件,插件ID: PA00800000000_02_PACX
+2017-01-24 14:04:36,613 : appOperate.py[line:169] [ INFO ] 开始检查插件: PA00800000000_02_PACX
+2017-01-24 14:04:50,017 : appOperate.py[line:181] [ INFO ] 找到插件: PA00800000000_02_PACX ,准备点击打开
+2017-01-24 14:05:10,205 : appOperate.py[line:183] [ INFO ] 判断插件页面,是否包含: 使s馆信息
+2017-01-24 14:05:10,205 : appOperate.py[line:334] [ INFO ] 开始轮询元素: 使s馆信息
+2017-01-24 14:05:10,206 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 14:06:29,752 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 14:06:38,050 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 14:06:45,878 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 14:06:53,788 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 14:07:01,892 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 14:07:09,903 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 14:07:17,751 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 14:07:25,646 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 14:07:33,286 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 14:07:41,086 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 14:07:48,974 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 14:07:56,900 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 14:08:04,769 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 14:08:12,459 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 14:08:20,110 : appOperate.py[line:339] [ WARNING ] 轮询超时,未找到元素:[ 使s馆信息 ]
+2017-01-24 14:08:20,112 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 14:08:25,985 : appOperate.py[line:340] [ WARNING ] 轮询超时,pageSource: <xmp><?xml version="1.0" encoding="UTF-8"?><AppiumAUT><XCUIElementTypeApplication type="XCUIElementTypeApplication" name="任意门" label="任意门" visible="true" enabled="true" x="0" y="0" width="320" height="568">
+  <XCUIElementTypeWindow type="XCUIElementTypeWindow" visible="true" enabled="true" x="0" y="0" width="320" height="568">
+    <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="0" y="0" width="320" height="568">
+      <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="0" y="0" width="320" height="568">
+        <XCUIElementTypeTable type="XCUIElementTypeTable" visible="true" enabled="true" x="-8" y="-9" width="276" height="586">
+          <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="-8" y="-9" width="276" height="101">
+            <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="测试功能点" name="测试功能点" label="测试功能点" visible="true" enabled="true" x="5" y="-9" width="275" height="63"/>
+            <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="本栏主要模拟sdk部分功能供测试人员验证" name="本栏主要模拟sdk部分功能供测试人员验证" label="本栏主要模拟sdk部分功能供测试人员验证" visible="true" enabled="true" x="5" y="54" width="275" height="25"/>
+          </XCUIElementTypeOther>
+          <XCUIElementTypeCell type="XCUIElementTypeCell" visible="true" enabled="true" x="-8" y="91" width="276" height="51">
+            <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="测试页面" name="测试页面" label="测试页面" visible="true" enabled="true" x="11" y="91" width="238" height="51"/>
+          </XCUIElementTypeCell>
+          <XCUIElementTypeCell type="XCUIElementTypeCell" visible="true" enabled="true" x="-8" y="141" width="276" height="51">
+            <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="回到主屏" name="回到主屏" label="回到主屏" visible="true" enabled="true" x="11" y="141" width="238" height="51"/>
+          </XCUIElementTypeCell>
+          <XCUIElementTypeCell type="XCUIElementTypeCell" visible="true" enabled="true" x="-8" y="191" width="276" height="51">
+            <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="拉取消息接口" name="拉取消息接口" label="拉取消息接口" visible="true" enabled="true" x="11" y="191" width="238" height="51"/>
+          </XCUIElementTypeCell>
+          <XCUIElementTypeCell type="XCUIElementTypeCell" visible="true" enabled="true" x="-8" y="241" width="276" height="51">
+            <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="清空全部消息数据" name="清空全部消息数据" label="清空全部消息数据" visible="true" enabled="true" x="11" y="241" width="238" height="51"/>
+          </XCUIElementTypeCell>
+          <XCUIElementTypeCell type="XCUIElementTypeCell" visible="true" enabled="true" x="-8" y="291" width="276" height="51">
+            <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="切换长登陆状态" name="切换长登陆状态" label="切换长登陆状态" visible="true" enabled="true" x="11" y="291" width="238" height="51"/>
+          </XCUIElementTypeCell>
+          <XCUIElementTypeCell type="XCUIElementTypeCell" visible="true" enabled="true" x="-8" y="341" width="276" height="51">
+            <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="获取宿主显示插件" name="获取宿主显示插件" label="获取宿主显示插件" visible="true" enabled="true" x="11" y="341" width="238" height="51"/>
+          </XCUIElementTypeCell>
+          <XCUIElementTypeCell type="XCUIElementTypeCell" visible="true" enabled="true" x="-8" y="391" width="276" height="51">
+            <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="查看埋点记录" name="查看埋点记录" label="查看埋点记录" visible="true" enabled="true" x="11" y="391" width="238" height="51"/>
+          </XCUIElementTypeCell>
+          <XCUIElementTypeCell type="XCUIElementTypeCell" visible="true" enabled="true" x="-8" y="441" width="276" height="51">
+            <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="删除埋点记录" name="删除埋点记录" label="删除埋点记录" visible="true" enabled="true" x="11" y="441" width="238" height="51"/>
+          </XCUIElementTypeCell>
+          <XCUIElementTypeCell type="XCUIElementTypeCell" visible="true" enabled="true" x="-8" y="491" width="276" height="51">
+            <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="清除曝光数据" name="清除曝光数据" label="清除曝光数据" visible="true" enabled="true" x="11" y="491" width="238" height="51"/>
+          </XCUIElementTypeCell>
+          <XCUIElementTypeCell type="XCUIElementTypeCell" visible="true" enabled="true" x="-8" y="541" width="276" height="51">
+            <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="超时测试" name="超时测试" label="超时测试" visible="true" enabled="true" x="11" y="541" width="238" height="51"/>
+          </XCUIElementTypeCell>
+          <XCUIElementTypeCell type="XCUIElementTypeCell" visible="false" enabled="true" x="-8" y="591" width="276" height="51">
+            <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="测试Loading" name="测试Loading" label="测试Loading" visible="true" enabled="true" x="0" y="0" width="190" height="40"/>
+          </XCUIElementTypeCell>
+          <XCUIElementTypeCell type="XCUIElementTypeCell" visible="false" enabled="true" x="-8" y="641" width="276" height="51">
+            <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="Q2主屏动画拉取" name="Q2主屏动画拉取" label="Q2主屏动画拉取" visible="true" enabled="true" x="0" y="0" width="190" height="40"/>
+          </XCUIElementTypeCell>
+        </XCUIElementTypeTable>
+      </XCUIElementTypeOther>
+    </XCUIElementTypeOther>
+    <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="0" y="0" width="320" height="568">
+      <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="0" y="0" width="320" height="568">
+        <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="0" y="18" width="320" height="2"/>
+        <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="0" y="20" width="320" height="548">
+          <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="0" y="20" width="320" height="548">
+            <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="0" y="20" width="320" height="548">
+              <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="0" y="20" width="320" height="548">
+                <XCUIElementTypeOther type="XCUIElementTypeOther" name="平安保险" label="平安保险" visible="true" enabled="true" x="0" y="20" width="320" height="548">
+                  <XCUIElementTypeOther type="XCUIElementTypeOther" name="横幅" label="横幅" visible="true" enabled="true" x="0" y="20" width="320" height="44">
+                    <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="10" y="20" width="65" height="44">
+                      <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" visible="true" enabled="true" x="10" y="30" width="30" height="23"/>
+                    </XCUIElementTypeOther>
+                    <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="74" y="20" width="172" height="44">
+                      <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="救援服务" name="救援服务" label="救援服务" visible="true" enabled="true" x="120" y="30" width="81" height="23"/>
+                    </XCUIElementTypeOther>
+                    <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="245" y="20" width="66" height="44">
+                      <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" visible="true" enabled="true" x="280" y="30" width="31" height="23"/>
+                    </XCUIElementTypeOther>
+                  </XCUIElementTypeOther>
+                  <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="0" y="73" width="320" height="66">
+                    <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="247" y="78" width="67" height="35">
+                      <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="使馆信息" name="使馆信息" label="使馆信息" visible="true" enabled="true" x="252" y="87" width="57" height="18"/>
+                    </XCUIElementTypeOther>
+                    <XCUIElementTypeImage type="XCUIElementTypeImage" visible="true" enabled="true" x="138" y="73" width="43" height="55"/>
+                  </XCUIElementTypeOther>
+                  <XCUIElementTypeOther type="XCUIElementTypeOther" value="2" name="救援服务" label="救援服务" visible="true" enabled="true" x="0" y="138" width="320" height="32">
+                    <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="2" name="救援服务" label="救援服务" visible="true" enabled="true" x="118" y="142" width="84" height="25"/>
+                  </XCUIElementTypeOther>
+                  <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="25" y="175" width="270" height="55">
+                    <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="若你为平安赠送第三方救援服务的客户，可通过以下求助电话请求服务，或者您可以购买相关产品，获得免费救援服务" name="若你为平安赠送第三方救援服务的客户，可通过以下求助电话请求服务，或者您可以购买相关产品，获得免费救援服务" label="若你为平安赠送第三方救援服务的客户，可通过以下求助电话请求服务，或者您可以购买相关产品，获得免费救援服务" visible="true" enabled="true" x="25" y="176" width="261" height="52"/>
+                  </XCUIElementTypeOther>
+                  <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="0" y="248" width="320" height="294">
+                    <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="8" y="248" width="304" height="43">
+                      <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="海内外急难援助服务" name="海内外急难援助服务" label="海内外急难援助服务" visible="true" enabled="true" x="25" y="261" width="127" height="18"/>
+                    </XCUIElementTypeOther>
+                    <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="8" y="298" width="304" height="43">
+                      <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="意外医疗住院垫付服务" name="意外医疗住院垫付服务" label="意外医疗住院垫付服务" visible="true" enabled="true" x="25" y="311" width="141" height="18"/>
+                    </XCUIElementTypeOther>
+                    <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="8" y="348" width="304" height="44">
+                      <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="疾病零押金住院垫付服务" name="疾病零押金住院垫付服务" label="疾病零押金住院垫付服务" visible="true" enabled="true" x="25" y="361" width="155" height="18"/>
+                    </XCUIElementTypeOther>
+                    <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="8" y="398" width="304" height="44">
+                      <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="医疗服务" name="医疗服务" label="医疗服务" visible="true" enabled="true" x="25" y="411" width="57" height="18"/>
+                    </XCUIElementTypeOther>
+                    <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="8" y="448" width="304" height="44">
+                      <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="汽车意外道路救援服务" name="汽车意外道路救援服务" label="汽车意外道路救援服务" visible="true" enabled="true" x="25" y="462" width="141" height="18"/>
+                    </XCUIElementTypeOther>
+                    <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="8" y="498" width="304" height="44">
+                      <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="旅行前信息咨询和境外急难援助服务" name="旅行前信息咨询和境外急难援助服务" label="旅行前信息咨询和境外急难援助服务" visible="true" enabled="true" x="25" y="512" width="225" height="18"/>
+                    </XCUIElementTypeOther>
+                  </XCUIElementTypeOther>
+                  <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="0" y="549" width="320" height="19"/>
+                </XCUIElementTypeOther>
+              </XCUIElementTypeOther>
+            </XCUIElementTypeOther>
+          </XCUIElementTypeOther>
+        </XCUIElementTypeOther>
+        <XCUIElementTypeButton type="XCUIElementTypeButton" name="closeButton" label="closeButton" visible="true" enabled="true" x="271" y="23" width="44" height="44"/>
+      </XCUIElementTypeOther>
+    </XCUIElementTypeOther>
+  </XCUIElementTypeWindow>
+  <XCUIElementTypeWindow type="XCUIElementTypeWindow" visible="true" enabled="true" x="0" y="0" width="320" height="568">
+    <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="0" y="0" width="320" height="568"/>
+  </XCUIElementTypeWindow>
+  <XCUIElementTypeWindow type="XCUIElementTypeWindow" visible="true" enabled="true" x="0" y="0" width="320" height="568">
+    <XCUIElementTypeStatusBar type="XCUIElementTypeStatusBar" visible="true" enabled="true" x="0" y="0" width="320" height="20">
+      <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="0" y="0" width="320" height="20"/>
+      <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="0" y="0" width="320" height="20">
+        <XCUIElementTypeOther type="XCUIElementTypeOther" name="信号强度：3 格（共 5 格）" label="信号强度：3 格（共 5 格）" visible="true" enabled="true" x="6" y="0" width="35" height="20"/>
+        <XCUIElementTypeOther type="XCUIElementTypeOther" name="中国联通 网络" label="中国联通 网络" visible="true" enabled="true" x="44" y="0" width="50" height="20"/>
+        <XCUIElementTypeOther type="XCUIElementTypeOther" value="SSID" name="3 格无线局域网信号（共 3 格）" label="3 格无线局域网信号（共 3 格）" visible="true" enabled="true" x="99" y="0" width="13" height="20"/>
+        <XCUIElementTypeOther type="XCUIElementTypeOther" name="14:08" label="14:08" visible="true" enabled="true" x="145" y="0" width="34" height="20"/>
+        <XCUIElementTypeOther type="XCUIElementTypeOther" name="方向已锁定" label="方向已锁定" visible="true" enabled="true" x="233" y="0" width="12" height="20"/>
+        <XCUIElementTypeOther type="XCUIElementTypeOther" name="StandardLocationTrackingOn" label="位置跟踪已打开" visible="true" enabled="true" x="251" y="0" width="9" height="20"/>
+        <XCUIElementTypeOther type="XCUIElementTypeOther" name="闹钟" label="闹钟" visible="true" enabled="true" x="266" y="0" width="10" height="20"/>
+        <XCUIElementTypeOther type="XCUIElementTypeOther" name="电池电量：88%, 正在充电" label="电池电量：88%, 正在充电" visible="true" enabled="true" x="282" y="0" width="33" height="20"/>
+      </XCUIElementTypeOther>
+    </XCUIElementTypeStatusBar>
+  </XCUIElementTypeWindow>
+</XCUIElementTypeApplication></AppiumAUT></xmp> 
+2017-01-24 14:08:25,986 : appOperate.py[line:188] [ ERROR ] 插件页面中不包含 使s馆信息,返回False
+2017-01-24 14:08:25,987 : appOperate.py[line:205] [ INFO ] 关闭H5页面!
+2017-01-24 14:08:30,266 : Element.py[line:88] [ INFO ] 查找id: closeButton
+2017-01-24 14:08:34,663 : Element.py[line:88] [ INFO ] 查找id: closeButton
+2017-01-24 14:08:37,027 : Anydoor.py[line:103] [ DEBUG ] 遍历检查插件,插件ID: PA01100000001_02_WDCX
+2017-01-24 14:08:37,027 : appOperate.py[line:169] [ INFO ] 开始检查插件: PA01100000001_02_WDCX
+2017-01-24 14:08:50,425 : appOperate.py[line:181] [ INFO ] 找到插件: PA01100000001_02_WDCX ,准备点击打开
+2017-01-24 14:09:10,253 : appOperate.py[line:183] [ INFO ] 判断插件页面,是否包含: ATM
+2017-01-24 14:09:10,254 : appOperate.py[line:334] [ INFO ] 开始轮询元素: ATM
+2017-01-24 14:09:10,255 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 14:10:37,152 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 14:11:20,703 : appOperate.py[line:343] [ INFO ] 界面存在此元素:[ ATM ]
+2017-01-24 14:11:20,705 : appOperate.py[line:185] [ INFO ] 插件页面中包含 ATM,返回True
+2017-01-24 14:11:20,705 : appOperate.py[line:205] [ INFO ] 关闭H5页面!
+2017-01-24 14:11:33,110 : Element.py[line:88] [ INFO ] 查找id: closeButton
+2017-01-24 14:11:45,471 : Element.py[line:88] [ INFO ] 查找id: closeButton
+2017-01-24 14:11:51,458 : Anydoor.py[line:103] [ DEBUG ] 遍历检查插件,插件ID: PA01100000001_02_XYK
+2017-01-24 14:11:51,459 : appOperate.py[line:169] [ INFO ] 开始检查插件: PA01100000001_02_XYK
+2017-01-24 14:12:05,755 : appOperate.py[line:181] [ INFO ] 找到插件: PA01100000001_02_XYK ,准备点击打开
+2017-01-24 14:12:27,389 : appOperate.py[line:183] [ INFO ] 判断插件页面,是否包含: 我的信用卡
+2017-01-24 14:12:27,390 : appOperate.py[line:334] [ INFO ] 开始轮询元素: 我的信用卡
+2017-01-24 14:12:27,390 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 14:13:55,585 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 14:14:00,930 : appOperate.py[line:343] [ INFO ] 界面存在此元素:[ 我的信用卡 ]
+2017-01-24 14:14:00,931 : appOperate.py[line:185] [ INFO ] 插件页面中包含 我的信用卡,返回True
+2017-01-24 14:14:00,931 : appOperate.py[line:205] [ INFO ] 关闭H5页面!
+2017-01-24 14:14:05,656 : Element.py[line:88] [ INFO ] 查找id: closeButton
+2017-01-24 14:14:10,225 : Element.py[line:88] [ INFO ] 查找id: closeButton
+2017-01-24 14:14:12,769 : Anydoor.py[line:103] [ DEBUG ] 遍历检查插件,插件ID: PA01100000000_02_YYG
+2017-01-24 14:14:12,770 : appOperate.py[line:169] [ INFO ] 开始检查插件: PA01100000000_02_YYG
+2017-01-24 14:14:30,102 : appOperate.py[line:181] [ INFO ] 找到插件: PA01100000000_02_YYG ,准备点击打开
+2017-01-24 14:14:53,667 : appOperate.py[line:183] [ INFO ] 判断插件页面,是否包含: 1元GO
+2017-01-24 14:14:53,669 : appOperate.py[line:334] [ INFO ] 开始轮询元素: 1元GO
+2017-01-24 14:14:53,669 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 14:16:22,580 : appOperate.py[line:343] [ INFO ] 界面存在此元素:[ 1元GO ]
+2017-01-24 14:16:22,582 : appOperate.py[line:185] [ INFO ] 插件页面中包含 1元GO,返回True
+2017-01-24 14:16:22,582 : appOperate.py[line:205] [ INFO ] 关闭H5页面!
+2017-01-24 14:16:26,883 : Element.py[line:88] [ INFO ] 查找id: closeButton
+2017-01-24 14:16:31,335 : Element.py[line:88] [ INFO ] 查找id: closeButton
+2017-01-24 14:16:33,641 : Anydoor.py[line:103] [ DEBUG ] 遍历检查插件,插件ID: PA03300000000_02_AJDK
+2017-01-24 14:16:33,641 : appOperate.py[line:169] [ INFO ] 开始检查插件: PA03300000000_02_AJDK
+2017-01-24 14:16:48,835 : appOperate.py[line:181] [ INFO ] 找到插件: PA03300000000_02_AJDK ,准备点击打开
+2017-01-24 14:17:11,908 : appOperate.py[line:183] [ INFO ] 判断插件页面,是否包含: 试算一下
+2017-01-24 14:17:11,909 : appOperate.py[line:334] [ INFO ] 开始轮询元素: 试算一下
+2017-01-24 14:17:11,909 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 14:18:43,762 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 14:18:50,255 : appOperate.py[line:343] [ INFO ] 界面存在此元素:[ 试算一下 ]
+2017-01-24 14:18:50,255 : appOperate.py[line:185] [ INFO ] 插件页面中包含 试算一下,返回True
+2017-01-24 14:18:50,256 : appOperate.py[line:205] [ INFO ] 关闭H5页面!
+2017-01-24 14:18:55,022 : Element.py[line:88] [ INFO ] 查找id: closeButton
+2017-01-24 14:18:59,544 : Element.py[line:88] [ INFO ] 查找id: closeButton
+2017-01-24 14:19:02,081 : Anydoor.py[line:103] [ DEBUG ] 遍历检查插件,插件ID: PA02500000000_02_TZLC
+2017-01-24 14:19:02,081 : appOperate.py[line:169] [ INFO ] 开始检查插件: PA02500000000_02_TZLC
+2017-01-24 14:19:17,696 : appOperate.py[line:181] [ INFO ] 找到插件: PA02500000000_02_TZLC ,准备点击打开
+2017-01-24 14:19:40,410 : appOperate.py[line:183] [ INFO ] 判断插件页面,是否包含: 任意门
+2017-01-24 14:19:40,412 : appOperate.py[line:334] [ INFO ] 开始轮询元素: 任意门
+2017-01-24 14:19:40,413 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 14:21:16,582 : appOperate.py[line:343] [ INFO ] 界面存在此元素:[ 任意门 ]
+2017-01-24 14:21:16,584 : appOperate.py[line:185] [ INFO ] 插件页面中包含 任意门,返回True
+2017-01-24 14:21:16,584 : appOperate.py[line:205] [ INFO ] 关闭H5页面!
+2017-01-24 14:21:20,637 : Element.py[line:88] [ INFO ] 查找id: closeButton
+2017-01-24 14:21:24,469 : Element.py[line:88] [ INFO ] 查找id: closeButton
+2017-01-24 14:21:26,459 : Anydoor.py[line:103] [ DEBUG ] 遍历检查插件,插件ID: PA02100000001_02_JF
+2017-01-24 14:21:26,459 : appOperate.py[line:169] [ INFO ] 开始检查插件: PA02100000001_02_JF
+2017-01-24 14:21:40,929 : appOperate.py[line:181] [ INFO ] 找到插件: PA02100000001_02_JF ,准备点击打开
+2017-01-24 14:22:02,455 : appOperate.py[line:183] [ INFO ] 判断插件页面,是否包含: 可用积分
+2017-01-24 14:22:02,457 : appOperate.py[line:334] [ INFO ] 开始轮询元素: 可用积分
+2017-01-24 14:22:02,457 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 14:23:29,210 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 14:23:35,949 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 14:23:42,449 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 14:23:48,979 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 14:23:55,558 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 14:24:02,267 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 14:24:08,689 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 14:24:15,344 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 14:24:21,747 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 14:24:28,108 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 14:24:34,504 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 14:24:40,833 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 14:24:47,413 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 14:24:53,677 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 14:25:00,129 : appOperate.py[line:339] [ WARNING ] 轮询超时,未找到元素:[ 可用积分 ]
+2017-01-24 14:25:00,129 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 14:25:04,136 : appOperate.py[line:340] [ WARNING ] 轮询超时,pageSource: <xmp><?xml version="1.0" encoding="UTF-8"?><AppiumAUT><XCUIElementTypeApplication type="XCUIElementTypeApplication" name="任意门" label="任意门" visible="true" enabled="true" x="0" y="0" width="320" height="568">
+  <XCUIElementTypeWindow type="XCUIElementTypeWindow" visible="true" enabled="true" x="0" y="0" width="320" height="568">
+    <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="0" y="0" width="320" height="568">
+      <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="0" y="0" width="320" height="568">
+        <XCUIElementTypeTable type="XCUIElementTypeTable" visible="true" enabled="true" x="-8" y="-9" width="276" height="586">
+          <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="-8" y="-9" width="276" height="101">
+            <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="测试功能点" name="测试功能点" label="测试功能点" visible="true" enabled="true" x="5" y="-9" width="275" height="63"/>
+            <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="本栏主要模拟sdk部分功能供测试人员验证" name="本栏主要模拟sdk部分功能供测试人员验证" label="本栏主要模拟sdk部分功能供测试人员验证" visible="true" enabled="true" x="5" y="54" width="275" height="25"/>
+          </XCUIElementTypeOther>
+          <XCUIElementTypeCell type="XCUIElementTypeCell" visible="true" enabled="true" x="-8" y="91" width="276" height="51">
+            <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="测试页面" name="测试页面" label="测试页面" visible="true" enabled="true" x="11" y="91" width="238" height="51"/>
+          </XCUIElementTypeCell>
+          <XCUIElementTypeCell type="XCUIElementTypeCell" visible="true" enabled="true" x="-8" y="141" width="276" height="51">
+            <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="回到主屏" name="回到主屏" label="回到主屏" visible="true" enabled="true" x="11" y="141" width="238" height="51"/>
+          </XCUIElementTypeCell>
+          <XCUIElementTypeCell type="XCUIElementTypeCell" visible="true" enabled="true" x="-8" y="191" width="276" height="51">
+            <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="拉取消息接口" name="拉取消息接口" label="拉取消息接口" visible="true" enabled="true" x="11" y="191" width="238" height="51"/>
+          </XCUIElementTypeCell>
+          <XCUIElementTypeCell type="XCUIElementTypeCell" visible="true" enabled="true" x="-8" y="241" width="276" height="51">
+            <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="清空全部消息数据" name="清空全部消息数据" label="清空全部消息数据" visible="true" enabled="true" x="11" y="241" width="238" height="51"/>
+          </XCUIElementTypeCell>
+          <XCUIElementTypeCell type="XCUIElementTypeCell" visible="true" enabled="true" x="-8" y="291" width="276" height="51">
+            <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="切换长登陆状态" name="切换长登陆状态" label="切换长登陆状态" visible="true" enabled="true" x="11" y="291" width="238" height="51"/>
+          </XCUIElementTypeCell>
+          <XCUIElementTypeCell type="XCUIElementTypeCell" visible="true" enabled="true" x="-8" y="341" width="276" height="51">
+            <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="获取宿主显示插件" name="获取宿主显示插件" label="获取宿主显示插件" visible="true" enabled="true" x="11" y="341" width="238" height="51"/>
+          </XCUIElementTypeCell>
+          <XCUIElementTypeCell type="XCUIElementTypeCell" visible="true" enabled="true" x="-8" y="391" width="276" height="51">
+            <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="查看埋点记录" name="查看埋点记录" label="查看埋点记录" visible="true" enabled="true" x="11" y="391" width="238" height="51"/>
+          </XCUIElementTypeCell>
+          <XCUIElementTypeCell type="XCUIElementTypeCell" visible="true" enabled="true" x="-8" y="441" width="276" height="51">
+            <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="删除埋点记录" name="删除埋点记录" label="删除埋点记录" visible="true" enabled="true" x="11" y="441" width="238" height="51"/>
+          </XCUIElementTypeCell>
+          <XCUIElementTypeCell type="XCUIElementTypeCell" visible="true" enabled="true" x="-8" y="491" width="276" height="51">
+            <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="清除曝光数据" name="清除曝光数据" label="清除曝光数据" visible="true" enabled="true" x="11" y="491" width="238" height="51"/>
+          </XCUIElementTypeCell>
+          <XCUIElementTypeCell type="XCUIElementTypeCell" visible="true" enabled="true" x="-8" y="541" width="276" height="51">
+            <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="超时测试" name="超时测试" label="超时测试" visible="true" enabled="true" x="11" y="541" width="238" height="51"/>
+          </XCUIElementTypeCell>
+          <XCUIElementTypeCell type="XCUIElementTypeCell" visible="false" enabled="true" x="-8" y="591" width="276" height="51">
+            <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="测试Loading" name="测试Loading" label="测试Loading" visible="true" enabled="true" x="0" y="0" width="190" height="40"/>
+          </XCUIElementTypeCell>
+          <XCUIElementTypeCell type="XCUIElementTypeCell" visible="false" enabled="true" x="-8" y="641" width="276" height="51">
+            <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="Q2主屏动画拉取" name="Q2主屏动画拉取" label="Q2主屏动画拉取" visible="true" enabled="true" x="0" y="0" width="190" height="40"/>
+          </XCUIElementTypeCell>
+        </XCUIElementTypeTable>
+      </XCUIElementTypeOther>
+    </XCUIElementTypeOther>
+    <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="0" y="0" width="320" height="568">
+      <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="0" y="0" width="320" height="568">
+        <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="0" y="18" width="320" height="2"/>
+        <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="0" y="20" width="320" height="548">
+          <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="0" y="20" width="320" height="548">
+            <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="0" y="20" width="320" height="548">
+              <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="0" y="20" width="320" height="548">
+                <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="0" y="20" width="320" height="548">
+                  <XCUIElementTypeOther type="XCUIElementTypeOther" name="文章" label="文章" visible="true" enabled="true" x="0" y="20" width="320" height="509">
+                    <XCUIElementTypeOther type="XCUIElementTypeOther" value="1" name="一账通登录" label="一账通登录" visible="true" enabled="true" x="20" y="60" width="280" height="59">
+                      <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="1" name="一账通登录" label="一账通登录" visible="true" enabled="true" x="20" y="64" width="135" height="31"/>
+                    </XCUIElementTypeOther>
+                    <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="20" y="151" width="280" height="38">
+                      <XCUIElementTypeTextField type="XCUIElementTypeTextField" value="一账通号/手机号/身份证号/邮箱" label="" visible="true" enabled="true" x="20" y="151" width="280" height="38"/>
+                    </XCUIElementTypeOther>
+                    <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="20" y="223" width="280" height="38">
+                      <XCUIElementTypeSecureTextField type="XCUIElementTypeSecureTextField" value="密码" visible="true" enabled="true" x="20" y="223" width="280" height="38"/>
+                    </XCUIElementTypeOther>
+                    <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="20" y="268" width="280" height="36">
+                      <XCUIElementTypeLink type="XCUIElementTypeLink" name="忘记密码" label="忘记密码" visible="true" enabled="true" x="236" y="276" width="64" height="20">
+                        <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="忘记密码" name="忘记密码" label="忘记密码" visible="true" enabled="true" x="236" y="276" width="64" height="20"/>
+                      </XCUIElementTypeLink>
+                    </XCUIElementTypeOther>
+                    <XCUIElementTypeLink type="XCUIElementTypeLink" name="登 录" label="登 录" visible="true" enabled="true" x="126" y="386" width="68" height="35">
+                      <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="登 录" name="登 录" label="登 录" visible="true" enabled="true" x="126" y="386" width="68" height="35"/>
+                    </XCUIElementTypeLink>
+                    <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="20" y="473" width="280" height="36">
+                      <XCUIElementTypeLink type="XCUIElementTypeLink" name="注册帐号" label="注册帐号" visible="true" enabled="true" x="128" y="481" width="64" height="20">
+                        <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="注册帐号" name="注册帐号" label="注册帐号" visible="true" enabled="true" x="128" y="481" width="64" height="20"/>
+                      </XCUIElementTypeLink>
+                    </XCUIElementTypeOther>
+                  </XCUIElementTypeOther>
+                </XCUIElementTypeOther>
+              </XCUIElementTypeOther>
+            </XCUIElementTypeOther>
+          </XCUIElementTypeOther>
+        </XCUIElementTypeOther>
+        <XCUIElementTypeButton type="XCUIElementTypeButton" name="closeButton" label="closeButton" visible="true" enabled="true" x="271" y="23" width="44" height="44"/>
+      </XCUIElementTypeOther>
+    </XCUIElementTypeOther>
+  </XCUIElementTypeWindow>
+  <XCUIElementTypeWindow type="XCUIElementTypeWindow" visible="true" enabled="true" x="0" y="0" width="320" height="568">
+    <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="0" y="0" width="320" height="568"/>
+  </XCUIElementTypeWindow>
+  <XCUIElementTypeWindow type="XCUIElementTypeWindow" visible="true" enabled="true" x="0" y="0" width="320" height="568">
+    <XCUIElementTypeStatusBar type="XCUIElementTypeStatusBar" visible="true" enabled="true" x="0" y="0" width="320" height="20">
+      <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="0" y="0" width="320" height="20"/>
+      <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="0" y="0" width="320" height="20">
+        <XCUIElementTypeOther type="XCUIElementTypeOther" name="信号强度：3 格（共 5 格）" label="信号强度：3 格（共 5 格）" visible="true" enabled="true" x="6" y="0" width="35" height="20"/>
+        <XCUIElementTypeOther type="XCUIElementTypeOther" name="中国联通 网络" label="中国联通 网络" visible="true" enabled="true" x="44" y="0" width="50" height="20"/>
+        <XCUIElementTypeOther type="XCUIElementTypeOther" value="SSID" name="3 格无线局域网信号（共 3 格）" label="3 格无线局域网信号（共 3 格）" visible="true" enabled="true" x="99" y="0" width="13" height="20"/>
+        <XCUIElementTypeOther type="XCUIElementTypeOther" name="14:25" label="14:25" visible="true" enabled="true" x="145" y="0" width="34" height="20"/>
+        <XCUIElementTypeOther type="XCUIElementTypeOther" name="方向已锁定" label="方向已锁定" visible="true" enabled="true" x="233" y="0" width="12" height="20"/>
+        <XCUIElementTypeOther type="XCUIElementTypeOther" name="StandardLocationTrackingOn" label="位置跟踪已打开" visible="true" enabled="true" x="251" y="0" width="9" height="20"/>
+        <XCUIElementTypeOther type="XCUIElementTypeOther" name="闹钟" label="闹钟" visible="true" enabled="true" x="266" y="0" width="10" height="20"/>
+        <XCUIElementTypeOther type="XCUIElementTypeOther" name="电池电量：95%, 正在充电" label="电池电量：95%, 正在充电" visible="true" enabled="true" x="282" y="0" width="33" height="20"/>
+      </XCUIElementTypeOther>
+    </XCUIElementTypeStatusBar>
+  </XCUIElementTypeWindow>
+</XCUIElementTypeApplication></AppiumAUT></xmp> 
+2017-01-24 14:25:04,137 : appOperate.py[line:188] [ ERROR ] 插件页面中不包含 可用积分,返回False
+2017-01-24 14:25:04,137 : appOperate.py[line:205] [ INFO ] 关闭H5页面!
+2017-01-24 14:25:07,969 : Element.py[line:88] [ INFO ] 查找id: closeButton
+2017-01-24 14:25:11,886 : Element.py[line:88] [ INFO ] 查找id: closeButton
+2017-01-24 14:25:13,938 : Anydoor.py[line:103] [ DEBUG ] 遍历检查插件,插件ID: PA02100000001_02_JF
+2017-01-24 14:25:13,938 : appOperate.py[line:169] [ INFO ] 开始检查插件: PA02100000001_02_JF
+2017-01-24 14:25:27,398 : appOperate.py[line:181] [ INFO ] 找到插件: PA02100000001_02_JF ,准备点击打开
+2017-01-24 14:25:47,148 : appOperate.py[line:183] [ INFO ] 判断插件页面,是否包含: 可用积分
+2017-01-24 14:25:47,150 : appOperate.py[line:334] [ INFO ] 开始轮询元素: 可用积分
+2017-01-24 14:25:47,151 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 14:27:14,387 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 14:27:20,960 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 14:27:27,474 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 14:27:34,268 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 14:27:40,907 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 14:27:47,421 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 14:27:53,991 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 14:28:00,775 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 14:28:07,437 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 14:28:13,819 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 14:28:20,631 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 14:28:27,179 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 14:28:33,979 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 14:28:40,612 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 14:28:47,649 : appOperate.py[line:339] [ WARNING ] 轮询超时,未找到元素:[ 可用积分 ]
+2017-01-24 14:28:47,650 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 14:28:52,165 : appOperate.py[line:340] [ WARNING ] 轮询超时,pageSource: <xmp><?xml version="1.0" encoding="UTF-8"?><AppiumAUT><XCUIElementTypeApplication type="XCUIElementTypeApplication" name="任意门" label="任意门" visible="true" enabled="true" x="0" y="0" width="320" height="568">
+  <XCUIElementTypeWindow type="XCUIElementTypeWindow" visible="true" enabled="true" x="0" y="0" width="320" height="568">
+    <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="0" y="0" width="320" height="568">
+      <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="0" y="0" width="320" height="568">
+        <XCUIElementTypeTable type="XCUIElementTypeTable" visible="true" enabled="true" x="-8" y="-9" width="276" height="586">
+          <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="-8" y="-9" width="276" height="101">
+            <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="测试功能点" name="测试功能点" label="测试功能点" visible="true" enabled="true" x="5" y="-9" width="275" height="63"/>
+            <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="本栏主要模拟sdk部分功能供测试人员验证" name="本栏主要模拟sdk部分功能供测试人员验证" label="本栏主要模拟sdk部分功能供测试人员验证" visible="true" enabled="true" x="5" y="54" width="275" height="25"/>
+          </XCUIElementTypeOther>
+          <XCUIElementTypeCell type="XCUIElementTypeCell" visible="true" enabled="true" x="-8" y="91" width="276" height="51">
+            <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="测试页面" name="测试页面" label="测试页面" visible="true" enabled="true" x="11" y="91" width="238" height="51"/>
+          </XCUIElementTypeCell>
+          <XCUIElementTypeCell type="XCUIElementTypeCell" visible="true" enabled="true" x="-8" y="141" width="276" height="51">
+            <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="回到主屏" name="回到主屏" label="回到主屏" visible="true" enabled="true" x="11" y="141" width="238" height="51"/>
+          </XCUIElementTypeCell>
+          <XCUIElementTypeCell type="XCUIElementTypeCell" visible="true" enabled="true" x="-8" y="191" width="276" height="51">
+            <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="拉取消息接口" name="拉取消息接口" label="拉取消息接口" visible="true" enabled="true" x="11" y="191" width="238" height="51"/>
+          </XCUIElementTypeCell>
+          <XCUIElementTypeCell type="XCUIElementTypeCell" visible="true" enabled="true" x="-8" y="241" width="276" height="51">
+            <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="清空全部消息数据" name="清空全部消息数据" label="清空全部消息数据" visible="true" enabled="true" x="11" y="241" width="238" height="51"/>
+          </XCUIElementTypeCell>
+          <XCUIElementTypeCell type="XCUIElementTypeCell" visible="true" enabled="true" x="-8" y="291" width="276" height="51">
+            <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="切换长登陆状态" name="切换长登陆状态" label="切换长登陆状态" visible="true" enabled="true" x="11" y="291" width="238" height="51"/>
+          </XCUIElementTypeCell>
+          <XCUIElementTypeCell type="XCUIElementTypeCell" visible="true" enabled="true" x="-8" y="341" width="276" height="51">
+            <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="获取宿主显示插件" name="获取宿主显示插件" label="获取宿主显示插件" visible="true" enabled="true" x="11" y="341" width="238" height="51"/>
+          </XCUIElementTypeCell>
+          <XCUIElementTypeCell type="XCUIElementTypeCell" visible="true" enabled="true" x="-8" y="391" width="276" height="51">
+            <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="查看埋点记录" name="查看埋点记录" label="查看埋点记录" visible="true" enabled="true" x="11" y="391" width="238" height="51"/>
+          </XCUIElementTypeCell>
+          <XCUIElementTypeCell type="XCUIElementTypeCell" visible="true" enabled="true" x="-8" y="441" width="276" height="51">
+            <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="删除埋点记录" name="删除埋点记录" label="删除埋点记录" visible="true" enabled="true" x="11" y="441" width="238" height="51"/>
+          </XCUIElementTypeCell>
+          <XCUIElementTypeCell type="XCUIElementTypeCell" visible="true" enabled="true" x="-8" y="491" width="276" height="51">
+            <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="清除曝光数据" name="清除曝光数据" label="清除曝光数据" visible="true" enabled="true" x="11" y="491" width="238" height="51"/>
+          </XCUIElementTypeCell>
+          <XCUIElementTypeCell type="XCUIElementTypeCell" visible="true" enabled="true" x="-8" y="541" width="276" height="51">
+            <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="超时测试" name="超时测试" label="超时测试" visible="true" enabled="true" x="11" y="541" width="238" height="51"/>
+          </XCUIElementTypeCell>
+          <XCUIElementTypeCell type="XCUIElementTypeCell" visible="false" enabled="true" x="-8" y="591" width="276" height="51">
+            <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="测试Loading" name="测试Loading" label="测试Loading" visible="true" enabled="true" x="0" y="0" width="190" height="40"/>
+          </XCUIElementTypeCell>
+          <XCUIElementTypeCell type="XCUIElementTypeCell" visible="false" enabled="true" x="-8" y="641" width="276" height="51">
+            <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="Q2主屏动画拉取" name="Q2主屏动画拉取" label="Q2主屏动画拉取" visible="true" enabled="true" x="0" y="0" width="190" height="40"/>
+          </XCUIElementTypeCell>
+        </XCUIElementTypeTable>
+      </XCUIElementTypeOther>
+    </XCUIElementTypeOther>
+    <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="0" y="0" width="320" height="568">
+      <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="0" y="0" width="320" height="568">
+        <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="0" y="18" width="320" height="2"/>
+        <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="0" y="20" width="320" height="548">
+          <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="0" y="20" width="320" height="548">
+            <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="0" y="20" width="320" height="548">
+              <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="0" y="20" width="320" height="548">
+                <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="0" y="20" width="320" height="548">
+                  <XCUIElementTypeOther type="XCUIElementTypeOther" name="文章" label="文章" visible="true" enabled="true" x="0" y="20" width="320" height="509">
+                    <XCUIElementTypeOther type="XCUIElementTypeOther" value="1" name="一账通登录" label="一账通登录" visible="true" enabled="true" x="20" y="60" width="280" height="59">
+                      <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="1" name="一账通登录" label="一账通登录" visible="true" enabled="true" x="20" y="64" width="135" height="31"/>
+                    </XCUIElementTypeOther>
+                    <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="20" y="151" width="280" height="38">
+                      <XCUIElementTypeTextField type="XCUIElementTypeTextField" value="一账通号/手机号/身份证号/邮箱" label="" visible="true" enabled="true" x="20" y="151" width="280" height="38"/>
+                    </XCUIElementTypeOther>
+                    <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="20" y="223" width="280" height="38">
+                      <XCUIElementTypeSecureTextField type="XCUIElementTypeSecureTextField" value="密码" visible="true" enabled="true" x="20" y="223" width="280" height="38"/>
+                    </XCUIElementTypeOther>
+                    <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="20" y="268" width="280" height="36">
+                      <XCUIElementTypeLink type="XCUIElementTypeLink" name="忘记密码" label="忘记密码" visible="true" enabled="true" x="236" y="276" width="64" height="20">
+                        <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="忘记密码" name="忘记密码" label="忘记密码" visible="true" enabled="true" x="236" y="276" width="64" height="20"/>
+                      </XCUIElementTypeLink>
+                    </XCUIElementTypeOther>
+                    <XCUIElementTypeLink type="XCUIElementTypeLink" name="登 录" label="登 录" visible="true" enabled="true" x="126" y="386" width="68" height="35">
+                      <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="登 录" name="登 录" label="登 录" visible="true" enabled="true" x="126" y="386" width="68" height="35"/>
+                    </XCUIElementTypeLink>
+                    <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="20" y="473" width="280" height="36">
+                      <XCUIElementTypeLink type="XCUIElementTypeLink" name="注册帐号" label="注册帐号" visible="true" enabled="true" x="128" y="481" width="64" height="20">
+                        <XCUIElementTypeStaticText type="XCUIElementTypeStaticText" value="注册帐号" name="注册帐号" label="注册帐号" visible="true" enabled="true" x="128" y="481" width="64" height="20"/>
+                      </XCUIElementTypeLink>
+                    </XCUIElementTypeOther>
+                  </XCUIElementTypeOther>
+                </XCUIElementTypeOther>
+              </XCUIElementTypeOther>
+            </XCUIElementTypeOther>
+          </XCUIElementTypeOther>
+        </XCUIElementTypeOther>
+        <XCUIElementTypeButton type="XCUIElementTypeButton" name="closeButton" label="closeButton" visible="true" enabled="true" x="271" y="23" width="44" height="44"/>
+      </XCUIElementTypeOther>
+    </XCUIElementTypeOther>
+  </XCUIElementTypeWindow>
+  <XCUIElementTypeWindow type="XCUIElementTypeWindow" visible="true" enabled="true" x="0" y="0" width="320" height="568">
+    <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="0" y="0" width="320" height="568"/>
+  </XCUIElementTypeWindow>
+  <XCUIElementTypeWindow type="XCUIElementTypeWindow" visible="true" enabled="true" x="0" y="0" width="320" height="568">
+    <XCUIElementTypeStatusBar type="XCUIElementTypeStatusBar" visible="true" enabled="true" x="0" y="0" width="320" height="20">
+      <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="0" y="0" width="320" height="20"/>
+      <XCUIElementTypeOther type="XCUIElementTypeOther" visible="true" enabled="true" x="0" y="0" width="320" height="20">
+        <XCUIElementTypeOther type="XCUIElementTypeOther" name="信号强度：3 格（共 5 格）" label="信号强度：3 格（共 5 格）" visible="true" enabled="true" x="6" y="0" width="35" height="20"/>
+        <XCUIElementTypeOther type="XCUIElementTypeOther" name="中国联通 网络" label="中国联通 网络" visible="true" enabled="true" x="44" y="0" width="50" height="20"/>
+        <XCUIElementTypeOther type="XCUIElementTypeOther" value="SSID" name="3 格无线局域网信号（共 3 格）" label="3 格无线局域网信号（共 3 格）" visible="true" enabled="true" x="99" y="0" width="13" height="20"/>
+        <XCUIElementTypeOther type="XCUIElementTypeOther" name="14:28" label="14:28" visible="true" enabled="true" x="145" y="0" width="34" height="20"/>
+        <XCUIElementTypeOther type="XCUIElementTypeOther" name="方向已锁定" label="方向已锁定" visible="true" enabled="true" x="233" y="0" width="12" height="20"/>
+        <XCUIElementTypeOther type="XCUIElementTypeOther" name="StandardLocationTrackingOn" label="位置跟踪已打开" visible="true" enabled="true" x="251" y="0" width="9" height="20"/>
+        <XCUIElementTypeOther type="XCUIElementTypeOther" name="闹钟" label="闹钟" visible="true" enabled="true" x="266" y="0" width="10" height="20"/>
+        <XCUIElementTypeOther type="XCUIElementTypeOther" name="电池电量：100%, 正在充电" label="电池电量：100%, 正在充电" visible="true" enabled="true" x="282" y="0" width="33" height="20"/>
+      </XCUIElementTypeOther>
+    </XCUIElementTypeStatusBar>
+  </XCUIElementTypeWindow>
+</XCUIElementTypeApplication></AppiumAUT></xmp> 
+2017-01-24 14:28:52,167 : appOperate.py[line:188] [ ERROR ] 插件页面中不包含 可用积分,返回False
+2017-01-24 14:28:52,168 : appOperate.py[line:205] [ INFO ] 关闭H5页面!
+2017-01-24 14:28:56,389 : Element.py[line:88] [ INFO ] 查找id: closeButton
+2017-01-24 14:29:00,487 : Element.py[line:88] [ INFO ] 查找id: closeButton
+2017-01-24 14:29:02,733 : Anydoor.py[line:103] [ DEBUG ] 遍历检查插件,插件ID: PA01200000000_02_XYD
+2017-01-24 14:29:02,733 : appOperate.py[line:169] [ INFO ] 开始检查插件: PA01200000000_02_XYD
+2017-01-24 14:29:17,143 : appOperate.py[line:181] [ INFO ] 找到插件: PA01200000000_02_XYD ,准备点击打开
+2017-01-24 14:29:38,226 : appOperate.py[line:183] [ INFO ] 判断插件页面,是否包含: 马上贷款
+2017-01-24 14:29:38,228 : appOperate.py[line:334] [ INFO ] 开始轮询元素: 马上贷款
+2017-01-24 14:29:38,229 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 14:31:04,818 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 14:31:12,722 : appOperate.py[line:343] [ INFO ] 界面存在此元素:[ 马上贷款 ]
+2017-01-24 14:31:12,722 : appOperate.py[line:185] [ INFO ] 插件页面中包含 马上贷款,返回True
+2017-01-24 14:31:12,723 : appOperate.py[line:205] [ INFO ] 关闭H5页面!
+2017-01-24 14:31:18,031 : Element.py[line:88] [ INFO ] 查找id: closeButton
+2017-01-24 14:31:23,680 : Element.py[line:88] [ INFO ] 查找id: closeButton
+2017-01-24 14:31:26,543 : Anydoor.py[line:103] [ DEBUG ] 遍历检查插件,插件ID: PA02100000000_02_YJQB
+2017-01-24 14:31:26,543 : appOperate.py[line:169] [ INFO ] 开始检查插件: PA02100000000_02_YJQB
+2017-01-24 14:31:40,641 : appOperate.py[line:181] [ INFO ] 找到插件: PA02100000000_02_YJQB ,准备点击打开
+2017-01-24 14:32:02,191 : appOperate.py[line:183] [ INFO ] 判断插件页面,是否包含: 获取动态码
+2017-01-24 14:32:02,193 : appOperate.py[line:334] [ INFO ] 开始轮询元素: 获取动态码
+2017-01-24 14:32:02,193 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 14:33:28,737 : Element.py[line:336] [ INFO ] 获取 page_source
+2017-01-24 14:33:33,120 : appOperate.py[line:343] [ INFO ] 界面存在此元素:[ 获取动态码 ]
+2017-01-24 14:33:33,121 : appOperate.py[line:185] [ INFO ] 插件页面中包含 获取动态码,返回True
+2017-01-24 14:33:33,121 : appOperate.py[line:205] [ INFO ] 关闭H5页面!
+2017-01-24 14:33:36,905 : Element.py[line:88] [ INFO ] 查找id: closeButton
+2017-01-24 14:33:46,120 : Element.py[line:42] [ WARNING ] <src.lib.Element.Element instance at 0x103fd6a28> 查找超时,未找到元素 : ('id', 'closeButton')
+2017-01-24 14:33:46,124 : Element.py[line:88] [ INFO ] 查找id: closeButton
+2017-01-24 14:33:46,138 : Element.py[line:42] [ WARNING ] <src.lib.Element.Element instance at 0x103fd6a28> 查找超时,未找到元素 : ('xpath', "//*[@name='closeButton']")
+2017-01-24 14:33:46,138 : Element.py[line:127] [ INFO ] 查找 xpath: //*[@name='closeButton']
+2017-01-24 14:33:46,145 : Element.py[line:42] [ WARNING ] <src.lib.Element.Element instance at 0x103fd6a28> 查找超时,未找到元素 : ('xpath', "//*[@name='\xe5\x85\xb3\xe9\x97\xad']")
+2017-01-24 14:33:46,146 : Element.py[line:127] [ INFO ] 查找 xpath: //*[@name='关闭']
+2017-01-24 14:33:46,152 : Element.py[line:42] [ WARNING ] <src.lib.Element.Element instance at 0x103fd6a28> 查找超时,未找到元素 : ('xpath', "//*[@name='\xe8\xbf\x94\xe5\x9b\x9e']")
+2017-01-24 14:33:46,152 : Element.py[line:127] [ INFO ] 查找 xpath: //*[@name='返回']
+2017-01-24 14:33:46,164 : Element.py[line:42] [ WARNING ] <src.lib.Element.Element instance at 0x103fd6a28> 查找超时,未找到元素 : ('xpath', "//*[@name='com nav ic back']")
+2017-01-24 14:33:46,165 : Element.py[line:127] [ INFO ] 查找 xpath: //*[@name='com nav ic back']
+2017-01-24 14:33:46,165 : appOperate.py[line:254] [ WARNING ] 暂不支持的关闭方式,xpah关闭H5失败
+2017-01-24 14:33:46,173 : Anydoor.py[line:103] [ DEBUG ] 遍历检查插件,插件ID: PA02100000000_02_KY
+2017-01-24 14:33:46,174 : appOperate.py[line:169] [ INFO ] 开始检查插件: PA02100000000_02_KY
+2017-01-24 14:33:46,177 : Element.py[line:42] [ WARNING ] <src.lib.Element.Element instance at 0x103fd6a28> 查找超时,未找到元素 : ('id', 'PA02100000000_02_KY')
+2017-01-24 14:33:46,177 : appOperate.py[line:176] [ INFO ] 插件PA02100000000_02_KY 未显示,左滑
+2017-01-24 14:33:46,533 : Anydoor.py[line:103] [ DEBUG ] 遍历检查插件,插件ID: PA02100000000_02_KY
+2017-01-24 14:33:46,533 : appOperate.py[line:169] [ INFO ] 开始检查插件: PA02100000000_02_KY
+2017-01-24 14:33:46,535 : Element.py[line:42] [ WARNING ] <src.lib.Element.Element instance at 0x103fd6a28> 查找超时,未找到元素 : ('id', 'PA02100000000_02_KY')
+2017-01-24 14:33:46,536 : appOperate.py[line:176] [ INFO ] 插件PA02100000000_02_KY 未显示,左滑
+2017-01-24 14:33:46,847 : Anydoor.py[line:103] [ DEBUG ] 遍历检查插件,插件ID: PA02100000000_02_HQY
+2017-01-24 14:33:46,848 : appOperate.py[line:169] [ INFO ] 开始检查插件: PA02100000000_02_HQY
+2017-01-24 14:33:46,850 : Element.py[line:42] [ WARNING ] <src.lib.Element.Element instance at 0x103fd6a28> 查找超时,未找到元素 : ('id', 'PA02100000000_02_HQY')
+2017-01-24 14:33:46,850 : appOperate.py[line:176] [ INFO ] 插件PA02100000000_02_HQY 未显示,左滑
+2017-01-24 14:33:47,118 : Anydoor.py[line:103] [ DEBUG ] 遍历检查插件,插件ID: PA02100000000_02_HQY
+2017-01-24 14:33:47,118 : appOperate.py[line:169] [ INFO ] 开始检查插件: PA02100000000_02_HQY
+2017-01-24 14:33:47,119 : Element.py[line:42] [ WARNING ] <src.lib.Element.Element instance at 0x103fd6a28> 查找超时,未找到元素 : ('id', 'PA02100000000_02_HQY')
+2017-01-24 14:33:47,120 : appOperate.py[line:176] [ INFO ] 插件PA02100000000_02_HQY 未显示,左滑
+2017-01-24 14:33:47,393 : Anydoor.py[line:103] [ DEBUG ] 遍历检查插件,插件ID: PA00800000000_02_PACX
+2017-01-24 14:33:47,394 : appOperate.py[line:169] [ INFO ] 开始检查插件: PA00800000000_02_PACX
+2017-01-24 14:33:47,395 : Element.py[line:42] [ WARNING ] <src.lib.Element.Element instance at 0x103fd6a28> 查找超时,未找到元素 : ('id', 'PA00800000000_02_PACX')
+2017-01-24 14:33:47,396 : appOperate.py[line:176] [ INFO ] 插件PA00800000000_02_PACX 未显示,左滑
+2017-01-24 14:33:47,616 : Anydoor.py[line:103] [ DEBUG ] 遍历检查插件,插件ID: PA00800000000_02_PACX
+2017-01-24 14:33:47,616 : appOperate.py[line:169] [ INFO ] 开始检查插件: PA00800000000_02_PACX
+2017-01-24 14:33:47,617 : Element.py[line:42] [ WARNING ] <src.lib.Element.Element instance at 0x103fd6a28> 查找超时,未找到元素 : ('id', 'PA00800000000_02_PACX')
+2017-01-24 14:33:47,618 : appOperate.py[line:176] [ INFO ] 插件PA00800000000_02_PACX 未显示,左滑
+2017-01-24 14:33:47,810 : Anydoor.py[line:103] [ DEBUG ] 遍历检查插件,插件ID: PA00400000000_02_CFBXZZC
+2017-01-24 14:33:47,810 : appOperate.py[line:169] [ INFO ] 开始检查插件: PA00400000000_02_CFBXZZC
+2017-01-24 14:33:47,812 : Element.py[line:42] [ WARNING ] <src.lib.Element.Element instance at 0x103fd6a28> 查找超时,未找到元素 : ('id', 'PA00400000000_02_CFBXZZC')
+2017-01-24 14:33:47,813 : appOperate.py[line:176] [ INFO ] 插件PA00400000000_02_CFBXZZC 未显示,左滑
+2017-01-24 14:33:48,092 : Anydoor.py[line:103] [ DEBUG ] 遍历检查插件,插件ID: PA00400000000_02_CFBXZZC
+2017-01-24 14:33:48,092 : appOperate.py[line:169] [ INFO ] 开始检查插件: PA00400000000_02_CFBXZZC
+2017-01-24 14:33:48,095 : Element.py[line:42] [ WARNING ] <src.lib.Element.Element instance at 0x103fd6a28> 查找超时,未找到元素 : ('id', 'PA00400000000_02_CFBXZZC')
+2017-01-24 14:33:48,095 : appOperate.py[line:176] [ INFO ] 插件PA00400000000_02_CFBXZZC 未显示,左滑
+2017-01-24 14:33:48,512 : Anydoor.py[line:103] [ DEBUG ] 遍历检查插件,插件ID: PA01100000000_02_RYG
+2017-01-24 14:33:48,513 : appOperate.py[line:169] [ INFO ] 开始检查插件: PA01100000000_02_RYG
+2017-01-24 14:33:48,516 : Element.py[line:42] [ WARNING ] <src.lib.Element.Element instance at 0x103fd6a28> 查找超时,未找到元素 : ('id', 'PA01100000000_02_RYG')
+2017-01-24 14:33:48,517 : appOperate.py[line:176] [ INFO ] 插件PA01100000000_02_RYG 未显示,左滑

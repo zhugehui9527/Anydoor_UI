@@ -5,18 +5,20 @@
 #date:2016-11
 #function: 读取元素表并进行处理
 #######################################################
-from conf.Run_conf import read_config
+# from conf.Run_conf import read_config
 from src.ExcelOperate import FindElementBy
 from src.Public.Common import public
 from src.Public.Global import L,S
 from src.lib import ExcelRW
+import os,sys
+sys.path.append("../../")
 
 #ReadElement->FindElementBy->Element-
 #元素和方法封装
 class ReadElement(object):
     def __init__(self,driver):
         self.platformName = S.device['platformName']
-        self.xls_file_path = read_config('testcase', 'xls_case_path')
+        self.xls_file_path = os.path.abspath('./TestCase/Excel/TestCase.xlsx')
         self.xlsEngine = ExcelRW.XlsEngine(self.xls_file_path)
         self.xlsEngine.open() # 打开excel
         self.element_list = self.xlsEngine.readsheet(public.element_sheet)

@@ -5,9 +5,9 @@
 #date:2016-09
 #function:运行加载配置数据
 #######################################################
-import os
+import os,sys
 import ConfigParser
-
+sys.path.append("..")
 prjDir = os.path.split(os.path.realpath(__file__))[0]
 conf_path = os.path.join(prjDir, "monitor.ini")
 # logger.debug('conf path is %s ' % conf_path)
@@ -56,6 +56,8 @@ def get_unindex(self, *section):
 
 
 if __name__ == '__main__':
-	ini_path = '/Users/zengyuanchen/Documents/SVN/ShareFromCloud/share/Project/Anydoor_UI/conf/monitor.ini'
+	import os
+	
+	ini_path = os.path.abspath('./conf/monitor.ini')
 	deviceName = read_config('appium','deviceName')
 	print 'deviceName : %s' % deviceName

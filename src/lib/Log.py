@@ -11,7 +11,9 @@ from logging.handlers import RotatingFileHandler
 from logging.handlers import TimedRotatingFileHandler
 from src.Public.Global import S
 import logging, time
-import os
+import os,sys
+sys.path.append("../../")
+
 PATH = lambda p: os.path.abspath(
     os.path.join(os.path.dirname(__file__), p)
 )
@@ -21,7 +23,8 @@ udid = device['udid']
 
 class LogSignleton(object):
 	def __init__(self):
-		self.log_filename = (read_config('logger','log_file')).format(udid)
+		# self.log_filename = (read_config('logger','log_file')).format(udid)
+		self.log_filename = os.path.abspath('./output/{}/log/AnyDoor_UI.log'.format(udid))
 		self.max_bytes_each = int(read_config('logger', 'max_bytes_each'))
 		self.backup_count = int(read_config('logger', 'backup_count'))
 		self.format = read_config('logger', 'format')
@@ -132,9 +135,8 @@ class LogSignleton(object):
 		:param end_fileter:
 		:return:
 		'''
-		project_path = read_config('testcase','project_path')
-		logpath = read_config('logger','log_file').format(udid)
-		log_filter_path = project_path + '/output/{}/html/filter/{}.log'.format(udid,casename)
+		logpath = os.path.abspath('./output/{}/log/AnyDoor_UI.log'.format(udid))
+		log_filter_path = os.path.abspath('./output/{}/html/filter/{}.log'.format(udid,casename))
 		# print log_filter_path
 		go_on_id = 0
 		with open(log_filter_path, 'w') as s:

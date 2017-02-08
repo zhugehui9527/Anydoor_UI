@@ -12,11 +12,12 @@ import sys
 import time
 import requests
 from src.lib.Log import LogSignleton
-from conf.Run_conf import read_config
+# from conf.Run_conf import read_config
 from src.Public.Common import resultStutas
 from src.Public.Global import S
 from src.lib import pyh
 
+sys.path.append("../../")
 reload(sys)
 sys.setdefaultencoding('utf8')
 # HTML测试报告
@@ -48,8 +49,9 @@ class HtmlReport(object):
             parent_path, ext = os.path.splitext(filename)
             tm = time.strftime('%Y%m%d%H%M%S', time.localtime())
             self.filename = parent_path + tm + ext   #报告名中添加当前时间
+            print time.ctime(), ' [', __name__, '::', self.set_result_filename.__name__, '] :', ' 生成测试报告,\n 测试报告路径 =  ', self.filename
 
-    # 设置测试用例执行结果
+            # 设置测试用例执行结果
     def set_testcase_result(self, testcase_result, testcase_message=None):
         self.testcase_result = testcase_result
         self.testcase_message = testcase_message
@@ -65,7 +67,7 @@ class HtmlReport(object):
         return self.time_took
     
     def read_filter_log(self,casename):
-        filter_log_path = read_config('testcase','project_path')+'/output/{}/html/filter/{}.log'.format(self.device['udid'],casename)
+        filter_log_path = os.path.abspath('./output/{}/html/filter/{}.log'.format(self.device['udid'],casename))
         # print filter_log_path
         try:
             with open(filter_log_path) as f:
@@ -277,7 +279,7 @@ class HtmlReport(object):
 
 if __name__ == '__main__':
     tcHtmlReport = HtmlReport()
-    path = '/Users/zengyuanchen/Documents/SVN/ShareFromCloud/share/Project/Anydoor_UI/output/html/report.html'
+    path = os.path.abspath('./output/html/report.html')
     tcHtmlReport.set_result_filename(path)
 
     testcase_result =[['登录_1000', 'PASS','2016-11-1'], ['检查插件:PA02100000001_02_JF','FAIL','2016-11-2'], ['检查插件:PA01100000000_02_PAZB', 'ERROR','2016-11-3']]

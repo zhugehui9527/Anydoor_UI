@@ -24,16 +24,14 @@ sys.setdefaultencoding('utf-8')
 
 class AppOperate (object):
 	def __init__(self,driver):
-		iOS_UserName = "//*[@value='一账通号/手机号/身份证号/邮箱']"
-		iOS_PassWord = "//*[@value='密码']"
-		Andr_UserName = "user-id-input"
-		Andr_PassWord = "user-psd-input"
 		self.pluginURL = read_config('plugin', 'plugin_url_iOS')
 		self.platformName = S.device['platformName']
-		self.iOS_UserName = iOS_UserName
-		self.iOS_PassWord = iOS_PassWord
-		self.Andr_UserName = Andr_UserName
-		self.Andr_PassWord = Andr_PassWord
+		self.iOS_UserName =  "//*[@value='一账通号/手机号/身份证号/邮箱']"
+		self.iOS_PassWord = "//*[@value='密码']"
+		self.Andr_UserName = "user-id-input"
+		self.Andr_PassWord = "user-psd-input"
+		self.username = read_config('login', 'login_username')
+		self.password = read_config('login', 'login_password')
 		self.driver = Element(driver)
 		self.pluginList =[]
 		
@@ -180,6 +178,9 @@ class AppOperate (object):
 				try:
 					L.logger.info('找到插件: %s ,准备点击打开' % pluginId)
 					self.find_element_by_plugin(pluginId).click()
+					#打开插件如果需要登录则进行登录
+					if self.wait_for_text(5,'一账通登录'):
+						self.loginByH5(self.username,self.password)
 					L.logger.info('判断插件页面,是否包含: %s' % expectResult)
 					if self.wait_for_text(30, expectResult):
 						L.logger.info('插件页面中包含 %s,返回True' % expectResult)
@@ -354,7 +355,7 @@ class AppOperate (object):
 		:return:
 		'''
 		timestr = time.strftime('%Y%m%d%H%M%S', time.localtime(time.time()))
-		filepath = os.path.abspath('../output/sceenshot/') + timestr + '.png'
+		filepath = os.path.abspath('./output/sceenshot/') + timestr + '.png'
 		return self.driver.screenshot_as_file(filepath)
 	
 	def click(self,element_object,msg=None):

@@ -5,7 +5,7 @@
 # date:2016-11-21
 # function:驱动Excel测试用例
 #######################################################
-import time,unittest
+import time,unittest,os
 from conf.Run_conf import read_config
 from src.ExcelOperate.ReadApi import ReadApi
 from src.Public.Common import operate_api,public,resultClass,resultStutas
@@ -16,10 +16,9 @@ import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
-
 retry_num = int(read_config('retry', 'retry_num'))
 retry_isTrue = bool(read_config('retry', 'retry_isTrue'))
-project_path = read_config('testcase', 'project_path')
+# project_path = read_config('testcase', 'project_path')
 result = resultClass.result
 
 class RunExcelCase(unittest.TestCase):
@@ -28,9 +27,8 @@ class RunExcelCase(unittest.TestCase):
 		super(RunExcelCase,self).__init__(mouldeName)
 		self.driver = D.driver
 		self.readApi = ReadApi(self.driver)
-		self.xls_file_path = read_config('testcase', 'xls_case_path')
+		self.xls_file_path = os.path.abspath('./TestCase/Excel/TestCase.xlsx')
 		self.platformName = S.device['platformName']
-		# self.screen_shot_isTrue = bool(read_config('testcase','screen_shot_isTrue'))
 		self.xlsEngine = ExcelRW.XlsEngine(self.xls_file_path)
 		self.xlsEngine.open()  # 打开excel
 		self.publicCaseList = self.xlsEngine.readsheet(public.public_case_sheet)
@@ -43,21 +41,19 @@ class RunExcelCase(unittest.TestCase):
 		:param casename:
 		:return:   还缺少对ios或者Android独有的判断
 		'''
-		public_case_type = 0 #公共案例库名称不为空
+		public_case_type = 1 #公共案例库名称不为空
 		result_public = [] #存放公共案例库执行结果
 		L.logger.debug('callPublicCase 执行中')
 		# 遍历公共案例库
 		for publicCase in self.publicCaseList[1:] :
 			# 执行公共案例库,案例名称为空的部分
-			if public_case_type == 1:
+			if public_case_type == 0:
 				if (publicCase[0] == '') and (publicCase[1] !=''):
 					# 判断是否是ios或者Android独有操作
 					# print time.ctime(), ' [', __name__, '::', RunExcelCase.callPublicCase.__name__, '] :', ' platformName =  ', self.platformName
 					if((self.platformName).lower() != str(publicCase[4]).lower()) and (len(publicCase[4]) != 0):
 							# L.logger.debug('1 continue 跳出循环 : %d' % public_case_type)
 							L.logger.debug('%s 独有操作' % str(publicCase[4]).lower())
-							# 跳出本次循环,继续执行用例
-							# continue
 					else:
 						if self.readApi.readApiList(publicCase):
 							# 公共案例每步执行结果记录
@@ -89,26 +85,13 @@ class RunExcelCase(unittest.TestCase):
 						else:
 							# 公共案例每步执行结果记录
 							result_public.append(resultStutas.fail)
-							#跳出循环继续执行
-							# continue
 						
-					public_case_type = 1
+					public_case_type = 0
 				
 		return result_public
 	
-	# def screen_shot(self):
-	# 	try:
-	# 		screen_shot_path = os.path.abspath('./output/screenshot/{}.png'.format(self.caselist[0]))
-	# 		if self.screen_shot_isTrue:
-	# 			L.logger.debug('截图开关已打开,截图保存路径: %s' % screen_shot_path)
-	# 			self.driver.screenshot_as_file(screen_shot_path)
-	# 		else:
-	# 			pass
-	# 	except Exception as e:
-	# 		L.logger.error(e)
-		
+	
 	#function:运行一条测试用例,Retry 失败重跑,1重跑次数,isRetry重跑开关
-	# @pytest.hookimpl()
 	@Retry(retry_count=retry_num,isRetry=retry_isTrue)
 	def function(self):
 		L.logger.warning('测试用例:%s ,执行开始' % self.caselist[0])
@@ -134,13 +117,11 @@ class RunExcelCase(unittest.TestCase):
 				L.logger.warning('case_list 为空')
 		
 		else:
-			# 执行测试用例
+			# 执行测试用例库
 			if self.readApi.readApiList(self.caselist):
 				case_list.append(resultStutas.success)
 			else:
 				case_list.append(resultStutas.fail)
-				# 失败截图
-				# self.screen_shot_turn()
 			if case_list:
 				L.logger.debug('===' * 40)
 				# L.logger.debug('执行结果记录: %s' % case_list)
@@ -175,15 +156,13 @@ def get_html_report():
 	from src.Public.Global import S
 	device = S.device
 	udid = device['udid']
-	html_result_path = project_path + '/output/{}/html/report.html'.format(udid)
-	# print 'html_result_path :',html_result_path
-	# htmlreport_path = os.path.abspath(html_result_path)
+	html_result_path = os.path.abspath('./output/{}/html/report.html'.format(udid))
 	# 测试结束时间
 	end_time = time.time()
 	from src.Public.HtmlReport import HtmlReport
 	AHtmlReport = HtmlReport()
 	print '*' * 80
-	print time.ctime(), ' [', __name__, '::', get_html_report.__name__, '] :', ' 生成测试报告,udid =  ', udid
+	print time.ctime(), ' [', __name__, '::', get_html_report.__name__, '] :', ' 生成测试报告'
 	# 生成测试报告
 	AHtmlReport.set_result_filename(html_result_path)
 	AHtmlReport.set_testcase_result(result)
