@@ -10,11 +10,14 @@ import requests
 import time
 from conf.Run_conf import read_config
 from src.lib.Utils import Utils as U
+from src.Public.Common import public as pc
+from src.Public.Common import desired_caps as dc
 
 class AppiumServer(object):
 	def __init__(self):
-		self.serverIp = read_config('appium', 'ip')
-
+		self.serverIp = read_config(pc.appium, dc.ip)
+		self.runmode = read_config(pc.runmode, pc.driver)
+		print time.ctime(), ' [', __name__, '::','runmode = ',self.runmode
 	def start_server(self, device, Port):
 		'''
 		启动appium服务
@@ -25,10 +28,12 @@ class AppiumServer(object):
 		# print '启动appium'
 		if not self.is_runnnig(Port):
 			try:
-				
-				cmd_str = 'appium -a {} -p {} -U {}'.format(self.serverIp,Port,device['udid'])
+				if self.runmode == pc.appium:
+					cmd_str = 'appium -a {} -p {} -bp {} -U {}'.format(self.serverIp,Port,(Port+1),device['udid'])
+				else:
+					cmd_str = 'macaca server --verbose -p {}'.format(Port)
 				print '*' * 80
-				print time.ctime(),' [', __name__, '::', self.start_server.__name__, '] :','*  启动appium命令: ' + cmd_str
+				print time.ctime(),' [', __name__, '::', self.start_server.__name__, '] :','*  启动命令: ' + cmd_str
 				# print '*' * 80
 				U.cmd_subprocess(cmd_str) # 启动appium服务
 				# U.cmd_output(cmd_str)
@@ -44,7 +49,7 @@ class AppiumServer(object):
 						break
 				else:
 					print '*'*80
-					print time.ctime(), ' [', __name__, '::', self.start_server.__name__, '] :', ' 启动appium成功,Port: ',Port
+					print time.ctime(), ' [', __name__, '::', self.start_server.__name__, '] :', ' 启动成功,Port: ',Port
 			except Exception as e:
 				print 'device 中 未找到 [ udid ]'
 				raise e
@@ -57,14 +62,20 @@ class AppiumServer(object):
 			:return:True or False
 		"""
 		response = None
+		# if self.runmode == pc.macaca:
+		# 	url = 'http://' + self.serverIp + ':' + '8900' + "/wd/hub/status"
+		# else:
+		# 	url = 'http://' + self.serverIp + ':' + str(Port) + "/wd/hub/status"
 		url = 'http://' + self.serverIp + ':' + str(Port) + "/wd/hub/status"
-
 		try:
 		
 			response = requests.get(url)
 			response_dict = json.loads(response.text)
-	
-			if response_dict['status'] == 0:
+			print time.ctime(), ' [', __name__, '::', self.is_runnnig.__name__, '] :','服务响应: ',response_dict
+			# if response_dict['status'] == 0 and self.runmode ==pc.appium :
+			# 	return True
+			# elif response_dict['status'] == 1 and self.runmode == pc.macaca:
+			if str(response.status_code).startswith('2'):
 				return True
 			else:
 				return False

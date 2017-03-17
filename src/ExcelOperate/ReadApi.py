@@ -66,10 +66,10 @@ class ReadApi(unittest.TestCase):
 		# 所有支持的api
 		api_dict = {
 					operate_api.assertTrueCheckPlugin:lambda :self.assertTrue(self.appOperate.check_plugin(case_list[6],case_list[7]),case_list[2]),
-					operate_api.assertTrue:lambda :self.assertTrue(self.appOperate.wait_for_text(int(case_list[7]),case_list[6]),case_list[2]),
+					operate_api.assertTrue:lambda :self.assertTrue(self.appOperate.wait_for_text(int(case_list[7]),case_list[6]),case_list[2]) ,
 					operate_api.assertFalse:lambda :self.assertFalse(self.appOperate.wait_for_text(int(case_list[7]),case_list[6]),case_list[2]),
 		            operate_api.sendkeys:lambda :self.appOperate.sendKeys(self.readElement.find_element(self.readElement.read_element_text(case_list[5])),case_list[7]),
-		            operate_api.click:lambda :self.appOperate.click(self.readElement.find_element(self.readElement.read_element_text(case_list[5])),case_list[2]),
+		            operate_api.click:lambda :self.appOperate.z(self.readElement.find_element(self.readElement.read_element_text(case_list[5])),case_list[2]),
 		            operate_api.swipe2left:lambda :self.wd.swipe_left(),
 		            operate_api.swipe2right:lambda :self.wd.swipe_right(),
 					operate_api.swipe2up: lambda: self.wd.swipe_up(),

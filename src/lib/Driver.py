@@ -7,37 +7,50 @@
 #######################################################
 import time
 from appium import webdriver
+from macaca import WebDriver as WD
 from conf.Run_conf import read_config
 from src.Public.Common import desired_caps as dc
+from src.Public.Common import  public as pc
 from src.Public.Common import platform as pf
-from src.Public.Global import L
+from src.Public.Global import L,S
 
 class Driver(object):
     def __init__(self,device,port):
         self.device =  device
         self.port = port
-    
+
     def init(self):
         try:
-            self.ip = read_config(dc.appium, dc.ip)
-            self.bundleId = read_config(dc.appium, dc.bundleId)
+            self.runmode = read_config(pc.runmode, pc.driver)
+            self.bundleId = read_config(pc.appium, dc.bundleId)
             self.platformName = self.device[dc.platformName]
-            # self.platformVersion = read_config(dc.appium, dc.platformName)
-            self.appPackage = read_config(dc.appium,dc.appPackage)
-            self.appActivity = read_config(dc.appium,dc.appActivity)
-            self.noReset = read_config(dc.appium, dc.noReset)
-            self.automationName = read_config(dc.appium, dc.automationName)
-            self.app = read_config(dc.appium, dc.app)
-            self.autoAcceptAlerts = read_config(dc.appium, dc.autoAcceptAlerts)
-            self.unicodeKeyboard = read_config(dc.appium, dc.unicodeKeyboard)
-            self.resetKeyboard = read_config(dc.appium, dc.resetKeyboard)
-            # self.autoWebview = read_config(dc.appium, dc.autoWebview)
-            self.url = 'http://' + str(self.ip) + ':' + str(self.port) + '/wd/hub'
-            
-            self.device[dc.noReset] = self.noReset
+            self.app = read_config(pc.appium, dc.app)
+            self.appActivity = read_config(pc.appium, dc.appActivity)
+            self.noReset = read_config(pc.appium, dc.noReset)
+            self.autoAcceptAlerts = read_config(pc.appium, dc.autoAcceptAlerts)
+            self.unicodeKeyboard = read_config(pc.appium, dc.unicodeKeyboard)
+            self.resetKeyboard = read_config(pc.appium, dc.resetKeyboard)
+            self.newCommandTimeout = read_config(pc.appium, dc.newCommandTimeout)
+            self.automationName = read_config(pc.appium, dc.automationName)
+            self.udid = S.device[dc.udid]
+            self.device[dc.udid] = self.udid
+            if self.runmode == pc.macaca:
+                self.ip = read_config(pc.macaca, dc.hostname)
+                self.reuse = read_config(pc.macaca, dc.reuse)
+                self.url = {'hostname':'localhost','port':self.port}
+            else:
+                self.ip = read_config(pc.appium, dc.ip)
+                self.appPackage = read_config(pc.appium, dc.appPackage)
+                self.device[dc.newCommandTimeout] = self.newCommandTimeout
+                self.device[dc.noReset] = self.noReset
+                self.url = 'http://' + str(self.ip) + ':' + str(self.port) + '/wd/hub'
+
+            # self.url = 'http://' + str(self.ip) + ':' + str(self.port) + '/wd/hub'
+            # self.url = 'http://' + str(self.ip) + ':8900/wd/hub'
             self.device[dc.autoAcceptAlerts] = self.autoAcceptAlerts
+
             # print time.ctime(), ' [', __name__, '::', Driver.init.__name__, '] :', ' platformName =  ', self.platformName
-            
+
             if self.platformName.lower() == pf.android:
                 self.device[dc.unicodeKeyboard] = self.unicodeKeyboard
                 self.device[dc.resetKeyboard] = self.resetKeyboard
@@ -45,11 +58,12 @@ class Driver(object):
                 self.device[dc.appActivity] = self.appActivity
                 self.device[dc.app] =self.app
                 # self.device[dc.autoWebview] = self.autoWebview
-    
+
             elif self.platformName.lower() == pf.ios:
                 # self.device[dc.platformVersion] = self.platformVersion
                 self.device[dc.bundleId] = self.bundleId
-                self.device[dc.automationName] = self.automationName
+                if self.runmode == pc.appium:
+                    self.device[dc.automationName] = self.automationName
             else:
                 # print time.ctime(), ' [', __name__, '::', Driver.init.__name__, '] :', '暂不支持的driver设置'
                 L.logger.warning('暂不支持的driver设置')
@@ -59,11 +73,22 @@ class Driver(object):
         else:
             L.logger.info('初始化成功!')
             # print time.ctime(), ' [', __name__, '::', Driver.init.__name__, '] :', ' 初始化成功!'
-        
+
     def getDriver(self):
-        L.logger.info('启动并获取driver对象')
-        self.driver = webdriver.Remote(self.url, self.device)
-        return self.driver
+
+        if self.runmode == pc.macaca:
+            L.logger.info('启动并获取macaca driver对象')
+            self.driver = WD(self.device,url=self.url)
+            self.driver.init()
+
+        else:
+            L.logger.info('启动并获取appium driver对象')
+            self.driver = webdriver.Remote(self.url, self.device)
+        L.logger.info('session_id: %s',self.driver.session_id)
+        if self.driver.session_id:
+            return self.driver
+        else:
+            return
 
 
 

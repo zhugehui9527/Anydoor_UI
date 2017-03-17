@@ -16,6 +16,8 @@ from conf.Run_conf import read_config
 from src.Public.Global import L,S
 from src.Public.Common import desired_caps as Dc
 from src.Public.Common import platform as pf
+from src.Public.Common import public as pc
+from src.Public.Public import Img
 from src.lib.Element import Element
 from selenium.webdriver.common.by import By
 
@@ -34,6 +36,7 @@ class AppOperate (object):
 		self.password = read_config('login', 'login_password')
 		self.driver = Element(driver)
 		self.pluginList =[]
+		self.runmode = read_config(pc.runmode, pc.driver)
 		
 	
 	def loginByHost(self):
@@ -80,43 +83,45 @@ class AppOperate (object):
 
 		if self.platformName.lower() == pf.ios:
 			try:
-				self.driver.swipe_right()  # 右滑动
-				time.sleep(3)
-				self.driver.by_id("个人中心").click()
-				time.sleep(3)
+				if not self.driver.by_id('一账通登录'):
+					self.driver.swipe_right()  # 右滑动
+					# time.sleep(3)
+					self.driver.by_id("个人中心").click()
+					time.sleep(3)
 				self.driver.by_xpath(self.iOS_UserName).send_keys(userName)
-				time.sleep(3)
+				# time.sleep(3)
 				L.logger.info('输入账号: %s' % userName)
 				# 收起键盘
 				self.driver.by_id('完成').click()
-				time.sleep(3)
+				# time.sleep(3)
 				self.driver.by_xpath(self.iOS_PassWord).send_keys(passWord)
-				time.sleep(3)
+				# time.sleep(3)
 				L.logger.info('输入密码: %s' % passWord)
 				# 收起键盘
 				self.driver.by_id('完成').click()
-				time.sleep(3)
+				# time.sleep(3)
 				self.driver.by_xpath("//*[@value='登 录']").click()
-				time.sleep(3)
+				# time.sleep(3)
 				
 			except IOError as e:
 				raise L.logger.error(e)
 
 		elif self.platformName.lower() ==pf.android:
 			try:
-				self.driver.swipe_up() # 向上滑动
-				# self.driver.implicitly_wait(3)
-				time.sleep(3)
-				self.driver.by_xpath("//android.widget.Button[contains(@text,'loading')]").click()
-				# self.driver.implicitly_wait(3)
-				time.sleep(3)
-				self.driver.swipe_right()  # 右滑动
-				# self.driver.implicitly_wait(3)
-				time.sleep(3)
-				# 点击个人中心
-				self.driver.by_xpath("//android.widget.TextView[@text='个人中心']").click()
-				# self.driver.implicitly_wait(3)
-				time.sleep(3)
+				if not self.driver.by_name('一账通登录'):
+					self.driver.swipe_up() # 向上滑动
+					# self.driver.implicitly_wait(3)
+					time.sleep(3)
+					self.driver.by_xpath("//android.widget.Button[contains(@text,'loading')]").click()
+					# self.driver.implicitly_wait(3)
+					time.sleep(3)
+					self.driver.swipe_right()  # 右滑动
+					# self.driver.implicitly_wait(3)
+					time.sleep(3)
+					# 点击个人中心
+					self.driver.by_xpath("//android.widget.TextView[@text='个人中心']").click()
+					# self.driver.implicitly_wait(3)
+					time.sleep(3)
 				# 填写账号
 				self.driver.by_id(self.Andr_UserName).send_keys(userName)
 				# self.driver.implicitly_wait(3)
@@ -155,7 +160,73 @@ class AppOperate (object):
 		else:
 			ele_xpath = "//android.view.ViewGroup[contains(@content-desc,'{}')]".format(pluginId)
 			return self.driver.find_element((By.XPATH, ele_xpath),10)
+	
+	def find_element_by_plugin_orign(self, pluginId):
+		'''
+		通过插件id 查找元素对象
+		:param pluginId:
+		:return:
+		'''
 		
+		if self.platformName.lower() == pf.ios:
+			return self.driver.find_element_orign(By.ID, pluginId)
+		else:
+			ele_xpath = "//android.view.ViewGroup[contains(@content-desc,'{}')]".format(pluginId)
+			return self.driver.find_element_orign(By.XPATH, ele_xpath)
+		
+	def check_plugin_byImage(self,pluginId,x1,y1,x2,y2):
+
+		L.logger.info('开始检查插件: %s' % pluginId)
+		# 对插件第一个页面进行判断
+		i = 5  # 左滑动次数
+		j = 5  # 右滑动次数
+
+		try:
+			while ((self.find_element_by_plugin(pluginId) is None) and i > 0):
+				L.logger.info('插件%s 未显示,左滑' % pluginId)
+				self.driver.swipe_left()
+				i = i - 1
+			else:
+				try:
+					L.logger.info('找到插件: %s ,准备点击打开' % pluginId)
+					self.find_element_by_plugin(pluginId).click()
+					time.sleep(10)
+					img = Img(self.driver)
+					# 裁剪
+					img.get_screen_by_size(x1,y1,x2,y2)
+					dirpath = os.path.abspath(('./output/{}/screen').format(S.device['udid']))
+					# 第一次跑需要把截图复制到项目的screen目录下
+					isRewrite  = bool(read_config('screenshot','isRewrite'))
+					if isRewrite:
+						imagepath = img.copy_to_file(dirpath, pluginId, form='png') # 预期结果
+						L.logger.info('无预期截图路径,生成新路径: %s' % imagepath)
+					else:
+						# screen目录下已有预期截图就可以把上面代码注释,下面的代码取消注释
+						imagepath = dirpath + '/{}.png'.format(pluginId)
+						L.logger.info('已有预期截图路径,不需要生成')
+					L.logger.info('预期截图路径: %s ' % imagepath)
+					loadimage = img.load_image(imagepath)
+
+					if img.compare(loadimage, 0):
+						L.logger.info('截图对比成功')
+						return True
+					else:
+						L.logger.warning('截图对比失败')
+						return False
+				except Exception as e:
+					L.logger.error(e)
+					return False
+				finally:
+					self.closeH5_byPluginId(pluginId)
+		finally:
+			# 向右滑动
+			while (i == 0 and j > 0):
+				self.driver.swipe_right()
+				j = j - 1
+				L.logger.info('右滑动恢复左边查找')
+
+
+
 	def check_plugin(self, pluginId, expectResult):
 		'''
 		对插件进行校验
@@ -170,7 +241,7 @@ class AppOperate (object):
 		j = 5  # 右滑动次数
 		
 		try:
-			while (not (self.find_element_by_plugin(pluginId)) and i > 0):
+			while ( (self.find_element_by_plugin(pluginId) is None) and i > 0):
 				L.logger.info('插件%s 未显示,左滑' % pluginId)
 				self.driver.swipe_left()
 				i = i - 1
@@ -178,16 +249,23 @@ class AppOperate (object):
 				try:
 					L.logger.info('找到插件: %s ,准备点击打开' % pluginId)
 					self.find_element_by_plugin(pluginId).click()
-					#打开插件如果需要登录则进行登录
-					if self.wait_for_text(5,'一账通登录'):
-						self.loginByH5(self.username,self.password)
 					L.logger.info('判断插件页面,是否包含: %s' % expectResult)
-					if self.wait_for_text(30, expectResult):
-						L.logger.info('插件页面中包含 %s,返回True' % expectResult)
-						return True
-					else:
-						L.logger.error('插件页面中不包含 %s,返回False' % expectResult)
-						return False
+					#打开插件如果需要登录则进行登录
+
+					if self.platformName.lower() == pf.ios and self.driver.find_element((By.ID,'一账通登录'),10) :
+						self.loginByH5(self.username,self.password)
+					k = 4 # 向上滑动次数
+					while not self.wait_for_text(10, expectResult):
+						k=k-1
+						L.logger.warning('插件当前页面中未显示 %s,准备滑动' % expectResult)
+						self.driver.swipe_up()
+
+						if k==0:
+							L.logger.error('插件页面中不包含 %s,返回False' % expectResult)
+							return False
+
+					L.logger.info('插件页面中包含 %s,返回True' % expectResult)
+					return True
 				except Exception as e:
 					L.logger.error(e)
 					return False
@@ -204,20 +282,36 @@ class AppOperate (object):
 	def closeH5_byPluginId(self,pluginId):
 		'''通过插件ID来判断关闭H5的方式(iOS 有某几个插件关闭H5比较特别)'''
 		L.logger.info('关闭H5页面!')
+		backButtion = {'PA01100000000_02_PAZB':'//*[1]/*[1]/*[2]/*[1]/*[1]/*[1]/*[1]/*[2]/*[1]',
+		               'PA02700000000_02_PAYX':'//*[1]/*[1]/*[2]/*[1]/*[1]/*[1]',
+		               'PA02100000000_02_CJKX':'//*[1]/*[1]/*[2]/*[1]/*[1]/*[1]',
+		               'PA02100000001_02_JF':'//*[1]/*[1]/*[2]/*[1]/*[1]/*[1]',
+		               'PA01100000000_02_RYG':'//*[1]/*[1]/*[2]/*[1]/*[1]'}
 		if self.platformName.lower() == pf.ios:
-			if  pluginId == 'PA01100000000_02_PAZB':
+			if backButtion.has_key(pluginId):
 				try:
-					self.driver.by_xpath('//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeButton[1]').click()
+					self.driver.by_xpath(backButtion[pluginId]).click()
 				except:
-					self.driver.by_xpath("//*[@name='com nav ic back']").click()
-			elif pluginId == 'PA02700000000_02_PAYX':
-				self.driver.by_xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeButton[1]").click()
-				self.driver.implicitly_wait(5)
-				self.driver.by_xpath("//*[@name='关闭']").click()
-			elif pluginId == 'PA02100000000_02_CJKX':
-				self.driver.by_xpath('//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeButton[1]').click()
+					if pluginId == 'PA01100000000_02_PAZB':
+						self.driver.by_xpath("//*[@name='com nav ic back']").click()
+					else:
+						self.closeH5()
+
+				if pluginId == 'PA02700000000_02_PAYX':
+					self.driver.by_xpath("//*[@name='关闭']").click()
+			# if  pluginId == 'PA01100000000_02_PAZB':
+			# 	try:
+			# 		self.driver.by_xpath('//*[1]/*[1]/*[2]/*[1]/*[1]/*[1]/*[1]/*[2]/*[1]').click()
+			# 	except:
+			# 		self.driver.by_xpath("//*[@name='com nav ic back']").click()
+			# elif pluginId == 'PA02700000000_02_PAYX':
+			# 	self.driver.by_xpath("//*[1]/*[1]/*[2]/*[1]/*[1]/*[1]").click()
+			# 	self.driver.implicitly_wait(5)
+			# 	self.driver.by_xpath("//*[@name='关闭']").click()
+			# elif pluginId == 'PA02100000000_02_CJKX' or pluginId == 'PA02100000001_02_JF':
+			# 	self.driver.by_xpath('//*[1]/*[1]/*[2]/*[1]/*[1]/*[1]').click()
 			# elif pluginId == 'PA01100000000_02_RYG':
-			# 	self.driver.by_xpath("//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeButton[1]").click()
+			# 	self.driver.by_xpath("//*[1]/*[1]/*[2]/*[1]/*[1]").click()
 			else:
 				self.closeH5()
 		else:
@@ -228,45 +322,30 @@ class AppOperate (object):
 		关闭H5界面
 		:return: True
 		'''
+		backAction_ios = ["//*[@name='closeButton']",
+		              "//*[@name='关闭']",
+		              "//*[@name='返回']",
+		              "//*[@name='com nav ic back']"]
+
+		backAction_Anr = ['com.paic.example.simpleapp:array/user_system',
+		                  'back',
+		                  'quit']
 		# ios 关闭H5
 		if self.platformName.lower() == pf.ios:
-			try:
-				if self.driver.by_id('closeButton'):
-					self.driver.by_id('closeButton').click()
-				elif self.driver.by_id('关闭'):
-					self.driver.by_id('关闭').click()
-				elif self.driver.by_id('返回'):
-					self.driver.by_id('返回').click()
-				elif self.driver.by_id('com nav ic back'):
-					self.driver.by_id('com nav ic back').click()
-				else:
-					L.logger.warning('通过[ by id ]关闭H5失败')
-			
-			except:
-					if self.driver.by_xpath("//*[@name='closeButton']"):
-						self.driver.by_xpath("//*[@name='closeButton']").click()
-					elif self.driver.by_xpath("//*[@name='关闭']"):
-						self.driver.by_xpath("//*[@name='关闭']").click()
-					elif self.driver.by_xpath("//*[@name='返回']"):
-						self.driver.by_xpath("//*[@name='返回']").click()
-					elif self.driver.by_xpath("//*[@name='com nav ic back']"):
-						self.driver.by_xpath("//*[@name='com nav ic back']").click()
-					else:
-						L.logger.warning('暂不支持的关闭方式,xpah关闭H5失败')
-
+			for back in backAction_ios:
+				ele = self.driver.by_xpath(back)
+				L.logger.info('closeH5 找到元素:%s ' % back)
+				if ele:
+					ele.click()
+					break
 		else:
 			# Android 关闭H5
-			el = self.driver.by_id('com.paic.example.simpleapp:array/user_system')
-			if el:
-				el.click()
-			elif self.driver.by_id('back'):
-				self.click(self.driver.by_id('back'),'点击返回id: back')
-			elif self.driver.by_id('quit'):
-				self.click(self.driver.by_id('quit'), '点击返回id: quit')
-			else:
-				pass
-				
-	
+			for back in backAction_Anr:
+				el = self.driver.by_id(back)
+				if el:
+					el.click()
+					break
+
 	def getPluginList(self):
 		pluginInfoList = []
 		try:
@@ -282,7 +361,6 @@ class AppOperate (object):
 				pluginInfoList.append(pluginInfo['pluginUid'])
 		except Exception as e:
 			L.logger.warning(e)
-			# raise e
 		finally:
 			return pluginInfoList
 
@@ -333,19 +411,44 @@ class AppOperate (object):
 		'''
 		i = 1
 		L.logger.info("开始轮询元素: %s" % text)
-		while str(text) not in str(self.driver.page_source()):
-			time.sleep(2)
-			i +=2
-			if i>=time_second:
+		# if self.runmode == pc.macaca:
+		# 	while not (self.driver.find_element((By.ID, text), time_second) or
+		# 		        self.driver.find_element((By.NAME, text), time_second)):
+		# 		L.logger.warning('轮询超时,未找到元素:[ %s ]' % text)
+		# 		time.sleep(2)
+		# 		i += 2
+		# 		if i >= time_second:
+		# 			return False
+		# 	else:
+		# 		L.logger.info('界面存在此元素:[ %s ]' % text)
+		# 		return True
+
+		# '''
+		if self.runmode == pc.appium:
+			while str(text) not in (self.driver.page_source()):
 				L.logger.warning('轮询超时,未找到元素:[ %s ]' % text)
-				L.logger.warning('轮询超时,pageSource: <xmp>%s</xmp> ' % self.driver.page_source())
-				return False
+				time.sleep(2)
+				i +=2
+				if i>=time_second:
+					L.logger.warning('轮询超时,未找到元素:[ %s ]' % text)
+					# page_source = str(self.driver.page_source()).replace('<','&lt;')
+					# page_source = page_source.replace('>','&gt;')
+					# # L.logger.warning('轮询超时,pageSource: <xmap>%s</xmap>' % page_source) #<pre></pre>
+					# L.logger.warning('轮询超时,pageSource: %s' % page_source)
+					return False
+			else:
+				L.logger.info('界面存在此元素:[ %s ]' % text)
+				return True
 		else:
-			L.logger.info('界面存在此元素:[ %s ]' % text)
-			return True
-	
-	
-	
+			if not (self.driver.find_element((By.ID, text), time_second) or
+				        self.driver.find_element((By.NAME, text),time_second)):
+				L.logger.warning('轮询超时,未找到元素:[ %s ]' % text)
+				return False
+			else:
+				L.logger.info('界面存在此元素:[ %s ]' % text)
+				return True
+
+			# '''
 	def get_screen_shot_base64(self):
 		return self.driver.screenshot_as_base64()
 	

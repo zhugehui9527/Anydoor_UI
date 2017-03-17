@@ -8,7 +8,7 @@
 import os
 import sys
 import time
-
+from conf.Run_conf import read_config
 from appium.webdriver.mobilecommand import MobileCommand
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
@@ -22,9 +22,10 @@ from src.Public.Global import L,S
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
-class Element:
+class Element(object):
     def __init__(self,driver):
         self.driver = driver
+        self.runmode = read_config(pc.runmode,pc.driver)
 
     # 重新封装find_element
     def find_element(self,loc,wait=pc.time2wait):
@@ -36,10 +37,15 @@ class Element:
         :eg : find_element((By.ID,id_value),10)
         '''
         try:
-            WebDriverWait(self.driver, wait).until(lambda driver: driver.find_element(*loc).is_displayed())
-            return self.driver.find_element(*loc)
+            if self.runmode == pc.appium:
+                WebDriverWait(self.driver, wait).until(lambda driver: driver.find_element(*loc).is_displayed())
+                return self.driver.find_element(*loc)
+            else:
+                WebDriverWait(self.driver, wait).until(lambda driver: driver.element(*loc).is_displayed())
+                return self.driver.element(*loc)
         except:
-            L.logger.warning('%s 查找超时,未找到元素 : %s' % (self,loc))
+            L.logger.warning('%s 查找超时,未找到元素 : %s' % loc)
+            return
         
 
     # 重新封装find_elements
@@ -52,19 +58,29 @@ class Element:
         :eg : find_elements((By.ID,id_value),10)
         '''
         try:
-            WebDriverWait(self.driver, wait).until(lambda driver: driver.find_elements(*loc).is_displayed())
-            return self.driver.find_elements(*loc)
+            if self.runmode == pc.appium:
+                WebDriverWait(self.driver, wait).until(lambda driver: driver.find_elements(*loc).is_displayed())
+                return self.driver.find_elements(*loc)
+            else:
+                WebDriverWait(self.driver, wait).until(lambda driver: driver.elements(*loc).is_displayed())
+                return self.driver.elements(*loc)
         except:
-            L.logger.warning('%s 查找超时,未找到元素 : %s' % (self, loc))
-            # return
+            L.logger.warning('%s 查找超时,未找到元素 : %s' % loc)
+            return
         
     def find_element_orign(self,by,value):
         L.logger.info('查找元素: %s, %s' % (by,value))
-        return self.driver.find_element(by,value)
+        if self.runmode == pc.appium:
+            return self.driver.find_element(by,value)
+        else:
+            return self.driver.element(by, value)
     
     def find_elements_orign(self,loc):
         L.logger.info('查找元素: %s' % loc)
-        return self.driver.find_elements(*loc)
+        if self.runmode == pc.appium:
+            return self.driver.find_elements(*loc)
+        else:
+            return self.driver.elements(*loc)
 
     def element_by(self,by_type,by_value,by_index):
         by_dict={eBy.by_id:lambda :self.by_id(by_value)[by_index],
@@ -182,7 +198,7 @@ class Element:
         get current url
         :return:
         '''
-        url = self.driver.current_url()
+        url = self.driver.current_url
         L.logger.info('获取当前URL: %s' % url)
         return url
     
@@ -195,7 +211,10 @@ class Element:
         :return:
         '''
         L.logger.info('截图保存为base64格式')
-        return self.driver.get_screenshot_as_base64()
+        if self.runmode == pc.appium:
+            return self.driver.get_screenshot_as_base64()
+        else:
+            return self.driver.take_screenshot()
 
     def screenshot_as_file(self,filepath):
         '''
@@ -204,7 +223,10 @@ class Element:
         :return:
         '''
         L.logger.info('截屏')
-        return self.driver.get_screenshot_as_file(filepath)
+        if self.runmode == pc.appium:
+            return self.driver.get_screenshot_as_file(filepath)
+        else:
+            return self.driver.save_screenshot(filepath)
 
     def get_size(self):
         '''
@@ -225,13 +247,22 @@ class Element:
             size = self.get_size()
             width = size.get('width')
             height = size.get('height')
-            if str(S.device[Dc.platformName]).lower() == 'ios':
-                L.logger.info('向上滑动,起始滑动坐标: (%s,%s),坐标偏移量(%s,%s)' % (width / 2, height * 3/4, 0, height * (-1)/4))
-                self.driver.swipe(width / 2, height * 3/4, 0, (-1)/4*height, 1000)
+            if self.runmode == pc.appium:
+                if str(S.device[Dc.platformName]).lower() == 'ios':
+                    L.logger.info('向上滑动,起始滑动坐标: (%s,%s),坐标偏移量(%s,%s)' % (width / 2, height * 3/4, 0, height * (-1)/4))
+                    self.driver.swipe(width / 2, height * 3/4, 0, (-1)/4*height, 200)
+                else:
+                    L.logger.info('向上滑动,起始滑动坐标: (%s,%s),终点坐标(%s,%s)' % (width / 2, height * 3 / 4, width / 2,  height * 1 /4))
+                    self.driver.swipe(width * 4/ 8, height * 7 / 8, width * 4/ 8, height * 1 / 8, 200)
             else:
-                L.logger.info('向上滑动,起始滑动坐标: (%s,%s),终点坐标(%s,%s)' % (width / 2, height * 3 / 4, width / 2,  height * 1 /4))
-                self.driver.swipe(width * 4/ 8, height * 7 / 8, width * 4/ 8, height * 1 / 8, 1000)
-            time.sleep(1)
+                # args = {'fromX': width / 2, 'fromY': height * 7/ 10, 'toX': width * 1 / 2,
+                #         'toY': height * 3 / 10, 'duration': 0.5}
+                args = {'fromX': width * 1 / 2, 'fromY': height * 9 / 10, 'toX': width * 1 / 2, 'toY': height * 1 / 10,
+                 'duration':0.02}
+                L.logger.info(
+                    '向上滑动,起始滑动坐标: (%s,%s),终点坐标(%s,%s)' % (width / 2, height * 9 / 10, width / 2, height * 1 / 10))
+                self.driver.touch('drag', args)
+            # time.sleep(1)
         except:
             raise
 
@@ -245,12 +276,21 @@ class Element:
             size = self.get_size()
             width = size.get('width')
             height = size.get('height')
-            if str(S.device[Dc.platformName]).lower() == 'ios':
-                L.logger.info('向下滑动,起始滑动坐标: (%s,%s),坐标偏移量(%s,%s)' % (width / 2, height * 1/4, 0, height * 3/4))
-                self.driver.swipe(width / 2, height * 1/4, 0, (-3)/4 * height , 1000)
+            if self.runmode == pc.appium:
+                if str(S.device[Dc.platformName]).lower() == 'ios':
+                    L.logger.info('向下滑动,起始滑动坐标: (%s,%s),坐标偏移量(%s,%s)' % (width / 2, height * 1/4, 0, height * 3/4))
+                    self.driver.swipe(width / 2, height * 1/4, 0, (-3)/4 * height , 200)
+                else:
+
+                    L.logger.info('向下滑动,起始滑动坐标: (%s,%s),终点坐标(%s,%s)' % (width / 2, height * 1 / 4, width / 2, height * 3 / 4))
+
+                    self.driver.swipe(width / 2, height * 1 / 4, width /2, 3 / 4 * height, 200)
             else:
-                L.logger.info('向下滑动,起始滑动坐标: (%s,%s),终点坐标(%s,%s)' % (width / 2, height * 1 / 4, width / 2, height * 3 / 4))
-                self.driver.swipe(width / 2, height * 1 / 4, width /2, 3 / 4 * height, 1000)
+                args = {'fromX': width / 2, 'fromY': height * 1 / 4, 'toX': width * 1 / 2,
+                        'toY': height * 3 / 4, 'duration': 0.05}
+                L.logger.info(
+                    '向下滑动,起始滑动坐标: (%s,%s),终点坐标(%s,%s)' % (width / 2, height * 1 / 4, width / 2, height * 3 / 4))
+                self.driver.touch('drag', args)
             time.sleep(1)
         except:
             raise
@@ -265,12 +305,18 @@ class Element:
             size = self.get_size()
             width = size.get('width')
             height = size.get('height')
-            if str(S.device[Dc.platformName]).lower() == 'ios':
-                L.logger.info('向右滑动,起始滑动坐标: (%s,%s),坐标偏移量(%s,%s)' % (width * 1 / 10, height * 9 / 10, width * 3 / 5,0))
-                self.driver.swipe(width * 1/10, height * 9/10, width * 3/5, 0,1000)
+            if self.runmode == pc.appium:
+                if str(S.device[Dc.platformName]).lower() == 'ios':
+                    L.logger.info('向右滑动,起始滑动坐标: (%s,%s),坐标偏移量(%s,%s)' % (width * 1 / 10, height * 9 / 10, width * 3 / 5,0))
+                    self.driver.swipe(width * 1/10, height * 9/10, width * 3/5, 0,1000)
+                else:
+                    L.logger.info('向右滑动,起始滑动坐标: (%s,%s),终点坐标(%s,%s)' % (width / 10, height * 9 / 10, width * 6/ 10, height * 9 / 10))
+                    self.driver.swipe(width / 10, height * 9 / 10, width * 6/ 10, height * 9 / 10, 1000)
             else:
-                L.logger.info('向右滑动,起始滑动坐标: (%s,%s),终点坐标(%s,%s)' % (width / 10, height * 9 / 10, width * 6/ 10, height * 9 / 10))
-                self.driver.swipe(width / 10, height * 9 / 10, width * 6/ 10, height * 9 / 10, 1000)
+                args = {'fromX': width / 10, 'fromY': height * 9 / 10, 'toX': width * 8 / 10,
+                        'toY': height * 9 / 10, 'duration': 0.05}
+                L.logger.info('向右滑动,起始滑动坐标: (%s,%s),终点坐标(%s,%s)' % (width / 10, height * 9 / 10, width * 8 / 10, height * 9 / 10))
+                self.driver.touch('drag',args)
             time.sleep(1)
         
         except:
@@ -288,12 +334,19 @@ class Element:
             size = self.get_size()
             width = size.get('width')
             height = size.get('height')
-            if str(S.device[Dc.platformName]).lower() == 'ios':
-                L.logger.info('向左滑动,起始滑动坐标: (%s,%s),坐标偏移量(%s,%s)' % (width * 9 / 10, height * 9 / 10, width * (-3) / 5,0))
-                self.driver.swipe(width * 9 / 10, height * 9 / 10, width * (-3) / 5,0,1000)
+            if self.runmode == pc.appium:
+                if str(S.device[Dc.platformName]).lower() == 'ios':
+                    L.logger.info('向左滑动,起始滑动坐标: (%s,%s),坐标偏移量(%s,%s)' % (width * 9 / 10, height * 9 / 10, width * (-3) / 5,0))
+                    self.driver.swipe(width * 9 / 10, height * 9 / 10, width * (-3) / 5,0,1000)
+                else:
+                    L.logger.info('向左滑动,起始滑动坐标: (%s,%s),终点坐标(%s,%s)' % (width * 7 / 10, height * 9 / 10, width / 10, height * 9 / 10))
+                    self.driver.swipe(width * 7 / 10, height * 9 / 10, width / 10, height * 9 / 10, 1000)
             else:
-                L.logger.info('向左滑动,起始滑动坐标: (%s,%s),终点坐标(%s,%s)' % (width * 7 / 10, height * 9 / 10, width / 10, height * 9 / 10))
-                self.driver.swipe(width * 7 / 10, height * 9 / 10, width / 10, height * 9 / 10, 1000)
+                args = {'fromX': width *7/ 10, 'fromY': height * 9 / 10, 'toX': width * 1 / 10,
+                        'toY': height * 9 / 10, 'duration': 0.05}
+                L.logger.info(
+                    '向左滑动,起始滑动坐标: (%s,%s),终点坐标(%s,%s)' % (width * 7 / 10, height * 9 / 10, width / 10, height * 9 / 10))
+                self.driver.touch('drag', args)
             time.sleep(1)
 
         except:
@@ -330,11 +383,17 @@ class Element:
 
     def implicitly_wait(self,second):
         L.logger.info('隐式等待 %s 秒' % second)
-        return self.driver.implicitly_wait(second)
+        if self.runmode == pc.appium:
+            return self.driver.implicitly_wait(second)
+        else:
+            return self.driver.set_implicitly_wait(second)
 
     def page_source(self):
         L.logger.info('获取 page_source')
-        return self.driver.page_source
+        if self.runmode == pc.appium:
+            return self.driver.page_source
+        else:
+            return self.driver.source
 
     def load_page_timeout(self,second):
         L.logger.info('页面加载等待,超时时间 %s 秒' % second)
@@ -363,7 +422,10 @@ class Element:
     
     def close_app(self):
         L.logger.info('关闭App')
-        return self.driver.close_app()
+        if self.runmode == pc.appium:
+            return self.driver.close_app()
+        else:
+            return self.driver.close()
 
     def send_keys(self,element,text):
         L.logger.info('元素:%s,发送内容:%s' % (element,text))

@@ -1,7 +1,1 @@
-{
-  "TestCase/Scripts/Anydoor.py::test_checkplugin[PA00500000000_02_RED-\\u7533\\u8bf7\\u6761\\u4ef6]": true, 
-  "TestCase/Scripts/Anydoor.py::test_checkplugin[PA02100000000_02_CGZ-\\u6dfb\\u52a0\\u8f66]": true, 
-  "TestCase/Scripts/Anydoor.py::test_checkplugin[PA02100000000_02_CJKX-\\u8d22\\u7ecf\\u5feb\\u8baf]": true, 
-  "TestCase/Scripts/Anydoor.py::test_checkplugin[PA02100000000_02_PAYD-\\u5c0f\\u989d\\u6d88\\u8d39\\u8d37\\u6b3e]": true, 
-  "TestCase/Scripts/Anydoor.py::test_checkplugin[PA02100000000_02_WDZC-\\u8d44\\u4ea7\\u63d0\\u9192]": true
-}
+{}

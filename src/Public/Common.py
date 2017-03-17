@@ -58,10 +58,15 @@ class public(object):
 	element_sheet = u'元素表'
 	public_case_sheet =u'公共案例库'
 	case_sheet = u'Sheet1'
+	macaca = 'macaca'
+	appium ='appium'
+	runmode = 'runmode'
+	driver = 'driver'
 	
 	
 class desired_caps:
-	appium ='appium'
+	appium = 'appium'
+	hostname = 'hostname'
 	ip = 'ip'
 	port = 'port'
 	deviceName = 'deviceName'
@@ -78,5 +83,7 @@ class desired_caps:
 	autoWebview = 'autoWebview'
 	app = 'app'
 	WaitForAppScript = 'WaitForAppScript'
+	newCommandTimeout = 'newCommandTimeout'
 	clearSystemFiles = 'clearSystemFiles'
 	udid = 'udid'
+	reuse = 'reuse'

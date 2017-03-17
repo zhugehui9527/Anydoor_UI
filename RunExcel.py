@@ -12,6 +12,7 @@ from src.Public.Common import operate_api,public,resultClass,resultStutas
 from src.Public.Global import L,D,S
 from src.Public.Retry import Retry
 from src.lib import ExcelRW
+from src.lib.Utils import SQL
 import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')
@@ -34,6 +35,7 @@ class RunExcelCase(unittest.TestCase):
 		self.publicCaseList = self.xlsEngine.readsheet(public.public_case_sheet)
 		self.sheetCaseList = self.xlsEngine.readsheet(public.case_sheet)
 		self.caselist = caselist
+		
 	
 	def callPublicCase(self, casename):
 		'''
@@ -150,13 +152,14 @@ class RunExcelCase(unittest.TestCase):
 		
 		L.logger.warning('测试用例:%s ,执行结束' % self.caselist[0])
 		L.logger.warning('用例执行总结果: %s' % result)
+		
 		return case_list
 
 def get_html_report():
 	from src.Public.Global import S
 	device = S.device
 	udid = device['udid']
-	html_result_path = os.path.abspath('./output/{}/html/report.html'.format(udid))
+	html_result_path = os.path.abspath('./output/{}/html/excel_report.html'.format(udid))
 	# 测试结束时间
 	end_time = time.time()
 	from src.Public.HtmlReport import HtmlReport
@@ -169,6 +172,17 @@ def get_html_report():
 	AHtmlReport.set_run_time(end_time - time.time())
 	AHtmlReport.generate_html('测试报告')
 	
+	# 清除过滤日志
+	filter_log_path = os.path.abspath('./output/{}/html/filter')
+	if os.listdir(filter_log_path):
+		from src.lib.Utils import Utils
+		U = Utils()
+		cmd = 'rm -rf '+filter_log_path + '/*.log'
+		U.cmd_subprocess(cmd)
+		print '*' * 80
+		print time.ctime(), ' [', __name__, '::', get_html_report.__name__, '] :', ' 过滤日志清理完毕'
+	else:
+		print time.ctime(), ' [', __name__, '::', get_html_report.__name__, '] :', ' 无过滤日志'
 
 if __name__ == '__main__':
 	

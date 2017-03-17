@@ -1,96 +1,97 @@
 # -*- coding:utf-8 -*-
-import requests,simplejson
-from Crypto.Cipher import AES
-import hashlib
-import base64
-def get_sha1(data):
-    '''
-    sha1加密
-    '''
-    s = hashlib.sha1()
-    s.update(data)
-    return s.hexdigest()
+from macaca import WebDriver,WebElement
+from selenium.webdriver.common.by import By
+from src.Public.Common import public as pc
+from selenium.webdriver.support.ui import WebDriverWait
 
-def aespks5b64_encrypt(data, key, iv):
-    '''
-    用aes CBC加密，再用base64  encode，补码方式：pks5
-    '''
-    BS = AES.block_size
-    datas =data.encode('utf8')
-    #PKCS5Padding方式补码
-    pad_PKCS5 = lambda s: s + (BS - len(s) % BS) * chr(BS - len(s) % BS)
-    cipher = AES.new(key, AES.MODE_CBC, iv)
-    encrypted = cipher.encrypt(pad_PKCS5(datas))  #aes加密
-    result = base64.b64encode(encrypted)  #base64 encode
-    return result
+desired_caps = {
+    'autoAcceptAlerts' : True,
+    'platformName':'iOS',
+    'deviceName':'iPhone 6s',
+    'platformVersion': '10.2',
+    'reuse':3,
+    'bundleId':'rym.pingan.rympush',
+    # 'udid':'ae679a86542a57c31e57a1d66351c87570c9bac7'
+}
+driver = WebDriver(desired_caps)
 
-def aespks7b64_encrypt(data, key, iv):
-    '''
-    用aes CBC加密，再用base64  encode，补码方式：pks7
-    '''
-    BS = AES.block_size
-    datas=data.encode('utf8')
-    #PKCS7Padding方式补码
-    pad_PKCS7 = lambda s: s + (BS - len(s) % BS) * '0'
-    cipher = AES.new(key, AES.MODE_CBC, iv)
-    encrypted = cipher.encrypt(pad_PKCS7(datas))  #aes加密
-    result = base64.b64encode(encrypted)  #base64 encode
-    return result
+driver.init()
 
-def GetToken(username,password):
+
+
+def switch_to_webview(driver):
+    contexts = driver.contexts
+    driver.context = contexts[-1]
+    return driver
+
+def switch_to_native(driver):
+    contexts = driver.contexts
+    driver.context = contexts[0]
+    return driver
+
+def find_element(loc, wait=pc.time2wait):
+
     try:
-        url = 'https://app.niiwoo.com:5004/niiwoo-api/niwoportservice.svc/PostUserLogin'
-        datas = 'jsonString={"userName":"'+username+'","password":"'+password+'"}'
-        r = requests.post(url,params=datas)
-        response=simplejson.loads(r.text)
-        UserToken=response['Data']['userToken']
-        print '获取Token成功'
-        return UserToken
-    except Exception as e:
-        print e
-    
-
-def RequestAPI(apiName,apiVersion,data,sign=None):
-    try:
-        url = 'https://app.niiwoo.com:5004/niiwoo-api/niwoportservice.svc/'+apiName+'?appKey=00002&v='+apiVersion+'&sign='+sign
-        resp = requests.post(url,data)
-        response = simplejson.loads(resp.text)
-        print '接口 %s ,响应: %s'
-        return response
+        # if self.runmod == pc.appium:
+        WebDriverWait(driver, wait).until(lambda driver: driver.element(*loc).is_displayed())
+        return driver.element(*loc)
     except:
-        raise
+        print '%s 查找超时,未找到元素 : %s' % loc
+        return
+
+size = driver.get_window_size()
+driver.take_screenshot()
+width = size.get('width')
+height = size.get('height')
+print 'width: %s, height: %s' % (width,height)
+left ={'fromX':width *9/10,'fromY':height * 9 /10,'toX':width *1/10,'toY':height * 9 /10,'duration':2}
+up ={'fromX':width *1/2,'fromY':height * 9 /10,'toX':width *1/2,'toY':height * 1 /10,'duration':0.05}
+# touch('drag',{'fromX':200, 'fromY':400, 'toX':200, 'toY':100, 'duration':2})
+# driver.touch('drag',left)
+# driver.swipe(width *9/10,height * 9 /10,width *1/10,height * 9 /10,2000)
+
+while not find_element((By.ID,'PA01100000000_02_RYG')):
+    driver.touch('drag', left)
+else:
+    find_element((By.ID,'PA01100000000_02_RYG')).click()
+    print '点击: PA01100000000_02_RYG'
+
+print 'base64: ',driver.take_screenshot()
+
+# ele = driver.wait_for_element(By.ID,'加油站2')
+# print 'wait_for_element :',ele
+print driver.contexts
+
+while not find_element((By.ID,'个人中心')):
+    driver.touch('drag',up)
+else:
+    print '找到插件: 个人中心'
+# print driver.context
+# switch_to_webview(driver)
+# print driver.context
+print 'close h5'
+try:
+    find_element((By.XPATH,'//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeButton[1]')).click()
+except:
+    # driver.close()
+    find_element((By.ID,'closeButton')).click()
+finally:
+    find_element((By.XPATH,'//*[@name="closeButton"]')).click()
+
+# driver.close()
+# print 'close'
+
+driver.quit()
+print 'quit'
 
 
+# driver.element(By.ID,'PA01100000000_02_PAZB').click()
+# try:
+#     driver.element(By.XPATH, "//*[@name='com nav ic back']").click()
+# except:
+#     driver.element(By.XPATH,
+#                    '//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeButton[1]').click()
 
-def GetSign(version,Token,data_sign):
 
-    # 密钥 key
-    key = 'A0B5C2D4E7F90301'  # the length can be (16, 24, 32)
-    # 初始向量
-    iv = key
-    # 拼接的字符串预处理定义
-    appKey = 'appKey00002'
-    jsonString = 'jsonString'
-    UserToken = 'userToken'
-    ver = 'v'
+driver.quit()
 
-    AESencrypt_value = aespks5b64_encrypt(data_sign,key,iv)
-    ssign = ''
-    a = [key, appKey, jsonString, AESencrypt_value,UserToken,Token, ver, version, key]
-    # 将 a 按照顺序进行拼接
-    ssign = ssign.join(a)
-    # 进行sha1 运算得到 签名的值
-    asign = get_sha1(ssign)
-    # 将sha1运算的结果转换为大写
-    sign = asign.upper()
-    return sign
-
-username = '18589091413'
-password = 'Solution@559'
-apiName = 'Sign'
-apiVersion = '3.2'
-data_sign = 'jsonString={"签到积分":"20"}'
-Token = GetToken(username, password)
-sign = GetSign(apiVersion,Token,data_sign)
-resp = RequestAPI(apiName,apiVersion,data_sign,sign)
-print resp

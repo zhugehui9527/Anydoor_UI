@@ -61,69 +61,7 @@ class LogSignleton(object):
 			self.logger.addHandler(file_handle)
 			self.logger.setLevel(self.log_level_in_logfile)
 			file_handle.close()
-			
-			#根据文件大小进行日志滚动:RotatingFileHandler
-			# rt_file_handler = RotatingFileHandler(self.log_filename,maxBytes=self.max_bytes_each,backupCount=self.backup_count)
-			# rt_file_handler.setFormatter(formatter)
-			# self.logger.addHandler(rt_file_handler)
-			# self.logger.setLevel(self.log_level_in_logfile)
-			
-			# #根据时间进行日志滚动:TimedRotatingFileHandler
-			# tr_file_handler = TimedRotatingFileHandler(self.log_filename,when='D',interval=1)
-			# tr_file_handler.setFormatter(formatter)
-			# self.logger.addHandler(tr_file_handler)
-			# self.logger.setLevel(self.log_level_in_logfile)
 	
-	
-		# 	# 传入日志路径并进行处理
-		# 	log_file = self.log_file
-		# 	# 判断是否为目录
-		# 	try:
-		# 		# 返回的是文件名,不包括前面的路径
-		# 		filename = os.path.basename(log_file)
-		# 		# 返回的是目录名,不包括文件名
-		# 		filepath = os.path.dirname(log_file)
-		# 		# splitext:分离文件名和后缀 split:分离文件路径和文件
-		# 		parent_path, ext = os.path.splitext(filename)
-		# 		# 定义时间显示格式
-		# 		tm = time.strftime('%Y%m%d%H%M%S', time.localtime())
-		# 		# 重新组装日志文件名
-		# 		filename = parent_path + '_' + tm + ext
-		# 	except Exception as e:
-		# 		raise e
-		#
-		# 	# handler
-		# 	# 设置日志输出到指定文件
-		# 	logfile = logging.FileHandler(os.path.join(filepath, filename))
-		# 	# 设置日志级别
-		# 	logfile.setLevel(logging.DEBUG)
-		# 	# 设置日志输出到控制台
-		# 	control = logging.StreamHandler()
-		# 	# 设置日志级别
-		# 	control.setLevel(logging.DEBUG)
-		#
-		# 	# formatter
-		#
-		# 	# 设置日志输出格式
-		# 	formatter = logging.Formatter('%(asctime)s - %(filename)s[line:%(lineno)d] - %(levelname)s - %(message)s')
-		# 	# 设置日志输出到指定文件时的格式
-		# 	logfile.setFormatter(formatter)
-		# 	# 设置日志输出到控制台时的格式
-		# 	control.setFormatter(formatter)
-		#
-		# 	# 绑定
-		# 	self.logger.addHandler(control)
-		# 	self.logger.addHandler(logfile)
-		# 	pass
-		# #
-		# def get_my_logger(self):
-		# 	"""get the logger
-		# 	:return:logger
-		# 	"""
-		# 	return self.logger
-		#
-		# def get_log_path(self):
-		# 	return self.log_file
 	@staticmethod
 	def get_filter_log(casename, start_filter='', end_fileter=''):
 		'''
@@ -138,6 +76,9 @@ class LogSignleton(object):
 		logpath = os.path.abspath('./output/{}/log/AnyDoor_UI.log'.format(udid))
 		log_filter_path = os.path.abspath('./output/{}/html/filter/{}.log'.format(udid,casename))
 		# print log_filter_path
+		# from Utils import SQL
+		# S = SQL()
+		# S.insert_per(casename,udid,)
 		go_on_id = 0
 		with open(log_filter_path, 'w') as s:
 			with open(logpath) as f:
@@ -170,19 +111,6 @@ class LogSignleton(object):
 			f.close()
 		s.close()
 
-	
-
-
 if __name__ == '__main__':
 	pass
-	# LogSignleton.get_filter_log('登录_1000','测试用例:登录_1000 ,执行开始','测试用例:登录_1000 ,执行结束')
-
 	
-	
-	# loggers = logsignleton.get_logger()
-
-	# loggers.info('测试')
-	# loggers.debug('测试')
-	# loggers.error('测试')
-	# loggers.warning('测试')
-	# loggers.critical('测试')

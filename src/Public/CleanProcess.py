@@ -8,11 +8,15 @@ __author__ = 'Jeff'
 import platform
 import subprocess
 import time
-#
-# from src.Public.Global import L
-# logger = L.logger
+from conf.Run_conf import read_config
+from src.Public.Common import public as pc
+
+
 
 class Cp(object):
+
+    def __init__(self):
+        self.runmode = read_config(pc.runmode, pc.driver)
 	
     def cmd(self,cmd):
         return subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -47,20 +51,27 @@ class Cp(object):
         #     self.cmd('kill -9 %s' % line.strip())
         #     logger.debug('CleanProcess:Darwin:kill logcat')
         lines_list = []
-        lines = self.cmd("ps -A | grep appium|awk '{print $1}'").stdout.readlines()
+        cmd = "ps -A | grep "+self.runmode+"|awk '{print $1}'"
+        lines = self.cmd(cmd).stdout.readlines()
         print 'lines = ',lines
         lines_list.append(lines)
         print lines_list
             
         if len(lines_list) !=0:
-            print "appium 相关进程列表 = %s " % lines_list
+            print self.runmode ," 相关进程列表 = %s " % lines_list
             # logger.debug('appium 相关进程列表 = %s ' % lines_list)
             for line in lines_list:
                 # print 'kill -9 %s' % line
-                time.sleep(1)
-                self.cmd('kill -9 %s' % line)
-                print 'CleanProcess:Darwin:kill appium'
-                self.cmd('killall node')
+                # time.sleep(1)
+                if self.runmode == pc.macaca:
+                    for x in line:
+                        cmd2 = 'kill -9 %s' % x
+                        self.cmd(cmd2)
+                        print cmd2
+                else:
+                    self.cmd('kill -9 %s' % line)
+            print 'CleanProcess:Darwin:kill ',self.runmode
+                # self.cmd('killall node')
                 # logger.debug('CleanProcess:Darwin:kill appium')
 
     def __linux_all(self):
@@ -70,7 +81,7 @@ class Cp(object):
             # logger.debug('CleanProcess:linux:kill logcat')
 
         for line in self.cmd(
-                "ps -ef |grep appium |grep -v grep|awk '{print $2}'").stdout.readlines():
+                "ps -ef |grep "+self.runmode+" |grep -v grep|awk '{print $2}'").stdout.readlines():
             self.cmd('kill -9 %s' % line.strip())
             # logger.debug('CleanProcess:linux:kill appium')
 

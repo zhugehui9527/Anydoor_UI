@@ -5,7 +5,7 @@
 # date:2016-11-21
 # function:驱动Excel、脚本 测试用例
 #######################################################
-import unittest,autoinstall
+import unittest
 from conf.Run_conf import read_config
 from multiprocessing import Pool
 from src.Public.AppiumServer import AppiumServer
@@ -14,15 +14,11 @@ from src.lib import ExcelRW
 from src.Public.Common import public
 from src.Public.Global import D,S,L
 from src.lib.Driver import Driver
+from src.lib.Element import Element
 import time,os
 
 # from src.lib.Utils import utils
-xls_file_path = os.path.abspath('./TestCase/Excel/TestCase.xlsx')
-print '*' * 80
-print time.ctime(),' [',__name__,'::','用例路径: ',xls_file_path
-xlsEngine = ExcelRW.XlsEngine(xls_file_path)
-xlsEngine.open()  # 打开excel
-case_sheet1 = xlsEngine.readsheet(public.case_sheet)
+
 
 def run_mode():
 	'''
@@ -32,9 +28,15 @@ def run_mode():
 	runmod = str(read_config('runmode','mode'))
 	if runmod == '1':
 		# print '*' * 80
-		print time.ctime(),' [',__name__,'::',run_mode.__name__,'] :',' 运行 Excel 测试用例 '
 		print '*' * 80
 		L.logger.info(' 运行 Excel 测试用例 ')
+		xls_file_path = os.path.abspath('./TestCase/Excel/TestCase.xlsx')
+		print '*' * 80
+		print time.ctime(), ' [', __name__, '::', '用例路径: ', xls_file_path
+		xlsEngine = ExcelRW.XlsEngine(xls_file_path)
+		xlsEngine.open()  # 打开excel
+		global case_sheet1
+		case_sheet1 = xlsEngine.readsheet(public.case_sheet)
 		#驱动测试
 		runner = unittest.TextTestRunner()
 		__Run_Case(runner)
@@ -58,6 +60,7 @@ def clean_process():
 	#结束服务进程
 	cp = CleanProcess.Cp()
 	cp.clean_process_all()
+	
 
 import RunExcel
 def __get_test_suite(case_list):
@@ -82,6 +85,10 @@ def __Run_Case(runner):
 	# print time.ctime(), ' [', __name__, '::', __Run_Case.__name__, '] :', ' 开始进行用例遍历 '
 	# print '*' * 80
 	L.logger.debug(' 循环遍历测试用例 ')
+	# from src.lib.Utils import SQL
+	# # sql实例化并传递
+	# sql = SQL()
+	# Q.set_sql(sql)
 	# 循环遍历测试用例列表
 	for case_list in case_sheet1[1:]:
 		#判断是否是独有操作,如果不是对应平台的独有操作就跳过循环
@@ -89,9 +96,12 @@ def __Run_Case(runner):
 			continue
 		test_suite = __get_test_suite(case_list)
 		runner.run(test_suite)
+		# 插入用例名和设备udid
+		# Q.sql.insert_per(case_list[0],S.device['udid'],'','','')
 	
-	D.driver.close_app() # 退出app
-	D.driver.quit() # 退出服务
+	wd=Element(driver)
+	# wd.close_app()# 退出app
+	wd.quit() # 退出服务
 	# 生成测试报告
 	RunExcel.get_html_report()
 
@@ -110,15 +120,16 @@ def Run_one(device,port):
 	A = AppiumServer()
 	A.start_server(device, port)
 	
-	# print '*' * 80
-	# print time.ctime(), ' [', __name__, '::', Run_one.__name__, '] :', ' device =  ', device
+	print '*' * 80
+	print time.ctime(), ' [', __name__, '::', Run_one.__name__, '] :', ' device =  ', device
 	# 实例化Dirver
 	Dr = Driver(device, port)
 	Dr.init()  # 初始化driver
+	global driver
 	driver = Dr.getDriver()
 	D.set_driver(driver)
-	# print '*' * 80
-	# print time.ctime(),' [', __name__, '::', Run_one.__name__, '] :', ' driver =  ', driver
+	print '*' * 80
+	print time.ctime(),' [', __name__, '::', Run_one.__name__, '] :', ' driver =  ', driver
 	run_mode() # 运行模式
 
 if __name__ == '__main__':
@@ -149,6 +160,8 @@ if __name__ == '__main__':
 		clean_process()
 	except Exception as e:
 		raise e
+	
 	print '*' * 80
 	print time.ctime(), ' [', __name__, '] :', '所有代码执行完毕!'
-	
+	import sys
+	sys.exit(0)
