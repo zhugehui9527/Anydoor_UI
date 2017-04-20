@@ -73,10 +73,10 @@ checkPluginInfo = [
                    ('PA01100000000_02_YYG',u'1元GO'),
                    ('PA03300000000_02_AJDK',u'试算一下'),
                    # ('PA02500000000_02_TZLC',u'任意门'), # 需要截图断言
-                   ('PA02100000001_02_JF', u'我的订单'),
+                   ('PA02100000001_02_JF', u'可用积分'),
                    ('PA01200000000_02_XYD', u'马上贷款'),
                    ('PA02100000000_02_YJQB', u'获取动态码'),
-                   ('PA02100000000_02_KY', u'立即抢购'),
+                   ('PA02100000000_02_KY', u'立即冲刺'),
                    ('PA02100000000_02_HQY', u'获取验证码'),
                    ('PA00800000000_02_PACX', u'使馆信息'),
                    ('PA00400000000_02_CFBXZZC', u'温馨提示'),
@@ -123,7 +123,6 @@ checkPluginInfo1 = [('PA02500000000_02_TZLC',0, 0.1, 0.9, 0.2),# 对比屏幕上
                     ('PA01100000003_02_WDCX',0, 0.85,0.9, 0.15), # 对比屏幕下面的截图
                     # ('PA01100000000_02_RYG')
                     ]
-
 @pytest.mark.parametrize("pluginID,start_x,start_y,weight,height",checkPluginInfo1)
 def test_checkplugin_by_image(pluginID,start_x,start_y,weight,height):
 	'''

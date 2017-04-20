@@ -43,6 +43,10 @@ class Driver(object):
                 self.appPackage = read_config(pc.appium, dc.appPackage)
                 self.device[dc.newCommandTimeout] = self.newCommandTimeout
                 self.device[dc.noReset] = self.noReset
+                self.device['useNewWDA'] = 'true'
+                self.device['wdaLocalPort'] = str(int(self.port) + 3000)
+                self.device['commandTimeouts'] = '120000'
+                # self.device['xcodeConfigFile'] = '/Users/zengyuanchen/Documents/Project/appium-xcuitest-driver/appium-xcuitest-driver/WebDriverAgent/WebDriverAgent.xcodeproj'
                 self.url = 'http://' + str(self.ip) + ':' + str(self.port) + '/wd/hub'
 
             # self.url = 'http://' + str(self.ip) + ':' + str(self.port) + '/wd/hub'

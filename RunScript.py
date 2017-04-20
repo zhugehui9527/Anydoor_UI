@@ -6,8 +6,8 @@ def run_pytest():
 	运行pytest单元测试框架并生成html测试报告
 	:return:
 	'''
-	# project_path = read_config('testcase','project_path')
-	case_path =  os.path.abspath('./TestCase/Scripts/Anydoor.py')
+	project_path = os.path.dirname(os.path.abspath(__file__))
+	case_path = os.path.abspath(os.path.join(project_path, 'TestCase', 'Scripts', 'Anydoor.py'))
 	# print 'case_path = ',case_path
 	from src.Public.Global import S
 	udid = S.device['udid']
@@ -27,3 +27,4 @@ def run_pytest():
 	from src.Public.Global import D
 	D.driver.close_app()
 	D.driver.quit()
+

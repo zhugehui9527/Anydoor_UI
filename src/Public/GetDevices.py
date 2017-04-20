@@ -18,33 +18,54 @@ class GetDevices:
 		device = []
 		# value_ios = os.popen(self.Get_iOS)
 		isMonitor = eval(read_config('appium', 'isMonitor'))
+		support_devices = str(read_config('appium','device')).split(',')
+		print time.ctime(), ' [', __name__, '::', GetDevices.get_device.__name__, '] :','support devices = ',support_devices
 		# 获取模拟器设备列表
 		if isMonitor:
-			iOS_Monitor = {}
-			deviceName = read_config('appium', 'deviceName')
-			platformVersion = read_config('appium', 'platformVersion')
-			iOS_Monitor['deviceName'] = deviceName
-			# deviceName = str(deviceName).replace(' ','')
-			for dev in os.popen(self.Get_iOS).readlines():
-				dev_value = str(dev).replace("\n", "").replace("\t", "").replace(" ", "")
-				# print dev_value
-				if dev_value.rfind(deviceName) == -1:
-					continue
-				if dev_value.rfind(platformVersion) == -1:
-					continue
-				# print dev_value
-				re_deviceName = re.compile(r'(.*)\(').findall(dev_value)[0]
-				re_deviceName2 = re.compile(r'(.*)\(').findall(re_deviceName)[0]
-				# print 're_deviceName2: ' , re_deviceName2
-				# print 'deviceName: ',deviceName
-				if re_deviceName2 != deviceName:
-					continue
-				# if re_deviceName != deviceName:
-				# 	continue
-				iOS_Monitor['udid'] = re.compile(r'\[(.*?)\]').findall(dev_value)[0]
-				iOS_Monitor['platformVersion'] = platformVersion
-				iOS_Monitor['platformName'] = 'iOS'
-			device.append(iOS_Monitor)
+			if 'iOS_Monitor' in support_devices:
+				print time.ctime(), ' [', __name__, '::', GetDevices.get_device.__name__, '] :','iOS_Monitor is allowed'
+				iOS_Monitor = {}
+				deviceName = read_config('appium', 'deviceName')
+				platformVersion = read_config('appium', 'platformVersion')
+				iOS_Monitor['deviceName'] = deviceName
+				# deviceName = str(deviceName).replace(' ','')
+				for dev in os.popen(self.Get_iOS).readlines():
+					dev_value = str(dev).replace("\n", "").replace("\t", "").replace(" ", "")
+					# print dev_value
+					if dev_value.rfind(deviceName) == -1:
+						continue
+					if dev_value.rfind(platformVersion) == -1:
+						continue
+					# print dev_value
+					re_deviceName = re.compile(r'(.*)\(').findall(dev_value)[0]
+					re_deviceName2 = re.compile(r'(.*)\(').findall(re_deviceName)[0]
+					# print 're_deviceName2: ' , re_deviceName2
+					# print 'deviceName: ',deviceName
+					if re_deviceName2 != deviceName:
+						continue
+					# if re_deviceName != deviceName:
+					# 	continue
+					iOS_Monitor['udid'] = re.compile(r'\[(.*?)\]').findall(dev_value)[0]
+					iOS_Monitor['platformVersion'] = platformVersion
+					iOS_Monitor['platformName'] = 'iOS'
+				device.append(iOS_Monitor)
+			if 'Android_Monitor' in support_devices:
+				print time.ctime(), ' [', __name__, '::', GetDevices.get_device.__name__, '] :','Android_Monitor is  allowed'
+				# 命令获取Android设备列表
+				for dev in os.popen(self.Get_Android).readlines():
+					Android = {}
+					dev_value = str(dev).replace("\n", "").replace("\t", "")
+					if dev_value.rfind('device') != -1 and (not dev_value.startswith("List")) and dev_value != "":
+						# print dev_value[:dev_value.find('device')].strip()
+						Android['udid'] = dev_value[:dev_value.find('device')].strip()
+						Android['platformName'] = 'Android'
+						Android['deviceName'] = 'Android'
+						# Android['platformVersion'] = '6.0.1'
+						# Android['package'] = 'com.paic.example.simpleapp'
+						# Android['activity'] = '.SettingActivity'
+						# Android['app'] = '/usr/local/anydoor/app_package/PAAnydoor.apk'
+						device.append(Android)
+
 		else:
 			pass
 		# 是否运行真机

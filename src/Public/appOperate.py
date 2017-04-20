@@ -122,10 +122,11 @@ class AppOperate (object):
 					self.driver.by_xpath("//android.widget.TextView[@text='个人中心']").click()
 					# self.driver.implicitly_wait(3)
 					time.sleep(3)
+
 				# 填写账号
 				self.driver.by_id(self.Andr_UserName).send_keys(userName)
 				# self.driver.implicitly_wait(3)
-				time.sleep(2)
+				time.sleep(3)
 				# 填写密码
 				self.driver.by_id(self.Andr_PassWord).send_keys(passWord)
 				# self.driver.implicitly_wait(3)
