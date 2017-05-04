@@ -25,7 +25,6 @@ class AppiumServer(object):
 		:param Port:int 类型
 		:return:
 		'''
-		# print '启动appium'
 		if not self.is_runnnig(Port):
 			try:
 				if self.runmode == pc.appium:
@@ -68,7 +67,7 @@ class AppiumServer(object):
 		# 	url = 'http://' + self.serverIp + ':' + str(Port) + "/wd/hub/status"
 		url = 'http://' + self.serverIp + ':' + str(Port) + "/wd/hub/status"
 		try:
-		
+
 			response = requests.get(url)
 			response_dict = json.loads(response.text)
 			print time.ctime(), ' [', __name__, '::', self.is_runnnig.__name__, '] :','服务响应: ',response_dict
@@ -84,4 +83,4 @@ class AppiumServer(object):
 		finally:
 			if response:
 				response.close()
-	
+

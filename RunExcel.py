@@ -16,27 +16,28 @@ from src.lib.Utils import SQL
 import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')
+PATH = lambda p: os.path.abspath(
+    os.path.join(os.path.dirname(__file__), p)
+)
 
 retry_num = int(read_config('retry', 'retry_num'))
 retry_isTrue = bool(read_config('retry', 'retry_isTrue'))
-# project_path = read_config('testcase', 'project_path')
 result = resultClass.result
-
+starttime = time.time()
 class RunExcelCase(unittest.TestCase):
-	
+
 	def __init__(self,caselist,mouldeName):
 		super(RunExcelCase,self).__init__(mouldeName)
 		self.driver = D.driver
 		self.readApi = ReadApi(self.driver)
-		self.xls_file_path = os.path.abspath('./TestCase/Excel/TestCase.xlsx')
+		self.xls_file_path = PATH('./TestCase/Excel/TestCase.xlsx')
 		self.platformName = S.device['platformName']
 		self.xlsEngine = ExcelRW.XlsEngine(self.xls_file_path)
 		self.xlsEngine.open()  # 打开excel
 		self.publicCaseList = self.xlsEngine.readsheet(public.public_case_sheet)
 		self.sheetCaseList = self.xlsEngine.readsheet(public.case_sheet)
 		self.caselist = caselist
-		
-	
+
 	def callPublicCase(self, casename):
 		'''
 		:description:判断casename是否在公共案例库中,如有则执行公共案例库
@@ -87,12 +88,12 @@ class RunExcelCase(unittest.TestCase):
 						else:
 							# 公共案例每步执行结果记录
 							result_public.append(resultStutas.fail)
-						
+
 					public_case_type = 0
-				
+
 		return result_public
-	
-	
+
+
 	#function:运行一条测试用例,Retry 失败重跑,1重跑次数,isRetry重跑开关
 	@Retry(retry_count=retry_num,isRetry=retry_isTrue)
 	def function(self):
@@ -117,7 +118,7 @@ class RunExcelCase(unittest.TestCase):
 				L.logger.debug('===' * 40)
 			else:
 				L.logger.warning('case_list 为空')
-		
+
 		else:
 			# 执行测试用例库
 			if self.readApi.readApiList(self.caselist):
@@ -131,10 +132,10 @@ class RunExcelCase(unittest.TestCase):
 				L.logger.debug('===' * 40)
 			else:
 				L.logger.warning('case_list 为空')
-				
+
 		case_cost_time = time.time() - case_start_time
 		case_cost_time =round(case_cost_time,3)
-		retry_flag = 'FALSE'
+		retry_flag = 'NORERUN'
 		case_list.append(case_cost_time)
 		case_list.append(retry_flag)
 		# 判断result列表最后一个元素是否是当前的测试用例,如果是当前用例则更新原用例的结果,如果不是,则添加新结果
@@ -143,23 +144,23 @@ class RunExcelCase(unittest.TestCase):
 				result[-1][1]= case_list[1] # 更新结果
 				result[-1][2] = case_list[2] # 更新时间
 				if resultStutas.success not in case_list:
-					retry_flag = 'TRUE'
+					retry_flag = 'RERUN'
 					result[-1][3] = retry_flag
 			else:
 				result.append(case_list)
 		else:
 			result.append(case_list)
-		
+
 		L.logger.warning('测试用例:%s ,执行结束' % self.caselist[0])
 		L.logger.warning('用例执行总结果: %s' % result)
-		
+
 		return case_list
 
 def get_html_report():
 	from src.Public.Global import S
 	device = S.device
 	udid = device['udid']
-	html_result_path = os.path.abspath('./output/{}/html/excel_report.html'.format(udid))
+	html_result_path = PATH('./output/{}/html/excel_report.html'.format(udid))
 	# 测试结束时间
 	end_time = time.time()
 	from src.Public.HtmlReport import HtmlReport
@@ -169,11 +170,11 @@ def get_html_report():
 	# 生成测试报告
 	AHtmlReport.set_result_filename(html_result_path)
 	AHtmlReport.set_testcase_result(result)
-	AHtmlReport.set_run_time(end_time - time.time())
+	AHtmlReport.set_run_time(end_time - starttime)
 	AHtmlReport.generate_html('测试报告')
-	
+
 	# 清除过滤日志
-	filter_log_path = os.path.abspath('./output/{}/html/filter')
+	filter_log_path = PATH('./output/{}/html/filter')
 	if os.listdir(filter_log_path):
 		from src.lib.Utils import Utils
 		U = Utils()
@@ -185,7 +186,7 @@ def get_html_report():
 		print time.ctime(), ' [', __name__, '::', get_html_report.__name__, '] :', ' 无过滤日志'
 
 if __name__ == '__main__':
-	
+
 	# current_path = os.getcwd()
 	# timestr = time.strftime('%Y%m%d%H%M%S', time.localtime(time.time()))
 	# report_path = current_path + '/output/html/'+ timestr + '_report.html'
@@ -196,7 +197,6 @@ if __name__ == '__main__':
 	# Run_Case(testRunner)
 	# ReportObject.close()
 	#
-	
+
 	runner = unittest.TextTestRunner(verbosity=2)
 	# Run_Case(runner)
-	

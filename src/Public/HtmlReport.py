@@ -20,6 +20,11 @@ from src.lib import pyh
 sys.path.append("../../")
 reload(sys)
 sys.setdefaultencoding('utf8')
+
+PATH = lambda p: os.path.abspath(
+    os.path.join(os.path.dirname(__file__), p)
+)
+
 # HTML测试报告
 class HtmlReport(object):
     def __init__(self):
@@ -34,9 +39,8 @@ class HtmlReport(object):
         self.logfile = ''                     #每个用例运行日志
         self.logerr = ''                      #每个用例运行错误日志
         self.device = S.device
-        # self.device = '32E6D124-29B6-48A2-9B38-0A9D54121E10'
-        # self.logpath = read_config('logger','log_file')
-        
+
+
     #设置结果文件名
     def set_result_filename(self, filename='Test_Report_Filename.html'):
         self.filename = filename
@@ -47,11 +51,15 @@ class HtmlReport(object):
             raise IOError('filename can not be empty')
         else:
             parent_path, ext = os.path.splitext(filename)
-            tm = time.strftime('%Y%m%d%H%M%S', time.localtime())
-            self.filename = parent_path + tm + ext   #报告名中添加当前时间
-            print time.ctime(), ' [', __name__, '::', self.set_result_filename.__name__, '] :', ' 生成测试报告,\n 测试报告路径 =  ', self.filename
+            # tm = time.strftime('%Y%m%d%H%M%S', time.localtime())
+            # self.filename = parent_path + tm + ext   #报告名中添加当前时间
+            self.filename = parent_path + ext
+            # with open(self.filename,'a+') as f:
+            #     f.close()
 
-            # 设置测试用例执行结果
+        print time.ctime(), ' [', __name__, '::', self.set_result_filename.__name__, '] :', ' 测试报告路径 =  ', self.filename
+
+    # 设置测试用例执行结果
     def set_testcase_result(self, testcase_result, testcase_message=None):
         self.testcase_result = testcase_result
         self.testcase_message = testcase_message
@@ -59,27 +67,31 @@ class HtmlReport(object):
         self.success_num = len([x for x in testcase_result if x[1] in [resultStutas.success]])
         self.fail_num = len([x for x in testcase_result if x[1] in [resultStutas.fail]])
         self.error_num = len([x for x in testcase_result if x[1] in [resultStutas.error]])
-        self.rerun_num = len([x for x in testcase_result if x[1] in [resultStutas.rerun]])
+        self.rerun_num = len([x for x in testcase_result if x[3] in [resultStutas.rerun]])
 
     # 设置测试总耗时
     def set_run_time(self, seconds):
         self.time_took = time.strftime('%H:%M:%S', time.gmtime(seconds))
         return self.time_took
-    
+
     def read_filter_log(self,casename):
-        filter_log_path = os.path.abspath('./output/{}/html/filter/{}.log'.format(self.device['udid'],casename))
-        # print filter_log_path
+        '''过滤日志'''
+        # filter_log_path = os.path.abspath('./output/{}/html/filter/{}.log'.format(self.device['udid'],casename))
+        filter_log_path = PATH('../../output/{}/html/filter/{}.log'.format(self.device['udid'],casename))
+        print 'filter_log_path= ',filter_log_path
         try:
             with open(filter_log_path) as f:
                 text =  f.read()
                 return text
         except Exception as e:
             print e
-        
+
     def get_url_res(self,url):
-        res = requests.get(url).status_code
+        res = requests.get(url)
+        status_code = res.status_code
+        print time.ctime(), ' [', __name__, '::', self.get_url_res.__name__, '] :','res = %s,status_code=%s' % (res,status_code)
         return res
-    
+
     #生成HTML报告
     def generate_html(self, report_header):
         def get_tab():
@@ -92,32 +104,55 @@ class HtmlReport(object):
             tab.attributes['borderColor'] = '#504F4F'
             tab.attributes['width'] = '90%'
             return tab
+        js = '''
+            function showTestDetail(div_id){
+                var details_div = document.getElementById(div_id)
+                var displayState = details_div.style.display
+                // alert(displayState)
+                if (displayState != 'block' ) {
+                    displayState = 'block'
+                    details_div.style.display = 'block'
+                }
+                else {
+                    details_div.style.display = 'none'
+                }
+            }
+
+        '''
         page = pyh.PyH(self.title)
-        css_url = 'https://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css'
-        js1_url = 'https://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js'
-        js2_url = 'https://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js'
-        # 如果联网则调用网上连接css与js,否则调用本地css与js
-        if self.get_url_res(css_url)== 200:
-            page.addCSS(css_url)
-        else:
-            css_local = './css/bootstrap.min.css'
-            page.addCSS(css_local)
-        if self.get_url_res(js1_url) == 200:
-            page.addJS(js1_url)
-        else:
-            js1_local = './js/jquery.min.js'
-            page.addJS(js1_local)
-        if self.get_url_res(js2_url) == 200:
-            page.addJS(js2_url)
-        else:
-            js2_local = './js/bootstrap.min.js'
-            page.addJS(js2_local)
-        
+        # css_url = 'https://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css'
+        # js1_url = 'https://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js'
+        # js2_url = 'https://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js'
+        # # 如果联网则调用网上连接css与js,否则调用本地css与js
+        # if self.get_url_res(css_url)== 200:
+        #     page.addCSS(css_url)
+        # else:
+        #     css_local = './css/bootstrap.min.css'
+        #     page.addCSS(css_local)
+        # if self.get_url_res(js1_url) == 200:
+        #     page.addJS(js1_url)
+        # else:
+        #     js1_local = './js/jquery.min.js'
+        #     page.addJS(js1_local)
+        # if self.get_url_res(js2_url) == 200:
+        #     page.addJS(js2_url)
+        # else:
+        #     js2_local = './js/bootstrap.min.js'
+        #     page.addJS(js2_local)
+        # page << pyh.charset
+        page << pyh.script(js)
+
+        # css_local = './css/bootstrap.min.css'
+        # page.addCSS(css_local)
+        # js1_local = './js/jquery.min.js'
+        # page.addJS(js1_local)
+        # js2_local = './js/bootstrap.min.js'
+        # page.addJS(js2_local)
         page << pyh.h1((unicode(report_header)).encode('gbk'), align='middle') #标题居中
         # page << pyh.p(u'报告生成时间：'.encode('gbk') + str(self.current_time))
         page << pyh.h3('Environment', align='left')  # 标题居左
         tab2 = get_tab()
-        
+
         # 表格头
         tab2 << pyh.tr(pyh.td(u'报告生成时间'.encode('gbk'), bgcolor='#E6E6FA', align='middle') +
                        pyh.td(u'Platform'.encode('gbk'), bgcolor='#E6E6FA', align='middle') +
@@ -147,10 +182,10 @@ class HtmlReport(object):
                        pyh.td(str(self.success_num), align='middle') +
                        pyh.td(str(self.fail_num), align='middle') +
                        pyh.td(str(self.error_num), align='middle')+
-                       pyh.td(str(self.fail_num), align='middle'))
-        
+                       pyh.td(str(self.rerun_num), align='middle'))
+
         page << pyh.h3('Results', align='left')  # 标题居左
-        
+
         tab = get_tab()
 
         # 表格头
@@ -158,7 +193,7 @@ class HtmlReport(object):
                       pyh.td(u'运行时间(s)'.encode('gbk'), bgcolor='#E6E6FA', align='middle') +
                       pyh.td(u'运行日志'.encode('gbk'), bgcolor='#E6E6FA', align='middle') +
                       pyh.td(u'测试结果'.encode('gbk'), bgcolor='#E6E6FA', align='middle'))
-        
+
         # print resultlist
         for testcase_list in self.testcase_result:
             testcase_id = str(self.testcase_result.index(testcase_list))
@@ -168,7 +203,7 @@ class HtmlReport(object):
             testcase_duration = str(testcase_list[2])
             # print 'testcase_log = %s ' % testcase_log
             testcase_log_detail =u'日志详情'
-            
+
             start_filter = '测试用例:{} ,执行开始'.format(testcase_name)
             # print 'start_filter = %s' % start_filter
             end_filter = '测试用例:{} ,执行结束'.format(testcase_name)
@@ -184,7 +219,7 @@ class HtmlReport(object):
                               pyh.td(testcase_duration.encode('gbk', 'ignore'), align='middle') +
                               pyh.td(pyh.div(pyh.div(pyh.a(testcase_log_detail.encode('gbk','ignore'),
                                                            dt='collapse',
-                                                           href='#{}'.format(testcase_id),
+                                                           href="javascript:showTestDetail('{}')".format(testcase_id),
                                                            dp='#accordion',
                                                            cl='collapsed',
                                                            ae='false',
@@ -193,22 +228,22 @@ class HtmlReport(object):
                                                                      id=testcase_id,
                                                                      cl='panel-collapse collapse',
                                                                      ae='false',
-                                                                     style='height: 0px;',
+                                                                     style='display: none;',
                                                                     align='left'),
-                                                           
+
                                                      style='background-color: #70DBDB;',
                                                      # cl='panel panel-default' # 添加按钮边框
                                                      ),
                                              id='accordion',cl='panel-group',style='margin-bottom: 0px;'),
                                      align='middle') +
                               pyh.td(testresult, align='middle'), bgcolor='#70DBDB')
-                
+
             elif 'FAIL' == testresult:
                 tab << pyh.tr(pyh.td(testcase_name.encode('gbk', 'ignore'), align='middle') +
                               pyh.td(testcase_duration.encode('gbk', 'ignore'), align='middle') +
                               pyh.td(pyh.div(pyh.div(pyh.a(testcase_log_detail.encode('gbk', 'ignore'),
                                                            dt='collapse',
-                                                           href='#{}'.format(testcase_id),
+                                                           href="javascript:showTestDetail('{}')".format(testcase_id),
                                                            dp='#accordion',
                                                            cl='collapsed',
                                                            ae='false',
@@ -217,9 +252,9 @@ class HtmlReport(object):
                                                                      id=testcase_id,
                                                                      cl='panel-collapse collapse',
                                                                      ae='false',
-                                                                     style='height: 0px;',
+                                                                     style='display: none;',
                                                                     align='left'),
-                                                            
+
                                                      style='background-color: #FF6EC7;',
                                                      # cl='panel panel-default' # 添加按钮边框
                                                      ),
@@ -232,7 +267,7 @@ class HtmlReport(object):
                               pyh.td(testcase_duration.encode('gbk', 'ignore'), align='middle') +
                               pyh.td(pyh.div(pyh.div(pyh.a(testcase_log_detail.encode('gbk', 'ignore'),
                                                            dt='collapse',
-                                                           href='#{}'.format(testcase_id),
+                                                           href="javascript:showTestDetail('{}')".format(testcase_id),
                                                            dp='#accordion',
                                                            cl='collapsed',
                                                            ae='false',
@@ -241,9 +276,9 @@ class HtmlReport(object):
                                                                      id=testcase_id,
                                                                      cl='panel-collapse collapse',
                                                                      ae='false',
-                                                                     style='height: 0px;',
+                                                                     style='display: none;',
                                                                     align='left'),
-                                                             
+
                                                      style='background-color: #DB7093;',
                                                      # cl='panel panel-default' # 添加按钮边框
                                                      ),
@@ -255,7 +290,7 @@ class HtmlReport(object):
                               pyh.td(testcase_duration.encode('gbk', 'ignore'), align='middle') +
                               pyh.td(pyh.div(pyh.div(pyh.a(testcase_log_detail.encode('gbk', 'ignore'),
                                                            dt='collapse',
-                                                           href='#{}'.format(testcase_id),
+                                                           href="javascript:showTestDetail('{}')".format(testcase_id),
                                                            dp='#accordion',
                                                            cl='collapsed',
                                                            ae='false',
@@ -264,22 +299,22 @@ class HtmlReport(object):
                                                                      id=testcase_id,
                                                                      cl='panel-collapse collapse',
                                                                      ae='false',
-                                                                     style='height: 0px;',
+                                                                     style='display: none;',
                                                                     align='left'),
-                                                           
+
                                                      style='background-color: #FF00FF;',
                                                      # cl='panel panel-default' # 添加按钮边框
                                                      ),
                                              id='accordion', cl='panel-group',style='margin-bottom: 0px;'),
                                      align='middle') +
                               pyh.td(testresult, align='middle'), bgcolor='#FF00FF')
-                
+
         # print self.filename
         page.printOut(self.filename)
 
 if __name__ == '__main__':
     tcHtmlReport = HtmlReport()
-    path = os.path.abspath('./output/html/report.html')
+    path = PATH('../../output/html/report_text.html')
     tcHtmlReport.set_result_filename(path)
 
     testcase_result =[['登录_1000', 'PASS','2016-11-1'], ['检查插件:PA02100000001_02_JF','FAIL','2016-11-2'], ['检查插件:PA01100000000_02_PAZB', 'ERROR','2016-11-3']]

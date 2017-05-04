@@ -1,5 +1,8 @@
 # -*- coding:utf-8 -*-
 import pytest,os
+PATH = lambda p: os.path.abspath(
+    os.path.join(os.path.dirname(__file__), p)
+)
 
 def run_pytest():
 	'''
@@ -11,13 +14,13 @@ def run_pytest():
 	# print 'case_path = ',case_path
 	from src.Public.Global import S
 	udid = S.device['udid']
-	report_path = os.path.abspath('./output/{}/html/pytest_report.html'.format(udid))
-	xml_path =  os.path.abspath('./output/{}/html/pytest_report.xml'.format(udid))
+	report_path = PATH('./output/{}/html/pytest_report.html'.format(udid))
+	xml_path =  PATH('./output/{}/html/pytest_report.xml'.format(udid))
 	# 命令拼接,注意每一个参数之间加空格
 	# cmd 加参数 -s 输出日志但是html报告不显示日志,加 --capture=no 不输出日志,html报告显示日志,--rerun 1 失败重跑次数1,
 	# --self-contained-html 自包含html报告,样式文件包含在html中 ;--junitxml= 生成xml格式报告
 	# -q 静默模式
-	cmd = '-s ' + case_path + ' --html=' + report_path + ' --rerun 1' + ' --self-contained-html' + ' --junitxml=' + xml_path
+	cmd = '-q ' + case_path + ' --html=' + report_path + ' --rerun 1 --color=auto ' + ' --self-contained-html' + ' --junitxml=' + xml_path
 	# print '*' * 80
 	print '* [',__name__,'::',run_pytest.__name__,'] :',' pytest执行命令 : ' ,cmd
 	print '*' * 80

@@ -23,8 +23,7 @@ udid = device['udid']
 
 class LogSignleton(object):
 	def __init__(self):
-		# self.log_filename = (read_config('logger','log_file')).format(udid)
-		self.log_filename = os.path.abspath('./output/{}/log/AnyDoor_UI.log'.format(udid))
+		self.log_filename = PATH('../../output/{}/log/AnyDoor_UI.log'.format(udid))
 		self.max_bytes_each = int(read_config('logger', 'max_bytes_each'))
 		self.backup_count = int(read_config('logger', 'backup_count'))
 		self.format = read_config('logger', 'format')
@@ -51,7 +50,7 @@ class LogSignleton(object):
 			file_handle_dict = {'0':lambda :logging.FileHandler(self.log_filename,mode=self.rw_mode), #mode =a,接着日志继续写
 			               '1':lambda :RotatingFileHandler(self.log_filename,maxBytes=self.max_bytes_each,backupCount=self.backup_count),
 			               '2':lambda :TimedRotatingFileHandler(self.log_filename,when='D',interval=1)}
-			
+
 			if file_handle_dict.has_key(str(self.handles_mode)):
 				file_handle = file_handle_dict[str(self.handles_mode)]()
 			else:
@@ -61,7 +60,7 @@ class LogSignleton(object):
 			self.logger.addHandler(file_handle)
 			self.logger.setLevel(self.log_level_in_logfile)
 			file_handle.close()
-	
+
 	@staticmethod
 	def get_filter_log(casename, start_filter='', end_fileter=''):
 		'''
@@ -73,8 +72,8 @@ class LogSignleton(object):
 		:param end_fileter:
 		:return:
 		'''
-		logpath = os.path.abspath('./output/{}/log/AnyDoor_UI.log'.format(udid))
-		log_filter_path = os.path.abspath('./output/{}/html/filter/{}.log'.format(udid,casename))
+		logpath = PATH('../../output/{}/log/AnyDoor_UI.log'.format(udid))
+		log_filter_path = PATH('../../output/{}/html/filter/{}.log'.format(udid,casename))
 		# print log_filter_path
 		# from Utils import SQL
 		# S = SQL()
@@ -113,4 +112,3 @@ class LogSignleton(object):
 
 if __name__ == '__main__':
 	pass
-	

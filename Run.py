@@ -18,7 +18,9 @@ from src.lib.Element import Element
 import time,os
 
 # from src.lib.Utils import utils
-
+PATH = lambda p: os.path.abspath(
+    os.path.join(os.path.dirname(__file__), p)
+)
 
 def run_mode():
 	'''
@@ -27,10 +29,9 @@ def run_mode():
 	'''
 	runmod = str(read_config('runmode','mode'))
 	if runmod == '1':
-		# print '*' * 80
 		print '*' * 80
 		L.logger.info(' 运行 Excel 测试用例 ')
-		xls_file_path = os.path.abspath('./TestCase/Excel/TestCase.xlsx')
+		xls_file_path = PATH('./TestCase/Excel/TestCase.xlsx')
 		print '*' * 80
 		print time.ctime(), ' [', __name__, '::', '用例路径: ', xls_file_path
 		xlsEngine = ExcelRW.XlsEngine(xls_file_path)
@@ -40,7 +41,7 @@ def run_mode():
 		#驱动测试
 		runner = unittest.TextTestRunner()
 		__Run_Case(runner)
-		
+
 	elif runmod == '0':
 		# print '*' * 80
 		print time.ctime(),' [', __name__, '::', run_mode.__name__, '] :', ' 运行 Script 测试用例 '
@@ -50,7 +51,7 @@ def run_mode():
 		RunScript.run_pytest()
 	else:
 		pass
-		
+
 def clean_process():
 	'''
 	清理线程
@@ -60,7 +61,7 @@ def clean_process():
 	#结束服务进程
 	cp = CleanProcess.Cp()
 	cp.clean_process_all()
-	
+
 
 import RunExcel
 def __get_test_suite(case_list):
@@ -98,7 +99,7 @@ def __Run_Case(runner):
 		runner.run(test_suite)
 		# 插入用例名和设备udid
 		# Q.sql.insert_per(case_list[0],S.device['udid'],'','','')
-	
+
 	wd=Element(driver)
 	# wd.close_app()# 退出app
 	wd.quit() # 退出服务
@@ -108,18 +109,18 @@ def __Run_Case(runner):
 def Run_one(device,port):
 	# print 'Run task %s (%s) at %s' % (str(port), os.getpid(), time.ctime())
 	S.set_device(device)
-	
+
 	from src.lib.Log import LogSignleton
 	logsignleton = LogSignleton()
 	logger = logsignleton.logger
 	L.set_logger(logger)
 	# print '*' * 80
 	# print time.ctime(),' [', __name__, '::', Run_one.__name__, '] :', ' logger =  ', logger
-	
+
 	# 启动appium 服务
 	A = AppiumServer()
 	A.start_server(device, port)
-	
+
 	print '*' * 80
 	print time.ctime(), ' [', __name__, '::', Run_one.__name__, '] :', ' device =  ', device
 	# 实例化Dirver
@@ -144,11 +145,11 @@ if __name__ == '__main__':
 		print time.ctime(), ' [', __name__, '] :', 'Run task pid: (%s) at: %s' % ( os.getpid(), time.ctime())
 		print '*' * 80
 		p = Pool(processes=count) # set the processes max number 3
-		
+
 		# 多线程并发
 		for i in range(count):
 			result = p.apply_async(Run_one,(devices[i],ports[i],))
-		
+
 		p.close() # 关闭进程,不再添加新的进程
 		p.join() # 进程等待执行完毕
 		if result.successful():
@@ -160,7 +161,7 @@ if __name__ == '__main__':
 		clean_process()
 	except Exception as e:
 		raise e
-	
+
 	print '*' * 80
 	print time.ctime(), ' [', __name__, '] :', '所有代码执行完毕!'
 	import sys

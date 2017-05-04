@@ -1,12 +1,1 @@
-{
-  "TestCase/Scripts/Anydoor.py::test_checkplugin[PA00400000000_02_CFBXZZC-\\u6e29\\u99a8\\u63d0\\u793a]": true, 
-  "TestCase/Scripts/Anydoor.py::test_checkplugin[PA00800000000_02_PACX-\\u4f7f\\u9986\\u4fe1\\u606f]": true, 
-  "TestCase/Scripts/Anydoor.py::test_checkplugin[PA01100000000_02_WLC-\\u503c\\u5f97\\u4e70]": true, 
-  "TestCase/Scripts/Anydoor.py::test_checkplugin[PA01100000000_02_YYG-1\\u5143GO]": true, 
-  "TestCase/Scripts/Anydoor.py::test_checkplugin[PA01200000000_02_XYD-\\u9a6c\\u4e0a\\u8d37\\u6b3e]": true, 
-  "TestCase/Scripts/Anydoor.py::test_checkplugin[PA02100000000_02_HQY-\\u83b7\\u53d6\\u9a8c\\u8bc1\\u7801]": true, 
-  "TestCase/Scripts/Anydoor.py::test_checkplugin[PA02100000000_02_KY-\\u7acb\\u5373\\u51b2\\u523a]": true, 
-  "TestCase/Scripts/Anydoor.py::test_checkplugin[PA02100000000_02_YJQB-\\u83b7\\u53d6\\u52a8\\u6001\\u7801]": true, 
-  "TestCase/Scripts/Anydoor.py::test_checkplugin[PA02100000001_02_JF-\\u53ef\\u7528\\u79ef\\u5206]": true, 
-  "TestCase/Scripts/Anydoor.py::test_login": true
-}
+{}

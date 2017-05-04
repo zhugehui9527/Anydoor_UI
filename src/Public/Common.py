@@ -24,24 +24,24 @@ class operate_api(object):
 	closeH5ByPluginId='closeH5ByPluginId'
 	getPluginList='getPluginList'
 	getScreenShot='getScreenShot'
-	
+
 class resultStutas(object):
 	success = 'PASS'
 	fail = 'FAIL'
 	error = 'ERROR'
-	rerun = 'TRUE'
+	rerun = 'RERUN'
 	successCode = 1
 	failCode = 0
 	errorCode = -1
 	timestamp ='timestamp'
 	status = 'status'
-	
+
 class resultClass:
 	result=[]
 	img_base64={}
 	trace={}
 	log={}
-	
+
 class platform:
 	ios = 'ios'
 	android = 'android'
@@ -62,8 +62,8 @@ class public(object):
 	appium ='appium'
 	runmode = 'runmode'
 	driver = 'driver'
-	
-	
+
+
 class desired_caps:
 	appium = 'appium'
 	hostname = 'hostname'

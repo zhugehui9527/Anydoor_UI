@@ -37,8 +37,8 @@ class AppOperate (object):
 		self.driver = Element(driver)
 		self.pluginList =[]
 		self.runmode = read_config(pc.runmode, pc.driver)
-		
-	
+
+
 	def loginByHost(self):
 		'''
 		一账通登陆
@@ -77,7 +77,7 @@ class AppOperate (object):
 		except Exception as e:
 			L.logger.warning(e)
 			return False
-		
+
 	#支持iOS和Android
 	def loginByH5(self,userName,passWord):
 
@@ -102,7 +102,7 @@ class AppOperate (object):
 				# time.sleep(3)
 				self.driver.by_xpath("//*[@value='登 录']").click()
 				# time.sleep(3)
-				
+
 			except IOError as e:
 				raise L.logger.error(e)
 
@@ -135,46 +135,46 @@ class AppOperate (object):
 				self.driver.by_id("login-button").click()
 				# self.driver.implicitly_wait(3)
 				time.sleep(3)
-				
+
 			except Exception as e:
 				L.logger.error(e)
 		else:
 			L.logger.error('请在配置文件中添加正确的platformName!!')
-		
-	
+
+
 	def pluginNum_contain(self,contain):
 		pageSource = self.driver.page_source()
 		contain_list = re.findall(contain,pageSource)
 		contain_count = contain_list.count(contain)
 		L.logger.info('包含: %s 的个数是: %d' % (contain,contain_count))
 		return contain_count
-	
+
 	def find_element_by_plugin(self,pluginId):
 		'''
 		通过插件id 查找元素对象
 		:param pluginId:
 		:return:
 		'''
-		
+
 		if self.platformName.lower() == pf.ios:
 			return self.driver.find_element((By.ID, pluginId),10)
 		else:
 			ele_xpath = "//android.view.ViewGroup[contains(@content-desc,'{}')]".format(pluginId)
 			return self.driver.find_element((By.XPATH, ele_xpath),10)
-	
+
 	def find_element_by_plugin_orign(self, pluginId):
 		'''
 		通过插件id 查找元素对象
 		:param pluginId:
 		:return:
 		'''
-		
+
 		if self.platformName.lower() == pf.ios:
 			return self.driver.find_element_orign(By.ID, pluginId)
 		else:
 			ele_xpath = "//android.view.ViewGroup[contains(@content-desc,'{}')]".format(pluginId)
 			return self.driver.find_element_orign(By.XPATH, ele_xpath)
-		
+
 	def check_plugin_byImage(self,pluginId,x1,y1,x2,y2):
 
 		L.logger.info('开始检查插件: %s' % pluginId)
@@ -235,12 +235,12 @@ class AppOperate (object):
 		:param expectResult:
 		:return:True
 		'''
-		
+
 		L.logger.info('开始检查插件: %s' % pluginId)
 		# 对插件第一个页面进行判断
 		i = 5  # 左滑动次数
 		j = 5  # 右滑动次数
-		
+
 		try:
 			while ( (self.find_element_by_plugin(pluginId) is None) and i > 0):
 				L.logger.info('插件%s 未显示,左滑' % pluginId)
@@ -278,8 +278,8 @@ class AppOperate (object):
 				self.driver.swipe_right()
 				j=j-1
 				L.logger.info('右滑动恢复左边查找')
-			
-			
+
+
 	def closeH5_byPluginId(self,pluginId):
 		'''通过插件ID来判断关闭H5的方式(iOS 有某几个插件关闭H5比较特别)'''
 		L.logger.info('关闭H5页面!')
@@ -287,7 +287,9 @@ class AppOperate (object):
 		               'PA02700000000_02_PAYX':'//*[1]/*[1]/*[2]/*[1]/*[1]/*[1]',
 		               'PA02100000000_02_CJKX':'//*[1]/*[1]/*[2]/*[1]/*[1]/*[1]',
 		               'PA02100000001_02_JF':'//*[1]/*[1]/*[2]/*[1]/*[1]/*[1]',
-		               'PA01100000000_02_RYG':'//*[1]/*[1]/*[2]/*[1]/*[1]'}
+		               'PA01100000000_02_RYG':'//*[1]/*[1]/*[2]/*[1]/*[1]',
+		               'PA02100000000_02_KY':'//*[1]/*[1]/*[2]/*[1]/*[1]/*[1]',
+		               }
 		if self.platformName.lower() == pf.ios:
 			if backButtion.has_key(pluginId):
 				try:
@@ -317,7 +319,7 @@ class AppOperate (object):
 				self.closeH5()
 		else:
 			self.closeH5()
-			
+
 	def closeH5(self):
 		'''
 		关闭H5界面
@@ -452,7 +454,7 @@ class AppOperate (object):
 			# '''
 	def get_screen_shot_base64(self):
 		return self.driver.screenshot_as_base64()
-	
+
 	def get_screen_shot(self):
 		'''
 		sceen shot
@@ -461,22 +463,22 @@ class AppOperate (object):
 		timestr = time.strftime('%Y%m%d%H%M%S', time.localtime(time.time()))
 		filepath = os.path.abspath('./output/sceenshot/') + timestr + '.png'
 		return self.driver.screenshot_as_file(filepath)
-	
+
 	def click(self,element_object,msg=None):
 		L.logger.info(msg)
 		return element_object.click()
-	
+
 	def sendKeys(self,element_object,sendtext):
 		L.logger.info('输入内容: %s' % sendtext)
 		# self.click(element_object,'click')
 		# self.clear(element_object,'clear')
 		return element_object.send_keys(sendtext)
-	
+
 	def clear(self,element_object,msg=None):
 		L.logger.info(msg)
 		return element_object.clear()
-	
-	
+
+
 if __name__ == '__main__':
 
 	pass

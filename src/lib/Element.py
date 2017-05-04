@@ -46,7 +46,7 @@ class Element(object):
         except:
             L.logger.warning('%s 查找超时,未找到元素 : %s' % loc)
             return
-        
+
 
     # 重新封装find_elements
     def find_elements(self, loc, wait=pc.time2wait):
@@ -67,14 +67,14 @@ class Element(object):
         except:
             L.logger.warning('%s 查找超时,未找到元素 : %s' % loc)
             return
-        
+
     def find_element_orign(self,by,value):
         L.logger.info('查找元素: %s, %s' % (by,value))
         if self.runmode == pc.appium:
             return self.driver.find_element(by,value)
         else:
             return self.driver.element(by, value)
-    
+
     def find_elements_orign(self,loc):
         L.logger.info('查找元素: %s' % loc)
         if self.runmode == pc.appium:
@@ -201,7 +201,7 @@ class Element(object):
         url = self.driver.current_url
         L.logger.info('获取当前URL: %s' % url)
         return url
-    
+
     def screenshot_as_base64(self):
         '''
         Gets the screenshot of the current window as a base64 encoded string
@@ -318,7 +318,7 @@ class Element(object):
                 L.logger.info('向右滑动,起始滑动坐标: (%s,%s),终点坐标(%s,%s)' % (width / 10, height * 9 / 10, width * 8 / 10, height * 9 / 10))
                 self.driver.touch('drag',args)
             time.sleep(1)
-        
+
         except:
             raise
 
@@ -419,7 +419,7 @@ class Element(object):
         device_time = self.driver.device_time()
         L.logger.info('获取设备时间 device_time : %s ' % device_time)
         return device_time
-    
+
     def close_app(self):
         L.logger.info('关闭App')
         if self.runmode == pc.appium:
@@ -533,5 +533,9 @@ class Element(object):
         L.logger.info('隐藏键盘')
         return self.driver.hide_keyboard(key_name,key,strategy)
 
-
+    def find_toast_element(self,toast,timeout=10,poll_frequency=0.5):
+        '''查询toast'''
+        toast = '//*[@text={}]'.format(toast)
+        element = WebDriverWait(self.driver,timeout,poll_frequency).until(self.find_element((By.XPATH,toast),pc.time2wait))
+        return element
 

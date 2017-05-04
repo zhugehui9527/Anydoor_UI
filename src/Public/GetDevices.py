@@ -8,7 +8,7 @@ class GetDevices:
 		self.Get_Android = 'adb devices'
 		self.Get_iOS = 'instruments -s devices'
 		self.serverport  = int(read_config('appium', 'port'))
-	
+
 	def get_device(self):
 		'''
 		连上usb线后自动获取设备列表
@@ -16,7 +16,6 @@ class GetDevices:
 		'''
 		# 存储设备信息
 		device = []
-		# value_ios = os.popen(self.Get_iOS)
 		isMonitor = eval(read_config('appium', 'isMonitor'))
 		support_devices = str(read_config('appium','device')).split(',')
 		print time.ctime(), ' [', __name__, '::', GetDevices.get_device.__name__, '] :','support devices = ',support_devices
@@ -31,20 +30,14 @@ class GetDevices:
 				# deviceName = str(deviceName).replace(' ','')
 				for dev in os.popen(self.Get_iOS).readlines():
 					dev_value = str(dev).replace("\n", "").replace("\t", "").replace(" ", "")
-					# print dev_value
 					if dev_value.rfind(deviceName) == -1:
 						continue
 					if dev_value.rfind(platformVersion) == -1:
 						continue
-					# print dev_value
 					re_deviceName = re.compile(r'(.*)\(').findall(dev_value)[0]
 					re_deviceName2 = re.compile(r'(.*)\(').findall(re_deviceName)[0]
-					# print 're_deviceName2: ' , re_deviceName2
-					# print 'deviceName: ',deviceName
 					if re_deviceName2 != deviceName:
 						continue
-					# if re_deviceName != deviceName:
-					# 	continue
 					iOS_Monitor['udid'] = re.compile(r'\[(.*?)\]').findall(dev_value)[0]
 					iOS_Monitor['platformVersion'] = platformVersion
 					iOS_Monitor['platformName'] = 'iOS'
@@ -86,10 +79,10 @@ class GetDevices:
 				iOS['platformVersion'] = re.compile(r'\((.*)\)').findall(dev_value)[0]
 				iOS['udid'] = re.compile(r'\[(.*?)\]').findall(dev_value)[0]
 				iOS['platformName'] = 'iOS'
-				
+
 				device.append(iOS)
 			# print iOS
-			
+
 			# 命令获取Android设备列表
 			for dev in os.popen(self.Get_Android).readlines():
 				Android = {}
@@ -109,7 +102,7 @@ class GetDevices:
 		print '*'*80
 		print time.ctime(), ' [', __name__, '::', GetDevices.get_device.__name__, '] :', ' \n device =  ', device
 		return device
-	
+
 	def __is_using(self):
 		'''
 		detect whether port is using
@@ -121,14 +114,14 @@ class GetDevices:
 			return True
 		else:
 			return False
-	
+
 	def get_port(self, count):
 		'''
 		get appium free port
 		:return:
 		'''
 		port_list = []
-		
+
 		while True:
 			if len(port_list) == count:
 				break
@@ -136,7 +129,7 @@ class GetDevices:
 				port_list.append(self.serverport)
 			else:
 				self.serverport += 1
-				
+
 		# while True:
 		# 	if len(port_list) == count:
 		# 		break
@@ -145,11 +138,10 @@ class GetDevices:
 		# 		port_list.append(self.serverport)
 		# 		self.serverport += 1
 		#
-		
+
 		return port_list
 
-	
+
 if __name__ == '__main__':
 	G = GetDevices()
 	G.get_device()
-	

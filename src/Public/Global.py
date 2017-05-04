@@ -8,7 +8,9 @@
 import os,time
 import sys
 sys.path.append("../../")
-
+PATH = lambda p: os.path.abspath(
+    os.path.join(os.path.dirname(__file__), p)
+)
 class D:
 	'''传递driver'''
 	driver = None
@@ -18,9 +20,9 @@ class D:
 			cls.driver = driver
 		print '*'*80
 		print time.ctime(), ' [', __name__, '::', D.set_driver.__name__, '] :', ' driver =  ', driver
-		
-		
-	
+
+
+
 class L:
 	'''传递logger'''
 	logger = None
@@ -30,15 +32,16 @@ class L:
 			cls.logger = logger
 		else:
 			print time.ctime(), ' [', __name__, '::',L.set_logger.__name__, '[ error ] logger is null'
-		
+
 class S:
 	device = None
+	# device = {'udid': '32E6D124-29B6-48A2-9B38-0A9D54121E10'}
 	@classmethod
 	def set_device(cls,device):
 		'''传递device'''
 		if device:
 			cls.device = device
-			device_dir = os.path.abspath('./output/'+ cls.device['udid'])
+			device_dir = PATH('../../output/'+ cls.device['udid'])
 			# print '* [', __name__, '::', S.set_device.__name__, '] :', ' device_dir = ',device_dir
 			log_dir = os.path.abspath(device_dir + '/log')
 			report_dir = os.path.abspath(device_dir + '/html/filter')
@@ -46,7 +49,7 @@ class S:
 			cls.mkdirs(log_dir)
 			cls.mkdirs(report_dir)
 			cls.mkdirs(screen_dir)
-		
+
 	@classmethod
 	def mkdirs(cls,path):
 		'''创建目录'''

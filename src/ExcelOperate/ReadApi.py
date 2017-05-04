@@ -23,7 +23,7 @@ class ReadApi(unittest.TestCase):
 		self.readElement = ReadElement(driver)
 		self.screen_shot_isTrue = bool(read_config('screenshot','screen_shot_isTrue'))
 		self.screen_shot_path = os.path.abspath('./output/{}/screen/{}.png')
-	
+
 	def screen_shot(self,case):
 		'''
 		截图方法由截图开关控制
@@ -43,7 +43,7 @@ class ReadApi(unittest.TestCase):
 				pass
 		except Exception as e:
 			L.logger.error(e)
-		
+
 	def readApiList(self,case_list=[]): #case_list是一维数组
 		L.logger.debug('case_list :%s' % case_list)
 		if case_list:
@@ -55,7 +55,7 @@ class ReadApi(unittest.TestCase):
 				# API调用失败截图
 				self.screen_shot(case_list)
 				return False
-	
+
 	def callApi(self,case_list):
 		'''
 		:description:通过字典api_dict管理api,并调用api,api定义则在operate_api类中
@@ -69,7 +69,7 @@ class ReadApi(unittest.TestCase):
 					operate_api.assertTrue:lambda :self.assertTrue(self.appOperate.wait_for_text(int(case_list[7]),case_list[6]),case_list[2]) ,
 					operate_api.assertFalse:lambda :self.assertFalse(self.appOperate.wait_for_text(int(case_list[7]),case_list[6]),case_list[2]),
 		            operate_api.sendkeys:lambda :self.appOperate.sendKeys(self.readElement.find_element(self.readElement.read_element_text(case_list[5])),case_list[7]),
-		            operate_api.click:lambda :self.appOperate.z(self.readElement.find_element(self.readElement.read_element_text(case_list[5])),case_list[2]),
+		            operate_api.click:lambda :self.appOperate.click(self.readElement.find_element(self.readElement.read_element_text(case_list[5])),case_list[2]),
 		            operate_api.swipe2left:lambda :self.wd.swipe_left(),
 		            operate_api.swipe2right:lambda :self.wd.swipe_right(),
 					operate_api.swipe2up: lambda: self.wd.swipe_up(),
@@ -82,7 +82,7 @@ class ReadApi(unittest.TestCase):
 		            operate_api.closeH5ByPluginId:lambda :self.appOperate.closeH5_byPluginId(case_list[6]),
 		            operate_api.getScreenShot:lambda :self.appOperate.get_screen_shot(),
 		            operate_api.getPluginList:lambda :self.appOperate.getPluginList()
-		    
+
 		            }
 		if api_dict.has_key(case_list[3]):
 			L.logger.debug('Action_Keyword 操作:[ %s ]' % case_list[3])
@@ -90,10 +90,9 @@ class ReadApi(unittest.TestCase):
 		else:
 			L.logger.error('请检查Action_Keyword中的api是否输入正确!')
 			# raise
-			
+
 if __name__ == '__main__':
 	pass
 	# readapi = ReadApi()
 	# readapi.callPublicCase('SwipeToClickPersonalCenter')
 	# for publicCase in readapi.publicCaseList:
-		
