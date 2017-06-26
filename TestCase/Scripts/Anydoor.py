@@ -6,7 +6,7 @@
 # function:对测试用例进行操作处理
 #######################################################
 import sys,time
-import pytest,unittest
+import pytest, allure
 from conf.Run_conf import read_config
 from src.Public.Global import L,D,S
 from src.Public.appOperate import AppOperate
@@ -22,13 +22,10 @@ wd = Element(driver)
 username = read_config('login', 'login_username')
 password = read_config('login', 'login_password')
 
+@pytest.allure.severity(allure.MASTER_HELPER.severity_level.NORMAL)
 def test_login():
 	'''用例名称: 测试H5登录'''
 	try:
-		# driver.swipe_right()  # 右滑动
-		# time.sleep(3)
-		# driver.by_id("个人中心").click()
-		# time.sleep(3)
 		appOperate.loginByH5(username, password)
 		loginResult = appOperate.wait_for_text(30, '我的订单')
 		assert loginResult
@@ -38,7 +35,7 @@ def test_login():
 		wd.swipe_left()
 		time.sleep(3)
 
-
+@pytest.allure.severity(allure.MASTER_HELPER.severity_level.NORMAL)
 def test_pluginlist():
 	'''用例名称: 获取插件列表'''
 	global getPluginList
@@ -51,10 +48,10 @@ def skip():
 	'''
 	PlatformName_lower = S.device['platformName'].lower()
 	if PlatformName_lower != pf.ios :
-		L.logger.debug('当前系统为Android ')
+		L.logger.debug('当前设备为Android ')
 		return True
 	else:
-		L.logger.debug('当前系统为iOS')
+		L.logger.debug('当前设备为iOS')
 		return False
 
 skip_Anr = pytest.mark.skipif('skip()')
@@ -75,10 +72,10 @@ checkPluginInfo = [
                    ('PA02100000001_02_JF', u'可用积分'),
                    ('PA01200000000_02_XYD', u'马上贷款'),
                    ('PA02100000000_02_YJQB', u'获取动态码'),
-                   ('PA02100000000_02_KY', u'平安一账通新手理财8%预期年化收益率！'),# 需要截图断言
+                   ('PA02100000000_02_KY', u'仅此一天！6.5%爆款热抢中！'),# 需要截图断言
                    ('PA02100000000_02_HQY', u'获取验证码'),
                    ('PA00800000000_02_PACX', u'使馆信息'),
-                   ('PA00400000000_02_CFBXZZC', u'温馨提示'),
+                   ('PA00400000000_02_CFBXZZC', u'手机号码'),
                    ('PA01100000000_02_RYG', u'个人中心'),
                    ('PA00500000000_02_RED', u'申请条件'),
                    ('PA01100000000_02_ZCCX', u'资产提醒'),
@@ -90,15 +87,15 @@ checkPluginInfo = [
                    ('PA02100000000_02_PAYD', u'平安消费贷款'),
                    ('PA02700000000_02_PAYX', u'欢乐游戏'),
                    ('PA02100000000_02_CGZ', u'添加车'),
-                   ('PA02100000000_02_CJKX', u'财经快讯'),
-                   ('PA02500000000_02_BZB', u'热销基金'),
+                   # ('PA02100000000_02_CJKX', u'财经快讯'), # 插件内容太长偶现报错
+                   # ('PA02500000000_02_BZB', u'热销基金'), # MA 网络报错
 					('PA01100000000_02_BXCS', u'旅游险'),
                    ('PA02100000000_02_XEDK', u'平安消费贷款'),
                    ('PA01100000000_02_LHBLC', u'投资须谨慎，本产品不保证收益'),
                    skip_Anr(('PA00500000000_02_GPZH', u'股市有风险，投资需谨慎'))
                    ]
 
-
+@pytest.allure.severity(allure.MASTER_HELPER.severity_level.NORMAL)
 # 插件和检查插件方法分离,便于维护
 @pytest.mark.parametrize(("pluginID,pluginAssert"),checkPluginInfo)
 def test_checkplugin(pluginID,pluginAssert):

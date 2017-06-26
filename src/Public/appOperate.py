@@ -13,7 +13,7 @@ import time
 import requests
 
 from conf.Run_conf import read_config
-from src.Public.Global import L,S
+from src.Public.Global import L,S,Data
 from src.Public.Common import desired_caps as Dc
 from src.Public.Common import platform as pf
 from src.Public.Common import public as pc
@@ -21,8 +21,8 @@ from src.Public.Public import Img
 from src.lib.Element import Element
 from selenium.webdriver.common.by import By
 
-reload(sys)
-sys.setdefaultencoding('utf-8')
+# reload(sys)
+# sys.setdefaultencoding('utf-8')
 
 class AppOperate (object):
 	def __init__(self,driver):
@@ -37,7 +37,39 @@ class AppOperate (object):
 		self.driver = Element(driver)
 		self.pluginList =[]
 		self.runmode = read_config(pc.runmode, pc.driver)
+		self.paphone_user = Data.data[0]
+		self.paphone_pwd = Data.data[1]
+		self.paphone_callto = Data.data[2]
 
+	def paphone_login(self):
+		if self.platformName.lower() == pf.ios:
+			time.sleep(3)
+			self.driver.by_id('注销').click()
+			self.driver.by_id('确定').click()
+			time.sleep(3)
+			login_eles = self.driver.by_classnames('TextField')
+			self.driver.send_keys(login_eles[0], self.paphone_user)
+			self.driver.send_keys(login_eles[1], self.paphone_pwd)
+			self.driver.hide_keyboard_iOS()
+			self.driver.by_id('登 录').click()
+			time.sleep(3)
+		else:
+			self.driver.swipe_up()
+			self.driver.send_keys(self.driver.by_id('com.example.ldsdkapidemo:id/extension'),self.paphone_user)
+			self.driver.send_keys(self.driver.by_id('com.example.ldsdkapidemo:id/extensionPwd'), self.paphone_pwd)
+			self.driver.send_keys(self.driver.by_id('com.example.ldsdkapidemo:id/call_to'), self.paphone_callto)
+			self.driver.swipe_down()
+			self.driver.by_id('com.example.ldsdkapidemo:id/register_on_mobile').click()
+
+
+	def pahpone_audio(self):
+		if self.platformName.lower() == pf.ios:
+			self.driver.by_id(self.paphone_callto).click()
+			self.driver.by_id('语音通话').click()
+			self.driver.by_id('确定').click()
+		else:
+			self.driver.by_id('com.example.ldsdkapidemo:id/call_audio').click()
+			self.driver.by_id('com.example.ldsdkapidemo:id/hangup').click()
 
 	def loginByHost(self):
 		'''
@@ -112,7 +144,7 @@ class AppOperate (object):
 					self.driver.swipe_up() # 向上滑动
 					# self.driver.implicitly_wait(3)
 					time.sleep(3)
-					self.driver.by_xpath("//android.widget.Button[contains(@text,'loading')]").click()
+					self.driver.by_xpath("//android.widget.Button[contains(@text,'LOADING')]").click()
 					# self.driver.implicitly_wait(3)
 					time.sleep(3)
 					self.driver.swipe_right()  # 右滑动

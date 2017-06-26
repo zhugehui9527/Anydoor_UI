@@ -6,7 +6,7 @@
 #function:读取api相关功能和封装
 #######################################################
 import time,unittest,os
-from ReadElement import ReadElement
+from .ReadElement import ReadElement
 from conf.Run_conf import read_config
 from src.Public.Common import operate_api
 from src.Public.appOperate import AppOperate

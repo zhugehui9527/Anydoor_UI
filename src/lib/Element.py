@@ -19,8 +19,8 @@ from src.Public.Common import desired_caps as Dc
 from src.Public.Common import public as pc
 from src.Public.Global import L,S
 
-reload(sys)
-sys.setdefaultencoding('utf-8')
+# reload(sys)
+# sys.setdefaultencoding('utf-8')
 
 class Element(object):
     def __init__(self,driver):
@@ -59,10 +59,10 @@ class Element(object):
         '''
         try:
             if self.runmode == pc.appium:
-                WebDriverWait(self.driver, wait).until(lambda driver: driver.find_elements(*loc).is_displayed())
+                WebDriverWait(self.driver, wait).until(lambda driver: driver.find_elements(*loc))
                 return self.driver.find_elements(*loc)
             else:
-                WebDriverWait(self.driver, wait).until(lambda driver: driver.elements(*loc).is_displayed())
+                WebDriverWait(self.driver, wait).until(lambda driver: driver.elements(*loc))
                 return self.driver.elements(*loc)
         except:
             L.logger.warning('%s 查找超时,未找到元素 : %s' % loc)
@@ -429,6 +429,7 @@ class Element(object):
 
     def send_keys(self,element,text):
         L.logger.info('元素:%s,发送内容:%s' % (element,text))
+        element.clear()
         return element.send_keys(text)
 
 
@@ -528,10 +529,18 @@ class Element(object):
         KEYCODE_Z 按键'Z' 54'''
         return self.driver.keyevent(keycode)
 
-    def hide_keyboard(self,key_name=None,key=None,strategy=None):
+    def hide_keyboard_andr(self,key_name=None,key=None,strategy=None):
         ''' for Android'''
         L.logger.info('隐藏键盘')
         return self.driver.hide_keyboard(key_name,key,strategy)
+
+    def hide_keyboard_iOS(self):
+        '''for ios'''
+        size = self.driver.get_window_size()
+        width = size.get('width')
+        height = size.get('height')
+        L.logger.info('隐藏键盘')
+        self.driver.tap([(width / 2, height / 2)])
 
     def find_toast_element(self,toast,timeout=10,poll_frequency=0.5):
         '''查询toast'''

@@ -20,17 +20,22 @@ def get_now_time():
 class Utils:
     def __init__(self):
         pass
-	
+
     @staticmethod
     def cmd_subprocess(cmd):
         '''执行shell命令'''
+        # shell设为true，程序将通过shell来执行
+	    # stdin, stdout, stderr分别表示程序的标准输入、输出、错误句柄。
+	    # 他们可以是PIPE，文件描述符或文件对象，也可以设置为None，表示从父进程继承。
+	    # subprocess.PIPE实际上为文本流提供一个缓存区
+
         return subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-	
+
     @staticmethod
     def cmd_output(cmd):
         return subprocess.check_output(cmd)
 
-			
+
 class cmd_tt(threading.Thread):
 	'''
 	run cmd on mac
@@ -41,17 +46,17 @@ class cmd_tt(threading.Thread):
 
 	def run(self):
 		os.system(self.cmd)
-		
+
 	# def cmd_Popen(self):
 	# 	os.popen(self.cmd)
-	
+
 class SQL:
 	def __init__(self):
 		self.test_db_path = os.path.abspath('../../output/test.db')
 		self.conn = sqlite3.connect(self.test_db_path)
 		self.cursor = self.conn.cursor()
 		self.__is_table()
-		
+
 	def execute(self,*args,**kwargs):
 		'''
 		执行sql
@@ -60,12 +65,12 @@ class SQL:
 		:return: 执行结果
 		'''
 		self.cursor.execute(*args,**kwargs)
-	
+
 	def close(self):
 		self.cursor.close()
 		self.conn.commit()
 		self.conn.close()
-	
+
 	def __is_table(self):
 		"""
 		判断表是否存在
@@ -75,7 +80,7 @@ class SQL:
 		row = self.cursor.fetchone()
 		if row[0] != 1:
 			self.__built_table()
-	
+
 	def __built_table(self):
 		"""
 		建表
@@ -95,14 +100,14 @@ class SQL:
 	        result TEXT,
 	        created_time DATETIME DEFAULT (datetime('now', 'localtime'))
 	    );""")
-	
+
 	def insert_per(self, case_name, device_name, filter_log, cost_time,result,screen_shot_base64=None,cpu_list=None, mem_list=None):
 		'''插入每个用例的执行结果'''
 		key = "(case_name,device_name,filter_log,screen_shot_base64,cpu_list,mem_list,cost_time,result,created_time)"
 		values = "('{}','{}','{}','{}','{}','{}','{}','{}','{}')"\
 			.format(case_name, device_name, filter_log,screen_shot_base64,cpu_list, mem_list, cost_time, result,get_now_time())
 		self.execute("INSERT INTO test_results {} VALUES {}".format(key, values))
-		
+
 	def update_per(self,case_name, device_name, filter_log, cost_time,result,screen_shot_base64=None,cpu_list=None, mem_list=None):
 		'''SQL更新结果'''
 		update_sql ="UPDATE test_results set " \
@@ -120,7 +125,7 @@ class SQL:
 		# print statement
 		self.cursor.execute(statement)
 		self.conn.commit()
-		
+
 	def select_per(self, case_name, device_name):
 		statement = "select * from test_results where " \
 		            "case_name = '{}' " \
@@ -131,7 +136,7 @@ class SQL:
 		#抓取一行数据
 		row = self.cursor.fetchone()
 		return row
-	
+
 		# if row is not None:
 		# 	cpu = re.findall(r"\d+\.?\d*", row[3])
 		# 	mem = re.findall(r"\d+\.?\d*", row[4])
@@ -142,10 +147,10 @@ class SQL:
 
 if __name__ == '__main__':
 	s = SQL()
-	
+
 	# s.insert_per('login','u123','过滤日志','30','pass','base64','cpu_lists','mem_lists')
-	print s.select_per('login', 'u123')
+	print (s.select_per('login', 'u123'))
 	s.update_per('login','u123','','33','fail','base64','cpu_lists','mem_lists')
 	# # s.insert_per('login1', 'u123', '过滤日志', 'base64', 'cpu_lists', 'mem_lists', '30', 'pass')
-	print s.select_per('login','u123')
+	print (s.select_per('login','u123'))
 	s.close()

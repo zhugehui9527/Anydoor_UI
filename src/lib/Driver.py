@@ -51,16 +51,18 @@ class Driver(object):
 
             # self.url = 'http://' + str(self.ip) + ':' + str(self.port) + '/wd/hub'
             # self.url = 'http://' + str(self.ip) + ':8900/wd/hub'
-            self.device[dc.autoAcceptAlerts] = self.autoAcceptAlerts
+
 
             # print time.ctime(), ' [', __name__, '::', Driver.init.__name__, '] :', ' platformName =  ', self.platformName
 
             if self.platformName.lower() == pf.android:
-                self.device[dc.unicodeKeyboard] = self.unicodeKeyboard
-                self.device[dc.resetKeyboard] = self.resetKeyboard
-                self.device[dc.appPackage] = self.appPackage
                 self.device[dc.appActivity] = self.appActivity
                 self.device[dc.app] =self.app
+                if self.runmode == pc.appium:
+                    self.device[dc.unicodeKeyboard] = self.unicodeKeyboard
+                    self.device[dc.resetKeyboard] = self.resetKeyboard
+                    self.device[dc.appPackage] = self.appPackage
+                    self.device[dc.autoAcceptAlerts] = self.autoAcceptAlerts
                 # self.device[dc.autoWebview] = self.autoWebview
 
             elif self.platformName.lower() == pf.ios:
@@ -92,7 +94,7 @@ class Driver(object):
         if self.driver.session_id:
             return self.driver
         else:
-            return
+            raise ValueError,'设备未连接或者设备未启动,请检查设备配置'
 
 
 

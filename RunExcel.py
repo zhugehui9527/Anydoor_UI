@@ -14,8 +14,8 @@ from src.Public.Retry import Retry
 from src.lib import ExcelRW
 from src.lib.Utils import SQL
 import sys
-reload(sys)
-sys.setdefaultencoding('utf-8')
+# reload(sys)
+# sys.setdefaultencoding('utf-8')
 PATH = lambda p: os.path.abspath(
     os.path.join(os.path.dirname(__file__), p)
 )
@@ -165,8 +165,8 @@ def get_html_report():
 	end_time = time.time()
 	from src.Public.HtmlReport import HtmlReport
 	AHtmlReport = HtmlReport()
-	print '*' * 80
-	print time.ctime(), ' [', __name__, '::', get_html_report.__name__, '] :', ' 生成测试报告'
+	print ('*' * 80)
+	print (time.ctime(), ' [', __name__, '::', get_html_report.__name__, '] :', ' 生成测试报告')
 	# 生成测试报告
 	AHtmlReport.set_result_filename(html_result_path)
 	AHtmlReport.set_testcase_result(result)
@@ -180,10 +180,10 @@ def get_html_report():
 		U = Utils()
 		cmd = 'rm -rf '+filter_log_path + '/*.log'
 		U.cmd_subprocess(cmd)
-		print '*' * 80
-		print time.ctime(), ' [', __name__, '::', get_html_report.__name__, '] :', ' 过滤日志清理完毕'
+		print ('*' * 80)
+		print (time.ctime(), ' [', __name__, '::', get_html_report.__name__, '] :', ' 过滤日志清理完毕')
 	else:
-		print time.ctime(), ' [', __name__, '::', get_html_report.__name__, '] :', ' 无过滤日志'
+		print (time.ctime(), ' [', __name__, '::', get_html_report.__name__, '] :', ' 无过滤日志')
 
 if __name__ == '__main__':
 

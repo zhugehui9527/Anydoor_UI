@@ -18,10 +18,8 @@ class D:
 	def set_driver(cls,driver):
 		if driver:
 			cls.driver = driver
-		print '*'*80
-		print time.ctime(), ' [', __name__, '::', D.set_driver.__name__, '] :', ' driver =  ', driver
-
-
+		print ('*'*80)
+		print (time.ctime(), ' [', __name__, '::', D.set_driver.__name__, '] :', ' driver =  ', driver)
 
 class L:
 	'''传递logger'''
@@ -31,7 +29,7 @@ class L:
 		if logger:
 			cls.logger = logger
 		else:
-			print time.ctime(), ' [', __name__, '::',L.set_logger.__name__, '[ error ] logger is null'
+			print (time.ctime(), ' [', __name__, '::',L.set_logger.__name__, '[ error ] logger is null')
 
 class S:
 	device = None
@@ -54,7 +52,7 @@ class S:
 	def mkdirs(cls,path):
 		'''创建目录'''
 		if not os.path.exists(path):
-			os.makedirs(path,0777)
+			os.makedirs(path)
 
 class Q:
 	'''传递sql'''
@@ -62,3 +60,9 @@ class Q:
 	@classmethod
 	def set_sql(cls,sql):
 		cls.sql = sql
+
+class Data:
+	data = None
+	@classmethod
+	def set_data(cls,data):
+		cls.data = data

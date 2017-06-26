@@ -54,7 +54,7 @@ class element_by(object):
 
 
 class public(object):
-	time2wait = 10
+	time2wait = 15
 	element_sheet = u'元素表'
 	public_case_sheet =u'公共案例库'
 	case_sheet = u'Sheet1'

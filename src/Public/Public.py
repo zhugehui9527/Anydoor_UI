@@ -28,12 +28,12 @@ import platform
 import shutil
 import os
 from PIL import Image
-
+# import Image
 # PATH方法获取绝对路径
 PATH = lambda p:os.path.abspath(p)
 # 获取临时截图目录的绝对路径
 temp_file = PATH(tempfile.gettempdir()+'/temp_screen.png')
-print '临时截图路径: ',temp_file
+# print ('临时截图路径: ',temp_file)
 class Img(object):
 	def __init__(self,driver):
 		self.driver = driver
@@ -71,7 +71,7 @@ class Img(object):
 		       int(percent_y * height),
 		       int((percent_width + percent_x) * width) ,
 		       int((percent_height + percent_y) * height))
-		print 'box = ',box
+		# print 'box = ',box
 		# 裁剪
 		new_image = image.crop(box)
 		new_image.save(temp_file)
@@ -102,7 +102,7 @@ class Img(object):
 		image2 = loadimage
 		h1 = image1.histogram()
 		h2 = image2.histogram()
-		diff = math.sqrt(reduce(operator.add,list(map(lambda a,b:(a-b)**2,h1,h2)))/len(h1))
+		diff = math.sqrt(map(operator.add,list(map(lambda a,b:(a-b)**2,h1,h2)))/len(h1))
 		if diff <= percent:
 			return True
 		else:

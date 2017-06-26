@@ -298,7 +298,7 @@ class XlsEngine():
 #测试
 if __name__ == '__main__':
     casepath = os.path.abspath('../../TestCase/Excel/TestCase.xls')
-    print '用例路径',casepath
+    print ('用例路径',casepath)
     #初始化对象
     xlseng = XlsEngine(casepath)
 
@@ -316,19 +316,19 @@ if __name__ == '__main__':
 
     #输出文件信息
     print("\nxlseng.info():")
-    print xlseng.info()
+    print (xlseng.info())
 
     #读取Sheet1页第2行第1列单元格数据（默认读取Sheet1页第1行第1列单元格数据）
     print("\nxlseng.readcell():")
-    print xlseng.readcell('Sheet1',3,1)
+    print (xlseng.readcell('Sheet1',3,1))
 
     #读取Sheet1页第2行的数据（默认读取Sheet1页第1行的数据）
     print("\nxlseng.readrow():")
-    print xlseng.readrow('Sheet1',3)
+    print (xlseng.readrow('Sheet1',3))
 
     #读取Sheet1页第2列的数据（默认读取Sheet1页第1列的数据）
     print("\nxlseng.readcol():")
-    print xlseng.readcol('Sheet1',2)
+    print (xlseng.readcol('Sheet1',2))
 
     #向第一个sheet页的第2行第4列写字符串数据‘I am writecell writed’(默认向第一个sheet页的第1行第1列写空字符串)
     #print("\nxlseng.writecell():")

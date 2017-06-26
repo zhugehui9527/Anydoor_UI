@@ -18,16 +18,15 @@ class GetDevices:
 		device = []
 		isMonitor = eval(read_config('appium', 'isMonitor'))
 		support_devices = str(read_config('appium','device')).split(',')
-		print time.ctime(), ' [', __name__, '::', GetDevices.get_device.__name__, '] :','support devices = ',support_devices
+		print (time.ctime(), ' [', __name__, '::', GetDevices.get_device.__name__, '] :','support devices = ',support_devices)
 		# 获取模拟器设备列表
 		if isMonitor:
 			if 'iOS_Monitor' in support_devices:
-				print time.ctime(), ' [', __name__, '::', GetDevices.get_device.__name__, '] :','iOS_Monitor is allowed'
+				print (time.ctime(), ' [', __name__, '::', GetDevices.get_device.__name__, '] :','iOS_Monitor is allowed')
 				iOS_Monitor = {}
 				deviceName = read_config('appium', 'deviceName')
 				platformVersion = read_config('appium', 'platformVersion')
 				iOS_Monitor['deviceName'] = deviceName
-				# deviceName = str(deviceName).replace(' ','')
 				for dev in os.popen(self.Get_iOS).readlines():
 					dev_value = str(dev).replace("\n", "").replace("\t", "").replace(" ", "")
 					if dev_value.rfind(deviceName) == -1:
@@ -43,7 +42,7 @@ class GetDevices:
 					iOS_Monitor['platformName'] = 'iOS'
 				device.append(iOS_Monitor)
 			if 'Android_Monitor' in support_devices:
-				print time.ctime(), ' [', __name__, '::', GetDevices.get_device.__name__, '] :','Android_Monitor is  allowed'
+				print (time.ctime(), ' [', __name__, '::', GetDevices.get_device.__name__, '] :','Android_Monitor is  allowed')
 				# 命令获取Android设备列表
 				for dev in os.popen(self.Get_Android).readlines():
 					Android = {}
@@ -72,7 +71,7 @@ class GetDevices:
 					continue
 				if dev.rfind('(') == -1:
 					continue
-				# print dev_value
+				print dev_value
 				# iOS['platformName'] = read_config('appium', 'platformName')
 				# iOS['bundleId'] = read_config('appium','bundleId')
 				iOS['deviceName'] = re.compile(r'(.*)\(').findall(dev_value)[0]
@@ -99,9 +98,14 @@ class GetDevices:
 					device.append(Android)
 		else:
 			pass
-		print '*'*80
-		print time.ctime(), ' [', __name__, '::', GetDevices.get_device.__name__, '] :', ' \n device =  ', device
-		return device
+		# print ('*'*80)
+		print (time.ctime(), ' [', __name__, '::', GetDevices.get_device.__name__, '] :', ' \n device =  ', device)
+		# return device
+		for devicex in device:
+			if dict(devicex).has_key('udid'):
+				return device
+			else:
+				raise ValueError, '设备未连接或者设备配置错误,请检查设备以及相关配置'
 
 	def __is_using(self):
 		'''
@@ -128,7 +132,7 @@ class GetDevices:
 			if not self.__is_using() and (self.serverport not in port_list):
 				port_list.append(self.serverport)
 			else:
-				self.serverport += 1
+				self.serverport += 10
 
 		# while True:
 		# 	if len(port_list) == count:
