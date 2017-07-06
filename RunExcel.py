@@ -14,8 +14,7 @@ from src.Public.Retry import Retry
 from src.lib import ExcelRW
 from src.lib.Utils import SQL
 import sys
-# reload(sys)
-# sys.setdefaultencoding('utf-8')
+
 PATH = lambda p: os.path.abspath(
     os.path.join(os.path.dirname(__file__), p)
 )
@@ -41,8 +40,8 @@ class RunExcelCase(unittest.TestCase):
 	def callPublicCase(self, casename):
 		'''
 		:description:判断casename是否在公共案例库中,如有则执行公共案例库
-		:param casename:
-		:return:   还缺少对ios或者Android独有的判断
+		:param casename: 案例名称
+		:return:  公共案例库执行结果
 		'''
 		public_case_type = 1 #公共案例库名称不为空
 		result_public = [] #存放公共案例库执行结果
@@ -88,7 +87,6 @@ class RunExcelCase(unittest.TestCase):
 						else:
 							# 公共案例每步执行结果记录
 							result_public.append(resultStutas.fail)
-
 					public_case_type = 0
 
 		return result_public
@@ -118,7 +116,6 @@ class RunExcelCase(unittest.TestCase):
 				L.logger.debug('===' * 40)
 			else:
 				L.logger.warning('case_list 为空')
-
 		else:
 			# 执行测试用例库
 			if self.readApi.readApiList(self.caselist):

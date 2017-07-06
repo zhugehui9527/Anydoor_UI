@@ -1,7 +1,6 @@
 # -*- coding:utf-8 -*-
 import pytest, os
 
-
 PATH = lambda p: os.path.abspath(
 	os.path.join(os.path.dirname(__file__), p)
 )
@@ -12,7 +11,7 @@ def run_pytest():
 	:return:
 	'''
 	project_path = os.path.dirname(os.path.abspath(__file__))
-	case_path = os.path.abspath(os.path.join(project_path, 'TestCase', 'Scripts', 'PaPhone.py'))
+	case_path = os.path.abspath(os.path.join(project_path, 'TestCase', 'Scripts', 'Anydoor.py'))
 	# print 'case_path = ',case_path
 	from src.Public.Global import S
 	udid = S.device['udid']

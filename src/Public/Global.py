@@ -33,20 +33,24 @@ class L:
 
 class S:
 	device = None
+	device_dir=None
 	# device = {'udid': '32E6D124-29B6-48A2-9B38-0A9D54121E10'}
 	@classmethod
 	def set_device(cls,device):
 		'''传递device'''
 		if device:
 			cls.device = device
-			device_dir = PATH('../../output/'+ cls.device['udid'])
+			cls.device_dir = PATH('../../output/'+ cls.device['udid'])
 			# print '* [', __name__, '::', S.set_device.__name__, '] :', ' device_dir = ',device_dir
-			log_dir = os.path.abspath(device_dir + '/log')
-			report_dir = os.path.abspath(device_dir + '/html/filter')
-			screen_dir = os.path.abspath(device_dir + '/screen')
-			cls.mkdirs(log_dir)
-			cls.mkdirs(report_dir)
-			cls.mkdirs(screen_dir)
+			log_dir = os.path.abspath(cls.device_dir + '/log')
+			report_dir = os.path.abspath(cls.device_dir + '/html/filter')
+			screen_dir = os.path.abspath(cls.device_dir + '/screen')
+			if not os.path.exists(log_dir):
+				cls.mkdirs(log_dir)
+			if not os.path.exists(report_dir):
+				cls.mkdirs(report_dir)
+			if not os.path.exists(screen_dir):
+				cls.mkdirs(screen_dir)
 
 	@classmethod
 	def mkdirs(cls,path):

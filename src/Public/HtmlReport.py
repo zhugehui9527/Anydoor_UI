@@ -85,6 +85,8 @@ class HtmlReport(object):
                 return text
         except Exception as e:
             print e
+        finally:
+            f.close()
 
     def get_url_res(self,url):
         res = requests.get(url)
@@ -157,13 +159,17 @@ class HtmlReport(object):
         tab2 << pyh.tr(pyh.td(u'报告生成时间'.encode('gbk'), bgcolor='#E6E6FA', align='middle') +
                        pyh.td(u'Platform'.encode('gbk'), bgcolor='#E6E6FA', align='middle') +
                        pyh.td(u'Python'.encode('gbk'), bgcolor='#E6E6FA', align='middle') +
-                       pyh.td(u'Appium'.encode('gbk'), bgcolor='#E6E6FA', align='middle')
+                       pyh.td(u'Appium'.encode('gbk'), bgcolor='#E6E6FA', align='middle')+
+                       pyh.td(u'Udid'.encode('gbk'), bgcolor='#E6E6FA', align='middle')+
+                       pyh.td(u'SystemVersion'.encode('gbk'), bgcolor='#E6E6FA', align='middle')
                        ,bt='0')
 
         tab2 << pyh.tr(pyh.td(str(self.current_time), align='middle') +
                        pyh.td(str(platform.platform()), align='middle') +
                        pyh.td(str(platform.python_version()), align='middle') +
-                       pyh.td(str(os.popen('appium -v').read()), align='middle')
+                       pyh.td(str(os.popen('appium -v').read()), align='middle')+
+                       pyh.td(str(self.device['udid']), align='middle')+
+                       pyh.td(str(self.device['platformVersion']), align='middle')
                        )
 
         page << pyh.h3('Summary', align='left')  # 标题居左

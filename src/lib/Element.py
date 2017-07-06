@@ -171,7 +171,6 @@ class Element(object):
         :param classname:
         :return:
         '''
-        # elements = self.driver.find_elements_by_class_name(classname)
         elements = self.find_elements((By.CLASS_NAME,classname))
         L.logger.info('查找 classname: %s' % classname)
         return elements
@@ -191,7 +190,7 @@ class Element(object):
         :return:
         '''
         L.logger.info('driver quit!')
-        return self.driver.quit()
+        self.driver.quit()
 
     def get_current_url(self):
         '''
@@ -351,6 +350,29 @@ class Element(object):
 
         except:
             raise
+    def swipe_all(self, t):
+        """
+        选择如何滑动屏幕
+        """
+        if t == 'swipe_left':
+            self.swipe_left()
+        elif t == 'swipe_right':
+            self.swipe_right()
+        elif t == 'swipe_up':
+            self.swipe_up()
+        elif t == 'swipe_down':
+            self.swipe_down()
+
+    def send_key_event(self, arg):
+        """
+        参考文献：http://blog.csdn.net/jlminghui/article/details/39268419
+        操作实体按键
+        :return:
+        """
+        event_list = {'entity_home': 3, 'entity_back': 4, 'entity_menu': 82, 'entity_volume_up': 24,
+                      'entity_volume_down': 25, "entity_enter": 66}
+        if arg in event_list:
+            self.driver.keyevent(int(event_list[arg]))
 
     def tap(self,position,duration =None):
         '''
@@ -428,7 +450,7 @@ class Element(object):
             return self.driver.close()
 
     def send_keys(self,element,text):
-        L.logger.info('元素:%s,发送内容:%s' % (element,text))
+        L.logger.info('发送内容:%s' % text)
         element.clear()
         return element.send_keys(text)
 

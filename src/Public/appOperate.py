@@ -3,7 +3,7 @@
 #filename:self.Driver.py
 #author:Jeff
 #date:2016-09-21
-#function:对日志进行操作处理
+#function:app操作方法封装
 #######################################################
 import json
 import os
@@ -315,40 +315,20 @@ class AppOperate (object):
 	def closeH5_byPluginId(self,pluginId):
 		'''通过插件ID来判断关闭H5的方式(iOS 有某几个插件关闭H5比较特别)'''
 		L.logger.info('关闭H5页面!')
-		backButtion = {'PA01100000000_02_PAZB':'//*[1]/*[1]/*[2]/*[1]/*[1]/*[1]/*[1]/*[2]/*[1]',
-		               'PA02700000000_02_PAYX':'//*[1]/*[1]/*[2]/*[1]/*[1]/*[1]',
-		               'PA02100000000_02_CJKX':'//*[1]/*[1]/*[2]/*[1]/*[1]/*[1]',
-		               'PA02100000001_02_JF':'//*[1]/*[1]/*[2]/*[1]/*[1]/*[1]',
-		               'PA01100000000_02_RYG':'//*[1]/*[1]/*[2]/*[1]/*[1]',
-		               'PA02100000000_02_KY':'//*[1]/*[1]/*[2]/*[1]/*[1]/*[1]',
-		               }
 		if self.platformName.lower() == pf.ios:
-			if backButtion.has_key(pluginId):
-				try:
-					self.driver.by_xpath(backButtion[pluginId]).click()
-				except:
-					if pluginId == 'PA01100000000_02_PAZB':
-						self.driver.by_xpath("//*[@name='com nav ic back']").click()
-					else:
-						self.closeH5()
+			try:
+				if pluginId == 'PA01100000000_02_PAZB':
+					self.click(self.driver.by_xpath('//*[1]/*[1]/*[2]/*[1]/*[1]/*[1]/*[1]/*[2]/*[1]'), '点击:返回')
+				else:
+					self.click(self.driver.by_xpath('//*[1]/*[1]/*[2]/*[1]/*[1]/*[1]'), '点击:返回')
 
-				if pluginId == 'PA02700000000_02_PAYX':
-					self.driver.by_xpath("//*[@name='关闭']").click()
-			# if  pluginId == 'PA01100000000_02_PAZB':
-			# 	try:
-			# 		self.driver.by_xpath('//*[1]/*[1]/*[2]/*[1]/*[1]/*[1]/*[1]/*[2]/*[1]').click()
-			# 	except:
-			# 		self.driver.by_xpath("//*[@name='com nav ic back']").click()
-			# elif pluginId == 'PA02700000000_02_PAYX':
-			# 	self.driver.by_xpath("//*[1]/*[1]/*[2]/*[1]/*[1]/*[1]").click()
-			# 	self.driver.implicitly_wait(5)
-			# 	self.driver.by_xpath("//*[@name='关闭']").click()
-			# elif pluginId == 'PA02100000000_02_CJKX' or pluginId == 'PA02100000001_02_JF':
-			# 	self.driver.by_xpath('//*[1]/*[1]/*[2]/*[1]/*[1]/*[1]').click()
-			# elif pluginId == 'PA01100000000_02_RYG':
-			# 	self.driver.by_xpath("//*[1]/*[1]/*[2]/*[1]/*[1]").click()
-			else:
+				# 需要点击两次关闭的插件
+				pluginId_list = ['PA02700000000_02_PAYX','PA01100000000_02_ZCCX','PA02100000000_02_DYP']
+				if pluginId in pluginId_list:
+					self.click(self.driver.by_xpath("//*[@name='关闭']"), '点击:关闭')
+			except:
 				self.closeH5()
+
 		else:
 			self.closeH5()
 
@@ -357,7 +337,8 @@ class AppOperate (object):
 		关闭H5界面
 		:return: True
 		'''
-		backAction_ios = ["//*[@name='closeButton']",
+		backAction_ios = [
+					  "//*[@name='closeButton']",
 		              "//*[@name='关闭']",
 		              "//*[@name='返回']",
 		              "//*[@name='com nav ic back']"]
@@ -369,16 +350,16 @@ class AppOperate (object):
 		if self.platformName.lower() == pf.ios:
 			for back in backAction_ios:
 				ele = self.driver.by_xpath(back)
-				L.logger.info('closeH5 找到元素:%s ' % back)
 				if ele:
-					ele.click()
+					L.logger.info('closeH5 找到元素:%s ' % back)
+					self.click(ele,'点击: %s' % back)
 					break
 		else:
 			# Android 关闭H5
 			for back in backAction_Anr:
 				el = self.driver.by_id(back)
 				if el:
-					el.click()
+					self.click(el,'点击: %s' % back)
 					break
 
 	def getPluginList(self):
@@ -406,7 +387,6 @@ class AppOperate (object):
 		'''
 		try:
 			if self.driver.by_id('“https://mobilesdk.pingan.com.cn”想使用您当前的位置').is_enabled():
-			# if self.wait_for_text(10,'“https://mobilesdk.pingan.com.cn”想使用您当前的位置'):
 				self.driver.by_id('好').click()
 			else:
 				L.logger.info('没找到Alert弹窗')
@@ -446,19 +426,7 @@ class AppOperate (object):
 		'''
 		i = 1
 		L.logger.info("开始轮询元素: %s" % text)
-		# if self.runmode == pc.macaca:
-		# 	while not (self.driver.find_element((By.ID, text), time_second) or
-		# 		        self.driver.find_element((By.NAME, text), time_second)):
-		# 		L.logger.warning('轮询超时,未找到元素:[ %s ]' % text)
-		# 		time.sleep(2)
-		# 		i += 2
-		# 		if i >= time_second:
-		# 			return False
-		# 	else:
-		# 		L.logger.info('界面存在此元素:[ %s ]' % text)
-		# 		return True
 
-		# '''
 		if self.runmode == pc.appium:
 			while str(text) not in (self.driver.page_source()):
 				L.logger.warning('轮询超时,未找到元素:[ %s ]' % text)

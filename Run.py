@@ -22,7 +22,7 @@ PATH = lambda p: os.path.abspath(
     os.path.join(os.path.dirname(__file__), p)
 )
 
-def run_mode():
+def run_mode(device,index):
 	'''
 	runmod 选择运行模式,1:运行excel用例,0:运行脚本用例
 	:return:
@@ -49,8 +49,19 @@ def run_mode():
 		L.logger.info(' 运行 Script 测试用例 ')
 		import RunScript
 		RunScript.run_pytest()
+
+	elif runmod == '2' :
+		if str(device['platformName']).lower()!='android':
+			raise EnvironmentError,'runmod=2,仅支持android'
+		L.logger.info(' 运行 Yaml 测试用例 ')
+		from src.Public.integration import RunApp
+		r = RunApp(device,index)
+		r.case_start()
 	else:
 		pass
+
+
+
 
 def clean_process():
 	'''
@@ -129,8 +140,7 @@ def Run_one(device,port,index):
 	D.set_driver(driver)
 	# print ('*' * 80)
 	L.logger.debug(' 运行设备 driver : %s  ' % driver)
-
-	run_mode() # 运行模式
+	run_mode(device,index) # 运行模式
 
 if __name__ == '__main__':
 	try:
@@ -139,28 +149,23 @@ if __name__ == '__main__':
 		devices = G.get_device()
 		count = len(devices)
 		ports = G.get_port(count)
-		# print ('*' * 80)
-
-		print (time.ctime()+' 设备数: %s' % count +', 端口列表: %s' % ports)
-		p = Pool(processes=count) # set the processes max number 3
-
+		p = Pool(processes=count)
 		# 多线程并发
 		for i in range(count):
 			result = p.apply_async(Run_one,(devices[i],ports[i],i,))
-
 		p.close() # 关闭进程,不再添加新的进程
 		p.join() # 进程等待执行完毕
-		if result.successful():
-			# print ('*' * 80)
-			if count > 1:
-				print( '多设备并发执行成功')
-			else:
-				print('单设备执行成功')
-		clean_process()
+		# if result.successful():
+		# 	# print ('*' * 80)
+		# 	if count > 1:
+		# 		L.logger.debug( '多设备并发执行成功')
+		# 	else:
+		# 		L.logger.debug('单设备执行成功')
+		# clean_process()
 	except Exception as e:
 		raise e
 
 	# print ('*' * 80)
-	print( '所有代码执行完毕!')
+	# L.logger.debug( '所有代码执行完毕!')
 	import sys
 	sys.exit(0)

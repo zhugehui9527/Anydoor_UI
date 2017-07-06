@@ -25,7 +25,7 @@ def load_config(file_path):
 	config = cfg.ConfigParser()
 	try:
 		if os.path.isfile(file_path):
-			if '3.6' in sys.version:
+			if '3.' in sys.version:
 				config.read(file_path,'utf-8')
 			else:
 				config.read(file_path)

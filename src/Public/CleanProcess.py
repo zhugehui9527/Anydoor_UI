@@ -53,19 +53,19 @@ class Cp(object):
         lines_list = []
         cmd = "ps -A | grep "+self.runmode+"|awk '{print $1}'"
         lines = self.cmd(cmd).stdout.readlines()
-        print ('lines = ',lines)
+        # print ('lines = ',lines)
         lines_list.append(lines)
-        print (lines_list)
+        # print (lines_list)
 
         if len(lines_list) !=0:
-            print (self.runmode + " 相关进程列表 = %s " % lines_list)
+            # print (self.runmode + " 相关进程列表 = %s " % lines_list)
             # logger.debug('appium 相关进程列表 = %s ' % lines_list)
             for line in lines_list:
                 for x in line:
                     cmd2 = 'kill -9 %s' % x
                     self.cmd(cmd2)
-                    print ('CleanProcess:Darwin: %s'%  cmd2)
-            print ('CleanProcess:Darwin:kill %s '% self.runmode)
+                    # print ('CleanProcess:Darwin: %s'%  cmd2)
+            # print ('CleanProcess:Darwin:kill %s '% self.runmode)
                 # self.cmd('killall node')
                 # logger.debug('CleanProcess:Darwin:kill appium')
 

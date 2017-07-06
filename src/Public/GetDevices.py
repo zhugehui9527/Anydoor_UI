@@ -63,49 +63,48 @@ class GetDevices:
 		# 是否运行真机
 		isRealDevice = eval(read_config('appium', 'isRealDevice'))
 		if isRealDevice:
-			# 获取iOS真实设备列表
-			for dev in os.popen(self.Get_iOS).readlines():
-				iOS = {}
-				dev_value = str(dev).replace("\n", "").replace("\t", "").replace(" ", "")
-				if dev.rfind('Simulator') != -1:
-					continue
-				if dev.rfind('(') == -1:
-					continue
-				print dev_value
-				# iOS['platformName'] = read_config('appium', 'platformName')
-				# iOS['bundleId'] = read_config('appium','bundleId')
-				iOS['deviceName'] = re.compile(r'(.*)\(').findall(dev_value)[0]
-				iOS['platformVersion'] = re.compile(r'\((.*)\)').findall(dev_value)[0]
-				iOS['udid'] = re.compile(r'\[(.*?)\]').findall(dev_value)[0]
-				iOS['platformName'] = 'iOS'
+			if 'iOS_Real_Device' in support_devices:
+				# 获取iOS真实设备列表
+				for dev in os.popen(self.Get_iOS).readlines():
+					iOS = {}
+					dev_value = str(dev).replace("\n", "").replace("\t", "").replace(" ", "")
+					if dev.rfind('Simulator') != -1:
+						continue
+					if dev.rfind('(') == -1:
+						continue
+					print dev_value
+					# iOS['platformName'] = read_config('appium', 'platformName')
+					# iOS['bundleId'] = read_config('appium','bundleId')
+					iOS['deviceName'] = re.compile(r'(.*)\(').findall(dev_value)[0]
+					iOS['platformVersion'] = re.compile(r'\((.*)\)').findall(dev_value)[0]
+					iOS['udid'] = re.compile(r'\[(.*?)\]').findall(dev_value)[0]
+					iOS['platformName'] = 'iOS'
+					device.append(iOS)
 
-				device.append(iOS)
-			# print iOS
-
-			# 命令获取Android设备列表
-			for dev in os.popen(self.Get_Android).readlines():
-				Android = {}
-				dev_value = str(dev).replace("\n", "").replace("\t", "")
-				if dev_value.rfind('device') != -1 and (not dev_value.startswith("List")) and dev_value != "":
-					# print dev_value[:dev_value.find('device')].strip()
-					Android['udid'] = dev_value[:dev_value.find('device')].strip()
-					Android['platformName'] = 'Android'
-					Android['deviceName'] = 'Android'
-					# Android['platformVersion'] = '6.0.1'
-					# Android['package'] = 'com.paic.example.simpleapp'
-					# Android['activity'] = '.SettingActivity'
-					# Android['app'] = '/usr/local/anydoor/app_package/PAAnydoor.apk'
-					device.append(Android)
+			if 'Android_Real_Device' in support_devices:
+				# 命令获取Android设备列表
+				for dev in os.popen(self.Get_Android).readlines():
+					Android = {}
+					dev_value = str(dev).replace("\n", "").replace("\t", "")
+					if dev_value.rfind('device') != -1 and (not dev_value.startswith("List")) and dev_value != "":
+						# print dev_value[:dev_value.find('device')].strip()
+						Android['udid'] = dev_value[:dev_value.find('device')].strip()
+						Android['platformName'] = 'Android'
+						Android['deviceName'] = 'Android'
+						# Android['platformVersion'] = '6.0.1'
+						# Android['package'] = 'com.paic.example.simpleapp'
+						# Android['activity'] = '.SettingActivity'
+						# Android['app'] = '/usr/local/anydoor/app_package/PAAnydoor.apk'
+						device.append(Android)
 		else:
 			pass
 		# print ('*'*80)
 		print (time.ctime(), ' [', __name__, '::', GetDevices.get_device.__name__, '] :', ' \n device =  ', device)
-		# return device
-		for devicex in device:
-			if dict(devicex).has_key('udid'):
-				return device
-			else:
-				raise ValueError, '设备未连接或者设备配置错误,请检查设备以及相关配置'
+		if device:
+			return device
+		else:
+			raise ValueError, '设备未连接或者设备配置错误,请检查设备以及相关配置'
+
 
 	def __is_using(self):
 		'''
@@ -113,6 +112,7 @@ class GetDevices:
 		:param port:
 		:return:
 		'''
+
 		cmd = "netstat -an | grep %s" % str(self.serverport)
 		if os.popen(cmd).readlines():
 			return True
@@ -145,6 +145,32 @@ class GetDevices:
 
 		return port_list
 
+	def set_device_yaml(self):
+		"""
+        获取当前设备的Android version并且保存到yaml里
+        :return:
+        """
+		device_lst = []
+		from src.lib.AdbUtils import ADB
+		from src.Public.Global import L
+		for device in self.get_device:
+			adb = ADB(device)
+
+			L.logger.debug(
+				'get device:{},Android version:{}'.format(
+					device, adb.get_android_version()))
+			device_lst.append({'platformVersion': adb.get_android_version(
+			), 'deviceName': device, 'platformName': 'Android'})
+
+		import yaml
+		import os
+		PATH = lambda p: os.path.abspath(
+			os.path.join(os.path.dirname(__file__), p)
+		)
+		device_info_path = PATH('../../conf/deviceinfo.yaml')
+		with open(device_info_path, 'w') as f:
+			yaml.dump(device_lst, f)
+			f.close()
 
 if __name__ == '__main__':
 	G = GetDevices()
