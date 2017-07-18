@@ -19,8 +19,10 @@ PATH = lambda p: os.path.abspath(
     os.path.join(os.path.dirname(__file__), p)
 )
 
+BOOL = lambda p: True if p == 'True' or p == 'true' else False
+
 retry_num = int(read_config('retry', 'retry_num'))
-retry_isTrue = bool(read_config('retry', 'retry_isTrue'))
+retry_isTrue = BOOL(read_config('retry', 'retry_isTrue'))
 result = resultClass.result
 starttime = time.time()
 class RunExcelCase(unittest.TestCase):

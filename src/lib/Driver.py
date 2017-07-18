@@ -14,6 +14,8 @@ from src.Public.Common import  public as pc
 from src.Public.Common import platform as pf
 from src.Public.Global import L,S
 
+BOOL = lambda p: True if p == 'True' or p == 'true' else False
+
 class Driver(object):
     def __init__(self,device,port):
         self.device =  device
@@ -26,11 +28,11 @@ class Driver(object):
             self.platformName = self.device[dc.platformName]
             self.app = read_config(pc.appium, dc.app)
             self.appActivity = read_config(pc.appium, dc.appActivity)
-            self.noReset = read_config(pc.appium, dc.noReset)
-            self.autoAcceptAlerts = read_config(pc.appium, dc.autoAcceptAlerts)
-            self.unicodeKeyboard = read_config(pc.appium, dc.unicodeKeyboard)
-            self.resetKeyboard = read_config(pc.appium, dc.resetKeyboard)
-            self.newCommandTimeout = read_config(pc.appium, dc.newCommandTimeout)
+            self.noReset = BOOL(read_config(pc.appium, dc.noReset))
+            self.autoAcceptAlerts = BOOL(read_config(pc.appium, dc.autoAcceptAlerts))
+            self.unicodeKeyboard = BOOL(read_config(pc.appium, dc.unicodeKeyboard))
+            self.resetKeyboard = BOOL(read_config(pc.appium, dc.resetKeyboard))
+            self.newCommandTimeout = int(read_config(pc.appium, dc.newCommandTimeout))
             self.automationName = read_config(pc.appium, dc.automationName)
             self.udid = S.device[dc.udid]
             self.device[dc.udid] = self.udid
@@ -43,17 +45,9 @@ class Driver(object):
                 self.appPackage = read_config(pc.appium, dc.appPackage)
                 self.device[dc.newCommandTimeout] = self.newCommandTimeout
                 self.device[dc.noReset] = self.noReset
-                self.device['useNewWDA'] = 'true'
+                self.device['useNewWDA'] = True
                 self.device['wdaLocalPort'] = str(int(self.port) + 3000)
-                self.device['commandTimeouts'] = '120000'
-                # self.device['xcodeConfigFile'] = '/Users/zengyuanchen/Documents/Project/appium-xcuitest-driver/appium-xcuitest-driver/WebDriverAgent/WebDriverAgent.xcodeproj'
                 self.url = 'http://' + str(self.ip) + ':' + str(self.port) + '/wd/hub'
-
-            # self.url = 'http://' + str(self.ip) + ':' + str(self.port) + '/wd/hub'
-            # self.url = 'http://' + str(self.ip) + ':8900/wd/hub'
-
-
-            # print time.ctime(), ' [', __name__, '::', Driver.init.__name__, '] :', ' platformName =  ', self.platformName
 
             if self.platformName.lower() == pf.android:
                 self.device[dc.appActivity] = self.appActivity
@@ -63,6 +57,7 @@ class Driver(object):
                     self.device[dc.resetKeyboard] = self.resetKeyboard
                     self.device[dc.appPackage] = self.appPackage
                     self.device[dc.autoAcceptAlerts] = self.autoAcceptAlerts
+                    # self.device[dc.automationName] = 'uiautomator2'
                 # self.device[dc.autoWebview] = self.autoWebview
 
             elif self.platformName.lower() == pf.ios:
@@ -90,7 +85,7 @@ class Driver(object):
         else:
             L.logger.info('启动并获取appium driver对象')
             self.driver = webdriver.Remote(self.url, self.device)
-        L.logger.info('session_id: %s',self.driver.session_id)
+        L.logger.debug('session_id: %s',self.driver.session_id)
         if self.driver.session_id:
             return self.driver
         else:

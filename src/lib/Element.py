@@ -551,18 +551,19 @@ class Element(object):
         KEYCODE_Z 按键'Z' 54'''
         return self.driver.keyevent(keycode)
 
-    def hide_keyboard_andr(self,key_name=None,key=None,strategy=None):
-        ''' for Android'''
+    def hide_keyboard(self,key_name=None,key=None,strategy=None):
+        ''' for Android and ios'''
         L.logger.info('隐藏键盘')
-        return self.driver.hide_keyboard(key_name,key,strategy)
+        platform = str(S.device['platformName']).lower()
+        if platform == 'android':
+            return self.driver.hide_keyboard(key_name,key,strategy)
+        elif platform == 'ios':
+            size = self.driver.get_window_size()
+            width = size.get('width')
+            height = size.get('height')
+            L.logger.info('隐藏键盘')
+            self.driver.tap([(width / 2, height / 2)])
 
-    def hide_keyboard_iOS(self):
-        '''for ios'''
-        size = self.driver.get_window_size()
-        width = size.get('width')
-        height = size.get('height')
-        L.logger.info('隐藏键盘')
-        self.driver.tap([(width / 2, height / 2)])
 
     def find_toast_element(self,toast,timeout=10,poll_frequency=0.5):
         '''查询toast'''

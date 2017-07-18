@@ -1,6 +1,11 @@
 # -*- coding: utf-8 -*-
 __author__ = 'joko'
+
 import datetime
+import os
+PATH = lambda p: os.path.abspath(
+    os.path.join(os.path.dirname(__file__), p)
+)
 def get_html_tr(case_id, passing_state,img_path, per, device_log, filter_log):
     """
 
@@ -31,7 +36,7 @@ def get_html_tr(case_id, passing_state,img_path, per, device_log, filter_log):
     # per = '<td><img src="{}" align="absmiddle" width="250" height="200"/></td>'.format(per)
     # device_log = '<td><a href="{}">device_log</a></td>'.format(device_log)
     # filter_log = '<td><a href="{}">device_filter_log</a></td>'.format(filter_log)
-
+    # if os.path.exists(PATH('"./per/{}.png"'.format(case_id))):
     result = {'case_id': case_id, 'pass': passing_state, 'img': img, 'per': per, 'device_log': device_log,
               'filter_log': filter_log}
     return tr % result
@@ -83,8 +88,8 @@ cellpadding="10">
     '''.format(Time=datetime.datetime.now(), device=device, app_info=app_info, All_Case=all_case, passed=passed, failed=failed)
     data = {'tr': log}
     save_html_file = '%s/yaml_report.html' % result_path
-    from src.Public.Global import L
-    L.logger.debug('测试报告路径: %s' % save_html_file)
+    # from src.Public.Global import L
+    # L.logger.debug('测试报告路径: %s' % save_html_file)
     with open(save_html_file, 'w') as f:
         f.write(template % data)
         f.close()

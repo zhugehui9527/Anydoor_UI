@@ -51,17 +51,14 @@ def run_mode(device,index):
 		RunScript.run_pytest()
 
 	elif runmod == '2' :
-		if str(device['platformName']).lower()!='android':
-			raise EnvironmentError,'runmod=2,仅支持android'
+		# if str(device['platformName']).lower()!='android':
+		# 	raise EnvironmentError,'runmod=2,仅支持android'
 		L.logger.info(' 运行 Yaml 测试用例 ')
 		from src.Public.integration import RunApp
 		r = RunApp(device,index)
 		r.case_start()
 	else:
 		pass
-
-
-
 
 def clean_process():
 	'''
@@ -72,7 +69,6 @@ def clean_process():
 	#结束服务进程
 	cp = CleanProcess.Cp()
 	cp.clean_process_all()
-
 
 import RunExcel
 def __get_test_suite(case_list):
@@ -95,12 +91,7 @@ def __Run_Case(runner):
 	:return:
 	'''
 	# print time.ctime(), ' [', __name__, '::', __Run_Case.__name__, '] :', ' 开始进行用例遍历 '
-	# print '*' * 80
 	L.logger.debug(' 循环遍历测试用例 ')
-	# from src.lib.Utils import SQL
-	# # sql实例化并传递
-	# sql = SQL()
-	# Q.set_sql(sql)
 	# 循环遍历测试用例列表
 	for case_list in case_sheet1[1:]:
 		#判断是否是独有操作,如果不是对应平台的独有操作就跳过循环
@@ -144,7 +135,7 @@ def Run_one(device,port,index):
 
 if __name__ == '__main__':
 	try:
-		# clean_process()
+		clean_process()
 		G = GetDevices()
 		devices = G.get_device()
 		count = len(devices)

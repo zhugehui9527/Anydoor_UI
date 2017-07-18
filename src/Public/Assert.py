@@ -8,6 +8,7 @@
 import unittest
 from src.lib.Element import Element
 from conf.Run_conf import read_config
+BOOL = lambda p: True if p == 'True' or p == 'true' else False
 
 class AssertClass(unittest.TestCase):
     '''
@@ -17,7 +18,7 @@ class AssertClass(unittest.TestCase):
         super(AssertClass,self).__init__()
         self.driver = Element(driver)
         self.screenshot_path =read_config('screenshot','screen_shot_path')
-        self.screen_shot_isTrue = bool(read_config('testcase', 'screen_shot_isTrue'))
+        self.screen_shot_isTrue = BOOL(read_config('testcase', 'screen_shot_isTrue'))
     
     def assertTrue_screenshot(self, expr,casename, msg1=None):
         if self.screen_shot_isTrue:

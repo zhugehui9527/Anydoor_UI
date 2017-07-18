@@ -15,13 +15,15 @@ from src.Public.Global import L,S
 import sys
 sys.path.append("../../")
 
+BOOL = lambda p: True if p == 'True' or p == 'true' else False
+
 class ReadApi(unittest.TestCase):
 	def __init__(self,driver):
 		self.platformName = S.device['platformName']
 		self.appOperate = AppOperate(driver)
 		self.wd = Element(driver)
 		self.readElement = ReadElement(driver)
-		self.screen_shot_isTrue = bool(read_config('screenshot','screen_shot_isTrue'))
+		self.screen_shot_isTrue = BOOL(read_config('screenshot','screen_shot_isTrue'))
 		self.screen_shot_path = os.path.abspath('./output/{}/screen/{}.png')
 
 	def screen_shot(self,case):

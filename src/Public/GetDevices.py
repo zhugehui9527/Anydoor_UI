@@ -2,7 +2,7 @@
 
 import os,time,re
 from conf.Run_conf import read_config
-
+BOOL = lambda p: True if p == 'True' or p == 'true' else False
 class GetDevices:
 	def __init__(self):
 		self.Get_Android = 'adb devices'
@@ -16,7 +16,7 @@ class GetDevices:
 		'''
 		# 存储设备信息
 		device = []
-		isMonitor = eval(read_config('appium', 'isMonitor'))
+		isMonitor = BOOL(read_config('appium', 'isMonitor'))
 		support_devices = str(read_config('appium','device')).split(',')
 		print (time.ctime(), ' [', __name__, '::', GetDevices.get_device.__name__, '] :','support devices = ',support_devices)
 		# 获取模拟器设备列表
@@ -61,7 +61,7 @@ class GetDevices:
 		else:
 			pass
 		# 是否运行真机
-		isRealDevice = eval(read_config('appium', 'isRealDevice'))
+		isRealDevice = BOOL(read_config('appium', 'isRealDevice'))
 		if isRealDevice:
 			if 'iOS_Real_Device' in support_devices:
 				# 获取iOS真实设备列表

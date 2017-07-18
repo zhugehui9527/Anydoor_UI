@@ -6,7 +6,7 @@
 #function:根据cpu、内存绘制曲线图
 #######################################################
 
-from src.Public.Global import L
+# from src.Public.Global import L
 def data_marker(cpu, mem, h_cpu, h_mem, path):
     """
 
@@ -45,6 +45,6 @@ def data_marker(cpu, mem, h_cpu, h_mem, path):
     pl.xlim(0.0, len(mem))
     pl.ylim(0.0, 100.0)
     pl.savefig(path)
-    L.logger.debug('Report:%s' % path)
+    # L.logger.debug('绘图路径: %s' % path)
     # pl.show() #调出GUI实时查看
     pl.close()  # 必须关闭,不然值会在内存中不销毁

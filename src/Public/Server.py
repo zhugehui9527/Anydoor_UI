@@ -13,12 +13,17 @@ from src.lib.Utils import Utils as U
 from src.Public.Common import public as pc
 from src.Public.Common import desired_caps as dc
 from src.Public.Global import L
+import os
+PATH = lambda p: os.path.abspath(
+    os.path.join(os.path.dirname(__file__), p)
+)
 
 class Server(object):
 	def __init__(self):
 		self.serverIp = read_config(pc.appium, dc.ip)
 		self.runmode = read_config(pc.runmode, pc.driver)
 		L.logger.info('runmode = %s' % str(self.runmode))
+
 	def start_server(self, device, Port):
 		'''
 		启动服务
@@ -26,10 +31,15 @@ class Server(object):
 		:param Port:int 类型
 		:return:
 		'''
+		self.serverLogPath = PATH('../../output/{}/log/server.log'.format(device['udid']))
+		serverlogdir = os.path.dirname(self.serverLogPath)
+		if not os.path.exists(serverlogdir):
+			os.mkdir(serverlogdir)
 		if not self.is_runnnig(Port):
 			try:
 				if self.runmode == pc.appium:
-					cmd_str = 'appium -a {} -p {} -bp {} -U {}'.format(self.serverIp,Port,(Port+1),device['udid'])
+					cmd_str = 'appium -a {} -p {} -bp {} -U {} -g {} --local-timezone'\
+						.format(self.serverIp,Port,(Port+1),device['udid'],self.serverLogPath)
 				else:
 					cmd_str = 'macaca server --verbose -p {}'.format(Port)
 				# print ('*' * 80)
@@ -72,7 +82,6 @@ class Server(object):
 		# 	url = 'http://' + self.serverIp + ':' + str(Port) + "/wd/hub/status"
 		url = 'http://' + self.serverIp + ':' + str(Port) + "/wd/hub/status"
 		try:
-
 			response = requests.get(url)
 			response_dict = json.loads(response.text)
 			# print (time.ctime(), ' [', __name__, '::', self.is_runnnig.__name__, '] :','服务响应: ',response_dict)

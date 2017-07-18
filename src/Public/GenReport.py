@@ -11,8 +11,14 @@ from src.lib.AdbUtils import ADB
 from conf.Run_conf import read_config
 from src.Public.Analyzelog import Anl
 from src.Public.GetFilePath import all_file_path
+from src.Public.Global import S,L
+import os
+PATH = lambda p: os.path.abspath(
+    os.path.join(os.path.dirname(__file__), p)
+)
 
-
+platform = str(S.device['platformName']).lower()
+# platform = '0316032597351f04'
 class Gr:
 
     def __init__(self, all_result_path, device):
@@ -24,8 +30,19 @@ class Gr:
         self.device = device
         self.adb = ADB(self.device)
 
-    def __confirm_file(self,the_suffix_name):
-        return all_file_path(self.all_result_path,the_suffix_name)
+    def __confirm_file(self, file_path):
+        """
+        检查文件是否存在
+        :param file_path:文件地址
+        :return:
+        """
+        if os.path.exists(file_path):
+            return file_path
+        else:
+            return None
+
+    # def __confirm_file(self,the_suffix_name):
+    #     return all_file_path(self.all_result_path,the_suffix_name)
 
     def __yaml_file(self, all_path_result, the_suffix_name):
         """
@@ -52,20 +69,29 @@ class Gr:
         用于生成测试报告的device的信息
         :return: 设备名,磁盘状态,wifi名称
         """
-
-        return 'device_name:' + str(self.adb.get_device_name()), 'disk:' + str(self.adb.get_disk()), \
+        if platform == 'android':
+            return 'device_name:' + str(self.adb.get_device_name()), 'disk:' + str(self.adb.get_disk()), \
                'wifi_name:' + str(self.adb.wifi_name()), 'system_version:' + str(self.adb.get_android_version()), \
                'resolution:' + str(self.adb.get_screen_resolution())
+        elif platform == 'ios':
+            return 'device_name:' + str(S.device['deviceName']), 'disk:None', \
+               'wifi_name:'+ read_config('device','wifiName'), 'system_version:' + str(S.device['platformVersion']), \
+               'udid:'+self.device
+        else:
+            pass
 
     def __app_info(self):
         """
         获取应用包名和版本号
         :return:
         """
-        package_name = read_config('appium','appPackage')
-        package_name_version = self.adb.specifies_app_version_name(
-            package_name)
-        return package_name, package_name_version
+        if platform == 'android':
+            package_name = read_config('appium','appPackage')
+            package_name_version = self.adb.specifies_app_version_name(
+                package_name)
+            return package_name, package_name_version
+        elif platform == 'ios':
+            return S.device['bundleId'],read_config('device','appVersion')
 
     def __analyze_log(self):
         """
@@ -84,6 +110,7 @@ class Gr:
         import Gethtml
         self.__analyze_log()
         result = self.__yaml_file(self.all_result_path, '.yaml')
+
         lst = []
         for case_name, confirm_status in result.items():
             case_name = str(case_name).split('.')[0]
@@ -92,6 +119,7 @@ class Gr:
                 str(confirm_status).replace(
                     'status', 'img').replace(
                     'yaml', 'png'))
+
             case_per = self.__confirm_file(
                 str(confirm_status).replace(
                     'status', 'per').replace(
@@ -105,6 +133,14 @@ class Gr:
                     'status', 'log').replace(
                     'yaml', 'log').replace(case_name, case_name + 'filter'))
 
+            if case_per is None:
+                error_img = PATH('../../data/error.png')
+                case_per = str(confirm_status).replace(
+                    'status', 'per').replace(
+                    'yaml', 'png')
+                import shutil
+                shutil.copyfile(error_img,case_per)
+
             lst.append(
                 Gethtml.get_html_tr(
                     case_name,
@@ -113,13 +149,15 @@ class Gr:
                     case_per,
                     case_log,
                     case_filter))
-            Gethtml.get_html(
+
+            report_path = Gethtml.get_html(
             ''.join(lst),
             self.__app_info(),
             self.__device_info(),
             self.__test_case_execution_status(),
             self.all_result_path)
-
+            L.logger.debug('测试报告路径: %s' % report_path)
+            # print '测试报告路径: %s' % report_path
 
     def __test_case_execution_status(self):
         """
@@ -140,6 +178,6 @@ class Gr:
 
 if __name__ == '__main__':
     a = Gr(
-        '/Users/joko/Documents/Auto_Analysis/result/2016-11-23_09_53_0263',
-        'T7G0215A14000220')
+        '/Users/zengyuanchen/Documents/SVN/ShareFromCloud/share/Project/Anydoor_UI/output/0316032597351f04',
+        '0316032597351f04')
     a.main()

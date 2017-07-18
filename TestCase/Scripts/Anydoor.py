@@ -22,6 +22,13 @@ wd = Element(driver)
 username = read_config('login', 'login_username')
 password = read_config('login', 'login_password')
 
+
+def setup():
+	appOperate.gt_start()
+
+def teardown():
+	appOperate.gt_stop_save()
+
 @pytest.allure.severity(allure.MASTER_HELPER.severity_level.NORMAL)
 def test_login():
 	'''用例名称: 测试H5登录'''

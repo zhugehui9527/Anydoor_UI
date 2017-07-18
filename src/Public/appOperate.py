@@ -20,26 +20,89 @@ from src.Public.Common import public as pc
 from src.Public.Public import Img
 from src.lib.Element import Element
 from selenium.webdriver.common.by import By
+from src.lib.AdbUtils import ADB
 
 # reload(sys)
 # sys.setdefaultencoding('utf-8')
+BOOL = lambda p: True if p == 'True' or p == 'true' else False
 
 class AppOperate (object):
 	def __init__(self,driver):
 		self.pluginURL = read_config('plugin', 'plugin_url_iOS')
 		self.platformName = S.device['platformName']
+		self.udid = S.device['udid']
+		self.appPackage = read_config('appium', 'appPackage')
+		self.appVersion = read_config('device', 'appVersion')
+		self.adb = ADB(self.udid)
 		self.iOS_UserName =  "//*[@value='一账通号/手机号/身份证号/邮箱']"
 		self.iOS_PassWord = "//*[@value='密码']"
 		self.Andr_UserName = "user-id-input"
 		self.Andr_PassWord = "user-psd-input"
 		self.username = read_config('login', 'login_username')
 		self.password = read_config('login', 'login_password')
+		self.gt_on = BOOL(read_config('gt', 'gt_on'))
 		self.driver = Element(driver)
 		self.pluginList =[]
 		self.runmode = read_config(pc.runmode, pc.driver)
 		self.paphone_user = Data.data[0]
 		self.paphone_pwd = Data.data[1]
 		self.paphone_callto = Data.data[2]
+
+	def gt_start(self):
+		'''打开 GT 开关'''
+		if self.gt_on:
+			if self.platformName.lower() == pf.ios:
+				self.driver.by_xpath('//*[@name="gt logo ac"]').click()
+				self.driver.by_id('gt clear').click()
+				self.driver.by_id('确定').click()
+				self.driver.by_id('gt start').click()
+			elif self.platformName.lower() == pf.android:
+				self.adb.gt_start()
+				self.adb.gt_startTest_pkgName(self.appPackage,self.appVersion)
+				self.adb.gt_start_cpu()
+				self.adb.gt_start_pss()
+				self.adb.gt_start_net()
+				self.driver.back()
+			else:
+				pass
+
+
+	def gt_stop_save(self):
+		if self.gt_on:
+			if self.platformName.lower() == pf.ios:
+				self.driver.by_xpath('//*[@name="gt logo ac"]').click()
+				self.driver.by_id('gt stop').click()
+				self.driver.by_xpath('//*[@name="gt save"]').click()
+				self.driver.by_xpath('//*[@name="确定"]').click()
+				self.driver.by_xpath('// *[ @ name = "参数"] / XCUIElementTypeOther[1]').click()
+			elif self.platformName.lower() == pf.android:
+				self.adb.gt_stop_cpu()
+				self.adb.gt_stop_pss()
+				self.adb.gt_stop_net()
+				self.adb.gt_endTest()
+				self.adb.gt_save('GW_Data', 'desc')
+			else:
+				pass
+
+	def gt_save(self):
+		if self.gt_on:
+			if self.platformName.lower() == pf.ios:
+				self.driver.by_xpath('//*[@name="gt save"]').click()
+				self.driver.by_id('gt stop').click()
+				self.driver.by_xpath('// *[ @ name = "参数"] / XCUIElementTypeOther[1]').click()
+			elif self.platformName.lower() == pf.android:
+				self.adb.gt_save('GW_Data', 'desc')
+			else:
+				pass
+
+	def gt_exit(self):
+		if self.gt_on:
+			if self.platformName.lower() == pf.ios:
+				pass
+			elif self.platformName.lower() == pf.android:
+				self.adb.gt_exit()
+			else:
+				pass
 
 	def paphone_login(self):
 		if self.platformName.lower() == pf.ios:
@@ -50,7 +113,7 @@ class AppOperate (object):
 			login_eles = self.driver.by_classnames('TextField')
 			self.driver.send_keys(login_eles[0], self.paphone_user)
 			self.driver.send_keys(login_eles[1], self.paphone_pwd)
-			self.driver.hide_keyboard_iOS()
+			self.driver.hide_keyboard()
 			self.driver.by_id('登 录').click()
 			time.sleep(3)
 		else:
@@ -285,7 +348,7 @@ class AppOperate (object):
 					L.logger.info('判断插件页面,是否包含: %s' % expectResult)
 					#打开插件如果需要登录则进行登录
 
-					if self.platformName.lower() == pf.ios and self.driver.find_element((By.ID,'一账通登录'),10) :
+					if self.platformName.lower() == pf.ios and self.driver.find_element((By.ID,'一账通登录'),3) :
 						self.loginByH5(self.username,self.password)
 					k = 4 # 向上滑动次数
 					while not self.wait_for_text(10, expectResult):

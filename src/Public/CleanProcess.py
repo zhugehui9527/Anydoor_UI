@@ -45,6 +45,19 @@ class Cp(object):
             self.cmd('kill -9 %s' % line.strip())
             # logger.debug('CleanProcess:linux:kill logcat')
 
+    def clean_adb(self):
+        cmd = "lsof -i :5037 |awk '{print $2}'"
+        lines = self.cmd(cmd).stdout.readlines()
+        lines_list = []
+        lines_list.append(lines)
+        if len(lines_list) != 0:
+            # print (self.runmode + " 相关进程列表 = %s " % lines_list)
+            # logger.debug('appium 相关进程列表 = %s ' % lines_list)
+            for line in lines_list:
+                for x in line:
+                    cmd2 = 'kill -9 %s' % x
+                    self.cmd(cmd2)
+
     def __darwin_all(self, ):
         # for line in self.cmd(
         #         "ps -A | grep logcat|awk '{print $1}'").stdout.readlines():
@@ -96,6 +109,7 @@ class Cp(object):
         """
         if platform.system() == 'Darwin':
             self.__darwin(port, device)
+            self.clean_adb()
         elif platform.system() == 'Linux':
             self.__linux(port, device)
         else:
@@ -110,6 +124,7 @@ class Cp(object):
         """
         if platform.system() == 'Darwin':
             self.__darwin_all()
+            self.clean_adb()
         elif platform.system() == 'Linux':
             self.__linux_all()
         else:

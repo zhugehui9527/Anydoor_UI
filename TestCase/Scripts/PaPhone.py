@@ -8,11 +8,9 @@
 import sys,time
 import pytest, allure
 import unittest
-from conf.Run_conf import read_config
 from src.Public.Global import L,D,S
 from src.Public.appOperate import AppOperate
 from src.lib.Element import Element
-from src.Public.Common import platform as pf
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
@@ -21,7 +19,11 @@ driver = D.driver
 appOperate = AppOperate(driver)
 wd = Element(driver)
 
+def setup():
+	appOperate.gt_start()
 
+def teardown():
+	appOperate.gt_stop_save()
 
 @pytest.allure.severity(allure.MASTER_HELPER.severity_level.NORMAL)
 def test_login():
@@ -35,6 +37,7 @@ def test_login():
 def test_audio():
 	'''音频'''
 	appOperate.pahpone_audio()
-	# assert wd.by_id('正在通话')
-	# wd.by_id('voip hangup icons').click()
-	# wd.by_id('确定').click()
+
+# assert wd.by_id('正在通话')
+# wd.by_id('voip hangup icons').click()
+# wd.by_id('确定').click()

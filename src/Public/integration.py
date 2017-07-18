@@ -88,8 +88,8 @@ class RunApp(object):
             for yaml_name, yaml_path in test_case_yaml:
                 L.logger.debug('yaml path:{}'.format(yaml_path))
                 self.analysis(yaml_name, yaml_path)
-                try:
-                    self.driver.quit()
-                    L.logger.debug('driver quit')
-                except Exception as e:
-                    L.logger.warn('driver quit Error %s' % e)
+                # try:
+                #     self.driver.quit()
+                #     L.logger.debug('driver quit')
+                # except Exception as e:
+                #     L.logger.warn('driver quit Error %s' % e)

@@ -1,53 +1,121 @@
 ---
+-
+  ios:
+    -
+      test_name: 点击注销
+      test_id: 0001
+      test_control_type: id
+      test_action: click
+      test_control: 注销
+      test_range: 1
+    -
+      test_name: 点击确定
+      test_id: 0002
+      test_control_type: id
+      test_action: click
+      test_control: 确定
+      test_range: 1
+    -
+      test_name: 输入账号
+      test_id: 0003
+      test_control_type: classname
+      test_index: 0
+      test_action: send_keys
+      test_control: TextField
+      test_texts:
+        - 768486
+        - 768487
+        - 768488
+
+    -
+      test_name: 输入密码
+      test_id: 0004
+      test_control_type: classname
+      test_index: 1
+      test_action: send_keys
+      test_control: TextField
+      test_texts:
+        - 768486
+        - 768487
+        - 768488
+    -
+      test_name: 隐藏键盘
+      test_id: 0005
+      test_action: hide_keyboard
+    -
+      test_name: 点击登录
+      test_id: 0005
+      test_control_type: id
+      test_action: click
+      test_control: 登 录
+      test_range: 1
+    -
+      test_name: 断言登录成功
+      test_action: assert
+      test_id: 006
+      test_text: 注销1
+      test_wait: 10
+      test_control:  注销
+      test_control_type: id
 
 -
-  test_name: 向上滑动页面
-  test_id: 0001
-  test_action: swipe_up
-  test_range: 1
+  android:
+    -
+      test_name: 向上滑动页面
+      test_id: 0001
+      test_action: swipe_up
+      test_range: 1
 
--
-  test_name: 输入本机号码
-  test_id: 0002
-  test_control_type: id
-  test_action: send_keys
-  test_control: com.example.ldsdkapidemo:id/extension
-  test_texts:
-    - 768486
-    - 768487
-    - 768488
+    -
+      test_name: 输入本机号码
+      test_id: 0002
+      test_control_type: id
+      test_action: send_keys
+      test_control: com.example.ldsdkapidemo:id/extension
+      test_texts:
+        - 768486
+        - 768487
+        - 768488
 
--
-  test_name: 输入本机密码
-  test_id: 0003
-  test_control_type: id
-  test_action: send_keys
-  test_control: com.example.ldsdkapidemo:id/extensionPwd
-  test_texts:
-    - 768486
-    - 768487
-    - 768488
--
-  test_name: 输入呼叫号码
-  test_id: 0004
-  test_control_type: id
-  test_action: send_keys
-  test_control: com.example.ldsdkapidemo:id/call_to
-  test_texts:
-    - 768489
-    - 768490
-    - 768491
+    -
+      test_name: 输入本机密码
+      test_id: 0003
+      test_control_type: id
+      test_action: send_keys
+      test_control: com.example.ldsdkapidemo:id/extensionPwd
+      test_texts:
+        - 768486
+        - 768487
+        - 768488
+    -
+      test_name: 输入呼叫号码
+      test_id: 0004
+      test_control_type: id
+      test_action: send_keys
+      test_control: com.example.ldsdkapidemo:id/call_to
+      test_texts:
+        - 768489
+        - 768490
+        - 768491
 
--
-  test_name: 向下滑动页面
-  test_id: 0005
-  test_action: swipe_down
-  test_range: 1
+    -
+      test_name: 向下滑动页面
+      test_id: 0005
+      test_action: swipe_down
+      test_range: 1
 
--
-  test_name: 点击注册(竖屏视图)
-  test_id: 0006
-  test_control_type: id
-  test_action: click
-  test_control: com.example.ldsdkapidemo:id/register_on_mobile
-  test_range: 1
+    -
+      test_name: 点击注册(竖屏视图)
+      test_id: 0006
+      test_control_type: id
+      test_action: click
+      test_control: com.example.ldsdkapidemo:id/register_on_mobile
+      test_range: 1
+    -
+      test_name: 断言注册成功
+      test_action: assert
+      test_id: 007
+      test_text: 注册成功
+      test_wait: 10
+      test_control:  com.example.ldsdkapidemo:id/tip
+      test_control_type: id

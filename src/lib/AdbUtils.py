@@ -12,6 +12,7 @@ from time import sleep
 import time
 import os
 import random
+from src.Public.Global import L
 
 PATH = lambda p: os.path.abspath(p)
 
@@ -66,6 +67,137 @@ class ADB(object):
             shell=True,
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE)
+
+    def gt_start(self):
+        '''启动GT'''
+        cmd = "am start -W -n com.tencent.wstt.gt/com.tencent.wstt.gt.activity.GTMainActivity"
+        L.logger.debug('启动GT')
+        return self.shell(cmd).stdout.read().strip()
+
+    def gt_startTest_pkgName(self,pkgName,verName = 1.0):
+        '''加入被测应用'''
+        L.logger.debug('加入被测应用')
+        cmd = "am broadcast -a com.tencent.wstt.gt.baseCommand.startTest --es pkgName " + pkgName + " --es verName "+ str(verName)
+        return self.shell(cmd).stdout.read().strip()
+
+    def gt_start_cpu(self):
+        '''开启CPU采集'''
+        L.logger.debug('开启CPU采集')
+        cmd = "am broadcast -a com.tencent.wstt.gt.baseCommand.sampleData --ei cpu 1"
+        return self.shell(cmd).stdout.read().strip()
+
+    def gt_stop_cpu(self):
+        '''停止CPU采集'''
+        L.logger.debug('停止CPU采集')
+        cmd = "am broadcast -a com.tencent.wstt.gt.baseCommand.sampleData --ei cpu 0"
+        return self.shell(cmd).stdout.read().strip()
+
+    def gt_start_jif(self):
+        '''开启CPU时间片采集'''
+        L.logger.debug('开启CPU时间片采集')
+        cmd = "am broadcast -a com.tencent.wstt.gt.baseCommand.sampleData --ei jif 1"
+        return self.shell(cmd).stdout.read().strip()
+
+    def gt_stop_jif(self):
+        '''停止CPU时间片采集'''
+        L.logger.debug('停止CPU时间片采集')
+        cmd = "am broadcast -a com.tencent.wstt.gt.baseCommand.sampleData --ei jif 0"
+        return self.shell(cmd).stdout.read().strip()
+
+    def gt_start_pss(self):
+        '''开启PSS采集'''
+        L.logger.debug('开启PSS采集')
+        cmd = "am broadcast -a com.tencent.wstt.gt.baseCommand.sampleData --ei pss 1"
+        return self.shell(cmd).stdout.read().strip()
+
+    def gt_stop_pss(self):
+        '''停止PSS采集'''
+        L.logger.debug('停止PSS采集')
+        cmd = "am broadcast -a com.tencent.wstt.gt.baseCommand.sampleData --ei pss 0"
+        return self.shell(cmd).stdout.read().strip()
+
+    def gt_start_pri(self):
+        '''开启PrivateDirty采集'''
+        L.logger.debug('开启PrivateDirty采集')
+        cmd = "am broadcast -a com.tencent.wstt.gt.baseCommand.sampleData --ei pri 1"
+        return self.shell(cmd).stdout.read().strip()
+
+    def gt_stop_pri(self):
+        '''停止PrivateDirty采集'''
+        L.logger.debug('停止PrivateDirty采集')
+        cmd = "am broadcast -a com.tencent.wstt.gt.baseCommand.sampleData --ei pri 0"
+        return self.shell(cmd).stdout.read().strip()
+
+
+    def gt_start_net(self):
+        '''开启NET采集'''
+        L.logger.debug('开启NET采集')
+        cmd = "am broadcast -a com.tencent.wstt.gt.baseCommand.sampleData --ei net 1"
+        return self.shell(cmd).stdout.read().strip()
+
+    def gt_stop_net(self):
+        '''停止NET采集'''
+        L.logger.debug('停止NET采集')
+        cmd = "am broadcast -a com.tencent.wstt.gt.baseCommand.sampleData --ei net 0"
+        return self.shell(cmd).stdout.read().strip()
+
+    def gt_start_fps(self):
+        '''开启FPS采集'''
+        L.logger.debug('开启FPS采集')
+        cmd = "am broadcast -a com.tencent.wstt.gt.baseCommand.sampleData --ei fps 1"
+        return self.shell(cmd).stdout.read().strip()
+
+    def gt_stop_fps(self):
+        '''停止FPS采集'''
+        L.logger.debug('停止FPS采集')
+        cmd = "am broadcast -a com.tencent.wstt.gt.baseCommand.sampleData --ei fps 0"
+        return self.shell(cmd).stdout.read().strip()
+
+    def gt_modify(self):
+        '''对应UI上的“更改”，一次执行除非执行逆操作“恢复”,会一直有效'''
+        L.logger.debug('GT更改')
+        cmd = "am broadcast -a com.tencent.wstt.gt.plugin.sm.modify"
+        return self.shell(cmd).stdout.read().strip()
+
+    def gt_resume(self):
+        '''对应UI上的“恢复”，测试完毕时执行一次，如手机长期用于流畅度测试可以一直不用恢复'''
+        L.logger.debug('GT恢复')
+        cmd = "am broadcast -a com.tencent.wstt.gt.plugin.sm.resume"
+        return self.shell(cmd).stdout.read().strip()
+
+    def gt_restart(self):
+        '''对应UI上的“重启”，重启手机使“更改”或“恢复”生效'''
+        L.logger.debug('GT重启')
+        cmd = "am broadcast -a com.tencent.wstt.gt.plugin.sm.restart"
+        return self.shell(cmd).stdout.read().strip()
+
+    def gt_startTest_procName(self,procName):
+        '''对应UI上的“开始测试”，procName是指定被测进程的进程名，
+        执行后在出参列表应可以看到SM参数，注意第一次执行需要给GT授权'''
+        L.logger.debug('GT开始测试')
+        cmd = "am broadcast -a com.tencent.wstt.gt.baseCommand.startTest --es procName " + procName
+        return self.shell(cmd).stdout.read().strip()
+
+    def gt_endTest(self):
+        '''对应UI上的“停止测试”'''
+        L.logger.debug('GT停止测试')
+        cmd = "am broadcast -a com.tencent.wstt.gt.plugin.sm.endTest"
+        return self.shell(cmd).stdout.read().strip()
+
+    def gt_exit(self):
+        '''关闭GT'''
+        L.logger.debug('关闭GT')
+        cmd = "am broadcast -a com.tencent.wstt.gt.baseCommand.exitGT"
+        return self.shell(cmd).stdout.read().strip()
+
+    def gt_save(self,saveFolderName,desc=''):
+        '''结束采集并保存，同时删除数据记录
+        saveFolderName为保存目录的名称，最长可以自定义三级目录，以"/"分割，
+        此三级目录会保存在/sdcard/GT/GW/下，每次保存后，GT会把缓存的本次测试数据清空。
+        '''
+        L.logger.debug('结束采集并保存，同时删除数据记录')
+        cmd = "am broadcast -a com.tencent.wstt.gt.baseCommand.endTest --es saveFolderName " + saveFolderName + " --es desc " + desc
+        return self.shell(cmd).stdout.read().strip()
 
     def get_device_state(self):
         """
